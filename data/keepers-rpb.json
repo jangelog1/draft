@@ -1,6 +1,15 @@
 {
  "league": "RPB",
- "note": "Curated keeper ledger (hand-maintained as keepers are confirmed; NOT pipeline-generated). draftOrder = real 2026 RPB draft slots by MANAGER name, from Angelo's handwritten sheet 2026-08-02 (superseded the earlier CBS team-name capture). cost = round.pick the keeper was drafted (the round it costs the team).",
+ "note": "All 13 keepers, sourced from the FFA Keeper Decision Tool run of 2026-07-29 (which names each RPB fantasy team) and independently re-confirmed the same evening against the saved 'RPB 2026 Keepers' FFA mock profile. Both sources agree on player, round and seat. Supersedes the earlier 11-entry ledger, which listed four D/ST keepers that are no longer kept. CBS has still published nothing on its own /keepers page.",
+ "source": "FFA Keeper Decision Tool + saved 'RPB 2026 Keepers' profile, both 2026-07-29",
+ "updated": "2026-07-29",
+ "rules": [
+  "Drafted R9-13: keep 1, costs that round.",
+  "R14-15 or off waivers: keep up to 2.",
+  "R1-8 too early to keep.",
+  "A traded player keeps at his ORIGINAL draft round.",
+  "Cannot keep the same player two years running."
+ ],
  "draftOrder": [
   {
    "slot": 1,
@@ -53,84 +62,111 @@
    "manager": "Anthony"
   }
  ],
+ "draftOrderNote": "Confirmed 2026-08-06 against the CBS league site and the commissioner's 'Manual Draft Order Set' post of 2026-07-28. Snake, reversed on even rounds.",
  "keepers": [
   {
-   "team": "4Barrel",
-   "round": 10,
-   "player": "Caleb Williams",
-   "pos": "QB",
-   "cost": "10.01"
-  },
-  {
-   "team": "DREADS",
-   "round": 12,
-   "player": "Colston Loveland",
-   "pos": "TE",
-   "cost": "12 (acquired via trade; orig. 12.04)"
-  },
-  {
-   "team": "Hoofhearted",
-   "round": 11,
-   "player": "Cam Skattebo",
-   "pos": "RB",
-   "cost": "11 (orig. 11.06)"
-  },
-  {
-   "team": "Steel Curtain",
-   "round": 12,
-   "player": "Vikings D/ST",
-   "pos": "DST",
-   "cost": "12 (acquired via trade; orig. 12.05 HOOF)"
-  },
-  {
-   "team": "The Buckeyes",
-   "round": 10,
-   "player": "Drake Maye",
-   "pos": "QB",
-   "cost": "10.07"
-  },
-  {
-   "team": "Max's College Fund",
-   "round": 14,
-   "player": "Broncos D/ST",
-   "pos": "DST",
-   "cost": "14 (waiver keeper)"
-  },
-  {
-   "team": "Max's College Fund",
-   "round": 15,
-   "player": "Jaxson Dart",
-   "pos": "QB",
-   "cost": "15 (waiver keeper)"
-  },
-  {
    "team": "NCF",
-   "round": 9,
-   "player": "Tyler Warren",
-   "pos": "TE",
-   "cost": "9.03"
-  },
-  {
-   "team": "Head Hunters",
-   "round": 9,
-   "player": "Chris Olave",
-   "pos": "WR",
-   "cost": "9.05"
-  },
-  {
-   "team": "Meh-nacing",
    "round": 11,
-   "player": "Patriots D/ST",
-   "pos": "DST",
-   "cost": "11"
+   "player": "Trevor Lawrence",
+   "pos": "QB",
+   "nfl": "JAX",
+   "cost": "11 (FFA keeper profile 2026-07-29)"
   },
   {
    "team": "Real Midway Monsters®",
    "round": 10,
    "player": "Travis Etienne Jr.",
    "pos": "RB",
-   "cost": "10 (commish keeper)"
+   "nfl": "NO",
+   "cost": "10 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Steel Curtain",
+   "round": 14,
+   "player": "Matthew Stafford",
+   "pos": "QB",
+   "nfl": "LAR",
+   "cost": "14 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Steel Curtain",
+   "round": 15,
+   "player": "Alec Pierce",
+   "pos": "WR",
+   "nfl": "IND",
+   "cost": "15 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Head Hunters",
+   "round": 12,
+   "player": "Brock Purdy",
+   "pos": "QB",
+   "nfl": "SF",
+   "cost": "12 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "4Barrel",
+   "round": 10,
+   "player": "Caleb Williams",
+   "pos": "QB",
+   "nfl": "CHI",
+   "cost": "10 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "The Buckeyes",
+   "round": 10,
+   "player": "Drake Maye",
+   "pos": "QB",
+   "nfl": "NE",
+   "cost": "10 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Meh-nacing",
+   "round": 14,
+   "player": "Michael Wilson",
+   "pos": "WR",
+   "nfl": "ARI",
+   "cost": "14 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Meh-nacing",
+   "round": 15,
+   "player": "Tory Horton",
+   "pos": "WR",
+   "nfl": "SEA",
+   "cost": "15 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "DREADS",
+   "round": 12,
+   "player": "Colston Loveland",
+   "pos": "TE",
+   "nfl": "CHI",
+   "cost": "12 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Max's College Fund",
+   "round": 14,
+   "player": "Quentin Johnston",
+   "pos": "WR",
+   "nfl": "LAC",
+   "cost": "14 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Max's College Fund",
+   "round": 15,
+   "player": "Jaxson Dart",
+   "pos": "QB",
+   "nfl": "NYG",
+   "cost": "15 (FFA keeper profile 2026-07-29)"
+  },
+  {
+   "team": "Hoofhearted",
+   "round": 11,
+   "player": "Cam Skattebo",
+   "pos": "RB",
+   "nfl": "NYG",
+   "cost": "11 (FFA keeper profile 2026-07-29)"
   }
- ],
- "draftOrderNote": "Slots and TEAM names read from the CBS league directory 2026-08-02 (authoritative). MANAGER names come from Angelo's handwritten sheet of the same 10 slots. The two were aligned by slot; the pairing is anchored on Real Midway Monsters® = John Garcia at slot 2, verified directly on the CBS team page. The other nine manager labels are derived from that alignment, not separately confirmed."
+ ]
 }
