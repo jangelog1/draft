@@ -102,6 +102,7 @@
     background:var(--card);border:1px solid var(--border);border-left:2px solid var(--sky)}
   .note b{color:var(--fg)}
   .note.warn{border-left-color:var(--amber)} .note.bad{border-left-color:var(--destructive)}
+  .note.good{border-left-color:var(--emerald)}
   .empty{color:var(--mutfg);font-size:13px;text-align:center;padding:20px 10px;font-style:italic}
   /* ---------- TINTED PILL: colour, 12% bg, 20% border, 4px radius.
        Used for Value, Pop, SOS, $, position badges. The whole "pro tool" density
@@ -578,6 +579,46 @@ const LEAGUES={
                "The Waiver Wire Wonders","Whiskey's Team"],
     note:"12-team · full-PPR · redraft · FLEX"
   }
+};
+
+/* ============ DRAFT PLAN — Monte Carlo conclusions, RPB only ============
+   From ~150,000 simulated RPB drafts (sims/mc5.py through mc10.py, 2026-08-06), run against an
+   above-average room in which every team must own a running back by the end of round two. Angelo's
+   own correction produced that last rule: the unmodified engine left 3.3 of 9 opponents with zero
+   backs after two rounds, which no real room does.
+
+   Players are named, not ranked. The rank column on the Rankings tab moves every time FFA
+   refreshes; which specific backs are worth taking at 2.09 does not. If a name here has already
+   gone in your draft the card says so — it reads the live board. */
+const PLAN={
+  league:"RPB",
+  keeper:"Travis Etienne Jr.",
+  updated:"2026-08-06",
+  /* The whole plan in one line each, in the order the branches actually come up. */
+  branches:[
+    {tag:"A", when:"1.02 — always", do:"Take the back. Bijan Robinson 89%, Gibbs otherwise.",
+     why:"Picks 3-6 are a four-WR run, so nobody is competing with you for backs early."},
+    {tag:"B", when:"2.09 — the only real decision", do:"Second RB, or an elite WR and the back at 3.02. Worth ~2 pts either way.",
+     why:"The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway."},
+    {tag:"C", when:"if you have one back after three picks", do:"Stop forcing it. Take value.",
+     why:"One early back costs −11.8. Forcing RB at 4.09 + 5.02 to fix it costs −32.4 — the recovery is worse than the miss."}
+  ],
+  /* RB cutoff at 2.09. Forced sweep: these six are all within 5 pts of pivoting to a WR.
+     The next back down (Jeremiyah Love) drops to −14.5, and it falls off a cliff from there. */
+  takeZone:["Saquon Barkley","Ken Walker","Chase Brown","Omarion Hampton","Derrick Henry","Devon Achane"],
+  cutoffAfter:"Devon Achane",
+  pivotFrom:"Jeremiyah Love",
+  /* Gone in 100% of 52,200 drafts before pick 19 — but the payoff if the room slips is so large
+     it stays on the card as a standing instruction. */
+  bowers:"Brock Bowers",
+  bowersGain:"+36.8 over the back",
+  traps:[
+    "Reaching for D/ST or K. Rams D/ST at 15.02, Aubrey at 16.09. Reaching costs 19–179.",
+    "Forcing a back at 4.09/5.02 after missing RB2 — costs −32.4, worse than living with one back.",
+    "Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs −9.1; Kittle at 6.09 is free."
+  ],
+  /* Six teams keep a QB, so QB demand collapses and the top QB survives into round 2. */
+  edge:"Josh Allen (374 pts) lasts to picks 15–18 — six teams already keep a QB. Best value on the board in round 2 and nobody has a slot for him."
 };
 
 const $=s=>document.querySelector(s);
@@ -1459,6 +1500,57 @@ matchMedia("(min-width:1024px)").addEventListener("change",()=>renderRail());
 
 /* ============ RENDER: DRAFT BOARD (the grid) ============ */
 let onlyMine=false;
+/* The Monte Carlo plan, read against the live board rather than printed as static advice: the
+   cutoff names are checked for availability every render, so on draft day the card says which
+   backs are actually still sitting there. Shown on the Draft Board tab and inside the Live Helper,
+   from one function, so the same conclusions follow him wherever he is looking.
+   RPB only — MWV was never simulated, and a plan card there would be a guess wearing a number. */
+function planCard(compact){
+  const l=L();
+  if(l.id!==PLAN.league||!STATE.board.length) return "";
+  const avail=new Set(pool().map(r=>key(r.name)));
+  const live=PLAN.takeZone.filter(n=>avail.has(key(n)));
+  const have=myHave(), rb=have.RB||0;
+  const c=clock();
+  /* The Bowers rule is round-dependent and inverts in round 1, so it is gated rather than always
+     shown. Taking him at 1.02 over an elite back costs −81.8; the +36.8 gain only exists from
+     round 2 on, once the top of the RB board is gone. Showing the instruction unconditionally
+     would tell him to make the single worst pick available to him. */
+  const nextRd=(c&&c.next!=null&&c.n)?Math.floor((c.next-1)/c.n)+1:null;
+  const bowers=avail.has(key(PLAN.bowers))&&nextRd!=null&&nextRd>=2;
+
+  let h=`<div class="card"><h2>🎯 Draft plan<span class="rt">Monte Carlo · ${esc(PLAN.updated)}</span></h2>`;
+
+  /* The one instruction that overrides everything else on the card, so it goes first. */
+  if(bowers) h+=`<div class="note bad"><b>${esc(PLAN.bowers)} is still on the board.</b>
+    Take him at your next pick — ${esc(PLAN.bowersGain)}, the largest single edge in this draft.
+    He went before pick 19 in every one of 52,200 simulated drafts, so this should never fire.</div>`;
+
+  /* The live read on the RB cutoff. Only meaningful while he still needs starting backs. */
+  if(rb<2){
+    h+=live.length
+      ? `<div class="note good"><b>Take zone — ${live.length} of ${PLAN.takeZone.length} left:</b> ${live.map(esc).join(" · ")}.
+         Any of these is worth taking over the best WR, or within ~5 points of it.</div>`
+      : `<div class="note warn"><b>Past the cutoff.</b> Every back through ${esc(PLAN.cutoffAfter)} is gone.
+         From ${esc(PLAN.pivotFrom)} down, taking the back costs 14–29 points — take the WR and buy a back next round.</div>`;
+  }else{
+    h+=`<div class="note good"><b>Two backs in.</b> The RB cutoff no longer applies — take value from here.</div>`;
+  }
+
+  if(!compact){
+    PLAN.branches.forEach(b=>{
+      h+=`<div class="lwhy" style="margin:0 0 10px;padding:0">
+        <b style="color:var(--sky)">Plan ${esc(b.tag)}</b> · <b>${esc(b.when)}</b><br>${esc(b.do)}
+        <div style="color:var(--mutfg);margin-top:3px">${esc(b.why)}</div></div>`;
+    });
+    h+=`<div class="kv2"><span class="k">Keeper</span><span class="v">${esc(PLAN.keeper)} · round 10</span></div>`;
+    h+=`<div class="kv2"><span class="k">Round-2 edge</span><span class="v" style="font-weight:500">${esc(PLAN.edge)}</span></div>`;
+    h+=`<div class="lwhy" style="margin:10px 0 0;padding:0"><b style="color:var(--destructive)">Do not</b><ul style="margin:5px 0 0 16px;padding:0">${
+      PLAN.traps.map(t=>`<li style="margin-bottom:3px">${esc(t)}</li>`).join("")}</ul></div>`;
+  }
+  return h+`</div>`;
+}
+
 function renderDraft(){
   const el=$("#draftEl"), l=L(), g=grid();
   /* innerHTML below destroys the grid node, and with it scrollTop. Capture where he was looking
@@ -1492,6 +1584,8 @@ function renderDraft(){
     processed keepers yet. Fix the list or mark it final in <b>Settings</b>.</div>`;
   if(!c.ord.find(e=>e.mine)) h+=`<div class="note warn">No seat is starred as yours — Targets, My Team and run risk all need it. Set it in <b>Settings</b>.</div>`;
   h+=`</div>`;
+
+  h+=planCard(false);
 
   h+=`<div class="fbar">
     <button data-only="1" class="${onlyMine?"on":""}">${onlyMine?"★ My column":"★ Just mine"}</button>
@@ -1593,6 +1687,9 @@ function helperHTML(view){
 
   if(view==="strategy"){
     if(c.cur==null) return '<div class="empty">Draft complete.</div>';
+    /* Compact form — the live cutoff read and the Bowers rule, without the full plan text.
+       On the clock he needs the verdict, not the reasoning; the Draft Board tab has the rest. */
+    h+=planCard(true);
     const top=p.slice().sort((a,b)=>sc(b)-sc(a)).slice(0,3);
     const lead=top[0];
     /* Name the position the engine is leaning on and by how much, so the recommendation is
