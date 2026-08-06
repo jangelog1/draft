@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Draft Board — RPB &amp; Mad Wives</title>
+<!-- PWA: installable home-screen app. iOS evicts localStorage for non-installed sites under ITP,
+     and this app's entire draft lives in localStorage — so installing is not a nicety. -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Draft">
+<meta name="theme-color" content="#0a1020">
+<link rel="apple-touch-icon" href="icon-512.png">
+<link rel="icon" type="image/png" href="icon-512.png">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+  :root{
+    /* --- accent tokens: FFA's draft-tool identity (deep navy + amber) --- */
+    --bg:#0a1020; --ink:#eef2fb; --mut:#8b97b4;
+    --accent:#f99c00; --accent2:#fcbb00; --live:#00c758; --gold:#fcbb00; --bad:#fb2c36; --blue:#3080ff;
+    /* --- structural tokens: identical across every tracker app, do not retune --- */
+    --glass:rgba(255,255,255,.05); --glass2:rgba(255,255,255,.085);
+    --hair:rgba(255,255,255,.075); --hair2:rgba(255,255,255,.045);
+    --r:22px; --rs:16px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    /* --- position colours, fantasy-standard --- */
+    --qb:#ff6b9d; --rb:#3ddc84; --wr:#4cc9f0; --te:#f4a261; --k:#c084fc; --dst:#94a3b8;
+  }
+  /* Per-league accent, so a glance at the header says which draft you are in without reading. */
+  body[data-lg="MWV"]{ --accent:#3080ff; --accent2:#54a2ff; }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  body{
+    color:var(--ink);
+    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    min-height:100vh;position:relative;overflow-x:hidden;
+    padding:0 0 calc(150px + env(safe-area-inset-bottom,0px));
+    background:
+      radial-gradient(1100px 620px at 12% -8%, rgba(249,156,0,.10), transparent 62%),
+      radial-gradient(900px 520px at 92% 2%, rgba(48,128,255,.10), transparent 58%),
+      radial-gradient(900px 800px at 50% 112%, rgba(249,156,0,.05), transparent 62%),
+      var(--bg);
+    background-attachment:fixed;
+  }
+  body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;
+    background:radial-gradient(closest-side, rgba(249,156,0,.09), transparent 70%);
+    width:70vmax;height:70vmax;left:-10vmax;top:-15vmax;filter:blur(30px);
+    animation:drift 26s ease-in-out infinite alternate}
+  @keyframes drift{to{transform:translate3d(28vw,16vh,0) scale(1.25)}}
+  ::selection{background:rgba(249,156,0,.3)}
+  /* HEADER */
+  header{padding:calc(14px + env(safe-area-inset-top,0px)) 15px 14px;text-align:center;position:relative}
+  header::after{content:"";position:absolute;left:14%;right:14%;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--hair),transparent)}
+  h1{font-size:clamp(18px,5vw,23px);letter-spacing:-.5px;font-weight:800;
+    display:flex;align-items:center;gap:9px;justify-content:center;flex-wrap:wrap;
+    background:linear-gradient(180deg,#fff,#c9d4ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--mut);margin-top:5px;font-size:12.5px}
+  .sub b{color:var(--accent)}
+  .statusbar{display:flex;align-items:center;gap:7px;margin-top:11px;flex-wrap:wrap;justify-content:center}
+  .chip{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;font-size:12px;font-weight:700;
+    background:var(--glass);border:1px solid var(--hair);color:var(--ink);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);cursor:pointer;font-family:inherit}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--mut)}
+  .chip.live .dot{background:var(--live)}
+  .chip.snap .dot{background:var(--gold)}
+  .chip.err  .dot{background:var(--bad)}
+  .chip.load .dot{background:var(--accent);animation:pulse .9s ease-in-out infinite}
+  .chip.stale{opacity:.55}
+  @keyframes pulse{50%{opacity:.3}}
+  /* League switch */
+  .lgsw{display:inline-flex;gap:0;border-radius:999px;overflow:hidden;border:1px solid var(--hair);background:var(--glass)}
+  .lgsw button{background:none;border:0;color:var(--mut);font-family:inherit;font-weight:800;font-size:12px;
+    padding:6px 15px;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease)}
+  .lgsw button.on{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#12100a}
+  .wrap{max-width:900px;margin:0 auto;padding:0 14px}
+  /* NAV */
+  nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 6px;justify-content:center}
+  nav button{background:var(--glass);border:1px solid var(--hair);color:var(--mut);
+    padding:9px 17px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13.5px;font-family:inherit;
+    transition:transform .28s var(--ease),background .28s var(--ease),color .28s var(--ease)}
+  nav button:active{transform:scale(.95)}
+  nav button.on{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#12100a;border-color:transparent;
+    box-shadow:0 8px 22px -6px rgba(249,156,0,.45)}
+  section{display:none}
+  section.on{display:block;animation:rise .35s var(--ease)}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .note{color:var(--mut);font-size:12.5px;margin:14px 0;padding:12px 15px;border-radius:var(--rs);
+    background:linear-gradient(180deg,var(--glass2),var(--glass));border:1px solid var(--hair);
+    box-shadow:inset 2px 0 0 rgba(249,156,0,.55)}
+  .note b{color:var(--ink)}
+  .note.warn{box-shadow:inset 2px 0 0 var(--gold)}
+  .note.bad{box-shadow:inset 2px 0 0 var(--bad)}
+  /* CARDS */
+  .card{padding:15px;margin:13px 0;border-radius:var(--r);
+    background:linear-gradient(180deg,var(--glass2),var(--glass));border:1px solid var(--hair);
+    backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
+    box-shadow:0 18px 40px -24px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)}
+  .card h2{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);
+    margin-bottom:11px;display:flex;align-items:center;gap:8px;font-weight:800;flex-wrap:wrap}
+  .card h2 .rt{margin-left:auto;color:var(--mut);font-size:10.5px;letter-spacing:.5px;font-weight:700}
+  /* POSITION PILLS */
+  .pos{display:inline-flex;align-items:center;justify-content:center;min-width:33px;padding:2px 6px;border-radius:6px;
+    font-size:9.5px;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
+  .pos.QB{background:rgba(255,107,157,.16);color:var(--qb)}
+  .pos.RB{background:rgba(61,220,132,.16);color:var(--rb)}
+  .pos.WR{background:rgba(76,201,240,.16);color:var(--wr)}
+  .pos.TE{background:rgba(244,162,97,.16);color:var(--te)}
+  .pos.K{background:rgba(192,132,252,.16);color:var(--k)}
+  .pos.DST{background:rgba(148,163,184,.16);color:var(--dst)}
+  /* FILTER BAR */
+  .fbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:4px 0 11px}
+  .fbar button{background:var(--glass);border:1px solid var(--hair);color:var(--mut);font-family:inherit;
+    padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:800;font-size:11.5px;
+    transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease)}
+  .fbar button:active{transform:scale(.94)}
+  .fbar button.on{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#12100a;border-color:transparent}
+  .fbar button[disabled]{opacity:.4;pointer-events:none}
+  .fbar input{flex:1;min-width:130px;background:var(--glass);border:1px solid var(--hair);color:var(--ink);
+    padding:7px 14px;border-radius:999px;font-size:12.5px;font-family:inherit;outline:none}
+  .fbar input:focus{border-color:rgba(249,156,0,.5)}
+  .fbar input::placeholder{color:var(--mut)}
+  .fbar .lbl{font-size:10.5px;color:var(--mut);font-weight:800;letter-spacing:.6px;text-transform:uppercase}
+  /* TABLE — sticky player column, every other column reachable by scroll.
+     Deliberately no .hide-s: hiding SOS and $ on the one device he will actually use
+     defeats the entire point of adding them. */
+  .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
+  table{width:100%;border-collapse:separate;border-spacing:0 3px;font-size:13px}
+  th,td{padding:9px 6px;text-align:center;font-variant-numeric:tabular-nums;border:0;white-space:nowrap}
+  th{color:var(--mut);font-weight:700;font-size:9.5px;text-transform:uppercase;letter-spacing:.8px;padding-bottom:4px}
+  tbody tr td{background:#131a2c}
+  tbody tr td:first-child{border-radius:12px 0 0 12px}
+  tbody tr td:last-child{border-radius:0 12px 12px 0}
+  td.nm,th.nm{text-align:left;font-weight:700;position:sticky;left:0;z-index:1;
+    max-width:150px;overflow:hidden;text-overflow:ellipsis}
+  th.nm{background:var(--bg)}
+  td.nm small{display:block;color:var(--mut);font-weight:600;font-size:10px;letter-spacing:.4px}
+  td.rk{font-weight:800;color:var(--mut);font-family:var(--mono)}
+  td.num{font-family:var(--mono);font-size:12.5px}
+  td.vbd{font-weight:900;color:var(--accent);font-family:var(--mono)}
+  td.val{font-weight:800;color:var(--gold);font-family:var(--mono)}
+  td.cash{font-weight:800;color:var(--live);font-family:var(--mono)}
+  .delta.up{color:var(--live);font-weight:800} .delta.dn{color:var(--bad);font-weight:800} .delta.flat{color:var(--mut)}
+  .tierbrk td{background:transparent!important;padding:2px 0!important}
+  .tierbrk span{display:block;height:1px;background:linear-gradient(90deg,transparent,rgba(252,187,0,.45),transparent)}
+  tr.drow{cursor:pointer;-webkit-tap-highlight-color:rgba(249,156,0,.25)}
+  tr.drow:active td{background:rgba(249,156,0,.16)}
+  /* ============ THE GRID: rounds × teams ============
+     Scrolls in BOTH axes inside its own box on purpose. `overflow-x:auto` alone makes the
+     block a scroll container on both axes anyway, which kills `position:sticky;top` against
+     the viewport — so the header row would never stick. Owning the vertical scroll here is
+     what lets both the round column and the team header stay pinned. */
+  .gridwrap{overflow:auto;-webkit-overflow-scrolling:touch;max-height:72vh;margin:0 -4px;
+    border-radius:var(--rs);border:1px solid var(--hair);background:rgba(8,13,26,.55);
+    scroll-snap-type:x proximity;overscroll-behavior:contain}
+  .grid{display:grid;grid-template-columns:44px repeat(var(--n),96px);gap:3px;padding:3px;width:max-content}
+  .gh{position:sticky;top:0;z-index:2;background:#111a2e;border-radius:8px;padding:6px 5px;
+    font-size:10px;font-weight:800;line-height:1.25;text-align:center;scroll-snap-align:start}
+  .gh .gt{display:block;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gh .gm{display:block;color:var(--mut);font-size:9px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gh.me{background:linear-gradient(180deg,rgba(249,156,0,.30),rgba(249,156,0,.12))}
+  .gh.me .gm{color:#f7d9a8}
+  .gcorner{position:sticky;left:0;top:0;z-index:4;background:#111a2e;color:var(--mut);
+    display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:800;border-radius:8px}
+  .gr{position:sticky;left:0;z-index:3;background:#111a2e;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;font-family:var(--mono);
+    font-size:11px;font-weight:800;color:var(--mut)}
+  .gc{min-height:42px;border-radius:8px;padding:4px 5px;background:rgba(255,255,255,.028);
+    border:1px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:2px;
+    overflow:hidden;scroll-snap-align:start;cursor:pointer;-webkit-tap-highlight-color:rgba(249,156,0,.25)}
+  .gc.empty{background:transparent;border:1px dashed var(--hair2);cursor:default}
+  .gc .cn{font-size:11px;font-weight:800;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gc .cm{display:flex;align-items:center;gap:4px}
+  .gc .cov{margin-left:auto;font-family:var(--mono);font-size:8.5px;color:var(--mut);font-weight:700}
+  .gc .pos{min-width:0;padding:1px 4px;font-size:8px}
+  .gc.mine{background:linear-gradient(180deg,rgba(249,156,0,.18),rgba(249,156,0,.06))}
+  .gc.col-mine{background:rgba(249,156,0,.055)}
+  .gc.keeper{opacity:.62}
+  .gc.unknown .cn{color:var(--mut)}
+  /* border-style too, not just the colour: an empty cell is dashed, and the cell on the clock has
+     to read as solid whether or not anything has been picked there yet. */
+  .gc.clock{border-color:var(--accent);border-style:solid;animation:clockpulse 1.9s ease-in-out infinite}
+  .gc.clock.myturn{border-color:var(--gold);border-width:2px;animation:myturnpulse 1.2s ease-in-out infinite}
+  @keyframes clockpulse{50%{box-shadow:0 0 0 3px rgba(249,156,0,.16)}}
+  @keyframes myturnpulse{50%{box-shadow:0 0 0 5px rgba(252,187,0,.28)}}
+  .gc.editing{border-color:var(--blue);border-width:2px}
+  /* ============ PICK BAR — fixed, thumb-reachable, always mounted on the Draft tab ============ */
+  .pickbar{position:fixed;left:0;right:0;bottom:0;z-index:80;
+    padding:9px 12px calc(9px + env(safe-area-inset-bottom,0px));
+    background:linear-gradient(180deg,rgba(10,16,32,.86),rgba(10,16,32,.97));
+    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+    border-top:1px solid var(--hair);box-shadow:0 -14px 34px -22px #000}
+  .pickbar.hidden{display:none}
+  .pbrow{display:flex;align-items:center;gap:7px;max-width:900px;margin:0 auto}
+  .pbrow+.pbrow{margin-top:7px}
+  .onclock{flex:1;min-width:0;font-size:13px;font-weight:800;display:flex;align-items:baseline;gap:7px;
+    overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .onclock .lb{font-family:var(--mono);color:var(--accent);font-size:14px}
+  .onclock .tm{color:var(--mut);font-weight:700;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+  .pickbar.myturn{background:linear-gradient(180deg,rgba(60,42,4,.9),rgba(38,27,4,.98));border-top-color:var(--gold)}
+  .pickbar.myturn .onclock .lb{color:var(--gold)}
+  .pickbar.editing{background:linear-gradient(180deg,rgba(10,26,56,.9),rgba(8,18,40,.98));border-top-color:var(--blue)}
+  .pbtn{flex:none;background:var(--glass);border:1px solid var(--hair);color:var(--ink);font-family:inherit;
+    padding:8px 13px;border-radius:11px;font-weight:800;font-size:13px;cursor:pointer;min-width:44px}
+  .pbtn:active{transform:scale(.94)}
+  .pbtn[disabled]{opacity:.35;pointer-events:none}
+  .pbtn.warn{border-color:rgba(252,187,0,.45);color:var(--gold)}
+  .psearch{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid var(--hair);color:var(--ink);
+    padding:10px 14px;border-radius:11px;font-size:16px;font-family:inherit;outline:none}
+  .psearch:focus{border-color:var(--accent)}
+  .psearch::placeholder{color:var(--mut);font-size:14px}
+  .phits{max-width:900px;margin:0 auto 7px;max-height:38vh;overflow:auto;-webkit-overflow-scrolling:touch}
+  /* One row shape for every pickable list — the pick bar's hits and the best-available list. */
+  .prow{display:flex;align-items:center;gap:9px;padding:10px 12px;margin-bottom:4px;border-radius:12px;
+    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));cursor:pointer;
+    -webkit-tap-highlight-color:rgba(249,156,0,.25)}
+  .prow:active{background:rgba(249,156,0,.16)}
+  .prow .nm{font-weight:800;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prow .tm{color:var(--mut);font-size:11px;font-weight:700;margin-right:auto;white-space:nowrap}
+  .prow .mx{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--mut);white-space:nowrap}
+  .prow .mx b{color:var(--accent)}
+  /* Watch-list groups (Targets) */
+  .lgrp .ghd{display:flex;align-items:baseline;gap:10px;margin-bottom:3px}
+  .lgrp .gp{font-size:15px;font-weight:900;letter-spacing:-.2px}
+  .lgrp .gp i{font-style:normal;color:var(--mut);font-weight:700}
+  .lgrp .ga{margin-left:auto;font-size:11px;font-weight:800;color:var(--mut);font-family:var(--mono)}
+  .lgrp .ghd2{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .lgrp .gaway{font-size:11.5px;color:var(--mut);font-weight:700}
+  .lgrp .gbadge{margin-left:auto;font-size:9.5px;font-weight:900;letter-spacing:.6px;padding:3px 8px;
+    border-radius:6px;background:rgba(249,156,0,.16);color:var(--accent);white-space:nowrap}
+  /* Run risk */
+  .rec{border-color:rgba(251,44,54,.42);background:linear-gradient(180deg,rgba(251,44,54,.10),rgba(251,44,54,.02))}
+  .rec h2{color:var(--bad)}
+  .rrow{display:flex;align-items:center;gap:9px;padding:7px 2px}
+  .rrow .rbar{flex:1;height:7px;border-radius:999px;background:var(--glass);overflow:hidden;min-width:40px}
+  .rrow .rbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,rgba(251,44,54,.55),var(--bad))}
+  .rrow b{font-size:14px;font-weight:900;font-family:var(--mono)}
+  .rrow .rof{font-size:10.5px;color:var(--mut);font-weight:700}
+  /* Setup: order editor */
+  .ochips{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 10px}
+  .ochip{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:12px;cursor:pointer;
+    background:var(--glass);border:1px solid var(--hair);font-size:13px;font-weight:700;font-family:inherit;color:var(--ink)}
+  .ochip:active{transform:scale(.96)}
+  .ochip.set{background:linear-gradient(135deg,rgba(249,156,0,.24),rgba(249,156,0,.08));border-color:rgba(249,156,0,.5)}
+  .ochip .sl{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;flex:none;
+    border-radius:6px;background:rgba(0,0,0,.35);font-family:var(--mono);font-size:11px;font-weight:900;color:var(--accent)}
+  .ochip.me{border-color:var(--gold)}
+  .kv{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;
+    box-shadow:inset 0 -1px 0 var(--hair2)}
+  .kv:last-child{box-shadow:none}
+  .kv .k{color:var(--mut);font-size:13px}
+  .kv .v{font-weight:800;font-size:15px;text-align:right}
+  .kv input{width:72px;background:var(--glass);border:1px solid var(--hair);color:var(--ink);font-family:var(--mono);
+    padding:6px 9px;border-radius:9px;font-size:14px;font-weight:800;text-align:center;outline:none}
+  .empty{color:var(--mut);font-size:13px;text-align:center;padding:22px 10px}
+  .foot{color:var(--mut);font-size:11.5px;line-height:1.7;margin:24px 0 0;padding-top:15px;border-top:1px solid var(--hair2)}
+  .foot a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(249,156,0,.3)}
+  @media (max-width:430px){ th,td{padding:9px 5px;font-size:12.5px} }
+  @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body data-lg="RPB">
+
+<header>
+  <h1><span id="hTitle">Draft Board</span></h1>
+  <div class="sub" id="hSub">—</div>
+  <div class="statusbar">
+    <span class="lgsw" id="lgsw">
+      <button data-lg="RPB">RPB</button><button data-lg="MWV">MWV</button>
+    </span>
+    <span class="chip load" id="chipFfa"><span class="dot"></span><span id="chipFfaTxt">Loading FFA…</span></span>
+    <span class="chip snap" id="chipSnap"><span class="dot"></span><span id="chipSnapTxt">snapshot</span></span>
+    <button class="chip" id="refreshBtn">↻</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav>
+    <button data-t="draft" class="on">🎯 Draft</button>
+    <button data-t="board">📕 Board</button>
+    <button data-t="targets">👁 Targets</button>
+    <button data-t="setup">⚙︎ Setup</button>
+  </nav>
+
+  <section class="on" id="draft"><div id="draftEl"></div></section>
+  <section id="board"><div id="boardEl"></div></section>
+  <section id="targets"><div id="targetsEl"></div></section>
+  <section id="setup"><div id="setupEl"></div></section>
+
+  <div class="foot">
+    ADP and projections are fetched live from the
+    <a href="https://thefantasyfootballadvice.com" target="_blank" rel="noopener">Fantasy Football Advice</a> API on load
+    and every 5 minutes. Rank, Value, SOS and auction $ come from the FFA CSV export and ship with the app —
+    the API does not serve them. Pop is FantasyPros roster%. Every pick you enter stays on this device.
+    Unofficial — not affiliated with CBS Sports, FantasyPros or the NFL.
+  </div>
+</div>
+
+<div class="pickbar hidden" id="pickbar">
+  <div class="phits" id="pbHits"></div>
+  <div class="pbrow">
+    <div class="onclock" id="pbClock"></div>
+    <button class="pbtn" id="pbUndo" title="Undo last pick">↩</button>
+    <button class="pbtn warn" id="pbSkip" title="Someone picked and you missed the name">⤼</button>
+  </div>
+  <div class="pbrow">
+    <input class="psearch" id="pbSearch" type="search" autocomplete="off" autocorrect="off"
+           autocapitalize="off" spellcheck="false" placeholder="Search a player to draft…">
+    <button class="pbtn" id="pbCancel" style="display:none">✕</button>
+  </div>
+</div>
+
+<script>
+/* ============ CONFIG ============ */
+/* FFA: use the APEX host. tools.thefantasyfootballadvice.com answers 307 and that redirect
+   carries no access-control-allow-origin, so a browser fetch dies at the redirect even though
+   the destination itself is CORS-open. curl -L follows it fine, which is why the Python
+   pipeline never hit this. Do not "tidy" this back to the tools. subdomain. */
+const FFA="https://thefantasyfootballadvice.com/api";
+const DATA="data/";
+const REFRESH_MS=300000;              // FFA rankings move on the order of hours, not seconds
+const STALE_DAYS=7;
+const POS_ORDER=["QB","RB","WR","TE","K","DST"];
+const ADP_SLIDE=3;                    // how far past his ADP a player is still assumed reachable at a pick
+const FALL_W=2;                       // how hard a pick past ADP counts against raw value
+const NEED_BOOST=.35, FILLED_DECAY=.75;
+
+const LEAGUES={
+  RPB:{
+    id:"RPB", name:"Rogers Park Bowl", myTeam:"Real Midway Monsters®",
+    teams:10, rounds:16, score:"hppr", scoreLabel:"half-PPR", dstMult:2, flex:false,
+    starters:{QB:1,RB:2,WR:3,TE:1,K:1,DST:1},
+    build:{QB:1,RB:5,WR:6,TE:1,K:1,DST:1},
+    ranks:"ffa-ranks-rpb", fpKey:"RPB",
+    keepersFile:"keepers-rpb",          // draftOrder + keepers both live here
+    myTeamRe:/^real midway monsters/i,
+    note:"10-team · half-PPR · keeper · D/ST doubled"
+  },
+  MWV:{
+    id:"MWV", name:"Mad Wives", myTeam:"Team Spirit",
+    teams:12, rounds:16, score:"ppr", scoreLabel:"full-PPR", dstMult:1, flex:true,
+    starters:{QB:1,RB:2,WR:3,TE:1,K:1,DST:1},   // plus one FLEX, folded into replacement level below
+    build:{QB:1,RB:5,WR:6,TE:1,K:1,DST:1},
+    ranks:"ffa-ranks-mwv", fpKey:"MWV",
+    keepersFile:null,                   // clean redraft, no keepers
+    myTeamRe:/^team spirit$/i,
+    /* CBS had not scheduled the draft as of 2026-08-02 ("YOUR DRAFT HAS NOT BEEN SET UP"), so no
+       slot order exists to ship. These are the 12 team names from the league directory; the order
+       editor in Setup turns them into seats. */
+    teamNames:["#6 from Wendy's","4th and long","Bear Clawz","Chalupa Batman","Cooking with gas",
+               "No Balls,  Big Chains","No Flex Zone","Team Spirit","The Dreads","The Urban Legends",
+               "The Waiver Wire Wonders","Whiskey's Team"],
+    note:"12-team · full-PPR · redraft · FLEX"
+  }
+};
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function fetchJSON(u){ const r=await fetch(u,{cache:"no-store"}); if(!r.ok) throw new Error(r.status); return r.json(); }
+const num=n=>(n==null||isNaN(n))?"—":(Math.round(n*10)/10).toFixed(1);
+const int=n=>(n==null||isNaN(n))?"—":Math.round(n).toLocaleString();
+/* FFA writes "D/ST", CBS and FantasyPros write "DST". One spelling internally. */
+const normPos=p=>String(p||"").toUpperCase().replace(/[^A-Z]/g,"")==="DST"?"DST":String(p||"").toUpperCase();
+/* Join key across three sources that punctuate names differently (J.J. vs JJ, Jr. vs Jr). */
+const key=n=>String(n||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+  .replace(/\b(jr|sr|ii|iii|iv|v)\b/g,"").replace(/[^a-z ]/g,"").replace(/\s+/g," ").trim();
+/* FFA writes "Texans D/ST"; FantasyPros writes "Houston Texans". The nickname is the only
+   token both agree on, and NFL nicknames are unique, so it is a safe join. */
+const dstKey=n=>{
+  const w=String(n||"").toLowerCase().replace(/d\/?st|defense|special teams/g," ")
+    .replace(/[^a-z0-9 ]/g," ").trim().split(/\s+/).filter(Boolean);
+  return w.length?w[w.length-1]:"";
+};
+/* Fallback for "Ken Walker" vs "Kenneth Walker III". Only ever used when the position also
+   matches, which is what keeps it from colliding. */
+const altKey=n=>{ const p=key(n).split(" ").filter(Boolean); return p.length>1?p[0][0]+" "+p[p.length-1]:(p[0]||""); };
+const surname=n=>{ const p=String(n||"").trim().split(/\s+/); return p.length>1?p.slice(1).join(" "):(p[0]||""); };
+const firstName=n=>String(n||"").trim().split(/\s+/)[0]||"";
+
+/* ============ LEAGUE STATE ============ */
+const params=new URLSearchParams(location.search);
+let LG=(params.get("lg")||localStorage.getItem("dr-league")||"RPB").toUpperCase();
+if(!LEAGUES[LG]) LG="RPB";
+const L=()=>LEAGUES[LG];
+const SIM=Math.max(0,parseInt(params.get("sim")||"0",10)||0);
+
+const STATE={board:[],ffaRaw:null,ffaProj:null,ffaOk:false,ffaStamp:null,live:false,
+  fp:null,ranks:{},keepers:null};
+
+/* Storage keys are per league and never shared — two drafts, two boards, one app. */
+const kPicks =()=>(SIM?"dr-sim-":"dr-picks-")+LG;
+const kOrder =()=>"dr-order-"+LG;
+const kRounds=()=>"dr-rounds-"+LG;
+const kCache =()=>"dr-cache-"+LG;
+
+/* ============ DRAFT ORDER ============
+   One rule for both leagues: a hand-set order in localStorage always wins, otherwise fall back
+   to what shipped. RPB ships an order inside keepers-rpb.json; MWV ships none at all and the
+   Setup editor is the only source. The override exists because rooms re-randomize. */
+function order(){
+  const l=L();
+  try{
+    const o=JSON.parse(localStorage.getItem(kOrder())||"null");
+    if(Array.isArray(o)&&o.length) return o;
+  }catch(e){}
+  const shipped=(STATE.keepers&&STATE.keepers.draftOrder)||null;
+  if(l.keepersFile&&Array.isArray(shipped)&&shipped.length){
+    return shipped.map((e,i)=>({slot:e.slot||i+1,team:e.team,manager:e.manager||e.team,mine:l.myTeamRe.test(e.team||"")}));
+  }
+  return null;
+}
+function setOrder(list){ try{ localStorage.setItem(kOrder(),JSON.stringify(list)); }catch(e){} }
+function rounds(){
+  const v=parseInt(localStorage.getItem(kRounds())||"",10);
+  return (v>=1&&v<=30)?v:L().rounds;
+}
+const keepers=()=>(L().keepersFile&&STATE.keepers&&STATE.keepers.keepers)||[];
+const keeperKeys=()=>new Set(keepers().map(k=>key(k.player)).filter(Boolean));
+
+/* ============ BOARD ============ */
+function replacement(l){
+  /* Replacement = the Nth-best player at each position, N = starters × teams. A FLEX league
+     starts roughly half a back and half a receiver more per team, so it folds in here rather
+     than becoming a whole slot-allocation model. */
+  const r={};
+  POS_ORDER.forEach(p=>{
+    let s=l.starters[p]||1;
+    if(l.flex&&(p==="RB"||p==="WR")) s+=0.5;
+    r[p]=Math.max(1,Math.round(s*l.teams));
+  });
+  return r;
+}
+function buildBoard(redraft,projections,fp,ffaRanks,l){
+  /* FFA's published Rank/Value/SOS/auction live ONLY in the CSV export — the API serves
+     projections and ADP and nothing else. So this arrives as committed JSON and is joined on. */
+  const fr=new Map(), frDst=new Map(), frAlt=new Map();
+  ((ffaRanks&&ffaRanks.players)||[]).forEach(p=>{
+    const k=key(p.name); if(k) fr.set(k,p);
+    const pos=normPos(p.pos);
+    if(pos==="DST"){ const d=dstKey(p.name); if(d) frDst.set(d,p); }
+    const a=altKey(p.name); if(a) frAlt.set(pos+"|"+a,p);
+  });
+  const frFind=(name,pos)=>fr.get(key(name))
+    || (pos==="DST"?frDst.get(dstKey(name)):null)
+    || frAlt.get(pos+"|"+altKey(name)) || null;
+
+  const proj=new Map();
+  (projections||[]).forEach(p=>{ const k=key(p.player); if(k) proj.set(k,p); });
+  /* Three lookups, tried in order: exact name, D/ST nickname, then first-initial+surname
+     scoped to the position. Exact-name alone leaves every D/ST and several kickers unjoined. */
+  const fpMap=new Map(), fpDst=new Map(), fpAlt=new Map();
+  ((fp&&fp[l.fpKey])||[]).forEach(p=>{
+    const k=key(p.name); if(k) fpMap.set(k,p);
+    if(normPos(p.pos)==="DST"){ const d=dstKey(p.name); if(d) fpDst.set(d,p); }
+    const a=altKey(p.name); if(a) fpAlt.set(normPos(p.pos)+"|"+a,p);
+  });
+  const fpFind=(name,pos)=>fpMap.get(key(name))
+    || (pos==="DST"?fpDst.get(dstKey(name)):null)
+    || fpAlt.get(pos+"|"+altKey(name)) || null;
+
+  const SF=l.score;
+  const rows=(redraft||[]).filter(p=>p[SF]!=null&&p.player_name).map(p=>{
+    const pos=normPos(p.pos);
+    /* 999 is FFA's "undrafted" placeholder, not a draft position — 481 of the 801 rows carry it,
+       every K and D/ST among them. The CSV converter already nulls it; the API does not, so it has
+       to be nulled here too or anything reading adp lies: the board printed "ADP 999.0", and the
+       live helper read it as a real number and called a kicker SHOULD LAST while reporting him
+       "974 picks ahead of ADP". No ADP and a late ADP are different facts. */
+    const adp=(p.adp!=null&&p.adp>=999)?null:p.adp;
+    return {name:p.player_name,pos,team:p.team||"",age:p.age,
+            pts:pos==="DST"?p[SF]*l.dstMult:p[SF],
+            adp,adpRank:p.adpRank};
+  });
+
+  const REPL=replacement(l), byPos={};
+  rows.forEach(r=>{(byPos[r.pos]=byPos[r.pos]||[]).push(r)});
+  Object.keys(byPos).forEach(pos=>{
+    const g=byPos[pos].sort((a,b)=>b.pts-a.pts);
+    const n=REPL[pos]||12;
+    const repl=g.length>=n?g[n-1].pts:(g.length?g[g.length-1].pts:0);
+    /* Tiers are per-position, which is what "RB tier 3" means to a drafter, and are scaled to
+       the starter span at that position so one constant works for QBs and kickers alike.
+       An overall-board gap heuristic does not work: VBD goes negative in the tail, so a
+       threshold keyed to the previous player's magnitude grows instead of shrinking and
+       dumps ~90% of the board into a single tier. */
+    const span=Math.max(1,g[0].pts-repl);
+    const thr=Math.max(1,0.055*span);
+    let tier=1;
+    g.forEach((r,i)=>{
+      if(i>0 && (g[i-1].pts-r.pts)>thr) tier++;
+      r.vbd=r.pts-repl; r.posRank=pos+(i+1); r.tier=tier;
+    });
+  });
+
+  const board=rows.sort((a,b)=>b.vbd-a.vbd);
+  board.forEach((r,i)=>{
+    r.rank=i+1;
+    /* Positive delta = the market is drafting them LATER than their value says: a falling bargain. */
+    r.delta=(r.adpRank!=null)?Math.round(r.adpRank-r.rank):null;
+    const f=fpFind(r.name,r.pos), pj=proj.get(key(r.name));
+    if(f){ r.ecr=f.ecr; r.bye=f.bye; r.pop=f.pctRostered; }
+    if(pj){ r.games=pj.games; }
+    const fx=frFind(r.name,r.pos);
+    if(fx){ r.ffaRank=fx.rank; r.ffaValue=fx.value; r.ffaPosRank=fx.posRank; r.sos=fx.sos; r.auction=fx.auction;
+            if(r.bye==null&&fx.bye!=null) r.bye=fx.bye; }
+  });
+  return board;
+}
+/* Offline / API-down fallback. The CSV snapshot alone carries rank, value, adp, bye, sos and $ —
+   enough to run an entire draft. Only VBD, live ADP drift and projections go missing, so the
+   board degrades to FFA's own published order instead of going blank on draft night. */
+function boardFromSnapshot(ffaRanks,fp,l){
+  const fpMap=new Map(); ((fp&&fp[l.fpKey])||[]).forEach(p=>{ const k=key(p.name); if(k) fpMap.set(k,p); });
+  return ((ffaRanks&&ffaRanks.players)||[]).map(p=>{
+    const f=fpMap.get(key(p.name));
+    return {name:p.name,pos:normPos(p.pos),team:p.team||"",rank:p.rank,ffaRank:p.rank,ffaValue:p.value,
+      ffaPosRank:p.posRank,posRank:p.posRank,adp:(p.adp!=null&&p.adp>=999)?null:p.adp,bye:p.bye,
+      sos:p.sos,auction:p.auction,pop:f?f.pctRostered:null,tier:null,vbd:null,pts:null,delta:null,snapshot:true};
+  }).sort((a,b)=>(a.rank||9999)-(b.rank||9999));
+}
+
+/* ============ LOAD ============ */
+async function loadStatic(){
+  const files=["fantasypros","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb"];
+  const [fp,rRpb,rMwv,kp]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
+  STATE.fp=fp; STATE.ranks["ffa-ranks-rpb"]=rRpb; STATE.ranks["ffa-ranks-mwv"]=rMwv; STATE.keepers=kp;
+}
+async function loadFFA(){
+  const [redraft,projections]=await Promise.all([
+    fetchJSON(FFA+"/redraft-rankings").catch(()=>null),
+    fetchJSON(FFA+"/projections").catch(()=>null)
+  ]);
+  if(!redraft) return false;
+  const rows=redraft.data||redraft, pr=projections?(projections.data||projections):[];
+  if(!Array.isArray(rows)||!rows.length) return false;
+  STATE.ffaRaw=rows; STATE.ffaProj=pr; STATE.ffaStamp=Date.now();
+  return true;
+}
+/* Rebuilt on every league switch, because scoring, D/ST multiplier and replacement level all change. */
+function rebuild(){
+  const l=L(), ranks=STATE.ranks[l.ranks];
+  if(STATE.ffaRaw){ STATE.board=buildBoard(STATE.ffaRaw,STATE.ffaProj,STATE.fp,ranks,l); STATE.live=true; }
+  else if(ranks){ STATE.board=boardFromSnapshot(ranks,STATE.fp,l); STATE.live=false; }
+  else if(loadCache()){ STATE.live=false; }
+  else { STATE.board=[]; STATE.live=false; }
+}
+/* Only the fields the board actually prints. Losing the tail beats losing the cache, so the
+   write degrades through smaller slices rather than guessing a safe row count up front. */
+const CACHE_FIELDS=["name","pos","team","bye","tier","vbd","pts","rank","posRank","adp","delta",
+                    "ffaRank","ffaValue","ffaPosRank","sos","auction","pop"];
+function saveCache(){
+  const slim=STATE.board.map(r=>{ const o={}; for(const k of CACHE_FIELDS) if(r[k]!=null) o[k]=r[k]; return o; });
+  for(const n of [slim.length,500,300]){
+    try{ localStorage.setItem(kCache(),JSON.stringify({board:slim.slice(0,n),stamp:Date.now()})); return n; }catch(e){}
+  }
+  return 0;
+}
+function loadCache(){
+  try{
+    const c=JSON.parse(localStorage.getItem(kCache())||"null");
+    if(!c||!c.board||!c.board.length) return false;
+    STATE.board=c.board; return true;
+  }catch(e){ return false; }
+}
+
+/* ============ DRAFT STATE ============ */
+let DRAFT={v:1,picks:[]};
+function loadDraft(){
+  DRAFT={v:1,picks:[]};
+  try{
+    const d=JSON.parse(localStorage.getItem(kPicks())||"null");
+    if(d&&Array.isArray(d.picks)) DRAFT.picks=d.picks;
+  }catch(e){}
+}
+function saveDraft(){ try{ localStorage.setItem(kPicks(),JSON.stringify(DRAFT)); }catch(e){} }
+const takenKeys=()=>new Set(DRAFT.picks.map(p=>key(p.name)).filter(Boolean));
+const pickOf=row=>({name:row.name,pos:normPos(row.pos),team:row.team||null,posRank:row.posRank||null,
+  tier:row.tier!=null?row.tier:null,bye:row.bye!=null?row.bye:null,vbd:row.vbd!=null?row.vbd:null,
+  adp:row.adp!=null?row.adp:null,at:new Date().toISOString()});
+function addPick(row){
+  if(takenKeys().has(key(row.name))) return false;
+  DRAFT.picks.push(pickOf(row));
+  saveDraft();   // before any render — a crash mid-render must not cost the pick
+  return true;
+}
+/* A pick happened and he did not catch the name. The clock still has to advance or every seat
+   downstream is wrong, so a placeholder consumes the slot and can be repaired later by tapping it. */
+function skipPick(){ DRAFT.picks.push({name:null,pos:null,unknown:true,at:new Date().toISOString()}); saveDraft(); }
+function replacePick(i,row){
+  if(i<0||i>=DRAFT.picks.length) return false;
+  const k=key(row.name);
+  if(DRAFT.picks.some((p,j)=>j!==i&&key(p.name)===k&&p.name)) return false;
+  DRAFT.picks[i]=pickOf(row); saveDraft(); return true;
+}
+function undoPick(){ DRAFT.picks.pop(); saveDraft(); }
+function resetDraft(){ DRAFT.picks=[]; saveDraft(); }
+
+/* ============ SNAKE / CLOCK ============ */
+/* DRAFT.picks is append-only and carries no round or team, so the overall pick number is derived
+   from ENTRY ORDER. Keepers are what make that non-trivial: each one consumes its owner's pick in
+   that round before the draft starts, so those overall numbers never come up on the clock. The
+   i-th name entered is therefore the i-th overall pick that is NOT keeper-consumed — which is the
+   whole reason a bare name still yields "R3.04 · Steel Curtain". Typing the drafting team on a
+   60-second clock was never going to happen. */
+const snakeOverall=(rd,slot,n)=>(rd%2)?((rd-1)*n+slot):(rd*n-slot+1);
+const roundOfOverall=(ov,n)=>Math.ceil(ov/n);
+const pickInRound=(ov,n)=>((ov-1)%n)+1;
+/* Which SEAT is on the clock — not the same as pick-in-round. Round 2 pick 1 is slot n. */
+const slotOfOverall=(ov,n)=>{ const i=(ov-1)%n; return (roundOfOverall(ov,n)%2)?i+1:n-i; };
+const ovLabel=(ov,n)=>`${roundOfOverall(ov,n)}.${String(pickInRound(ov,n)).padStart(2,"0")}`;
+
+function keeperOveralls(ord,n,R){
+  const slotFor={}; ord.forEach((e,i)=>{ slotFor[e.team]=e.slot||i+1; });
+  const s=new Set();
+  keepers().forEach(k=>{
+    const slot=slotFor[k.team], rd=Number(String(k.round).replace(/\D/g,""));
+    if(slot&&rd>=1&&rd<=R) s.add(snakeOverall(rd,slot,n));
+  });
+  return s;
+}
+/* One object, computed once per render — every section needs these and recomputing the
+   160-pick ladder inside a loop is the easy way to make the tab crawl on a phone. */
+function clock(){
+  const ord=order();
+  if(!ord||!ord.length) return null;
+  const n=ord.length, R=rounds(), kept=keeperOveralls(ord,n,R), live=[];
+  for(let ov=1;ov<=n*R;ov++) if(!kept.has(ov)) live.push(ov);
+  const me=ord.find(e=>e.mine);
+  const slot=me?(me.slot||ord.indexOf(me)+1):null;
+  const cur=DRAFT.picks.length<live.length?live[DRAFT.picks.length]:null;   // null = board exhausted
+  const mine=slot?live.filter(ov=>slotOfOverall(ov,n)===slot):[];
+  const ahead=cur==null?[]:mine.filter(ov=>ov>=cur);
+  const bySlot={}; ord.forEach((e,i)=>bySlot[e.slot||i+1]=e);
+  const teamAt=ov=>{ const e=bySlot[slotOfOverall(ov,n)]; return e?(e.manager||e.team):("slot "+slotOfOverall(ov,n)); };
+  return {ord,n,R,slot,live,cur,mine,bySlot,teamAt,
+    next:ahead[0]!=null?ahead[0]:null, left:ahead.length,
+    label:cur==null?"—":ovLabel(cur,n),
+    myTurn:cur!=null&&slot!=null&&slotOfOverall(cur,n)===slot};
+}
+
+/* ============ GRID: rounds × teams ============
+   Every roster in the league is DERIVED — no team name is ever typed. The i-th pick entered is
+   overall live[i], that overall maps to a seat, and that seat is a team. Add each team's keepers,
+   which are off the board before anyone picks, and the whole league's board falls out of data
+   already on hand. */
+function grid(){
+  const c=clock(); if(!c) return null;
+  const cells={};                                   // "round-slot" -> cell
+  const slotOfTeam={}; c.ord.forEach((e,i)=>slotOfTeam[e.team]=e.slot||i+1);
+  keepers().forEach(k=>{
+    const slot=slotOfTeam[k.team], rd=Number(String(k.round).replace(/\D/g,""));
+    if(!slot||!(rd>=1&&rd<=c.R)) return;            // a keeper whose team is not seated is dropped, not crashed on
+    cells[rd+"-"+slot]={name:k.player,pos:normPos(k.pos),keeper:true,ov:snakeOverall(rd,slot,c.n),idx:null};
+  });
+  DRAFT.picks.forEach((p,i)=>{
+    const ov=c.live[i];
+    if(ov==null) return;                            // more picks entered than the draft holds — ignore the overflow
+    cells[roundOfOverall(ov,c.n)+"-"+slotOfOverall(ov,c.n)]=
+      {name:p.name,pos:p.pos,keeper:false,unknown:!!p.unknown,ov,idx:i};
+  });
+  return {c,cells};
+}
+const STARTERS=()=>L().starters;
+function teamRosters(){
+  const g=grid(); if(!g) return [];
+  const c=g.c, bySlot={};
+  c.ord.forEach((e,i)=>{
+    const slot=e.slot||i+1;
+    bySlot[slot]={slot,team:e.team,manager:e.manager||e.team,mine:!!e.mine,players:[],counts:{},needs:[]};
+    POS_ORDER.forEach(p=>bySlot[slot].counts[p]=0);
+  });
+  Object.keys(g.cells).forEach(k=>{
+    const cell=g.cells[k], slot=+k.split("-")[1], t=bySlot[slot];
+    if(!t||cell.unknown) return;                    // an unrepaired "?" counts as a pick, not as a position
+    t.players.push(cell);
+    t.counts[cell.pos]=(t.counts[cell.pos]||0)+1;
+  });
+  const S=STARTERS();
+  Object.values(bySlot).forEach(t=>{ t.needs=POS_ORDER.filter(p=>(t.counts[p]||0)<(S[p]||0)); });
+  return c.ord.map((e,i)=>bySlot[e.slot||i+1]).filter(Boolean);
+}
+/* Who picks between now and his next turn, and what are they short of. Teams and PICKS are both
+   reported because they answer different questions: a team is counted once no matter how many
+   picks it holds (it has one roster to fill), but two picks in the gap really can take two backs. */
+function runRisk(){
+  const c=clock();
+  if(!c||c.cur==null||c.next==null) return null;
+  const between=c.live.filter(x=>x>=c.cur&&x<c.next);
+  const slots=[...new Set(between.map(x=>slotOfOverall(x,c.n)))].filter(s=>s!==c.slot);
+  const bySlot={}; teamRosters().forEach(t=>bySlot[t.slot]=t);
+  const picks=between.filter(x=>slotOfOverall(x,c.n)!==c.slot).length;
+  const risk=POS_ORDER.map(p=>({pos:p,teams:slots.filter(s=>bySlot[s]&&bySlot[s].needs.indexOf(p)>=0).length}))
+    .filter(x=>x.teams>0).sort((a,b)=>b.teams-a.teams);
+  return {nextOv:c.next,teams:slots.length,picks,risk};
+}
+
+/* ============ SELF-CHECK ============
+   Pick numbering is the only arithmetic here that nothing else exercises, and it is silently
+   wrong rather than loudly broken if the keeper skip misfires. Run `check()` in the console
+   after any edit to keepers-rpb.json, the draft order, or the snake math. */
+function check(){
+  const fails=[], ok=(c,m)=>{ if(!c) fails.push(m); };
+  const saved=DRAFT.picks.slice();
+  try{
+    DRAFT.picks=[];
+    const c=clock();
+    if(!c){ return "no draft order set for "+LG+" — nothing to check"; }
+    const n=c.n, R=c.R, ko=[...keeperOveralls(c.ord,n,R)];
+    ok(c.live.length===n*R-ko.length,"live picks = ladder minus keepers");
+    ko.forEach(k=>ok(c.live.indexOf(k)<0,"keeper-consumed pick "+k+" must never come up"));
+    ok(slotOfOverall(1,n)===1&&slotOfOverall(n+1,n)===n,"snake turns at the end of round 1");
+    ok(pickInRound(n+1,n)===1,"round 2 starts at pick .01");
+    for(let r=1;r<=R;r++){
+      const first=(r-1)*n+1, last=r*n;
+      ok(slotOfOverall(first,n)===(r%2?1:n),"round "+r+" opens on the right seat");
+      ok(slotOfOverall(last,n)===(r%2?n:1),"round "+r+" closes on the right seat");
+    }
+    /* Grid: every cell accounted for, keepers where their owner sits, nothing double-booked. */
+    const g=grid(), slotOfTeam={};
+    c.ord.forEach((e,i)=>slotOfTeam[e.team]=e.slot||i+1);
+    keepers().forEach(k=>{
+      const rd=Number(String(k.round).replace(/\D/g,"")), slot=slotOfTeam[k.team];
+      if(!slot||!(rd>=1&&rd<=R)) return;
+      const cell=g.cells[rd+"-"+slot];
+      ok(cell&&cell.keeper&&key(cell.name)===key(k.player),
+         k.player+" must sit at round "+rd+", slot "+slot);
+    });
+    /* With k picks entered the clock must be live[k], and no pick may land on a keeper cell. */
+    const probe=Math.min(24,c.live.length);
+    DRAFT.picks=new Array(probe).fill(0).map((_,i)=>({name:"probe"+i,pos:"RB"}));
+    ok(clock().cur===c.live[probe],"after "+probe+" picks the clock is live["+probe+"]");
+    const g2=grid(), seen=new Set();
+    Object.keys(g2.cells).forEach(k2=>{
+      ok(!seen.has(k2),"cell "+k2+" is only written once"); seen.add(k2);
+    });
+    const keptCells=new Set(keepers().map(k=>{
+      const rd=Number(String(k.round).replace(/\D/g,"")); return rd+"-"+slotOfTeam[k.team];
+    }));
+    Object.keys(g2.cells).forEach(k2=>{
+      const cell=g2.cells[k2];
+      if(!cell.keeper) ok(!keptCells.has(k2),"pick landed on keeper cell "+k2);
+    });
+    ok(Object.keys(g2.cells).length<=n*R,"cells never exceed rounds × teams");
+  } finally { DRAFT.picks=saved; }
+  return fails.length?("FAIL ("+fails.length+")\n"+fails.slice(0,20).join("\n"))
+    :"OK — "+LG+" "+(clock()?clock().n:"?")+" teams × "+rounds()+" rounds, "+keepers().length+" keepers skipped";
+}
+
+/* ============ SCORING FOR RECOMMENDATIONS ============ */
+const needMult=(pos,have)=>{
+  const t=L().build[pos]||1;
+  return have<t ? 1+NEED_BOOST*(1-have/t) : Math.pow(FILLED_DECAY,have-t+1);
+};
+function myHave(){
+  const have={}; POS_ORDER.forEach(p=>have[p]=0);
+  const rs=teamRosters().find(t=>t.mine);
+  if(rs) POS_ORDER.forEach(p=>have[p]=rs.counts[p]||0);
+  return have;
+}
+/* VBD runs negative below replacement, so the need multiplier cannot simply be applied to it —
+   multiplying a negative by a boost punishes the position you need most. Weighting only the
+   positive side keeps the value signal intact and still sorts every below-replacement player
+   beneath every startable one, which is the only ordering that matters. */
+function scorer(c,have){
+  return r=>{
+    const v=(r.vbd!=null?r.vbd:(r.ffaValue!=null?r.ffaValue/8:0));
+    const past=(c&&c.cur!=null&&r.adp!=null)?c.cur-r.adp:0;
+    return (v>0?v*needMult(r.pos,have[r.pos]||0):v)+Math.max(0,Math.min(24,past))*FALL_W;
+  };
+}
+function pool(){
+  const taken=takenKeys(), kept=keeperKeys();
+  return STATE.board.filter(r=>!taken.has(key(r.name))&&!kept.has(key(r.name)));
+}
+
+/* ============ RENDER: shared bits ============ */
+const posPill=p=>`<span class="pos ${esc(normPos(p))}">${esc(normPos(p)==="DST"?"D/ST":normPos(p))}</span>`;
+function deltaCell(d){
+  if(d==null) return '<span class="delta flat">—</span>';
+  if(d>=8) return `<span class="delta up">+${d}</span>`;
+  if(d<=-8) return `<span class="delta dn">${d}</span>`;
+  return `<span class="delta flat">${d>0?"+":""}${d}</span>`;
+}
+const prow=(r,extra)=>`<div class="prow" data-pick="${esc(r.name)}">
+  ${posPill(r.pos)}<span class="nm">${esc(r.name)}</span>
+  <span class="tm">${esc(r.team||"")}${r.bye?" · bye "+r.bye:""}</span>
+  <span class="mx">${extra||""}</span></div>`;
+
+/* ============ RENDER: DRAFT (the grid) ============ */
+let onlyMine=false;
+function renderDraft(){
+  const el=$("#draftEl"), l=L(), g=grid();
+  if(!g){
+    el.innerHTML=`<div class="note bad"><b>No draft order for ${esc(l.name)} yet.</b>
+      ${l.keepersFile?"keepers-rpb.json has no draftOrder.":"CBS had not scheduled this draft when the app was built, so no slot order exists to ship."}
+      Set it in <b>⚙︎ Setup</b> — it takes about thirty seconds.</div>`;
+    return;
+  }
+  const c=g.c;
+  let h="";
+
+  if(SIM) h+=`<div class="note warn"><b>Sim mode.</b> ${int(DRAFT.picks.length)} picks were filled from the top of
+    the board to exercise the grid. Nothing here touches your real draft — sim picks are stored separately.
+    Drop <code>?sim=</code> from the URL to go back.</div>`;
+
+  /* Header: whose turn, how far away yours is. */
+  const me=c.ord.find(e=>e.mine);
+  h+=`<div class="card"><h2>🏟️ ${esc(l.name)} draft board
+    <span class="rt">${c.n} teams · ${c.R} rounds · ${int(DRAFT.picks.length)} in</span></h2>`;
+  if(c.cur==null){
+    h+=`<div class="note">Draft complete — all ${int(c.live.length)} picks are in.</div>`;
+  }else{
+    h+=`<div class="kv"><span class="k">On the clock</span><span class="v">${ovLabel(c.cur,c.n)} · ${esc(c.teamAt(c.cur))}</span></div>`;
+    if(c.slot) h+=`<div class="kv"><span class="k">Your next pick</span><span class="v">${
+      c.next!=null?`${ovLabel(c.next,c.n)} <span style="color:var(--mut);font-weight:600">(${c.live.filter(x=>x>=c.cur&&x<c.next).length} away · ${c.left} left)</span>`:"—"}</span></div>`;
+  }
+  if(!me) h+=`<div class="note warn">No seat is starred as yours — Targets and run risk need it. Set it in <b>⚙︎ Setup</b>.</div>`;
+  h+=`</div>`;
+
+  h+=`<div class="fbar">
+    <button data-only="1" class="${onlyMine?"on":""}">${onlyMine?"⭐ My column":"⭐ Just mine"}</button>
+    <span class="lbl">tap any cell to fix it</span></div>`;
+
+  /* The grid itself. */
+  h+=`<div class="gridwrap" id="gridwrap"><div class="grid" style="--n:${onlyMine&&c.slot?1:c.n}">`;
+  const seats=(onlyMine&&c.slot)?c.ord.filter(e=>(e.slot||0)===c.slot):c.ord;
+  h+=`<div class="gcorner">RD</div>`;
+  seats.forEach(e=>{
+    h+=`<div class="gh${e.mine?" me":""}"><span class="gt">${esc(e.manager||e.team)}</span>
+      <span class="gm">${esc(e.team)}</span></div>`;
+  });
+  for(let r=1;r<=c.R;r++){
+    h+=`<div class="gr">${r}</div>`;
+    seats.forEach(e=>{
+      const slot=e.slot||0, cell=g.cells[r+"-"+slot], ov=snakeOverall(r,slot,c.n);
+      const isClock=c.cur===ov;
+      const cls=["gc"];
+      if(!cell) cls.push("empty");
+      if(e.mine) cls.push(cell?"mine":"col-mine");
+      if(cell&&cell.keeper) cls.push("keeper");
+      if(cell&&cell.unknown) cls.push("unknown");
+      if(isClock) cls.push("clock");
+      if(isClock&&e.mine) cls.push("myturn");
+      if(editIdx!=null&&cell&&cell.idx===editIdx) cls.push("editing");
+      const tag=cell?(cell.idx!=null?` data-cell="${cell.idx}"`:"")+(isClock?' id="clockCell"':"")
+                    :(isClock?' id="clockCell"':"");
+      h+=`<div class="${cls.join(" ")}"${tag}>`;
+      if(cell){
+        h+=`<span class="cn">${cell.unknown?"?":esc(surname(cell.name))}</span>
+            <span class="cm">${cell.unknown?'<span class="pos DST">—</span>':posPill(cell.pos)}
+            ${cell.keeper?'<span class="cov">🔒</span>':`<span class="cov">${ov}</span>`}</span>`;
+      }else{
+        h+=`<span class="cn" style="color:var(--mut);font-weight:600">${isClock?"…":""}</span>
+            <span class="cm"><span class="cov">${ov}</span></span>`;
+      }
+      h+=`</div>`;
+    });
+  }
+  h+=`</div></div>`;
+
+  /* Best available, right under the grid — the list that turns a pick into one tap. */
+  const c2=c, have=myHave(), sc=scorer(c2,have);
+  const best=pool().slice().sort((a,b)=>sc(b)-sc(a)).slice(0,8);
+  h+=`<div class="card"><h2>⚡ Best available<span class="rt">tap to draft · value × your need</span></h2>`;
+  h+=best.length?best.map(r=>prow(r,`${r.adp!=null?"ADP <b>"+num(r.adp)+"</b>":""}`)).join("")
+    :`<div class="empty">Board empty.</div>`;
+  h+=`</div>`;
+
+  el.innerHTML=h;
+
+  el.querySelector("button[data-only]").onclick=()=>{ onlyMine=!onlyMine; renderDraft(); };
+  el.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
+  el.querySelectorAll(".gc[data-cell]").forEach(b=>b.onclick=()=>startEdit(+b.dataset.cell));
+  centerClock();
+}
+/* The clock finds his thumb, not the other way round. */
+function centerClock(){
+  const cell=document.getElementById("clockCell");
+  if(cell&&cell.scrollIntoView) try{ cell.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"}); }catch(e){}
+}
+
+/* ============ RENDER: BOARD ============ */
+let boardPos="ALL", boardQ="", boardSort="vbd", boardSortUser=false;
+function renderBoard(){
+  const el=$("#boardEl"), l=L();
+  if(!STATE.board.length){ el.innerHTML='<div class="empty">Board unavailable — check the status chip.</div>'; return; }
+  /* The default follows the data, in both directions. The first render happens before the API
+     answers, so an unconditional flip to FFA rank on the snapshot board would stick there for the
+     rest of the session and My VBD would never come back. Once he picks a sort himself, it holds. */
+  if(!boardSortUser) boardSort=STATE.live?"vbd":"ffa";
+
+  let rows=STATE.board;
+  const taken=takenKeys(), kept=keeperKeys();
+  rows=rows.filter(r=>!taken.has(key(r.name))&&!kept.has(key(r.name)));
+  if(boardPos!=="ALL") rows=rows.filter(r=>r.pos===boardPos);
+  if(boardQ) rows=rows.filter(r=>key(r.name).includes(key(boardQ))||String(r.team||"").toLowerCase().includes(boardQ.toLowerCase()));
+  /* Sorting by FFA rank must drop the unranked rather than pile them at the top —
+     FFA publishes 787 of the API's 801, and a null rank is "not on their board". */
+  if(boardSort==="ffa") rows=rows.filter(r=>r.ffaRank!=null).slice().sort((a,b)=>a.ffaRank-b.ffaRank);
+  else if(boardSort==="adp") rows=rows.filter(r=>r.adp!=null).slice().sort((a,b)=>a.adp-b.adp);
+  const shown=rows.slice(0,200);
+
+  let h=`<div class="fbar">`;
+  h+=["ALL",...POS_ORDER].map(p=>`<button data-p="${p}" class="${boardPos===p?"on":""}">${p==="DST"?"D/ST":p}</button>`).join("");
+  h+=`<input id="boardSearch" type="search" placeholder="Search player or team…" value="${esc(boardQ)}"></div>`;
+  h+=`<div class="fbar"><span class="lbl">Sort</span>
+    <button data-s="vbd" class="${boardSort==="vbd"?"on":""}"${STATE.live?"":" disabled"}>⚙️ My VBD</button>
+    <button data-s="ffa" class="${boardSort==="ffa"?"on":""}">📕 FFA rank</button>
+    <button data-s="adp" class="${boardSort==="adp"?"on":""}">📉 ADP</button></div>`;
+
+  h+=`<div class="card"><h2>${boardSort==="vbd"?"📋 VBD board":boardSort==="ffa"?"📕 FFA published board":"📉 ADP board"}
+    <span class="rt">${esc(l.scoreLabel)} · ${int(shown.length)} of ${int(rows.length)}</span></h2><div class="tblwrap"><table>
+    <thead><tr><th class="nm" style="text-align:left">Player</th><th></th><th>Tm</th><th>Rank</th><th>ADP</th>
+    <th>Bye</th><th>Pop</th><th>SOS</th><th>Value</th><th>ADJ</th><th>$</th><th>VBD</th><th>Tier</th></tr></thead><tbody>`;
+  let lastTier=null;
+  shown.forEach(r=>{
+    /* Tiers are positional, so a break line only reads correctly inside a single position. */
+    if(boardSort==="vbd"&&lastTier!=null&&r.tier!==lastTier&&boardPos!=="ALL"&&!boardQ)
+      h+=`<tr class="tierbrk"><td colspan="13"><span></span></td></tr>`;
+    lastTier=r.tier;
+    /* In FFA mode show FFA's own positional rank — ours would contradict the column beside it
+       (Bijan is our RB2 but FFA's RB1). */
+    const sub=boardSort==="ffa"?(r.ffaPosRank||r.posRank||""):(r.posRank||"");
+    h+=`<tr class="drow" data-n="${esc(r.name)}">
+      <td class="nm">${esc(r.name)}<small>${esc(sub)}</small></td><td>${posPill(r.pos)}</td>
+      <td class="num">${esc(r.team||"")}</td>
+      <td class="rk">${r.ffaRank!=null?r.ffaRank:(r.rank||"—")}</td>
+      <td class="num">${r.adp!=null?num(r.adp):"—"}</td>
+      <td class="num">${r.bye||"—"}</td>
+      <td class="num">${r.pop!=null?Math.round(r.pop)+"%":"—"}</td>
+      <td class="num">${r.sos!=null?r.sos:"—"}</td>
+      <td class="val">${r.ffaValue!=null?r.ffaValue:"—"}</td>
+      <td class="num">${deltaCell(r.delta)}</td>
+      <td class="cash">${r.auction!=null?"$"+r.auction:"—"}</td>
+      <td class="vbd">${r.vbd!=null?num(r.vbd):"—"}</td>
+      <td class="num">${r.tier!=null?r.tier:"—"}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+  if(rows.length>200) h+=`<div class="note">Showing the top 200 of ${int(rows.length)} — filter by position or search to go deeper.</div>`;
+  h+=`<div class="note">Tap any row to draft that player to the seat on the clock.
+    <b>VBD</b> = projected ${esc(l.scoreLabel)} points above the last startable player at that position.
+    <b>ADJ</b> compares VBD rank to market ADP: positive means the room is letting them slide.
+    <b>Pop</b> is FantasyPros roster%, <b>SOS</b> and <b>$</b> are FFA's own.</div>`;
+  const fr=STATE.ranks[l.ranks];
+  if(fr) h+=`<div class="note warn"><b>Rank, Value, SOS and $</b> come from the FFA CSV export captured
+    <b>${esc(String(fr.updated||"—"))}</b> and do <b>not</b> refresh with the page — the API serves projections and
+    ADP only. <b>My VBD</b> re-scores those same projections for ${esc(l.id)} specifically (${esc(l.note)}),
+    which is why the two orders differ. Neither is wrong; the gap between them is the useful part.</div>`;
+  if(l.dstMult!==1) h+=`<div class="note">D/ST points are doubled to match ${esc(l.id)} scoring, so every defense
+    ranks well above FFA's published order here. That is the league, not a bug.</div>`;
+  h+=`</div>`;
+  el.innerHTML=h;
+
+  el.querySelectorAll(".fbar button[data-p]").forEach(b=>b.onclick=()=>{ boardPos=b.dataset.p; renderBoard(); });
+  el.querySelectorAll(".fbar button[data-s]").forEach(b=>b.onclick=()=>{ boardSort=b.dataset.s; boardSortUser=true; renderBoard(); });
+  const s=el.querySelector("#boardSearch");
+  if(s) s.oninput=e=>{ boardQ=e.target.value; const p=e.target.selectionStart; renderBoard();
+    const n=$("#boardSearch"); if(n){ n.focus(); n.setSelectionRange(p,p); } };
+
+  /* A tap that drifts is a scroll, not a pick. Without this the board eats players every time
+     he flicks the list with a thumb — and on the clock he will never notice which one. */
+  const tb=el.querySelector("tbody");
+  let moved=false,x0=0,y0=0;
+  tb.addEventListener("touchstart",e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; moved=false; },{passive:true});
+  tb.addEventListener("touchmove",e=>{ const t=e.touches[0];
+    if(Math.abs(t.clientX-x0)>8||Math.abs(t.clientY-y0)>8) moved=true; },{passive:true});
+  tb.addEventListener("mousedown",()=>{ moved=false; });
+  tb.addEventListener("click",e=>{
+    if(moved) return;
+    const row=e.target.closest("tr.drow");
+    if(row) takeByName(row.dataset.n);
+  });
+}
+
+/* ============ RENDER: TARGETS ============ */
+function renderTargets(){
+  const el=$("#targetsEl"), c=clock();
+  if(!c){ el.innerHTML='<div class="note bad">No draft order set — Targets needs to know when your picks come. Set it in <b>⚙︎ Setup</b>.</div>'; return; }
+  if(!c.slot){ el.innerHTML='<div class="note bad">No seat starred as yours — star it in <b>⚙︎ Setup</b>.</div>'; return; }
+  if(!STATE.board.length){ el.innerHTML='<div class="empty">Board unavailable.</div>'; return; }
+
+  const have=myHave(), sc=scorer(c,have), p=pool();
+  let h="";
+
+  /* The actionable card: a position most of the teams ahead of you still need is a position
+     that will not survive the round, whatever its ADP says. */
+  const rr=runRisk();
+  if(rr&&rr.risk.length){
+    h+=`<div class="card rec"><h2>⚠️ Before your pick at ${ovLabel(rr.nextOv,c.n)}
+      <span class="rt">${rr.teams} team${rr.teams===1?"":"s"} · ${rr.picks} pick${rr.picks===1?"":"s"}</span></h2>
+      <div style="font-size:13px;color:var(--mut);margin-bottom:10px">How many of those ${rr.teams} team${rr.teams===1?"":"s"}
+        still have that starting slot empty.</div>`;
+    rr.risk.forEach(x=>{
+      const pct=Math.round(x.teams/Math.max(1,rr.teams)*100);
+      h+=`<div class="rrow">${posPill(x.pos)}<span class="rbar"><i style="width:${pct}%"></i></span>
+        <b>${x.teams}</b><span class="rof">of ${rr.teams}</span></div>`;
+    });
+    h+=`</div>`;
+  }
+
+  /* Your roster so far. */
+  h+=`<div class="card"><h2>⭐ Your roster<span class="rt">${POS_ORDER.map(x=>x+" "+(have[x]||0)).join(" · ")}</span></h2>`;
+  const mineT=teamRosters().find(t=>t.mine);
+  h+=(mineT&&mineT.players.length)
+    ? mineT.players.slice().sort((a,b)=>(a.ov||0)-(b.ov||0)).map(x=>`<div class="prow" style="cursor:default">
+        ${posPill(x.pos)}<span class="nm">${x.keeper?"🔒 ":""}${esc(x.name)}</span>
+        <span class="tm"></span><span class="mx">${x.keeper?"keeper":ovLabel(x.ov,c.n)}</span></div>`).join("")
+    : `<div class="empty">Nothing yet.</div>`;
+  h+=`</div>`;
+
+  /* ---- WATCH LIST: one group per upcoming pick of YOURS ----
+     Not "who now" but "who is realistically there when my turn comes round again". */
+  if(c.cur==null) h+=`<div class="empty">Draft complete — no picks left to plan for.</div>`;
+  else{
+    c.mine.filter(ov=>ov>=c.cur).slice(0,6).forEach(ov=>{
+      const away=c.live.filter(x=>x>=c.cur&&x<ov).length;
+      /* The window's FLOOR tracks the pick, and that is the whole point. Anchoring it below the
+         pick and widening it with distance — the obvious first try, and what FFA's own panel
+         appears to do — returns the same five names for every group, because the best players in
+         a wide band always win the sort. But a player with ADP 18 is not a round-3 target; he is
+         gone. So: from a few picks before this one (genuine sliders) out to about a round past it. */
+      const lo=Math.max(1,ov-ADP_SLIDE), hi=ov+c.n;
+      const grp=p.filter(r=>r.adp!=null&&r.adp>=lo&&r.adp<=hi).sort((a,b)=>sc(b)-sc(a)).slice(0,5);
+      h+=`<div class="card lgrp"><div class="ghd">
+          <span class="gp">Pick ${ovLabel(ov,c.n)} <i>(${ov})</i></span>
+          <span class="ga">ADP ${lo}–${hi}</span></div>
+        <div class="ghd2"><span class="gaway">${away===0?"on the clock":away===1?"1 pick away":away+" picks away"}</span>
+          ${grp.length?`<span class="gbadge">TOP ${grp.length} AVAILABLE</span>`:""}</div>`;
+      h+=grp.length?grp.map(r=>prow(r,`FFA <b>${r.ffaRank!=null?r.ffaRank:"—"}</b>${r.auction!=null?" · $"+r.auction:""}`)).join("")
+        :`<div class="empty">Nobody projects to be there in that ADP band.</div>`;
+      h+=`</div>`;
+    });
+  }
+  el.innerHTML=h;
+  el.querySelectorAll(".prow[data-pick]").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
+}
+
+/* ============ RENDER: SETUP ============ */
+let orderDraft=null;   // in-progress edit; null means "not editing"
+function seatNames(){
+  const l=L();
+  if(l.teamNames) return l.teamNames.slice();
+  const shipped=(STATE.keepers&&STATE.keepers.draftOrder)||[];
+  return shipped.map(e=>e.team);
+}
+function renderSetup(){
+  const el=$("#setupEl"), l=L(), cur=order();
+  let h="";
+
+  h+=`<div class="card"><h2>⚙︎ ${esc(l.name)}</h2>
+    <div class="kv"><span class="k">Teams</span><span class="v">${l.teams}</span></div>
+    <div class="kv"><span class="k">Scoring</span><span class="v">${esc(l.scoreLabel)}${l.dstMult!==1?" · D/ST ×"+l.dstMult:""}</span></div>
+    <div class="kv"><span class="k">Rounds</span><span class="v"><input id="roundsIn" type="number" min="1" max="30" value="${rounds()}"></span></div>
+    <div class="kv"><span class="k">Keepers</span><span class="v">${keepers().length||"none"}</span></div>
+    <div class="kv"><span class="k">Picks entered</span><span class="v">${int(DRAFT.picks.length)}</span></div>
+    <div class="kv"><span class="k">Installed to home screen</span><span class="v">${
+      (window.navigator.standalone||matchMedia("(display-mode: standalone)").matches)?"yes":'<span style="color:var(--bad)">no</span>'}</span></div>
+  </div>`;
+
+  if(!(window.navigator.standalone||matchMedia("(display-mode: standalone)").matches))
+    h+=`<div class="note bad"><b>Install this to your home screen before draft day.</b> Safari clears storage for
+      sites you have only visited, and every pick you enter lives in that storage. Share → Add to Home Screen.</div>`;
+
+  /* ---- draft order editor ---- */
+  const names=seatNames();
+  const picked=orderDraft||[];
+  const isEditing=orderDraft!=null;
+  h+=`<div class="card"><h2>🎲 Draft order<span class="rt">${cur?cur.length+" seats set":"not set"}</span></h2>`;
+  if(!isEditing){
+    if(cur){
+      h+=cur.map(e=>`<div class="prow" style="cursor:default">
+        <span class="pos ${e.mine?"TE":"DST"}" style="font-family:var(--mono)">${e.slot}</span>
+        <span class="nm">${e.mine?"⭐ ":""}${esc(e.manager||e.team)}</span>
+        <span class="tm">${esc(e.team)}</span></div>`).join("");
+    }else{
+      h+=`<div class="empty">No order yet — the grid cannot be drawn without one.</div>`;
+    }
+    h+=`<div class="fbar" style="margin-top:11px">
+      <button data-edit="1">${cur?"✎ Re-enter order":"＋ Set the order"}</button>
+      ${localStorage.getItem(kOrder())?'<button data-clearorder="1">↺ Back to shipped order</button>':""}</div>`;
+    h+=`<div class="note">Tap the teams in draft order — slot 1 first. Star the seat that is yours.
+      A hand-set order always wins over whatever shipped with the app, so a re-randomized room takes thirty seconds to fix.</div>`;
+  }else{
+    const takenN=new Set(picked.map(e=>e.team));
+    h+=`<div class="note"><b>Tap in draft order.</b> ${picked.length} of ${names.length} placed.
+      Tap a placed team to pull it back out. Then tap ⭐ next to your own seat.</div>`;
+    h+=`<div class="ochips">`;
+    picked.forEach(e=>{
+      h+=`<button class="ochip set${e.mine?" me":""}" data-un="${esc(e.team)}">
+        <span class="sl">${e.slot}</span>${e.mine?"⭐ ":""}${esc(e.team)}</button>`;
+    });
+    h+=`</div>`;
+    const left=names.filter(n=>!takenN.has(n));
+    if(left.length){
+      h+=`<div class="ochips">`+left.map(n=>`<button class="ochip" data-add="${esc(n)}">${esc(n)}</button>`).join("")+`</div>`;
+    }
+    if(picked.length){
+      h+=`<div class="fbar"><span class="lbl">Which seat is yours</span>`+
+        picked.map(e=>`<button data-me="${esc(e.team)}" class="${e.mine?"on":""}">${e.slot}</button>`).join("")+`</div>`;
+    }
+    h+=`<div class="fbar" style="margin-top:8px">
+      <button data-save="1"${picked.length===names.length?"":" disabled"}>✅ Save order</button>
+      <button data-cancel="1">Cancel</button>
+      <button data-clear="1"${picked.length?"":" disabled"}>Clear</button></div>`;
+  }
+  h+=`</div>`;
+
+  /* ---- danger zone ---- */
+  h+=`<div class="card"><h2>🧨 Draft state</h2>
+    <div class="fbar">
+      <button data-undo="1"${DRAFT.picks.length?"":" disabled"}>↩ Undo last pick</button>
+      <button data-reset="1"${DRAFT.picks.length?"":" disabled"}>Reset ${LG} draft</button>
+      <button data-check="1">🔎 Run self-check</button></div>
+    <pre id="checkOut" style="font-family:var(--mono);font-size:11.5px;color:var(--mut);white-space:pre-wrap;margin-top:6px"></pre>
+    <div class="note">Reset clears ${LG} only — the other league's board is untouched.</div></div>`;
+
+  el.innerHTML=h;
+
+  const ri=el.querySelector("#roundsIn");
+  if(ri) ri.onchange=()=>{ const v=parseInt(ri.value,10);
+    if(v>=1&&v<=30){ localStorage.setItem(kRounds(),String(v)); renderAll(); } };
+
+  const q=(sel,fn)=>el.querySelectorAll(sel).forEach(b=>b.onclick=()=>fn(b));
+  q("button[data-edit]",()=>{ orderDraft=(cur||[]).map(e=>({...e})); renderSetup(); });
+  q("button[data-clearorder]",()=>{ localStorage.removeItem(kOrder()); renderAll(); });
+  q("button[data-add]",b=>{ orderDraft.push({slot:orderDraft.length+1,team:b.dataset.add,manager:b.dataset.add,
+    mine:L().myTeamRe.test(b.dataset.add)}); renderSetup(); });
+  q("button[data-un]",b=>{ orderDraft=orderDraft.filter(e=>e.team!==b.dataset.un).map((e,i)=>({...e,slot:i+1})); renderSetup(); });
+  q("button[data-me]",b=>{ orderDraft=orderDraft.map(e=>({...e,mine:e.team===b.dataset.me})); renderSetup(); });
+  q("button[data-save]",()=>{ setOrder(orderDraft); orderDraft=null; renderAll(); });
+  q("button[data-cancel]",()=>{ orderDraft=null; renderSetup(); });
+  q("button[data-clear]",()=>{ orderDraft=[]; renderSetup(); });
+  q("button[data-undo]",()=>{ undoPick(); renderAll(); });
+  q("button[data-reset]",()=>{ if(confirm(`Clear all ${DRAFT.picks.length} ${LG} picks? This cannot be undone.`)){ resetDraft(); renderAll(); } });
+  q("button[data-check]",()=>{ el.querySelector("#checkOut").textContent=check(); });
+}
+
+/* ============ PICK BAR ============ */
+let editIdx=null, pbQ="";
+function startEdit(i){
+  editIdx=i; pbQ="";
+  showTab("draft");
+  const s=$("#pbSearch"); if(s){ s.value=""; s.focus(); }
+  renderAll();
+}
+function cancelEdit(){ editIdx=null; pbQ=""; const s=$("#pbSearch"); if(s) s.value=""; renderAll(); }
+/* One entry point for every pickable surface — grid cell repair, board row, best-available,
+   watch list and the search hits all land here, so "is this an edit or a new pick" is decided once. */
+function takeByName(name){
+  const r=STATE.board.find(b=>key(b.name)===key(name));
+  if(!r) return;
+  if(editIdx!=null){ replacePick(editIdx,r); editIdx=null; }
+  else if(!addPick(r)) return;
+  pbQ=""; const s=$("#pbSearch"); if(s) s.value="";
+  renderAll();
+}
+function renderPickBar(){
+  const bar=$("#pickbar"), c=clock();
+  const onDraftTab=$("#draft").classList.contains("on");
+  if(!c||!onDraftTab){ bar.classList.add("hidden"); return; }
+  bar.classList.remove("hidden");
+  bar.classList.toggle("myturn",!!c.myTurn&&editIdx==null);
+  bar.classList.toggle("editing",editIdx!=null);
+
+  const lbl=$("#pbClock");
+  if(editIdx!=null){
+    const ov=c.live[editIdx];
+    lbl.innerHTML=`<span class="lb">✎ ${ov!=null?ovLabel(ov,c.n):"?"}</span>
+      <span class="tm">replacing ${esc(ov!=null?c.teamAt(ov):"pick "+(editIdx+1))}'s pick</span>`;
+  }else if(c.cur==null){
+    lbl.innerHTML=`<span class="lb">done</span><span class="tm">all ${c.live.length} picks in</span>`;
+  }else{
+    lbl.innerHTML=`<span class="lb">${ovLabel(c.cur,c.n)}</span>
+      <span class="tm">${c.myTurn?"⭐ YOUR PICK":esc(c.teamAt(c.cur))}</span>`;
+  }
+  $("#pbUndo").disabled=!DRAFT.picks.length||editIdx!=null;
+  $("#pbSkip").disabled=c.cur==null||editIdx!=null;
+  $("#pbCancel").style.display=editIdx!=null?"":"none";
+  $("#pbSearch").placeholder=editIdx!=null?"Who actually went there?":"Search a player to draft…";
+
+  const hits=$("#pbHits");
+  if(!pbQ){ hits.innerHTML=""; return; }
+  const q=key(pbQ);
+  const list=pool().filter(r=>key(r.name).includes(q)).slice(0,12);
+  hits.innerHTML=list.length
+    ? list.map(r=>prow(r,`${r.ffaRank!=null?"FFA <b>"+r.ffaRank+"</b>":""}${r.adp!=null?" · ADP "+num(r.adp):""}`)).join("")
+    : `<div class="empty">No match in the available pool — he may already be off the board.</div>`;
+  hits.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
+}
+
+/* ============ CHROME ============ */
+function setChip(el,txtEl,cls,label){ $(el).className="chip "+cls; $(txtEl).textContent=label; }
+function daysOld(stamp){ if(!stamp) return null; const t=Date.parse(stamp); return isNaN(t)?null:Math.floor((Date.now()-t)/86400000); }
+function renderHeader(){
+  const l=L();
+  document.body.dataset.lg=LG;
+  $("#hTitle").textContent=l.name+" — draft";
+  $("#hSub").innerHTML=`${esc(l.myTeam)} · ${esc(l.note)}`;
+  document.querySelectorAll("#lgsw button").forEach(b=>b.classList.toggle("on",b.dataset.lg===LG));
+  const fr=STATE.ranks[l.ranks], d=fr?daysOld(fr.updated):null;
+  $("#chipSnap").className="chip snap"+(d!=null&&d>STALE_DAYS?" stale":"");
+  $("#chipSnapTxt").textContent=fr?("FFA CSV "+String(fr.updated||"?")):"no snapshot";
+}
+function renderAll(){ renderHeader(); renderDraft(); renderBoard(); renderTargets(); renderSetup(); renderPickBar(); }
+
+function showTab(t){
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
+  document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));
+  renderPickBar();
+  if(t==="draft") centerClock();
+}
+function switchLeague(id){
+  if(!LEAGUES[id]||id===LG) return;
+  LG=id; try{ localStorage.setItem("dr-league",id); }catch(e){}
+  orderDraft=null; editIdx=null; pbQ=""; onlyMine=false; boardPos="ALL"; boardQ=""; boardSortUser=false;
+  loadDraft(); rebuild(); saveCache(); renderAll();
+}
+
+/* Sim: fill N picks straight off the ADP board so the whole grid is eyeballable without typing
+   160 names. Writes to dr-sim-* — the real draft is never touched. */
+function runSim(n){
+  const c=clock(); if(!c) return;
+  const cap=Math.min(n,c.live.length);
+  const avail=STATE.board.filter(r=>r.adp!=null&&!keeperKeys().has(key(r.name))).sort((a,b)=>a.adp-b.adp);
+  DRAFT.picks=avail.slice(0,cap).map(pickOf);
+  saveDraft();
+}
+
+async function boot(){
+  loadDraft();
+  await loadStatic();
+  rebuild();                       // snapshot board first, so the app is usable before the network answers
+  renderAll();
+  await refresh();
+  if(SIM&&!DRAFT.picks.length){ runSim(SIM); renderAll(); }
+}
+async function refresh(){
+  setChip("#chipFfa","#chipFfaTxt","load","Loading FFA…");
+  let ok=false;
+  try{ ok=await loadFFA(); }catch(e){ ok=false; }
+  if(ok){
+    rebuild(); saveCache();
+    setChip("#chipFfa","#chipFfaTxt","live",int(STATE.ffaRaw.length)+" live");
+  }else{
+    setChip("#chipFfa","#chipFfaTxt","err","offline — FFA snapshot");
+  }
+  renderAll();
+}
+
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showTab(b.dataset.t));
+document.querySelectorAll("#lgsw button").forEach(b=>b.onclick=()=>switchLeague(b.dataset.lg));
+$("#refreshBtn").onclick=()=>refresh();
+$("#pbUndo").onclick=()=>{ undoPick(); renderAll(); };
+$("#pbSkip").onclick=()=>{ skipPick(); renderAll(); };
+$("#pbCancel").onclick=()=>cancelEdit();
+$("#pbSearch").oninput=e=>{ pbQ=e.target.value; renderPickBar(); };
+setInterval(()=>{ if(document.visibilityState==="visible") refresh(); },REFRESH_MS);
+window.check=check;   // console entry point for the self-check
+
+boot();
+if("serviceWorker" in navigator) window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script>
+</body>
+</html>

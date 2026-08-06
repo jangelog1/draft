@@ -1,0 +1,136 @@
+{
+ "league": "RPB",
+ "note": "Curated keeper ledger (hand-maintained as keepers are confirmed; NOT pipeline-generated). draftOrder = real 2026 RPB draft slots by MANAGER name, from Angelo's handwritten sheet 2026-08-02 (superseded the earlier CBS team-name capture). cost = round.pick the keeper was drafted (the round it costs the team).",
+ "draftOrder": [
+  {
+   "slot": 1,
+   "team": "NCF",
+   "manager": "Rod"
+  },
+  {
+   "slot": 2,
+   "team": "Real Midway Monsters®",
+   "manager": "John"
+  },
+  {
+   "slot": 3,
+   "team": "Steel Curtain",
+   "manager": "Steve"
+  },
+  {
+   "slot": 4,
+   "team": "Head Hunters",
+   "manager": "Carlos"
+  },
+  {
+   "slot": 5,
+   "team": "4Barrel",
+   "manager": "Eric"
+  },
+  {
+   "slot": 6,
+   "team": "The Buckeyes",
+   "manager": "Nathan"
+  },
+  {
+   "slot": 7,
+   "team": "Meh-nacing",
+   "manager": "Trevon"
+  },
+  {
+   "slot": 8,
+   "team": "DREADS",
+   "manager": "M. Brown"
+  },
+  {
+   "slot": 9,
+   "team": "Max's College Fund",
+   "manager": "Achim"
+  },
+  {
+   "slot": 10,
+   "team": "Hoofhearted",
+   "manager": "Anthony"
+  }
+ ],
+ "keepers": [
+  {
+   "team": "4Barrel",
+   "round": 10,
+   "player": "Caleb Williams",
+   "pos": "QB",
+   "cost": "10.01"
+  },
+  {
+   "team": "DREADS",
+   "round": 12,
+   "player": "Colston Loveland",
+   "pos": "TE",
+   "cost": "12 (acquired via trade; orig. 12.04)"
+  },
+  {
+   "team": "Hoofhearted",
+   "round": 11,
+   "player": "Cam Skattebo",
+   "pos": "RB",
+   "cost": "11 (orig. 11.06)"
+  },
+  {
+   "team": "Steel Curtain",
+   "round": 12,
+   "player": "Vikings D/ST",
+   "pos": "DST",
+   "cost": "12 (acquired via trade; orig. 12.05 HOOF)"
+  },
+  {
+   "team": "The Buckeyes",
+   "round": 10,
+   "player": "Drake Maye",
+   "pos": "QB",
+   "cost": "10.07"
+  },
+  {
+   "team": "Max's College Fund",
+   "round": 14,
+   "player": "Broncos D/ST",
+   "pos": "DST",
+   "cost": "14 (waiver keeper)"
+  },
+  {
+   "team": "Max's College Fund",
+   "round": 15,
+   "player": "Jaxson Dart",
+   "pos": "QB",
+   "cost": "15 (waiver keeper)"
+  },
+  {
+   "team": "NCF",
+   "round": 9,
+   "player": "Tyler Warren",
+   "pos": "TE",
+   "cost": "9.03"
+  },
+  {
+   "team": "Head Hunters",
+   "round": 9,
+   "player": "Chris Olave",
+   "pos": "WR",
+   "cost": "9.05"
+  },
+  {
+   "team": "Meh-nacing",
+   "round": 11,
+   "player": "Patriots D/ST",
+   "pos": "DST",
+   "cost": "11"
+  },
+  {
+   "team": "Real Midway Monsters®",
+   "round": 10,
+   "player": "Travis Etienne Jr.",
+   "pos": "RB",
+   "cost": "10 (commish keeper)"
+  }
+ ],
+ "draftOrderNote": "Slots and TEAM names read from the CBS league directory 2026-08-02 (authoritative). MANAGER names come from Angelo's handwritten sheet of the same 10 slots. The two were aligned by slot; the pairing is anchored on Real Midway Monsters® = John Garcia at slot 2, verified directly on the CBS team page. The other nine manager labels are derived from that alignment, not separately confirmed."
+}
