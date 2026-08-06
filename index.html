@@ -1408,9 +1408,16 @@ function renderRail(){
 
   const wide=matchMedia("(min-width:1024px)").matches;
   const roster=mine?mine.players.length:0;
-  el.innerHTML=`<details class="raild"${wide?" open":""}><summary>My Team · Queue · Keepers
+  /* Below 1024 the rail is a drawer, and it used to slam shut on every render — which is every
+     pick and every auto-refresh. So on a portrait iPad you could open My Team, enter one pick, and
+     it was closed again. Remember the state instead. */
+  const open=wide||localStorage.getItem("dr-rail-open")==="1";
+  el.innerHTML=`<details class="raild"${open?" open":""}><summary>My Team · Queue · Keepers
       <span class="mine">${roster} rostered${QUEUE.length?" · ★"+QUEUE.length:""}</span></summary>
     <div class="body">${h}</div></details>`;
+  const det=el.querySelector(".raild");
+  det.addEventListener("toggle",()=>{ if(!matchMedia("(min-width:1024px)").matches)
+    localStorage.setItem("dr-rail-open",det.open?"1":"0"); });
   el.querySelectorAll(".qrow[data-open]").forEach(b=>b.onclick=()=>openPlayer(b.dataset.open));
 }
 /* The rail is a sidebar on iPad and a collapsed drawer on a phone, so a rotation has to
