@@ -48,7 +48,7 @@ State is per-league localStorage (`dr-picks-RPB` / `dr-picks-MWV`). Nothing is s
 | `thefantasyfootballadvice.com/api/redraft-rankings` + `/projections` | ADP, projections (both `ppr` and `hppr`, so one fetch serves both leagues) | live, every 5 min |
 | `data/ffa-ranks-{rpb,mwv}.json` | FFA Rank, Value, SOS, auction $ — **not in the API** | the `ffa-redraft-rankings` skill (exports both league CSVs in one run) |
 | `data/ffa-tiers.json` | FFA's 14 tier boundaries + their Pop letter grade per player | re-scraped from FFA's rendered board |
-| `data/keepers-rpb.json` | RPB draft order + keepers | **edit in Settings** — CBS publishes nothing (its keepers page is blank), so the app is the source of truth |
+| `data/keepers-rpb.json` | RPB draft order + **predicted** keepers | **edit in Settings** — CBS publishes nothing (its keepers page is blank), so the app is the source of truth |
 | `data/notes.json` | Player notes — 94 FFA stances (`love`/`like`/`watch`/`fade`/`avoid`), 25 must-draft + 5 shy-away calls with a `why`, plus per-league video-intel verdicts | rebuilt from `ffa-intel.json`, `ffa-calls.json` and `plan-{rpb,mwv}.json` |
 
 **Regenerate both `ffa-ranks` files the morning of each draft.** ADP is live but $/SOS/Value are
@@ -65,4 +65,5 @@ Use the apex host for the API, never `tools.` — that subdomain 307-redirects w
 - `check()` in the console — snake math at every round boundary, keeper cells, no double-booked cell, clock == `live[k]`.
 - `?sim=120` — fills N picks off the ADP board into a throwaway key so the whole grid is eyeballable. Never touches the real draft.
 - `?lg=MWV` — open a specific league.
+- `?reset=1` — empty that league's entered picks and start at 1.01. Keepers, draft order and queue survive. The param drops itself so a reload cannot wipe twice.
 - The ↻ button re-pulls the API **and** every committed snapshot, so a pushed data update reaches an installed iPad without a force-quit.

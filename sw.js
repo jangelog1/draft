@@ -1,4 +1,4 @@
-const CACHE = 'draft-v4';
+const CACHE = 'draft-v5';
 // The four data files are precached, not just cached-on-use. The draft room has bad wifi and the
 // snapshot board (rank, value, adp, bye, sos, $) is what keeps the app usable when the FFA API is
 // unreachable — a data file that was never fetched online is a blank board offline.
