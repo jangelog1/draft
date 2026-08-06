@@ -10,299 +10,417 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Draft">
-<meta name="theme-color" content="#0a1020">
+<meta name="theme-color" content="#080b16">
 <link rel="apple-touch-icon" href="icon-512.png">
 <link rel="icon" type="image/png" href="icon-512.png">
 <link rel="manifest" href="manifest.webmanifest">
 <style>
+  /* ============================================================================
+     Theme is FFA's draft-tool, measured off the rendered site rather than guessed:
+     their semantic tokens are HSL triplets in a Tailwind v4 @theme block, converted
+     to hex here. Do not "modernise" these values — matching FFA is the point.
+     ============================================================================ */
   :root{
-    /* --- accent tokens: FFA's draft-tool identity (deep navy + amber) --- */
-    --bg:#0a1020; --ink:#eef2fb; --mut:#8b97b4;
-    --accent:#f99c00; --accent2:#fcbb00; --live:#00c758; --gold:#fcbb00; --bad:#fb2c36; --blue:#3080ff;
-    /* --- structural tokens: identical across every tracker app, do not retune --- */
-    --glass:rgba(255,255,255,.05); --glass2:rgba(255,255,255,.085);
-    --hair:rgba(255,255,255,.075); --hair2:rgba(255,255,255,.045);
-    --r:22px; --rs:16px;
+    --bg:#080b16; --card:#0c1322; --sidebar:#070913;
+    --border:#1f2937; --sec:#1d283a; --muted:#161e2b;
+    --mutfg:#94a3b8; --fg:#f8fafc;
+    --primary:#dc2828; --destructive:#ef4343; --accent:#7c3bed;
+    --sky:#38bdf8; --emerald:#34d399; --amber:#fbbf24;
+    --r:16px;            /* cards + modal (FFA rounded-xl) */
+    --rc:4px;            /* chips, badges, buttons (FFA rounded) */
     --ease:cubic-bezier(.22,.61,.36,1);
-    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    /* --- position colours, fantasy-standard --- */
-    --qb:#ff6b9d; --rb:#3ddc84; --wr:#4cc9f0; --te:#f4a261; --k:#c084fc; --dst:#94a3b8;
+    --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+    --rail:320px;
+    /* Position colours — FFA's actual row values, not the fantasy-standard set.
+       Their --pos-* custom properties are legacy and unused by the board. */
+    --qb:#fb923c; --rb:#34d399; --wr:#38bdf8; --te:#c084fc; --k:#f87171; --dst:#22d3ee;
   }
-  /* Per-league accent, so a glance at the header says which draft you are in without reading. */
-  body[data-lg="MWV"]{ --accent:#3080ff; --accent2:#54a2ff; }
+  /* Per-league accent so a glance says which draft you are in. RPB keeps FFA's red. */
+  body[data-lg="MWV"]{ --primary:#0284c7; --destructive:#ef4343; }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{
-    color:var(--ink);
-    font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
-    min-height:100vh;position:relative;overflow-x:hidden;
-    padding:0 0 calc(150px + env(safe-area-inset-bottom,0px));
+    color:var(--fg);
+    font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    min-height:100vh;overflow-x:hidden;
+    padding:0 0 calc(146px + env(safe-area-inset-bottom,0px));
+    /* Two 4%-alpha washes over near-black: red bottom-left, violet top-right. Barely
+       perceptible individually, but they are what stops the page reading as flat black. */
     background:
-      radial-gradient(1100px 620px at 12% -8%, rgba(249,156,0,.10), transparent 62%),
-      radial-gradient(900px 520px at 92% 2%, rgba(48,128,255,.10), transparent 58%),
-      radial-gradient(900px 800px at 50% 112%, rgba(249,156,0,.05), transparent 62%),
+      radial-gradient(circle at 15% 50%, rgba(220,38,38,.04), transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(139,92,246,.04), transparent 50%),
       var(--bg);
     background-attachment:fixed;
   }
-  body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;
-    background:radial-gradient(closest-side, rgba(249,156,0,.09), transparent 70%);
-    width:70vmax;height:70vmax;left:-10vmax;top:-15vmax;filter:blur(30px);
-    animation:drift 26s ease-in-out infinite alternate}
-  @keyframes drift{to{transform:translate3d(28vw,16vh,0) scale(1.25)}}
-  ::selection{background:rgba(249,156,0,.3)}
-  /* HEADER */
-  header{padding:calc(14px + env(safe-area-inset-top,0px)) 15px 14px;text-align:center;position:relative}
-  header::after{content:"";position:absolute;left:14%;right:14%;bottom:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--hair),transparent)}
-  h1{font-size:clamp(18px,5vw,23px);letter-spacing:-.5px;font-weight:800;
-    display:flex;align-items:center;gap:9px;justify-content:center;flex-wrap:wrap;
-    background:linear-gradient(180deg,#fff,#c9d4ee);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{color:var(--mut);margin-top:5px;font-size:12.5px}
-  .sub b{color:var(--accent)}
-  .statusbar{display:flex;align-items:center;gap:7px;margin-top:11px;flex-wrap:wrap;justify-content:center}
-  .chip{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:999px;font-size:12px;font-weight:700;
-    background:var(--glass);border:1px solid var(--hair);color:var(--ink);
-    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);cursor:pointer;font-family:inherit}
-  .dot{width:8px;height:8px;border-radius:50%;background:var(--mut)}
-  .chip.live .dot{background:var(--live)}
-  .chip.snap .dot{background:var(--gold)}
-  .chip.err  .dot{background:var(--bad)}
-  .chip.load .dot{background:var(--accent);animation:pulse .9s ease-in-out infinite}
-  .chip.stale{opacity:.55}
+  /* Micro-label: 9-11px, bold, uppercase, wide tracking, low-opacity white.
+     The signature move of FFA's whole design — used for every section heading. */
+  .ml{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.4)}
+  /* ---------- TOP BAR ---------- */
+  .topbar{position:sticky;top:0;z-index:40;padding-top:env(safe-area-inset-top,0px);
+    background:rgba(8,11,22,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(31,41,55,.5)}
+  .tbin{display:flex;align-items:center;gap:10px;padding:9px 14px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;letter-spacing:-.2px;margin-right:auto}
+  .brand .tile{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--primary),#8f1616);font-size:15px;flex:none}
+  .brand small{display:block;font-size:10.5px;font-weight:600;color:var(--mutfg);letter-spacing:0}
+  .lgsw{display:inline-flex;border-radius:var(--rc);overflow:hidden;border:1px solid var(--border);background:var(--sec)}
+  .lgsw button{background:none;border:0;color:var(--mutfg);font-family:inherit;font-weight:700;font-size:11px;
+    padding:6px 13px;cursor:pointer;letter-spacing:.04em}
+  .lgsw button.on{background:rgba(220,38,38,.2);color:var(--primary)}
+  body[data-lg="MWV"] .lgsw button.on{background:rgba(2,132,199,.2);color:#38bdf8}
+  .chip{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border-radius:var(--rc);
+    font-size:11px;font-weight:700;background:var(--sec);border:1px solid rgba(255,255,255,.05);
+    color:var(--mutfg);cursor:pointer;font-family:inherit}
+  .chip:active{transform:scale(.95)}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--mutfg)}
+  .chip.live .dot{background:#22c55e} .chip.snap .dot{background:var(--amber)}
+  .chip.err .dot{background:var(--destructive)} .chip.load .dot{background:var(--sky);animation:pulse .9s ease-in-out infinite}
+  .chip.stale{opacity:.5}
   @keyframes pulse{50%{opacity:.3}}
-  /* League switch */
-  .lgsw{display:inline-flex;gap:0;border-radius:999px;overflow:hidden;border:1px solid var(--hair);background:var(--glass)}
-  .lgsw button{background:none;border:0;color:var(--mut);font-family:inherit;font-weight:800;font-size:12px;
-    padding:6px 15px;cursor:pointer;transition:background .25s var(--ease),color .25s var(--ease)}
-  .lgsw button.on{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#12100a}
-  .wrap{max-width:900px;margin:0 auto;padding:0 14px}
-  /* NAV */
-  nav{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 6px;justify-content:center}
-  nav button{background:var(--glass);border:1px solid var(--hair);color:var(--mut);
-    padding:9px 17px;border-radius:999px;cursor:pointer;font-weight:700;font-size:13.5px;font-family:inherit;
-    transition:transform .28s var(--ease),background .28s var(--ease),color .28s var(--ease)}
-  nav button:active{transform:scale(.95)}
-  nav button.on{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#12100a;border-color:transparent;
-    box-shadow:0 8px 22px -6px rgba(249,156,0,.45)}
+  /* ---------- SHELL: board left, 320px rail right on iPad and up ---------- */
+  /* Column on a phone with the rail pulled ABOVE the board: as a plain block after .main it
+     landed 13,000px down the page, past every board row. */
+  .shell{display:flex;flex-direction:column}
+  .main{min-width:0}
+  .rail{order:-1;background:var(--card);border-bottom:1px solid var(--border);padding:12px 14px}
+  .wrap{padding:0 14px}
+  nav{display:flex;gap:5px;flex-wrap:wrap;margin:12px 0 8px}
+  nav button{background:transparent;border:1px solid transparent;color:var(--mutfg);
+    padding:7px 13px;border-radius:var(--rc);cursor:pointer;font-weight:700;font-size:12px;font-family:inherit;
+    letter-spacing:.03em;transition:background .2s var(--ease),color .2s var(--ease)}
+  nav button:hover{background:var(--sec);color:var(--fg)}
+  nav button.on{background:rgba(220,38,38,.2);color:var(--primary);border-color:rgba(220,38,38,.4)}
+  body[data-lg="MWV"] nav button.on{background:rgba(2,132,199,.2);color:#38bdf8;border-color:rgba(2,132,199,.4)}
   section{display:none}
-  section.on{display:block;animation:rise .35s var(--ease)}
-  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  .note{color:var(--mut);font-size:12.5px;margin:14px 0;padding:12px 15px;border-radius:var(--rs);
-    background:linear-gradient(180deg,var(--glass2),var(--glass));border:1px solid var(--hair);
-    box-shadow:inset 2px 0 0 rgba(249,156,0,.55)}
-  .note b{color:var(--ink)}
-  .note.warn{box-shadow:inset 2px 0 0 var(--gold)}
-  .note.bad{box-shadow:inset 2px 0 0 var(--bad)}
-  /* CARDS */
-  .card{padding:15px;margin:13px 0;border-radius:var(--r);
-    background:linear-gradient(180deg,var(--glass2),var(--glass));border:1px solid var(--hair);
-    backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);
-    box-shadow:0 18px 40px -24px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.06)}
-  .card h2{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--accent);
-    margin-bottom:11px;display:flex;align-items:center;gap:8px;font-weight:800;flex-wrap:wrap}
-  .card h2 .rt{margin-left:auto;color:var(--mut);font-size:10.5px;letter-spacing:.5px;font-weight:700}
-  /* POSITION PILLS */
-  .pos{display:inline-flex;align-items:center;justify-content:center;min-width:33px;padding:2px 6px;border-radius:6px;
-    font-size:9.5px;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
-  .pos.QB{background:rgba(255,107,157,.16);color:var(--qb)}
-  .pos.RB{background:rgba(61,220,132,.16);color:var(--rb)}
-  .pos.WR{background:rgba(76,201,240,.16);color:var(--wr)}
-  .pos.TE{background:rgba(244,162,97,.16);color:var(--te)}
-  .pos.K{background:rgba(192,132,252,.16);color:var(--k)}
-  .pos.DST{background:rgba(148,163,184,.16);color:var(--dst)}
-  /* FILTER BAR */
-  .fbar{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:4px 0 11px}
-  .fbar button{background:var(--glass);border:1px solid var(--hair);color:var(--mut);font-family:inherit;
-    padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:800;font-size:11.5px;
-    transition:background .25s var(--ease),color .25s var(--ease),transform .25s var(--ease)}
-  .fbar button:active{transform:scale(.94)}
-  .fbar button.on{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#12100a;border-color:transparent}
-  .fbar button[disabled]{opacity:.4;pointer-events:none}
-  .fbar input{flex:1;min-width:130px;background:var(--glass);border:1px solid var(--hair);color:var(--ink);
-    padding:7px 14px;border-radius:999px;font-size:12.5px;font-family:inherit;outline:none}
-  .fbar input:focus{border-color:rgba(249,156,0,.5)}
-  .fbar input::placeholder{color:var(--mut)}
-  .fbar .lbl{font-size:10.5px;color:var(--mut);font-weight:800;letter-spacing:.6px;text-transform:uppercase}
-  /* TABLE — sticky player column, every other column reachable by scroll.
-     Deliberately no .hide-s: hiding SOS and $ on the one device he will actually use
-     defeats the entire point of adding them. */
-  .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
-  table{width:100%;border-collapse:separate;border-spacing:0 3px;font-size:13px}
-  th,td{padding:9px 6px;text-align:center;font-variant-numeric:tabular-nums;border:0;white-space:nowrap}
-  th{color:var(--mut);font-weight:700;font-size:9.5px;text-transform:uppercase;letter-spacing:.8px;padding-bottom:4px}
-  tbody tr td{background:#131a2c}
-  tbody tr td:first-child{border-radius:12px 0 0 12px}
-  tbody tr td:last-child{border-radius:0 12px 12px 0}
-  td.nm,th.nm{text-align:left;font-weight:700;position:sticky;left:0;z-index:1;
-    max-width:150px;overflow:hidden;text-overflow:ellipsis}
-  th.nm{background:var(--bg)}
-  td.nm small{display:block;color:var(--mut);font-weight:600;font-size:10px;letter-spacing:.4px}
-  td.rk{font-weight:800;color:var(--mut);font-family:var(--mono)}
-  td.num{font-family:var(--mono);font-size:12.5px}
-  td.vbd{font-weight:900;color:var(--accent);font-family:var(--mono)}
-  td.val{font-weight:800;color:var(--gold);font-family:var(--mono)}
-  td.cash{font-weight:800;color:var(--live);font-family:var(--mono)}
-  .delta.up{color:var(--live);font-weight:800} .delta.dn{color:var(--bad);font-weight:800} .delta.flat{color:var(--mut)}
-  .tierbrk td{background:transparent!important;padding:2px 0!important}
-  .tierbrk span{display:block;height:1px;background:linear-gradient(90deg,transparent,rgba(252,187,0,.45),transparent)}
-  tr.drow{cursor:pointer;-webkit-tap-highlight-color:rgba(249,156,0,.25)}
-  tr.drow:active td{background:rgba(249,156,0,.16)}
-  /* ============ THE GRID: rounds × teams ============
+  section.on{display:block}
+  /* ---------- CARDS / NOTES ---------- */
+  .card{padding:14px;margin:12px 0;border-radius:var(--r);background:var(--card);border:1px solid var(--border)}
+  .card h2{font-size:10px;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.4);
+    margin-bottom:11px;display:flex;align-items:center;gap:8px;font-weight:700;flex-wrap:wrap}
+  .card h2 .rt{margin-left:auto;color:var(--mutfg);font-size:10px;font-weight:600;letter-spacing:.04em}
+  .note{color:var(--mutfg);font-size:12.5px;margin:12px 0;padding:11px 14px;border-radius:var(--r);
+    background:var(--card);border:1px solid var(--border);border-left:2px solid var(--sky)}
+  .note b{color:var(--fg)}
+  .note.warn{border-left-color:var(--amber)} .note.bad{border-left-color:var(--destructive)}
+  .empty{color:var(--mutfg);font-size:13px;text-align:center;padding:20px 10px;font-style:italic}
+  /* ---------- TINTED PILL: colour, 12% bg, 20% border, 4px radius.
+       Used for Value, Pop, SOS, $, position badges. The whole "pro tool" density
+       comes from this one pattern repeated, not from charts. ---------- */
+  .pill{display:inline-flex;align-items:center;justify-content:center;padding:3px 7px;border-radius:var(--rc);
+    font-family:var(--mono);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pos{display:inline-flex;align-items:center;justify-content:center;min-width:28px;padding:2px 5px;
+    border-radius:var(--rc);font-size:9px;font-weight:900;letter-spacing:.04em;border:1px solid}
+  .pos.QB{color:var(--qb);background:rgba(251,146,60,.1);border-color:rgba(251,146,60,.2)}
+  .pos.RB{color:var(--rb);background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.2)}
+  .pos.WR{color:var(--wr);background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.2)}
+  .pos.TE{color:var(--te);background:rgba(192,132,252,.1);border-color:rgba(192,132,252,.2)}
+  .pos.K{color:var(--k);background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.2)}
+  .pos.DST{color:var(--dst);background:rgba(34,204,231,.1);border-color:rgba(34,204,231,.2)}
+  /* ---------- FILTER / TOOLBAR ---------- */
+  .fbar{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin:8px 0}
+  .fbar button{background:transparent;border:1px solid transparent;color:var(--mutfg);font-family:inherit;
+    padding:5px 10px;border-radius:var(--rc);cursor:pointer;font-weight:700;font-size:10.5px;letter-spacing:.05em}
+  .fbar button:hover{background:var(--sec);color:var(--fg)}
+  .fbar button.on{background:rgba(220,38,38,.2);color:var(--primary);border-color:rgba(220,38,38,.4)}
+  body[data-lg="MWV"] .fbar button.on{background:rgba(2,132,199,.2);color:#38bdf8;border-color:rgba(2,132,199,.4)}
+  .fbar button[disabled]{opacity:.35;pointer-events:none}
+  .fbar input{flex:1;min-width:150px;background:var(--muted);border:1px solid var(--border);color:var(--fg);
+    padding:7px 12px;border-radius:var(--rc);font-size:12.5px;font-family:inherit;outline:none}
+  .fbar input:focus{border-color:var(--primary)}
+  .fbar input::placeholder{color:var(--mutfg)}
+  /* ---------- BOARD ---------- */
+  .brdwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .brd{min-width:760px}
+  .bhd,.brow{display:grid;align-items:center;
+    grid-template-columns:4px minmax(0,1fr) 58px 62px 40px 52px 46px 84px 48px 54px 62px 58px}
+  .bhd{padding:0 10px 0 0;height:34px;position:sticky;top:0;z-index:5;background:var(--bg);
+    border-bottom:1px solid var(--border)}
+  .bhd span{font-size:10.5px;font-weight:600;color:var(--mutfg);text-align:center;letter-spacing:.02em}
+  .bhd span.l{text-align:left;padding-left:10px}
+  .brow{height:54px;border-bottom:1px solid rgba(31,41,55,.3);cursor:pointer;padding-right:10px}
+  .brow:hover{background:rgba(248,250,252,.025)}
+  .brow:active{background:rgba(248,250,252,.05)}
+  .brow .stripe{height:100%;width:4px}
+  .brow.QB .stripe{background:var(--qb)} .brow.RB .stripe{background:var(--rb)}
+  .brow.WR .stripe{background:var(--wr)} .brow.TE .stripe{background:var(--te)}
+  .brow.K  .stripe{background:var(--k)}  .brow.DST .stripe{background:var(--dst)}
+  .pcell{display:flex;align-items:center;gap:8px;min-width:0;padding-left:10px}
+  .pcell .pn{font-weight:600;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .brow:hover .pcell .pn{color:rgba(220,38,38,.8)}
+  .pcell .tm{font-size:10.5px;color:var(--mutfg);font-weight:600;font-family:var(--mono)}
+  .pcell .pr{font-size:10px;color:var(--mutfg);font-family:var(--mono)}
+  /* A player FFA has written about gets a dot. Tap the row to read it. */
+  .pcell .hasnote{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
+  .pcell .hasnote.love{background:#22c55e} .pcell .hasnote.fade{background:var(--destructive)}
+  .bc{text-align:center;font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums}
+  .bc.mut{color:var(--mutfg)} .bc.dim{color:rgba(148,163,184,.4)}
+  .bc .up{color:var(--emerald)} .bc .dn{color:#f87171}
+  .dbtn{padding:5px 9px;border-radius:var(--rc);font-size:10.5px;font-weight:700;font-family:inherit;cursor:pointer;
+    background:rgba(220,38,38,.2);color:var(--primary);border:1px solid rgba(220,38,38,.3)}
+  .dbtn:active{transform:scale(.95)}
+  body[data-lg="MWV"] .dbtn{background:rgba(2,132,199,.2);color:#38bdf8;border-color:rgba(2,132,199,.3)}
+  /* ---------- TIER BANDS: full-width separator, 2px coloured top rule at 60%,
+       10px tracking-widest label one shade lighter. FFA's exact treatment. ---------- */
+  .tband{display:flex;align-items:center;background:rgba(12,19,34,.3);padding:5px 0 5px 10px;
+    border-top:2px solid}
+  .tband span{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.11em}
+  .tband em{font-style:normal;margin-left:9px;font-size:9.5px;color:rgba(148,163,184,.55);letter-spacing:.05em}
+  /* ---------- GRID: rounds × teams ----------
      Scrolls in BOTH axes inside its own box on purpose. `overflow-x:auto` alone makes the
      block a scroll container on both axes anyway, which kills `position:sticky;top` against
      the viewport — so the header row would never stick. Owning the vertical scroll here is
      what lets both the round column and the team header stay pinned. */
-  .gridwrap{overflow:auto;-webkit-overflow-scrolling:touch;max-height:72vh;margin:0 -4px;
-    border-radius:var(--rs);border:1px solid var(--hair);background:rgba(8,13,26,.55);
+  .gridwrap{overflow:auto;-webkit-overflow-scrolling:touch;max-height:70vh;
+    border-radius:var(--r);border:1px solid var(--border);background:var(--card);
     scroll-snap-type:x proximity;overscroll-behavior:contain}
-  .grid{display:grid;grid-template-columns:44px repeat(var(--n),96px);gap:3px;padding:3px;width:max-content}
-  .gh{position:sticky;top:0;z-index:2;background:#111a2e;border-radius:8px;padding:6px 5px;
-    font-size:10px;font-weight:800;line-height:1.25;text-align:center;scroll-snap-align:start}
-  .gh .gt{display:block;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .gh .gm{display:block;color:var(--mut);font-size:9px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .gh.me{background:linear-gradient(180deg,rgba(249,156,0,.30),rgba(249,156,0,.12))}
-  .gh.me .gm{color:#f7d9a8}
-  .gcorner{position:sticky;left:0;top:0;z-index:4;background:#111a2e;color:var(--mut);
-    display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:800;border-radius:8px}
-  .gr{position:sticky;left:0;z-index:3;background:#111a2e;border-radius:8px;
+  .grid{display:grid;grid-template-columns:40px repeat(var(--n),var(--gw,96px));gap:2px;padding:2px;width:max-content}
+  .gh{position:sticky;top:0;z-index:2;background:var(--muted);border-radius:var(--rc);padding:6px 5px;
+    font-size:10px;font-weight:700;line-height:1.25;text-align:center;scroll-snap-align:start}
+  .gh .gt{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gh .gm{display:block;color:var(--mutfg);font-size:9px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gh.me{background:rgba(220,38,38,.22)} .gh.me .gm{color:#f8b4b4}
+  body[data-lg="MWV"] .gh.me{background:rgba(2,132,199,.22)} body[data-lg="MWV"] .gh.me .gm{color:#a5dbf8}
+  .gcorner{position:sticky;left:0;top:0;z-index:4;background:var(--muted);color:var(--mutfg);
+    display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;border-radius:var(--rc)}
+  .gr{position:sticky;left:0;z-index:3;background:var(--muted);border-radius:var(--rc);
     display:flex;align-items:center;justify-content:center;font-family:var(--mono);
-    font-size:11px;font-weight:800;color:var(--mut)}
-  .gc{min-height:42px;border-radius:8px;padding:4px 5px;background:rgba(255,255,255,.028);
-    border:1px solid transparent;display:flex;flex-direction:column;justify-content:center;gap:2px;
-    overflow:hidden;scroll-snap-align:start;cursor:pointer;-webkit-tap-highlight-color:rgba(249,156,0,.25)}
-  .gc.empty{background:transparent;border:1px dashed var(--hair2);cursor:default}
-  .gc .cn{font-size:11px;font-weight:800;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    font-size:11px;font-weight:700;color:var(--mutfg)}
+  .gc{min-height:40px;border-radius:var(--rc);padding:4px 5px;background:rgba(255,255,255,.022);
+    border:1px solid transparent;border-left:3px solid transparent;
+    display:flex;flex-direction:column;justify-content:center;gap:2px;overflow:hidden;
+    scroll-snap-align:start;cursor:pointer}
+  .gc.QB{border-left-color:var(--qb)} .gc.RB{border-left-color:var(--rb)} .gc.WR{border-left-color:var(--wr)}
+  .gc.TE{border-left-color:var(--te)} .gc.K{border-left-color:var(--k)}  .gc.DST{border-left-color:var(--dst)}
+  .gc.empty{background:transparent;border:1px dashed rgba(31,41,55,.8);cursor:default}
+  .gc .cn{font-size:11px;font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .gc .cm{display:flex;align-items:center;gap:4px}
-  .gc .cov{margin-left:auto;font-family:var(--mono);font-size:8.5px;color:var(--mut);font-weight:700}
+  .gc .cov{margin-left:auto;font-family:var(--mono);font-size:8.5px;color:var(--mutfg);font-weight:600}
   .gc .pos{min-width:0;padding:1px 4px;font-size:8px}
-  .gc.mine{background:linear-gradient(180deg,rgba(249,156,0,.18),rgba(249,156,0,.06))}
-  .gc.col-mine{background:rgba(249,156,0,.055)}
-  .gc.keeper{opacity:.62}
-  .gc.unknown .cn{color:var(--mut)}
+  .gc.mine{background:rgba(220,38,38,.14)} .gc.col-mine{background:rgba(220,38,38,.045)}
+  body[data-lg="MWV"] .gc.mine{background:rgba(2,132,199,.14)}
+  body[data-lg="MWV"] .gc.col-mine{background:rgba(2,132,199,.045)}
+  .gc.keeper{opacity:.6} .gc.unknown .cn{color:var(--mutfg)}
   /* border-style too, not just the colour: an empty cell is dashed, and the cell on the clock has
      to read as solid whether or not anything has been picked there yet. */
-  .gc.clock{border-color:var(--accent);border-style:solid;animation:clockpulse 1.9s ease-in-out infinite}
-  .gc.clock.myturn{border-color:var(--gold);border-width:2px;animation:myturnpulse 1.2s ease-in-out infinite}
-  @keyframes clockpulse{50%{box-shadow:0 0 0 3px rgba(249,156,0,.16)}}
-  @keyframes myturnpulse{50%{box-shadow:0 0 0 5px rgba(252,187,0,.28)}}
-  .gc.editing{border-color:var(--blue);border-width:2px}
-  /* ============ PICK BAR — fixed, thumb-reachable, always mounted on the Draft tab ============ */
+  .gc.clock{border-color:var(--primary);border-style:solid;animation:clockpulse 1.9s ease-in-out infinite}
+  .gc.clock.myturn{border-color:var(--amber);border-width:2px;animation:myturnpulse 1.2s ease-in-out infinite}
+  @keyframes clockpulse{50%{box-shadow:0 0 0 3px rgba(220,38,38,.16)}}
+  @keyframes myturnpulse{50%{box-shadow:0 0 0 5px rgba(251,191,36,.26)}}
+  .gc.editing{border-color:var(--sky);border-width:2px}
+  /* ---------- RIGHT RAIL ---------- */
+  /* Below iPad the rail has nowhere to sit beside the board, so it collapses to one tappable
+     summary at the TOP of the page rather than stacking 200 board rows below the fold, which is
+     where it landed when it was a plain block. renderRail() forces it open at >=1024. */
+  .raild>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:9px;
+    padding:11px 13px;border-radius:var(--rc);background:var(--muted);border:1px solid var(--border);
+    font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mutfg)}
+  .raild>summary::-webkit-details-marker{display:none}
+  .raild>summary::after{content:"▾";margin-left:auto;font-size:12px}
+  .raild[open]>summary::after{content:"▴"}
+  .raild>summary .mine{margin-left:auto;color:var(--fg);font-family:var(--mono);letter-spacing:0}
+  .raild>.body{padding-top:12px}
+  .rsec{margin-bottom:16px}
+  .rhd{display:flex;align-items:center;gap:8px;margin-bottom:9px;cursor:pointer}
+  .rhd .ml{margin-right:auto}
+  .rhd .cnt{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--mutfg)}
+  .cstrip{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;
+    font-family:var(--mono);font-size:11px;font-weight:700}
+  .cstrip i{font-style:normal;color:var(--mutfg)}
+  .cstrip .QB{color:var(--qb)} .cstrip .RB{color:var(--rb)} .cstrip .WR{color:var(--wr)}
+  .cstrip .TE{color:var(--te)} .cstrip .K{color:var(--k)} .cstrip .DST{color:var(--dst)}
+  .cstrip .left{margin-left:auto;padding:2px 8px;border-radius:var(--rc);
+    background:rgba(220,38,38,.15);color:var(--primary);border:1px solid rgba(220,38,38,.25)}
+  .slot{display:flex;align-items:center;gap:9px;padding:7px 9px;margin-bottom:4px;border-radius:var(--rc);
+    background:rgba(255,255,255,.022);border:1px solid var(--border);min-height:36px}
+  .slot .sc{font-family:var(--mono);font-size:10px;font-weight:800;width:34px;flex:none}
+  .slot .sc.QB{color:var(--qb)} .slot .sc.RB{color:var(--rb)} .slot .sc.WR{color:var(--wr)}
+  .slot .sc.TE{color:var(--te)} .slot .sc.K{color:var(--k)} .slot .sc.DST{color:var(--dst)}
+  .slot .sc.FLEX{color:var(--amber)} .slot .sc.BN{color:var(--mutfg)}
+  .slot .sn{font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .slot .sn.mt{color:rgba(148,163,184,.5);font-style:italic;font-weight:500}
+  .slot .sx{margin-left:auto;font-family:var(--mono);font-size:9.5px;color:var(--mutfg);flex:none}
+  .bnhd{display:flex;align-items:center;gap:9px;margin:12px 0 7px}
+  .bnhd::after{content:"";flex:1;height:1px;background:var(--border)}
+  .qrow{display:flex;align-items:center;gap:8px;padding:7px 9px;margin-bottom:4px;border-radius:var(--rc);
+    background:rgba(255,255,255,.022);border:1px solid var(--border);cursor:pointer}
+  .qrow .qn{font-size:12.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+  .qrow .qx{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--mutfg);flex:none}
+  /* ---------- PLAYER MODAL ---------- */
+  .ovl{position:fixed;inset:0;z-index:120;background:rgba(2,4,10,.78);
+    display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
+  .ovl.hidden{display:none}
+  .modal{width:100%;max-width:460px;background:var(--card);border:1px solid var(--border);
+    border-radius:var(--r);padding:18px;max-height:92vh;overflow:auto}
+  .mhd{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+  .mav{width:52px;height:52px;border-radius:50%;background:var(--sec);border:1px solid var(--border);flex:none;
+    display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;color:var(--mutfg)}
+  .mnm{font-size:20px;font-weight:800;letter-spacing:-.3px;line-height:1.15}
+  .mmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;
+    font-size:11.5px;color:var(--mutfg);font-family:var(--mono)}
+  .mx{margin-left:auto;width:30px;height:30px;border-radius:50%;background:var(--sec);border:1px solid var(--border);
+    color:var(--mutfg);font-size:15px;cursor:pointer;flex:none;font-family:inherit}
+  .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:9px}
+  .mcard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:13px}
+  .mcard .kv{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:8px}
+  .mcard .kv i{font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;color:rgba(255,255,255,.35)}
+  .mcard .kv b{font-family:var(--mono);font-size:15px;font-weight:700}
+  .mrow{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:11px 13px;margin-bottom:9px}
+  .mrow .ml{margin-right:auto}
+  .mnote{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);
+    padding:14px;margin-bottom:9px}
+  .mnote p{font-size:14.5px;line-height:1.55;color:var(--fg);margin-top:9px}
+  .mnote p+p{margin-top:11px;padding-top:11px;border-top:1px solid rgba(255,255,255,.07)}
+  .mnote p .src{display:block;margin-top:5px;font-size:9.5px;font-weight:700;letter-spacing:.09em;
+    text-transform:uppercase;color:rgba(255,255,255,.3)}
+  /* Five stances ship in the intel file (love/like/watch/fade/avoid) plus two call values
+     (must/shy). Warm-to-cool so the tag reads before the word does. */
+  .stance{padding:2px 8px;border-radius:var(--rc);font-size:9.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .stance.love,.stance.must{color:#22c55e;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25)}
+  .stance.like{color:#86efac;background:rgba(134,239,172,.1);border:1px solid rgba(134,239,172,.22)}
+  .stance.watch{color:var(--amber);background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.22)}
+  .stance.fade,.stance.shy{color:#fb923c;background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.25)}
+  .stance.avoid{color:var(--destructive);background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.25)}
+  .mfoot{display:flex;gap:9px;margin-top:14px}
+  .mfoot button{flex:1;padding:11px;border-radius:var(--rc);font-family:inherit;font-size:13px;font-weight:700;cursor:pointer}
+  .mfoot .go{background:var(--primary);color:#fff;border:0}
+  body[data-lg="MWV"] .mfoot .go{background:#0284c7}
+  .mfoot .go[disabled]{opacity:.4;pointer-events:none}
+  .mfoot .sec{background:var(--sec);color:var(--mutfg);border:1px solid var(--border)}
+  /* ---------- PICK BAR ---------- */
   .pickbar{position:fixed;left:0;right:0;bottom:0;z-index:80;
     padding:9px 12px calc(9px + env(safe-area-inset-bottom,0px));
-    background:linear-gradient(180deg,rgba(10,16,32,.86),rgba(10,16,32,.97));
-    backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
-    border-top:1px solid var(--hair);box-shadow:0 -14px 34px -22px #000}
+    background:rgba(8,11,22,.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border-top:1px solid var(--border)}
   .pickbar.hidden{display:none}
-  .pbrow{display:flex;align-items:center;gap:7px;max-width:900px;margin:0 auto}
+  .pbrow{display:flex;align-items:center;gap:7px;max-width:1500px;margin:0 auto}
   .pbrow+.pbrow{margin-top:7px}
-  .onclock{flex:1;min-width:0;font-size:13px;font-weight:800;display:flex;align-items:baseline;gap:7px;
+  .onclock{flex:1;min-width:0;font-size:13px;font-weight:700;display:flex;align-items:baseline;gap:8px;
     overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-  .onclock .lb{font-family:var(--mono);color:var(--accent);font-size:14px}
-  .onclock .tm{color:var(--mut);font-weight:700;font-size:12px;overflow:hidden;text-overflow:ellipsis}
-  .pickbar.myturn{background:linear-gradient(180deg,rgba(60,42,4,.9),rgba(38,27,4,.98));border-top-color:var(--gold)}
-  .pickbar.myturn .onclock .lb{color:var(--gold)}
-  .pickbar.editing{background:linear-gradient(180deg,rgba(10,26,56,.9),rgba(8,18,40,.98));border-top-color:var(--blue)}
-  .pbtn{flex:none;background:var(--glass);border:1px solid var(--hair);color:var(--ink);font-family:inherit;
-    padding:8px 13px;border-radius:11px;font-weight:800;font-size:13px;cursor:pointer;min-width:44px}
+  .onclock .lb{font-family:var(--mono);color:var(--primary);font-size:15px;font-weight:800}
+  body[data-lg="MWV"] .onclock .lb{color:#38bdf8}
+  .onclock .tm{color:var(--mutfg);font-weight:600;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+  .pickbar.myturn{background:rgba(41,28,4,.96);border-top-color:var(--amber)}
+  .pickbar.myturn .onclock .lb{color:var(--amber)}
+  .pickbar.editing{background:rgba(6,20,42,.96);border-top-color:var(--sky)}
+  .pickbar.editing .onclock .lb{color:var(--sky)}
+  .pbtn{flex:none;background:var(--sec);border:1px solid var(--border);color:var(--fg);font-family:inherit;
+    padding:9px 13px;border-radius:var(--rc);font-weight:700;font-size:13px;cursor:pointer;min-width:44px}
   .pbtn:active{transform:scale(.94)}
-  .pbtn[disabled]{opacity:.35;pointer-events:none}
-  .pbtn.warn{border-color:rgba(252,187,0,.45);color:var(--gold)}
-  .psearch{flex:1;min-width:0;background:rgba(255,255,255,.07);border:1px solid var(--hair);color:var(--ink);
-    padding:10px 14px;border-radius:11px;font-size:16px;font-family:inherit;outline:none}
-  .psearch:focus{border-color:var(--accent)}
-  .psearch::placeholder{color:var(--mut);font-size:14px}
-  .phits{max-width:900px;margin:0 auto 7px;max-height:38vh;overflow:auto;-webkit-overflow-scrolling:touch}
-  /* One row shape for every pickable list — the pick bar's hits and the best-available list. */
-  .prow{display:flex;align-items:center;gap:9px;padding:10px 12px;margin-bottom:4px;border-radius:12px;
-    background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));cursor:pointer;
-    -webkit-tap-highlight-color:rgba(249,156,0,.25)}
-  .prow:active{background:rgba(249,156,0,.16)}
-  .prow .nm{font-weight:800;font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .prow .tm{color:var(--mut);font-size:11px;font-weight:700;margin-right:auto;white-space:nowrap}
-  .prow .mx{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--mut);white-space:nowrap}
-  .prow .mx b{color:var(--accent)}
-  /* Watch-list groups (Targets) */
+  .pbtn[disabled]{opacity:.3;pointer-events:none}
+  .pbtn.warn{border-color:rgba(251,191,36,.4);color:var(--amber)}
+  .psearch{flex:1;min-width:0;background:var(--muted);border:1px solid var(--border);color:var(--fg);
+    padding:11px 14px;border-radius:var(--rc);font-size:16px;font-family:inherit;outline:none}
+  .psearch:focus{border-color:var(--primary)}
+  .psearch::placeholder{color:var(--mutfg);font-size:14px}
+  .phits{max-width:1500px;margin:0 auto 7px;max-height:36vh;overflow:auto;-webkit-overflow-scrolling:touch}
+  .prow{display:flex;align-items:center;gap:9px;padding:9px 11px;margin-bottom:3px;border-radius:var(--rc);
+    background:var(--muted);border:1px solid var(--border);cursor:pointer}
+  .prow:active{background:var(--sec)}
+  .prow .nm{font-weight:600;font-size:13.5px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prow .tm{color:var(--mutfg);font-size:10.5px;font-weight:600;margin-right:auto;white-space:nowrap;font-family:var(--mono)}
+  .prow .mxx{font-family:var(--mono);font-size:10.5px;font-weight:700;color:var(--mutfg);white-space:nowrap}
+  /* ---------- TARGETS / SETUP ---------- */
   .lgrp .ghd{display:flex;align-items:baseline;gap:10px;margin-bottom:3px}
-  .lgrp .gp{font-size:15px;font-weight:900;letter-spacing:-.2px}
-  .lgrp .gp i{font-style:normal;color:var(--mut);font-weight:700}
-  .lgrp .ga{margin-left:auto;font-size:11px;font-weight:800;color:var(--mut);font-family:var(--mono)}
+  .lgrp .gp{font-size:15px;font-weight:800;letter-spacing:-.2px}
+  .lgrp .gp i{font-style:normal;color:var(--mutfg);font-weight:600;font-family:var(--mono)}
+  .lgrp .ga{margin-left:auto;font-size:10.5px;font-weight:700;color:var(--mutfg);font-family:var(--mono)}
   .lgrp .ghd2{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-  .lgrp .gaway{font-size:11.5px;color:var(--mut);font-weight:700}
-  .lgrp .gbadge{margin-left:auto;font-size:9.5px;font-weight:900;letter-spacing:.6px;padding:3px 8px;
-    border-radius:6px;background:rgba(249,156,0,.16);color:var(--accent);white-space:nowrap}
-  /* Run risk */
-  .rec{border-color:rgba(251,44,54,.42);background:linear-gradient(180deg,rgba(251,44,54,.10),rgba(251,44,54,.02))}
-  .rec h2{color:var(--bad)}
-  .rrow{display:flex;align-items:center;gap:9px;padding:7px 2px}
-  .rrow .rbar{flex:1;height:7px;border-radius:999px;background:var(--glass);overflow:hidden;min-width:40px}
-  .rrow .rbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,rgba(251,44,54,.55),var(--bad))}
-  .rrow b{font-size:14px;font-weight:900;font-family:var(--mono)}
-  .rrow .rof{font-size:10.5px;color:var(--mut);font-weight:700}
-  /* Setup: order editor */
-  .ochips{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 10px}
-  .ochip{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:12px;cursor:pointer;
-    background:var(--glass);border:1px solid var(--hair);font-size:13px;font-weight:700;font-family:inherit;color:var(--ink)}
-  .ochip:active{transform:scale(.96)}
-  .ochip.set{background:linear-gradient(135deg,rgba(249,156,0,.24),rgba(249,156,0,.08));border-color:rgba(249,156,0,.5)}
-  .ochip .sl{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;flex:none;
-    border-radius:6px;background:rgba(0,0,0,.35);font-family:var(--mono);font-size:11px;font-weight:900;color:var(--accent)}
-  .ochip.me{border-color:var(--gold)}
-  .kv{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;
-    box-shadow:inset 0 -1px 0 var(--hair2)}
-  .kv:last-child{box-shadow:none}
-  .kv .k{color:var(--mut);font-size:13px}
-  .kv .v{font-weight:800;font-size:15px;text-align:right}
-  .kv input{width:72px;background:var(--glass);border:1px solid var(--hair);color:var(--ink);font-family:var(--mono);
-    padding:6px 9px;border-radius:9px;font-size:14px;font-weight:800;text-align:center;outline:none}
-  .empty{color:var(--mut);font-size:13px;text-align:center;padding:22px 10px}
-  .foot{color:var(--mut);font-size:11.5px;line-height:1.7;margin:24px 0 0;padding-top:15px;border-top:1px solid var(--hair2)}
-  .foot a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(249,156,0,.3)}
-  @media (max-width:430px){ th,td{padding:9px 5px;font-size:12.5px} }
+  .lgrp .gaway{font-size:11.5px;color:var(--mutfg);font-weight:600}
+  .lgrp .gbadge{margin-left:auto;font-size:9.5px;font-weight:800;letter-spacing:.08em;padding:3px 8px;
+    border-radius:var(--rc);background:rgba(220,38,38,.15);color:var(--primary);white-space:nowrap}
+  .rec{border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.06)}
+  .rrow{display:flex;align-items:center;gap:9px;padding:6px 2px}
+  .rrow .rbar{flex:1;height:6px;border-radius:999px;background:var(--muted);overflow:hidden;min-width:40px}
+  .rrow .rbar i{display:block;height:100%;background:linear-gradient(90deg,rgba(239,68,68,.5),var(--destructive))}
+  .rrow b{font-size:14px;font-weight:800;font-family:var(--mono)}
+  .rrow .rof{font-size:10.5px;color:var(--mutfg);font-weight:600}
+  .ochips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
+  .ochip{display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:var(--rc);cursor:pointer;
+    background:var(--muted);border:1px solid var(--border);font-size:12.5px;font-weight:600;font-family:inherit;color:var(--fg)}
+  .ochip.set{background:rgba(220,38,38,.14);border-color:rgba(220,38,38,.4)}
+  .ochip .sl{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;flex:none;
+    border-radius:var(--rc);background:rgba(0,0,0,.35);font-family:var(--mono);font-size:10.5px;font-weight:800;color:var(--primary)}
+  .ochip.me{border-color:var(--amber)}
+  .kv2{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 0;
+    border-bottom:1px solid rgba(31,41,55,.5)}
+  .kv2:last-child{border-bottom:0}
+  .kv2 .k{color:var(--mutfg);font-size:12.5px}
+  .kv2 .v{font-weight:700;font-size:14px;text-align:right}
+  .kv2 input{width:70px;background:var(--muted);border:1px solid var(--border);color:var(--fg);font-family:var(--mono);
+    padding:6px 9px;border-radius:var(--rc);font-size:14px;font-weight:700;text-align:center;outline:none}
+  .foot{color:var(--mutfg);font-size:11.5px;line-height:1.7;margin:22px 0 0;padding-top:14px;border-top:1px solid var(--border)}
+  .foot a{color:var(--sky);text-decoration:none}
+  /* ============ iPad and up: board left, 320px rail right ============ */
+  @media (min-width:1024px){
+    body{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+    .shell{flex-direction:row;align-items:flex-start;gap:0}
+    .main{flex:1;min-width:0}
+    .rail{order:0;border-bottom:0}
+    /* The rail sticks so My Team and the queue stay on screen while the board scrolls —
+       that side-by-side is the whole reason to use the iPad's width. */
+    .rail{width:var(--rail);flex:none;border-top:0;border-left:1px solid var(--border);
+      position:sticky;top:56px;max-height:calc(100vh - 56px);overflow:auto;
+      background:var(--sidebar);padding:16px 14px 90px}
+    .raild>summary{display:none}
+    .raild>.body{padding-top:0}
+    .wrap{padding:0 18px}
+    .grid{--gw:112px}
+    .gridwrap{max-height:64vh}
+    .brd{min-width:0}
+    .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 66px 74px 46px 60px 52px 96px 56px 62px 70px 66px}
+    .brow{height:57px}
+    .modal{max-width:480px}
+  }
+  @media (min-width:1180px){ .grid{--gw:124px} }
+  @media (max-width:430px){ .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 52px 56px 36px 46px 42px 76px 44px 50px 56px 54px} }
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
 </style>
 </head>
 <body data-lg="RPB">
 
-<header>
-  <h1><span id="hTitle">Draft Board</span></h1>
-  <div class="sub" id="hSub">—</div>
-  <div class="statusbar">
-    <span class="lgsw" id="lgsw">
-      <button data-lg="RPB">RPB</button><button data-lg="MWV">MWV</button>
-    </span>
-    <span class="chip load" id="chipFfa"><span class="dot"></span><span id="chipFfaTxt">Loading FFA…</span></span>
+<div class="topbar">
+  <div class="tbin">
+    <div class="brand"><span class="tile">🏈</span><span id="hTitle">Draft<small id="hSub">—</small></span></div>
+    <span class="lgsw" id="lgsw"><button data-lg="RPB">RPB</button><button data-lg="MWV">MWV</button></span>
+    <span class="chip load" id="chipFfa"><span class="dot"></span><span id="chipFfaTxt">Loading…</span></span>
     <span class="chip snap" id="chipSnap"><span class="dot"></span><span id="chipSnapTxt">snapshot</span></span>
     <button class="chip" id="refreshBtn">↻</button>
   </div>
-</header>
-
-<div class="wrap">
-  <nav>
-    <button data-t="draft" class="on">🎯 Draft</button>
-    <button data-t="board">📕 Board</button>
-    <button data-t="targets">👁 Targets</button>
-    <button data-t="setup">⚙︎ Setup</button>
-  </nav>
-
-  <section class="on" id="draft"><div id="draftEl"></div></section>
-  <section id="board"><div id="boardEl"></div></section>
-  <section id="targets"><div id="targetsEl"></div></section>
-  <section id="setup"><div id="setupEl"></div></section>
-
-  <div class="foot">
-    ADP and projections are fetched live from the
-    <a href="https://thefantasyfootballadvice.com" target="_blank" rel="noopener">Fantasy Football Advice</a> API on load
-    and every 5 minutes. Rank, Value, SOS and auction $ come from the FFA CSV export and ship with the app —
-    the API does not serve them. Pop is FantasyPros roster%. Every pick you enter stays on this device.
-    Unofficial — not affiliated with CBS Sports, FantasyPros or the NFL.
-  </div>
 </div>
+
+<div class="shell">
+  <div class="main"><div class="wrap">
+    <nav>
+      <button data-t="board" class="on">Rankings</button>
+      <button data-t="draft">Draft Board</button>
+      <button data-t="targets">Targets</button>
+      <button data-t="setup">Settings</button>
+    </nav>
+    <section class="on" id="board"><div id="boardEl"></div></section>
+    <section id="draft"><div id="draftEl"></div></section>
+    <section id="targets"><div id="targetsEl"></div></section>
+    <section id="setup"><div id="setupEl"></div></section>
+    <div class="foot">
+      ADP and projections are fetched live from the
+      <a href="https://thefantasyfootballadvice.com" target="_blank" rel="noopener">Fantasy Football Advice</a> API
+      on load and every 5 minutes. Rank, Value, SOS and auction $ come from the FFA CSV export; tiers are FantasyPros
+      expert tiers; player notes are FFA's own calls and video intel, captured — the API serves none of these.
+      Every pick you enter stays on this device. Unofficial — not affiliated with CBS Sports, FantasyPros or the NFL.
+    </div>
+  </div></div>
+  <aside class="rail" id="railEl"></aside>
+</div>
+
+<div class="ovl hidden" id="ovl"><div class="modal" id="modal"></div></div>
 
 <div class="pickbar hidden" id="pickbar">
   <div class="phits" id="pbHits"></div>
   <div class="pbrow">
     <div class="onclock" id="pbClock"></div>
     <button class="pbtn" id="pbUndo" title="Undo last pick">↩</button>
-    <button class="pbtn warn" id="pbSkip" title="Someone picked and you missed the name">⤼</button>
+    <button class="pbtn warn" id="pbSkip" title="A pick happened and you missed the name">⤼</button>
   </div>
   <div class="pbrow">
     <input class="psearch" id="pbSearch" type="search" autocomplete="off" autocorrect="off"
@@ -326,28 +444,41 @@ const ADP_SLIDE=3;                    // how far past his ADP a player is still 
 const FALL_W=2;                       // how hard a pick past ADP counts against raw value
 const NEED_BOOST=.35, FILLED_DECAY=.75;
 
+/* FFA's tier ramp, read off the rendered board. Not a hue gradient — a hand-picked cycle that
+   starts hot for the elite tiers, goes cool through the middle, and dumps the tail into slate.
+   [border, label] per tier; index 0 is tier 1. */
+const TIER_COLORS=[
+  ["#f43f5e","#fb7185"],["#fb923c","#fb923c"],["#facc15","#facc15"],["#10b981","#34d399"],
+  ["#0ea5e9","#38bdf8"],["#8b5cf6","#a78bfa"],["#f472b6","#f472b6"],["#14b8a6","#2dd4bf"],
+  ["#84cc16","#a3e635"],["#06b6d4","#22d3ee"],["#818cf8","#818cf8"],["#c084fc","#c084fc"],
+  ["#f59e0b","#fbbf24"]
+];
+const TIER_TAIL=["#64748b","#94a3b8"];   // tier 14+ — deliberately faded out
+
 const LEAGUES={
   RPB:{
     id:"RPB", name:"Rogers Park Bowl", myTeam:"Real Midway Monsters®",
     teams:10, rounds:16, score:"hppr", scoreLabel:"half-PPR", dstMult:2, flex:false,
     starters:{QB:1,RB:2,WR:3,TE:1,K:1,DST:1},
+    slots:["QB","RB","RB","WR","WR","WR","TE","DST","K"],
     build:{QB:1,RB:5,WR:6,TE:1,K:1,DST:1},
     ranks:"ffa-ranks-rpb", fpKey:"RPB",
     keepersFile:"keepers-rpb",          // draftOrder + keepers both live here
     myTeamRe:/^real midway monsters/i,
-    note:"10-team · half-PPR · keeper · D/ST doubled"
+    note:"10-team · half-PPR · keeper · D/ST ×2"
   },
   MWV:{
     id:"MWV", name:"Mad Wives", myTeam:"Team Spirit",
     teams:12, rounds:16, score:"ppr", scoreLabel:"full-PPR", dstMult:1, flex:true,
     starters:{QB:1,RB:2,WR:3,TE:1,K:1,DST:1},   // plus one FLEX, folded into replacement level below
+    slots:["QB","RB","RB","WR","WR","WR","TE","FLEX","DST","K"],
     build:{QB:1,RB:5,WR:6,TE:1,K:1,DST:1},
     ranks:"ffa-ranks-mwv", fpKey:"MWV",
     keepersFile:null,                   // clean redraft, no keepers
     myTeamRe:/^team spirit$/i,
     /* CBS had not scheduled the draft as of 2026-08-02 ("YOUR DRAFT HAS NOT BEEN SET UP"), so no
        slot order exists to ship. These are the 12 team names from the league directory; the order
-       editor in Setup turns them into seats. */
+       editor in Settings turns them into seats. */
     teamNames:["#6 from Wendy's","4th and long","Bear Clawz","Chalupa Batman","Cooking with gas",
                "No Balls,  Big Chains","No Flex Zone","Team Spirit","The Dreads","The Urban Legends",
                "The Waiver Wire Wonders","Whiskey's Team"],
@@ -362,7 +493,7 @@ const num=n=>(n==null||isNaN(n))?"—":(Math.round(n*10)/10).toFixed(1);
 const int=n=>(n==null||isNaN(n))?"—":Math.round(n).toLocaleString();
 /* FFA writes "D/ST", CBS and FantasyPros write "DST". One spelling internally. */
 const normPos=p=>String(p||"").toUpperCase().replace(/[^A-Z]/g,"")==="DST"?"DST":String(p||"").toUpperCase();
-/* Join key across three sources that punctuate names differently (J.J. vs JJ, Jr. vs Jr). */
+/* Join key across four sources that punctuate names differently (J.J. vs JJ, Jr. vs Jr). */
 const key=n=>String(n||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
   .replace(/\b(jr|sr|ii|iii|iv|v)\b/g,"").replace(/[^a-z ]/g,"").replace(/\s+/g," ").trim();
 /* FFA writes "Texans D/ST"; FantasyPros writes "Houston Texans". The nickname is the only
@@ -376,7 +507,17 @@ const dstKey=n=>{
    matches, which is what keeps it from colliding. */
 const altKey=n=>{ const p=key(n).split(" ").filter(Boolean); return p.length>1?p[0][0]+" "+p[p.length-1]:(p[0]||""); };
 const surname=n=>{ const p=String(n||"").trim().split(/\s+/); return p.length>1?p.slice(1).join(" "):(p[0]||""); };
-const firstName=n=>String(n||"").trim().split(/\s+/)[0]||"";
+const initials=n=>String(n||"").trim().split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase();
+
+/* ---------- tinted pills: colour, 12% background, 20% border ---------- */
+const tint=(hex,txt,a)=>{
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return `style="color:${hex};background:rgba(${r},${g},${b},${a||.12});border:1px solid rgba(${r},${g},${b},.2)"`;
+};
+/* Value / Pop / SOS all use one green→yellow→orange→red ramp keyed to a 0–1 goodness score.
+   FFA interpolates the hue inline per row; this is the same idea with five stops. */
+const RAMP=["#ef4444","#f97316","#fbbf24","#86efac","#22c55e"];
+const rampAt=t=>RAMP[Math.max(0,Math.min(4,Math.round((isFinite(t)?t:0)*4)))];
 
 /* ============ LEAGUE STATE ============ */
 const params=new URLSearchParams(location.search);
@@ -385,19 +526,20 @@ if(!LEAGUES[LG]) LG="RPB";
 const L=()=>LEAGUES[LG];
 const SIM=Math.max(0,parseInt(params.get("sim")||"0",10)||0);
 
-const STATE={board:[],ffaRaw:null,ffaProj:null,ffaOk:false,ffaStamp:null,live:false,
-  fp:null,ranks:{},keepers:null};
+const STATE={board:[],ffaRaw:null,ffaProj:null,ffaStamp:null,live:false,
+  fp:null,ranks:{},keepers:null,notes:null};
 
 /* Storage keys are per league and never shared — two drafts, two boards, one app. */
 const kPicks =()=>(SIM?"dr-sim-":"dr-picks-")+LG;
 const kOrder =()=>"dr-order-"+LG;
 const kRounds=()=>"dr-rounds-"+LG;
+const kQueue =()=>"dr-queue-"+LG;
 const kCache =()=>"dr-cache-"+LG;
 
 /* ============ DRAFT ORDER ============
    One rule for both leagues: a hand-set order in localStorage always wins, otherwise fall back
    to what shipped. RPB ships an order inside keepers-rpb.json; MWV ships none at all and the
-   Setup editor is the only source. The override exists because rooms re-randomize. */
+   Settings editor is the only source. The override exists because rooms re-randomize. */
 function order(){
   const l=L();
   try{
@@ -417,6 +559,28 @@ function rounds(){
 }
 const keepers=()=>(L().keepersFile&&STATE.keepers&&STATE.keepers.keepers)||[];
 const keeperKeys=()=>new Set(keepers().map(k=>key(k.player)).filter(Boolean));
+
+/* ============ PLAYER NOTES ============
+   Three hand-curated FFA sources, merged offline into data/notes.json and joined here by name:
+   `shared` = FFA video stances (love/fade) + Nick's must-draft / shy-away calls with a `why`;
+   the per-league block = that league's video-intel verdict. The FFA API serves no prose at all
+   (checked: /api/projections is pure stats), so none of this can be fetched live. */
+function noteFor(name,pos){
+  const N=STATE.notes; if(!N) return null;
+  const k=key(name);
+  const s=(N.shared||{})[k]||null;
+  const v=((N[LG]||{})[k])||null;
+  if(!s&&!v) return null;
+  return {name,pos,
+    stance:s&&s.stance||null, note:s&&s.note||null,
+    call:s&&s.call||null, why:s&&s.why||null, added:s&&s.added||null,
+    verdict:v&&v.verdict||null, vAdp:v&&v.adp||null, vBoard:v&&v.board||null};
+}
+/* One glyph colour for "FFA likes him" vs "FFA is off him", so the board reads at a glance.
+   Anything neutral (watch, or a note with no stance at all) keeps the plain violet dot. */
+const POSITIVE={love:1,like:1,must:1}, NEGATIVE={fade:1,avoid:1,shy:1};
+const noteTone=n=>!n?"":(POSITIVE[n.stance]||POSITIVE[n.call])?"love":(NEGATIVE[n.stance]||NEGATIVE[n.call])?"fade":"";
+const stanceLabel=s=>({must:"Must draft",shy:"Shy away",love:"Love",like:"Like",watch:"Watch",fade:"Fade",avoid:"Avoid"}[s]||s);
 
 /* ============ BOARD ============ */
 function replacement(l){
@@ -499,11 +663,15 @@ function buildBoard(redraft,projections,fp,ffaRanks,l){
     /* Positive delta = the market is drafting them LATER than their value says: a falling bargain. */
     r.delta=(r.adpRank!=null)?Math.round(r.adpRank-r.rank):null;
     const f=fpFind(r.name,r.pos), pj=proj.get(key(r.name));
-    if(f){ r.ecr=f.ecr; r.bye=f.bye; r.pop=f.pctRostered; }
+    /* fpTier is FantasyPros' OVERALL expert tier (1..16, monotonic with ECR) — the same shape
+       FFA's tier bands use. The per-position `tier` above is a computed heuristic and only reads
+       correctly inside one position; this one is real expert data and works on the whole board. */
+    if(f){ r.ecr=f.ecr; r.bye=f.bye; r.fpTier=f.tier; r.pop=f.pctRostered; }
     if(pj){ r.games=pj.games; }
     const fx=frFind(r.name,r.pos);
     if(fx){ r.ffaRank=fx.rank; r.ffaValue=fx.value; r.ffaPosRank=fx.posRank; r.sos=fx.sos; r.auction=fx.auction;
             if(r.bye==null&&fx.bye!=null) r.bye=fx.bye; }
+    r.note=noteFor(r.name,r.pos);
   });
   return board;
 }
@@ -513,18 +681,20 @@ function buildBoard(redraft,projections,fp,ffaRanks,l){
 function boardFromSnapshot(ffaRanks,fp,l){
   const fpMap=new Map(); ((fp&&fp[l.fpKey])||[]).forEach(p=>{ const k=key(p.name); if(k) fpMap.set(k,p); });
   return ((ffaRanks&&ffaRanks.players)||[]).map(p=>{
-    const f=fpMap.get(key(p.name));
-    return {name:p.name,pos:normPos(p.pos),team:p.team||"",rank:p.rank,ffaRank:p.rank,ffaValue:p.value,
+    const f=fpMap.get(key(p.name)), pos=normPos(p.pos);
+    return {name:p.name,pos,team:p.team||"",rank:p.rank,ffaRank:p.rank,ffaValue:p.value,
       ffaPosRank:p.posRank,posRank:p.posRank,adp:(p.adp!=null&&p.adp>=999)?null:p.adp,bye:p.bye,
-      sos:p.sos,auction:p.auction,pop:f?f.pctRostered:null,tier:null,vbd:null,pts:null,delta:null,snapshot:true};
+      sos:p.sos,auction:p.auction,pop:f?f.pctRostered:null,fpTier:f?f.tier:null,
+      tier:null,vbd:null,pts:null,delta:null,snapshot:true,note:noteFor(p.name,pos)};
   }).sort((a,b)=>(a.rank||9999)-(b.rank||9999));
 }
 
 /* ============ LOAD ============ */
 async function loadStatic(){
-  const files=["fantasypros","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb"];
-  const [fp,rRpb,rMwv,kp]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
-  STATE.fp=fp; STATE.ranks["ffa-ranks-rpb"]=rRpb; STATE.ranks["ffa-ranks-mwv"]=rMwv; STATE.keepers=kp;
+  const files=["fantasypros","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb","notes"];
+  const [fp,rRpb,rMwv,kp,nt]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
+  STATE.fp=fp; STATE.ranks["ffa-ranks-rpb"]=rRpb; STATE.ranks["ffa-ranks-mwv"]=rMwv;
+  STATE.keepers=kp; STATE.notes=nt;
 }
 async function loadFFA(){
   const [redraft,projections]=await Promise.all([
@@ -547,7 +717,7 @@ function rebuild(){
 }
 /* Only the fields the board actually prints. Losing the tail beats losing the cache, so the
    write degrades through smaller slices rather than guessing a safe row count up front. */
-const CACHE_FIELDS=["name","pos","team","bye","tier","vbd","pts","rank","posRank","adp","delta",
+const CACHE_FIELDS=["name","pos","team","bye","tier","fpTier","vbd","pts","rank","posRank","adp","delta",
                     "ffaRank","ffaValue","ffaPosRank","sos","auction","pop"];
 function saveCache(){
   const slim=STATE.board.map(r=>{ const o={}; for(const k of CACHE_FIELDS) if(r[k]!=null) o[k]=r[k]; return o; });
@@ -560,20 +730,32 @@ function loadCache(){
   try{
     const c=JSON.parse(localStorage.getItem(kCache())||"null");
     if(!c||!c.board||!c.board.length) return false;
-    STATE.board=c.board; return true;
+    STATE.board=c.board.map(r=>({...r,note:noteFor(r.name,r.pos)}));
+    return true;
   }catch(e){ return false; }
 }
 
 /* ============ DRAFT STATE ============ */
-let DRAFT={v:1,picks:[]};
+let DRAFT={v:1,picks:[]}, QUEUE=[];
 function loadDraft(){
-  DRAFT={v:1,picks:[]};
+  DRAFT={v:1,picks:[]}; QUEUE=[];
   try{
     const d=JSON.parse(localStorage.getItem(kPicks())||"null");
     if(d&&Array.isArray(d.picks)) DRAFT.picks=d.picks;
   }catch(e){}
+  try{
+    const q=JSON.parse(localStorage.getItem(kQueue())||"null");
+    if(Array.isArray(q)) QUEUE=q;
+  }catch(e){}
 }
 function saveDraft(){ try{ localStorage.setItem(kPicks(),JSON.stringify(DRAFT)); }catch(e){} }
+function saveQueue(){ try{ localStorage.setItem(kQueue(),JSON.stringify(QUEUE)); }catch(e){} }
+function toggleQueue(name){
+  const k=key(name), i=QUEUE.findIndex(x=>key(x)===k);
+  if(i>=0) QUEUE.splice(i,1); else QUEUE.push(name);
+  saveQueue();
+}
+const inQueue=name=>QUEUE.some(x=>key(x)===key(name));
 const takenKeys=()=>new Set(DRAFT.picks.map(p=>key(p.name)).filter(Boolean));
 const pickOf=row=>({name:row.name,pos:normPos(row.pos),team:row.team||null,posRank:row.posRank||null,
   tier:row.tier!=null?row.tier:null,bye:row.bye!=null?row.bye:null,vbd:row.vbd!=null?row.vbd:null,
@@ -582,6 +764,8 @@ function addPick(row){
   if(takenKeys().has(key(row.name))) return false;
   DRAFT.picks.push(pickOf(row));
   saveDraft();   // before any render — a crash mid-render must not cost the pick
+  const i=QUEUE.findIndex(x=>key(x)===key(row.name));
+  if(i>=0){ QUEUE.splice(i,1); saveQueue(); }
   return true;
 }
 /* A pick happened and he did not catch the name. The clock still has to advance or every seat
@@ -694,6 +878,23 @@ function runRisk(){
     .filter(x=>x.teams>0).sort((a,b)=>b.teams-a.teams);
   return {nextOv:c.next,teams:slots.length,picks,risk};
 }
+/* Fill the league's lineup slots greedily from a roster: starters by position first, FLEX takes
+   the best leftover RB/WR/TE, everything else falls to the bench. */
+function fillSlots(players){
+  const l=L(), pool=players.slice().sort((a,b)=>(a.ov||0)-(b.ov||0));
+  const used=new Set(), out=[];
+  l.slots.forEach(code=>{
+    let i=-1;
+    if(code==="FLEX") i=pool.findIndex((p,j)=>!used.has(j)&&["RB","WR","TE"].indexOf(p.pos)>=0);
+    else i=pool.findIndex((p,j)=>!used.has(j)&&p.pos===code);
+    if(i>=0) used.add(i);
+    out.push({code,p:i>=0?pool[i]:null});
+  });
+  const bench=pool.filter((p,j)=>!used.has(j));
+  const benchSlots=Math.max(0,rounds()-l.slots.length);
+  for(let i=0;i<Math.max(benchSlots,bench.length);i++) out.push({code:"BN",p:bench[i]||null});
+  return out;
+}
 
 /* ============ SELF-CHECK ============
    Pick numbering is the only arithmetic here that nothing else exercises, and it is silently
@@ -726,22 +927,28 @@ function check(){
       ok(cell&&cell.keeper&&key(cell.name)===key(k.player),
          k.player+" must sit at round "+rd+", slot "+slot);
     });
-    /* With k picks entered the clock must be live[k], and no pick may land on a keeper cell. */
     const probe=Math.min(24,c.live.length);
-    DRAFT.picks=new Array(probe).fill(0).map((_,i)=>({name:"probe"+i,pos:"RB"}));
+    /* Probe names must be alphabetic: key() strips digits, so "probe0" and "probe1" collapse to
+       the same key and the lineup-slot uniqueness assertion below fails on the check's own data. */
+    const alpha=i=>"probe "+String(i).split("").map(d=>"abcdefghij"[+d]).join("");
+    DRAFT.picks=new Array(probe).fill(0).map((_,i)=>({name:alpha(i),pos:"RB"}));
     ok(clock().cur===c.live[probe],"after "+probe+" picks the clock is live["+probe+"]");
     const g2=grid(), seen=new Set();
-    Object.keys(g2.cells).forEach(k2=>{
-      ok(!seen.has(k2),"cell "+k2+" is only written once"); seen.add(k2);
-    });
+    Object.keys(g2.cells).forEach(k2=>{ ok(!seen.has(k2),"cell "+k2+" is only written once"); seen.add(k2); });
     const keptCells=new Set(keepers().map(k=>{
       const rd=Number(String(k.round).replace(/\D/g,"")); return rd+"-"+slotOfTeam[k.team];
     }));
     Object.keys(g2.cells).forEach(k2=>{
-      const cell=g2.cells[k2];
-      if(!cell.keeper) ok(!keptCells.has(k2),"pick landed on keeper cell "+k2);
+      if(!g2.cells[k2].keeper) ok(!keptCells.has(k2),"pick landed on keeper cell "+k2);
     });
     ok(Object.keys(g2.cells).length<=n*R,"cells never exceed rounds × teams");
+    /* Lineup slots must never double-count a player or invent one. */
+    const mine=teamRosters().find(t=>t.mine);
+    if(mine){
+      const slots=fillSlots(mine.players), placed=slots.filter(s=>s.p).map(s=>key(s.p.name));
+      ok(new Set(placed).size===placed.length,"no player fills two lineup slots");
+      ok(placed.length===mine.players.length,"every rostered player lands in a slot");
+    }
   } finally { DRAFT.picks=saved; }
   return fails.length?("FAIL ("+fails.length+")\n"+fails.slice(0,20).join("\n"))
     :"OK — "+LG+" "+(clock()?clock().n:"?")+" teams × "+rounds()+" rounds, "+keepers().length+" keepers skipped";
@@ -773,56 +980,311 @@ function pool(){
   const taken=takenKeys(), kept=keeperKeys();
   return STATE.board.filter(r=>!taken.has(key(r.name))&&!kept.has(key(r.name)));
 }
+const findRow=name=>STATE.board.find(b=>key(b.name)===key(name))||null;
 
-/* ============ RENDER: shared bits ============ */
+/* ============ RENDER HELPERS ============ */
 const posPill=p=>`<span class="pos ${esc(normPos(p))}">${esc(normPos(p)==="DST"?"D/ST":normPos(p))}</span>`;
-function deltaCell(d){
-  if(d==null) return '<span class="delta flat">—</span>';
-  if(d>=8) return `<span class="delta up">+${d}</span>`;
-  if(d<=-8) return `<span class="delta dn">${d}</span>`;
-  return `<span class="delta flat">${d>0?"+":""}${d}</span>`;
+function valuePill(v){
+  if(v==null) return `<span class="bc dim">—</span>`;
+  const c=rampAt(v/1000);
+  return `<span class="pill" ${tint(c,null,.13)}>${int(v)}</span>`;
+}
+function popPill(p){
+  if(p==null) return `<span class="bc dim">—</span>`;
+  return `<span class="pill" ${tint(rampAt(p/100),null,.12)}>${Math.round(p)}%</span>`;
+}
+function sosPill(s){
+  if(s==null) return `<span class="bc dim">—</span>`;
+  /* SOS is a rank 1–32 where 1 is the easiest schedule, so goodness runs the other way. */
+  return `<span class="pill" ${tint(rampAt(1-(s-1)/31),null,.12)}>${s}</span>`;
+}
+function cashPill(a){
+  if(a==null) return `<span class="bc dim">—</span>`;
+  return `<span class="pill" ${tint("#34d399",null,.1)}>$${a}</span>`;
+}
+function adjCell(d){
+  if(d==null) return `<span class="bc dim">0%</span>`;
+  if(d>=8) return `<span class="up">▲${d}</span>`;
+  if(d<=-8) return `<span class="dn">▼${Math.abs(d)}</span>`;
+  return `<span class="bc dim">${d>0?"+":""}${d}</span>`;
 }
 const prow=(r,extra)=>`<div class="prow" data-pick="${esc(r.name)}">
   ${posPill(r.pos)}<span class="nm">${esc(r.name)}</span>
   <span class="tm">${esc(r.team||"")}${r.bye?" · bye "+r.bye:""}</span>
-  <span class="mx">${extra||""}</span></div>`;
+  <span class="mxx">${extra||""}</span></div>`;
 
-/* ============ RENDER: DRAFT (the grid) ============ */
+/* ============ RENDER: BOARD (Rankings) ============ */
+let boardPos="ALL", boardQ="", boardSort="vbd", boardSortUser=false;
+function renderBoard(){
+  const el=$("#boardEl"), l=L();
+  if(!STATE.board.length){ el.innerHTML='<div class="empty">Board unavailable — check the status chip.</div>'; return; }
+  /* The default follows the data, in both directions. The first render happens before the API
+     answers, so an unconditional flip to FFA rank on the snapshot board would stick there for the
+     rest of the session and My VBD would never come back. Once he picks a sort himself, it holds. */
+  if(!boardSortUser) boardSort=STATE.live?"vbd":"ffa";
+
+  let rows=pool();
+  if(boardPos!=="ALL") rows=rows.filter(r=>r.pos===boardPos);
+  if(boardQ) rows=rows.filter(r=>key(r.name).includes(key(boardQ))||String(r.team||"").toLowerCase().includes(boardQ.toLowerCase()));
+  /* Sorting by FFA rank must drop the unranked rather than pile them at the top —
+     FFA publishes 787 of the API's 801, and a null rank is "not on their board". */
+  if(boardSort==="ffa") rows=rows.filter(r=>r.ffaRank!=null).slice().sort((a,b)=>a.ffaRank-b.ffaRank);
+  else if(boardSort==="adp") rows=rows.filter(r=>r.adp!=null).slice().sort((a,b)=>a.adp-b.adp);
+  const shown=rows.slice(0,220);
+
+  let h=`<div class="fbar">`;
+  h+=["ALL",...POS_ORDER].map(p=>`<button data-p="${p}" class="${boardPos===p?"on":""}">${p==="DST"?"D/ST":p}</button>`).join("");
+  h+=`<input id="boardSearch" type="search" placeholder="Search player or team…" value="${esc(boardQ)}"></div>`;
+  h+=`<div class="fbar"><span class="ml" style="margin-right:4px">Sort</span>
+    <button data-s="vbd" class="${boardSort==="vbd"?"on":""}"${STATE.live?"":" disabled"}>My VBD</button>
+    <button data-s="ffa" class="${boardSort==="ffa"?"on":""}">FFA Rank</button>
+    <button data-s="adp" class="${boardSort==="adp"?"on":""}">ADP</button>
+    <span class="ml" style="margin-left:auto">${esc(l.scoreLabel)} · ${int(shown.length)} of ${int(rows.length)}</span></div>`;
+
+  h+=`<div class="brdwrap"><div class="brd"><div class="bhd">
+    <span></span><span class="l">Player</span><span>Rank</span><span>ADP</span><span>Bye</span>
+    <span>Pop</span><span>SOS</span><span>Value</span><span>ADJ</span><span>$</span><span>VBD</span><span>Action</span></div>`;
+
+  /* Tier bands. Sorted by FFA rank or VBD across all positions we use FantasyPros' OVERALL expert
+     tier (real data, monotonic with ECR). Filtered to a single position we use the computed
+     per-position tier, which is what "RB tier 3" means to a drafter. Sorted by ADP, neither
+     ordering matches a tier sequence, so no bands at all. */
+  const bandBy=boardSort==="adp"?null:(boardPos==="ALL"?"fpTier":"tier");
+  let lastBand=null, bandCount=0;
+  shown.forEach(r=>{
+    if(bandBy){
+      const t=r[bandBy];
+      /* Only ever open a band going DOWN the ramp. My VBD ordering is not monotonic in the
+         experts' tier — a player I rate above the room sits higher than his tier says — so
+         `t !== lastBand` opened a new band on every flip-flop and produced 165 of them on a
+         220-row board. A band means "you are now into tier N territory", which only happens once. */
+      if(t!=null&&(lastBand==null||t>lastBand)){
+        const [bd,lb]=t<=13?TIER_COLORS[t-1]:TIER_TAIL;
+        const a=t<=13?.6:.4;
+        const rr=parseInt(bd.slice(1,3),16),gg=parseInt(bd.slice(3,5),16),bb=parseInt(bd.slice(5,7),16);
+        h+=`<div class="tband" style="border-top-color:rgba(${rr},${gg},${bb},${a})">
+          <span style="color:${lb}">Tier ${t}</span>${boardPos==="ALL"?'<em>expert consensus</em>':'<em>'+esc(boardPos)+' value tier</em>'}</div>`;
+        lastBand=t; bandCount++;
+      }
+    }
+    const n=r.note, tone=noteTone(n);
+    h+=`<div class="brow ${esc(r.pos)}" data-n="${esc(r.name)}">
+      <span class="stripe"></span>
+      <span class="pcell">${posPill(r.pos)}<span class="pn">${esc(r.name)}</span>
+        ${n?`<span class="hasnote ${tone}" title="FFA note"></span>`:""}
+        <span class="tm">${esc(r.team||"")}</span>
+        <span class="pr">${esc(boardSort==="ffa"?(r.ffaPosRank||r.posRank||""):(r.posRank||""))}</span></span>
+      <span class="bc">${r.ffaRank!=null?r.ffaRank:(r.rank||"—")}</span>
+      <span class="bc mut">${r.adp!=null?num(r.adp):"—"}</span>
+      <span class="bc mut">${r.bye||"—"}</span>
+      <span class="bc">${popPill(r.pop)}</span>
+      <span class="bc">${sosPill(r.sos)}</span>
+      <span class="bc">${valuePill(r.ffaValue)}</span>
+      <span class="bc">${adjCell(r.delta)}</span>
+      <span class="bc">${cashPill(r.auction)}</span>
+      <span class="bc" style="color:${r.vbd!=null&&r.vbd>0?"var(--emerald)":"var(--mutfg)"}">${r.vbd!=null?num(r.vbd):"—"}</span>
+      <span class="bc"><button class="dbtn" data-draft="${esc(r.name)}">Draft</button></span></div>`;
+  });
+  h+=`</div></div>`;
+  if(rows.length>220) h+=`<div class="note">Showing the top 220 of ${int(rows.length)} — filter by position or search to go deeper.</div>`;
+  h+=`<div class="note"><b>Tap a row</b> for FFA's notes on that player and the full stat card. <b>Draft</b> records
+    him to whichever seat is on the clock. <b>Value</b>, <b>SOS</b> and <b>$</b> are FFA's own;
+    <b>Pop</b> is FantasyPros roster%; <b>ADJ</b> compares VBD rank to market ADP — positive means the room
+    is letting him slide. <b>VBD</b> is projected ${esc(l.scoreLabel)} points above the last startable player
+    at that position.${bandBy?` <b>Tier bands</b> are ${boardPos==="ALL"?"FantasyPros expert consensus tiers":"computed value tiers inside "+esc(boardPos)}.`:""}</div>`;
+  const fr=STATE.ranks[l.ranks];
+  if(fr) h+=`<div class="note warn"><b>Rank, Value, SOS and $</b> come from the FFA CSV export captured
+    <b>${esc(String(fr.updated||"—"))}</b> and do <b>not</b> refresh with the page — the API serves projections and
+    ADP only. <b>My VBD</b> re-scores those same projections for ${esc(l.id)} specifically (${esc(l.note)}),
+    which is why the two orders differ. Neither is wrong; the gap between them is the useful part.</div>`;
+  if(l.dstMult!==1) h+=`<div class="note">D/ST points are doubled to match ${esc(l.id)} scoring, so every defense
+    ranks well above FFA's published order here. That is the league, not a bug.</div>`;
+  el.innerHTML=h;
+
+  el.querySelectorAll(".fbar button[data-p]").forEach(b=>b.onclick=()=>{ boardPos=b.dataset.p; renderBoard(); });
+  el.querySelectorAll(".fbar button[data-s]").forEach(b=>b.onclick=()=>{ boardSort=b.dataset.s; boardSortUser=true; renderBoard(); });
+  const s=el.querySelector("#boardSearch");
+  if(s) s.oninput=e=>{ boardQ=e.target.value; const p=e.target.selectionStart; renderBoard();
+    const n=$("#boardSearch"); if(n){ n.focus(); n.setSelectionRange(p,p); } };
+
+  /* A tap that drifts is a scroll, not a pick. Without this the board eats players every time
+     he flicks the list with a thumb — and on the clock he will never notice which one. */
+  const wrapEl=el.querySelector(".brd");
+  let moved=false,x0=0,y0=0;
+  wrapEl.addEventListener("touchstart",e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; moved=false; },{passive:true});
+  wrapEl.addEventListener("touchmove",e=>{ const t=e.touches[0];
+    if(Math.abs(t.clientX-x0)>8||Math.abs(t.clientY-y0)>8) moved=true; },{passive:true});
+  wrapEl.addEventListener("mousedown",()=>{ moved=false; });
+  wrapEl.addEventListener("click",e=>{
+    if(moved) return;
+    const d=e.target.closest("button[data-draft]");
+    if(d){ takeByName(d.dataset.draft); return; }
+    const row=e.target.closest(".brow");
+    if(row) openPlayer(row.dataset.n);
+  });
+}
+
+/* ============ RENDER: PLAYER MODAL ============
+   FFA opens a centred card on row click, not a tooltip and not an expandable row. Same shape here:
+   header, two stat cards, chip rows, then the notes card — which is the only thing on the page a
+   drafter cannot get from a spreadsheet. */
+let modalName=null;
+function openPlayer(name){
+  const r=findRow(name); if(!r) return;
+  modalName=r.name;
+  renderModal();
+  $("#ovl").classList.remove("hidden");
+}
+function closePlayer(){ modalName=null; $("#ovl").classList.add("hidden"); }
+function renderModal(){
+  const r=findRow(modalName); if(!r) return;
+  const n=r.note, taken=takenKeys().has(key(r.name)), c=clock();
+  const stanceTag=s=>`<span class="stance ${esc(s)}">${esc(stanceLabel(s))}</span>`;
+  let h=`<div class="mhd">
+    <div class="mav">${esc(initials(r.name))}</div>
+    <div style="min-width:0">
+      <div class="mnm">${esc(r.name)}</div>
+      <div class="mmeta">${posPill(r.pos)}<span>${esc(r.ffaPosRank||r.posRank||"")}</span>
+        <span>${esc(r.team||"")}</span>${r.bye?`<span>Bye ${r.bye}</span>`:""}
+        ${r.age?`<span>${num(r.age)} yrs</span>`:""}</div>
+    </div>
+    <button class="mx" data-close="1">✕</button></div>`;
+
+  h+=`<div class="mgrid">
+    <div class="mcard"><div class="ml">Market ADP</div>
+      <div class="kv"><i>Overall</i><b>${r.adp!=null?"#"+num(r.adp):"—"}</b></div>
+      <div class="kv"><i>Pos rank</i><b style="color:var(--sky)">${esc(r.posRank||"—")}</b></div></div>
+    <div class="mcard"><div class="ml">★ FFA Rankings</div>
+      <div class="kv"><i>Overall</i><b>${r.ffaRank!=null?"#"+r.ffaRank:"—"}</b></div>
+      <div class="kv"><i>Pos rank</i><b style="color:#a78bfa">${esc(r.ffaPosRank||"—")}</b></div></div></div>`;
+
+  h+=`<div class="mrow"><span class="ml">Draft Pop</span>${popPill(r.pop)}
+      <span class="ml">Value</span>${valuePill(r.ffaValue)}</div>
+    <div class="mrow"><span class="ml">Schedule strength</span>${sosPill(r.sos)}
+      <span style="font-family:var(--mono);font-size:10.5px;color:var(--mutfg)">of 32</span>
+      <span class="ml">Auction</span>${cashPill(r.auction)}</div>`;
+  if(r.vbd!=null||r.fpTier!=null) h+=`<div class="mrow">
+      <span class="ml">VBD</span><span class="pill" ${tint(r.vbd>0?"#34d399":"#94a3b8",null,.1)}>${num(r.vbd)}</span>
+      <span class="ml">Tier</span><span class="pill" ${tint((r.fpTier&&r.fpTier<=13?TIER_COLORS[r.fpTier-1][1]:TIER_TAIL[1]),null,.12)}>${r.fpTier!=null?r.fpTier:"—"}</span>
+    </div>`;
+
+  h+=`<div class="mnote"><div class="ml">Player notes</div>`;
+  if(!n||(!n.note&&!n.why&&!n.verdict)){
+    h+=`<p style="color:var(--mutfg);font-style:italic;font-size:13.5px">No FFA note captured for ${esc(r.name)}.
+      Notes exist for the ~${STATE.notes?Object.keys(STATE.notes.shared||{}).length:0} players FFA has actually
+      written or talked about — the rest of the board is stats only.</p>`;
+  }else{
+    if(n.stance||n.call) h+=`<div style="display:flex;gap:6px;margin-top:8px">${n.stance?stanceTag(n.stance):""}${n.call?stanceTag(n.call):""}</div>`;
+    if(n.why)     h+=`<p>${esc(n.why)}<span class="src">FFA call${n.added?" · "+esc(n.added):""}</span></p>`;
+    if(n.note)    h+=`<p>${esc(n.note)}<span class="src">FFA video intel</span></p>`;
+    if(n.verdict) h+=`<p>${esc(n.verdict)}<span class="src">${esc(LG)} video intel${n.vAdp?" · going "+esc(n.vAdp):""}${n.vBoard?" · "+esc(n.vBoard):""}</span></p>`;
+  }
+  h+=`</div>`;
+
+  h+=`<div class="mfoot">
+    <button class="go" data-draft="1"${taken||!c||c.cur==null?" disabled":""}>${
+      taken?"Already off the board":c&&c.cur!=null?`Draft at ${ovLabel(c.cur,c.n)} · ${esc(c.teamAt(c.cur))}`:"Draft"}</button>
+    <button class="sec" data-q="1">${inQueue(r.name)?"★ Queued":"☆ Queue"}</button></div>`;
+
+  const m=$("#modal"); m.innerHTML=h;
+  m.querySelector("button[data-close]").onclick=closePlayer;
+  const d=m.querySelector("button[data-draft]");
+  if(d) d.onclick=()=>{ takeByName(r.name); closePlayer(); };
+  m.querySelector("button[data-q]").onclick=()=>{ toggleQueue(r.name); renderModal(); renderRail(); };
+}
+
+/* ============ RENDER: RAIL ============ */
+function renderRail(){
+  const el=$("#railEl"), l=L(), c=clock();
+  const mine=c?teamRosters().find(t=>t.mine):null;
+  let h="";
+
+  if(keepers().length){
+    h+=`<div class="rsec"><div class="rhd"><span class="ml">Keepers</span>
+      <span class="cnt">${keepers().length}</span></div>`;
+    h+=keepers().slice().sort((a,b)=>(+String(a.round).replace(/\D/g,""))-(+String(b.round).replace(/\D/g,"")))
+      .map(k=>`<div class="slot"><span class="sc ${esc(normPos(k.pos))}">R${esc(String(k.round).replace(/\D/g,""))}</span>
+        <span class="sn">${esc(k.player)}</span><span class="sx">${esc(k.team)}</span></div>`).join("");
+    h+=`</div>`;
+  }
+
+  h+=`<div class="rsec"><div class="rhd"><span class="ml">Queue</span><span class="cnt">${QUEUE.length}</span></div>`;
+  if(!QUEUE.length){
+    h+=`<div class="empty" style="padding:10px 2px;text-align:left;font-size:12px">Queue players from the board to track your targets in order.</div>`;
+  }else{
+    h+=QUEUE.map(nm=>{
+      const r=findRow(nm);
+      return `<div class="qrow" data-open="${esc(nm)}">${r?posPill(r.pos):""}
+        <span class="qn">${esc(nm)}</span>
+        <span class="qx">${r&&r.adp!=null?"ADP "+num(r.adp):""}</span></div>`;
+    }).join("");
+  }
+  h+=`</div>`;
+
+  h+=`<div class="rsec"><div class="rhd"><span class="ml">My Team</span>
+    <span class="cnt">${esc(l.myTeam)}</span></div>`;
+  if(!c){
+    h+=`<div class="empty" style="padding:10px 2px;text-align:left;font-size:12px">Set the draft order in Settings to track your roster.</div>`;
+  }else{
+    const have=myHave();
+    h+=`<div class="cstrip">`+POS_ORDER.map(p=>`<span><span class="${p}">${p==="DST"?"D/ST":p}</span><i>:</i>${have[p]||0}</span>`).join("");
+    h+=`<span class="left">${c.cur==null?0:c.left} left</span></div>`;
+    const slots=fillSlots(mine?mine.players:[]);
+    let benchStarted=false;
+    slots.forEach(s=>{
+      if(s.code==="BN"&&!benchStarted){ benchStarted=true; h+=`<div class="bnhd"><span class="ml">Bench</span></div>`; }
+      h+=`<div class="slot"><span class="sc ${esc(s.code)}">${esc(s.code==="DST"?"D/ST":s.code)}</span>`;
+      h+=s.p?`<span class="sn">${s.p.keeper?"🔒 ":""}${esc(s.p.name)}</span>
+              <span class="sx">${s.p.keeper?"K":ovLabel(s.p.ov,c.n)}</span>`
+            :`<span class="sn mt">Empty</span>`;
+      h+=`</div>`;
+    });
+  }
+  h+=`</div>`;
+
+  const wide=matchMedia("(min-width:1024px)").matches;
+  const roster=mine?mine.players.length:0;
+  el.innerHTML=`<details class="raild"${wide?" open":""}><summary>My Team · Queue · Keepers
+      <span class="mine">${roster} rostered${QUEUE.length?" · ★"+QUEUE.length:""}</span></summary>
+    <div class="body">${h}</div></details>`;
+  el.querySelectorAll(".qrow[data-open]").forEach(b=>b.onclick=()=>openPlayer(b.dataset.open));
+}
+/* The rail is a sidebar on iPad and a collapsed drawer on a phone, so a rotation has to
+   re-decide which — otherwise landscape leaves it shut with a summary that cannot be seen. */
+matchMedia("(min-width:1024px)").addEventListener("change",()=>renderRail());
+
+/* ============ RENDER: DRAFT BOARD (the grid) ============ */
 let onlyMine=false;
 function renderDraft(){
   const el=$("#draftEl"), l=L(), g=grid();
   if(!g){
     el.innerHTML=`<div class="note bad"><b>No draft order for ${esc(l.name)} yet.</b>
       ${l.keepersFile?"keepers-rpb.json has no draftOrder.":"CBS had not scheduled this draft when the app was built, so no slot order exists to ship."}
-      Set it in <b>⚙︎ Setup</b> — it takes about thirty seconds.</div>`;
+      Set it in <b>Settings</b> — it takes about thirty seconds.</div>`;
     return;
   }
   const c=g.c;
   let h="";
-
   if(SIM) h+=`<div class="note warn"><b>Sim mode.</b> ${int(DRAFT.picks.length)} picks were filled from the top of
     the board to exercise the grid. Nothing here touches your real draft — sim picks are stored separately.
     Drop <code>?sim=</code> from the URL to go back.</div>`;
 
-  /* Header: whose turn, how far away yours is. */
-  const me=c.ord.find(e=>e.mine);
-  h+=`<div class="card"><h2>🏟️ ${esc(l.name)} draft board
+  h+=`<div class="card"><h2>${esc(l.name)} draft board
     <span class="rt">${c.n} teams · ${c.R} rounds · ${int(DRAFT.picks.length)} in</span></h2>`;
   if(c.cur==null){
     h+=`<div class="note">Draft complete — all ${int(c.live.length)} picks are in.</div>`;
   }else{
-    h+=`<div class="kv"><span class="k">On the clock</span><span class="v">${ovLabel(c.cur,c.n)} · ${esc(c.teamAt(c.cur))}</span></div>`;
-    if(c.slot) h+=`<div class="kv"><span class="k">Your next pick</span><span class="v">${
-      c.next!=null?`${ovLabel(c.next,c.n)} <span style="color:var(--mut);font-weight:600">(${c.live.filter(x=>x>=c.cur&&x<c.next).length} away · ${c.left} left)</span>`:"—"}</span></div>`;
+    h+=`<div class="kv2"><span class="k">On the clock</span><span class="v">${ovLabel(c.cur,c.n)} · ${esc(c.teamAt(c.cur))}</span></div>`;
+    if(c.slot) h+=`<div class="kv2"><span class="k">Your next pick</span><span class="v">${
+      c.next!=null?`${ovLabel(c.next,c.n)} <span style="color:var(--mutfg);font-weight:500">(${c.live.filter(x=>x>=c.cur&&x<c.next).length} away · ${c.left} left)</span>`:"—"}</span></div>`;
   }
-  if(!me) h+=`<div class="note warn">No seat is starred as yours — Targets and run risk need it. Set it in <b>⚙︎ Setup</b>.</div>`;
+  if(!c.ord.find(e=>e.mine)) h+=`<div class="note warn">No seat is starred as yours — Targets, My Team and run risk all need it. Set it in <b>Settings</b>.</div>`;
   h+=`</div>`;
 
   h+=`<div class="fbar">
-    <button data-only="1" class="${onlyMine?"on":""}">${onlyMine?"⭐ My column":"⭐ Just mine"}</button>
-    <span class="lbl">tap any cell to fix it</span></div>`;
+    <button data-only="1" class="${onlyMine?"on":""}">${onlyMine?"★ My column":"★ Just mine"}</button>
+    <span class="ml">tap any cell to fix it</span></div>`;
 
-  /* The grid itself. */
   h+=`<div class="gridwrap" id="gridwrap"><div class="grid" style="--n:${onlyMine&&c.slot?1:c.n}">`;
   const seats=(onlyMine&&c.slot)?c.ord.filter(e=>(e.slot||0)===c.slot):c.ord;
   h+=`<div class="gcorner">RD</div>`;
@@ -836,6 +1298,7 @@ function renderDraft(){
       const slot=e.slot||0, cell=g.cells[r+"-"+slot], ov=snakeOverall(r,slot,c.n);
       const isClock=c.cur===ov;
       const cls=["gc"];
+      if(cell&&!cell.unknown) cls.push(esc(cell.pos));
       if(!cell) cls.push("empty");
       if(e.mine) cls.push(cell?"mine":"col-mine");
       if(cell&&cell.keeper) cls.push("keeper");
@@ -843,15 +1306,14 @@ function renderDraft(){
       if(isClock) cls.push("clock");
       if(isClock&&e.mine) cls.push("myturn");
       if(editIdx!=null&&cell&&cell.idx===editIdx) cls.push("editing");
-      const tag=cell?(cell.idx!=null?` data-cell="${cell.idx}"`:"")+(isClock?' id="clockCell"':"")
-                    :(isClock?' id="clockCell"':"");
+      const tag=(cell&&cell.idx!=null?` data-cell="${cell.idx}"`:"")+(isClock?' id="clockCell"':"");
       h+=`<div class="${cls.join(" ")}"${tag}>`;
       if(cell){
         h+=`<span class="cn">${cell.unknown?"?":esc(surname(cell.name))}</span>
-            <span class="cm">${cell.unknown?'<span class="pos DST">—</span>':posPill(cell.pos)}
+            <span class="cm">${cell.unknown?"":posPill(cell.pos)}
             ${cell.keeper?'<span class="cov">🔒</span>':`<span class="cov">${ov}</span>`}</span>`;
       }else{
-        h+=`<span class="cn" style="color:var(--mut);font-weight:600">${isClock?"…":""}</span>
+        h+=`<span class="cn" style="color:var(--mutfg);font-weight:500">${isClock?"…":""}</span>
             <span class="cm"><span class="cov">${ov}</span></span>`;
       }
       h+=`</div>`;
@@ -859,14 +1321,12 @@ function renderDraft(){
   }
   h+=`</div></div>`;
 
-  /* Best available, right under the grid — the list that turns a pick into one tap. */
-  const c2=c, have=myHave(), sc=scorer(c2,have);
+  const have=myHave(), sc=scorer(c,have);
   const best=pool().slice().sort((a,b)=>sc(b)-sc(a)).slice(0,8);
-  h+=`<div class="card"><h2>⚡ Best available<span class="rt">tap to draft · value × your need</span></h2>`;
-  h+=best.length?best.map(r=>prow(r,`${r.adp!=null?"ADP <b>"+num(r.adp)+"</b>":""}`)).join("")
+  h+=`<div class="card"><h2>Best available<span class="rt">value × your need · tap to draft</span></h2>`;
+  h+=best.length?best.map(r=>prow(r,`${r.adp!=null?"ADP "+num(r.adp):""}`)).join("")
     :`<div class="empty">Board empty.</div>`;
   h+=`</div>`;
-
   el.innerHTML=h;
 
   el.querySelector("button[data-only]").onclick=()=>{ onlyMine=!onlyMine; renderDraft(); };
@@ -880,104 +1340,11 @@ function centerClock(){
   if(cell&&cell.scrollIntoView) try{ cell.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"}); }catch(e){}
 }
 
-/* ============ RENDER: BOARD ============ */
-let boardPos="ALL", boardQ="", boardSort="vbd", boardSortUser=false;
-function renderBoard(){
-  const el=$("#boardEl"), l=L();
-  if(!STATE.board.length){ el.innerHTML='<div class="empty">Board unavailable — check the status chip.</div>'; return; }
-  /* The default follows the data, in both directions. The first render happens before the API
-     answers, so an unconditional flip to FFA rank on the snapshot board would stick there for the
-     rest of the session and My VBD would never come back. Once he picks a sort himself, it holds. */
-  if(!boardSortUser) boardSort=STATE.live?"vbd":"ffa";
-
-  let rows=STATE.board;
-  const taken=takenKeys(), kept=keeperKeys();
-  rows=rows.filter(r=>!taken.has(key(r.name))&&!kept.has(key(r.name)));
-  if(boardPos!=="ALL") rows=rows.filter(r=>r.pos===boardPos);
-  if(boardQ) rows=rows.filter(r=>key(r.name).includes(key(boardQ))||String(r.team||"").toLowerCase().includes(boardQ.toLowerCase()));
-  /* Sorting by FFA rank must drop the unranked rather than pile them at the top —
-     FFA publishes 787 of the API's 801, and a null rank is "not on their board". */
-  if(boardSort==="ffa") rows=rows.filter(r=>r.ffaRank!=null).slice().sort((a,b)=>a.ffaRank-b.ffaRank);
-  else if(boardSort==="adp") rows=rows.filter(r=>r.adp!=null).slice().sort((a,b)=>a.adp-b.adp);
-  const shown=rows.slice(0,200);
-
-  let h=`<div class="fbar">`;
-  h+=["ALL",...POS_ORDER].map(p=>`<button data-p="${p}" class="${boardPos===p?"on":""}">${p==="DST"?"D/ST":p}</button>`).join("");
-  h+=`<input id="boardSearch" type="search" placeholder="Search player or team…" value="${esc(boardQ)}"></div>`;
-  h+=`<div class="fbar"><span class="lbl">Sort</span>
-    <button data-s="vbd" class="${boardSort==="vbd"?"on":""}"${STATE.live?"":" disabled"}>⚙️ My VBD</button>
-    <button data-s="ffa" class="${boardSort==="ffa"?"on":""}">📕 FFA rank</button>
-    <button data-s="adp" class="${boardSort==="adp"?"on":""}">📉 ADP</button></div>`;
-
-  h+=`<div class="card"><h2>${boardSort==="vbd"?"📋 VBD board":boardSort==="ffa"?"📕 FFA published board":"📉 ADP board"}
-    <span class="rt">${esc(l.scoreLabel)} · ${int(shown.length)} of ${int(rows.length)}</span></h2><div class="tblwrap"><table>
-    <thead><tr><th class="nm" style="text-align:left">Player</th><th></th><th>Tm</th><th>Rank</th><th>ADP</th>
-    <th>Bye</th><th>Pop</th><th>SOS</th><th>Value</th><th>ADJ</th><th>$</th><th>VBD</th><th>Tier</th></tr></thead><tbody>`;
-  let lastTier=null;
-  shown.forEach(r=>{
-    /* Tiers are positional, so a break line only reads correctly inside a single position. */
-    if(boardSort==="vbd"&&lastTier!=null&&r.tier!==lastTier&&boardPos!=="ALL"&&!boardQ)
-      h+=`<tr class="tierbrk"><td colspan="13"><span></span></td></tr>`;
-    lastTier=r.tier;
-    /* In FFA mode show FFA's own positional rank — ours would contradict the column beside it
-       (Bijan is our RB2 but FFA's RB1). */
-    const sub=boardSort==="ffa"?(r.ffaPosRank||r.posRank||""):(r.posRank||"");
-    h+=`<tr class="drow" data-n="${esc(r.name)}">
-      <td class="nm">${esc(r.name)}<small>${esc(sub)}</small></td><td>${posPill(r.pos)}</td>
-      <td class="num">${esc(r.team||"")}</td>
-      <td class="rk">${r.ffaRank!=null?r.ffaRank:(r.rank||"—")}</td>
-      <td class="num">${r.adp!=null?num(r.adp):"—"}</td>
-      <td class="num">${r.bye||"—"}</td>
-      <td class="num">${r.pop!=null?Math.round(r.pop)+"%":"—"}</td>
-      <td class="num">${r.sos!=null?r.sos:"—"}</td>
-      <td class="val">${r.ffaValue!=null?r.ffaValue:"—"}</td>
-      <td class="num">${deltaCell(r.delta)}</td>
-      <td class="cash">${r.auction!=null?"$"+r.auction:"—"}</td>
-      <td class="vbd">${r.vbd!=null?num(r.vbd):"—"}</td>
-      <td class="num">${r.tier!=null?r.tier:"—"}</td></tr>`;
-  });
-  h+=`</tbody></table></div>`;
-  if(rows.length>200) h+=`<div class="note">Showing the top 200 of ${int(rows.length)} — filter by position or search to go deeper.</div>`;
-  h+=`<div class="note">Tap any row to draft that player to the seat on the clock.
-    <b>VBD</b> = projected ${esc(l.scoreLabel)} points above the last startable player at that position.
-    <b>ADJ</b> compares VBD rank to market ADP: positive means the room is letting them slide.
-    <b>Pop</b> is FantasyPros roster%, <b>SOS</b> and <b>$</b> are FFA's own.</div>`;
-  const fr=STATE.ranks[l.ranks];
-  if(fr) h+=`<div class="note warn"><b>Rank, Value, SOS and $</b> come from the FFA CSV export captured
-    <b>${esc(String(fr.updated||"—"))}</b> and do <b>not</b> refresh with the page — the API serves projections and
-    ADP only. <b>My VBD</b> re-scores those same projections for ${esc(l.id)} specifically (${esc(l.note)}),
-    which is why the two orders differ. Neither is wrong; the gap between them is the useful part.</div>`;
-  if(l.dstMult!==1) h+=`<div class="note">D/ST points are doubled to match ${esc(l.id)} scoring, so every defense
-    ranks well above FFA's published order here. That is the league, not a bug.</div>`;
-  h+=`</div>`;
-  el.innerHTML=h;
-
-  el.querySelectorAll(".fbar button[data-p]").forEach(b=>b.onclick=()=>{ boardPos=b.dataset.p; renderBoard(); });
-  el.querySelectorAll(".fbar button[data-s]").forEach(b=>b.onclick=()=>{ boardSort=b.dataset.s; boardSortUser=true; renderBoard(); });
-  const s=el.querySelector("#boardSearch");
-  if(s) s.oninput=e=>{ boardQ=e.target.value; const p=e.target.selectionStart; renderBoard();
-    const n=$("#boardSearch"); if(n){ n.focus(); n.setSelectionRange(p,p); } };
-
-  /* A tap that drifts is a scroll, not a pick. Without this the board eats players every time
-     he flicks the list with a thumb — and on the clock he will never notice which one. */
-  const tb=el.querySelector("tbody");
-  let moved=false,x0=0,y0=0;
-  tb.addEventListener("touchstart",e=>{ const t=e.touches[0]; x0=t.clientX; y0=t.clientY; moved=false; },{passive:true});
-  tb.addEventListener("touchmove",e=>{ const t=e.touches[0];
-    if(Math.abs(t.clientX-x0)>8||Math.abs(t.clientY-y0)>8) moved=true; },{passive:true});
-  tb.addEventListener("mousedown",()=>{ moved=false; });
-  tb.addEventListener("click",e=>{
-    if(moved) return;
-    const row=e.target.closest("tr.drow");
-    if(row) takeByName(row.dataset.n);
-  });
-}
-
 /* ============ RENDER: TARGETS ============ */
 function renderTargets(){
   const el=$("#targetsEl"), c=clock();
-  if(!c){ el.innerHTML='<div class="note bad">No draft order set — Targets needs to know when your picks come. Set it in <b>⚙︎ Setup</b>.</div>'; return; }
-  if(!c.slot){ el.innerHTML='<div class="note bad">No seat starred as yours — star it in <b>⚙︎ Setup</b>.</div>'; return; }
+  if(!c){ el.innerHTML='<div class="note bad">No draft order set — Targets needs to know when your picks come. Set it in <b>Settings</b>.</div>'; return; }
+  if(!c.slot){ el.innerHTML='<div class="note bad">No seat starred as yours — star it in <b>Settings</b>.</div>'; return; }
   if(!STATE.board.length){ el.innerHTML='<div class="empty">Board unavailable.</div>'; return; }
 
   const have=myHave(), sc=scorer(c,have), p=pool();
@@ -987,9 +1354,9 @@ function renderTargets(){
      that will not survive the round, whatever its ADP says. */
   const rr=runRisk();
   if(rr&&rr.risk.length){
-    h+=`<div class="card rec"><h2>⚠️ Before your pick at ${ovLabel(rr.nextOv,c.n)}
+    h+=`<div class="card rec"><h2 style="color:var(--destructive)">Before your pick at ${ovLabel(rr.nextOv,c.n)}
       <span class="rt">${rr.teams} team${rr.teams===1?"":"s"} · ${rr.picks} pick${rr.picks===1?"":"s"}</span></h2>
-      <div style="font-size:13px;color:var(--mut);margin-bottom:10px">How many of those ${rr.teams} team${rr.teams===1?"":"s"}
+      <div style="font-size:12.5px;color:var(--mutfg);margin-bottom:10px">How many of those ${rr.teams} team${rr.teams===1?"":"s"}
         still have that starting slot empty.</div>`;
     rr.risk.forEach(x=>{
       const pct=Math.round(x.teams/Math.max(1,rr.teams)*100);
@@ -998,16 +1365,6 @@ function renderTargets(){
     });
     h+=`</div>`;
   }
-
-  /* Your roster so far. */
-  h+=`<div class="card"><h2>⭐ Your roster<span class="rt">${POS_ORDER.map(x=>x+" "+(have[x]||0)).join(" · ")}</span></h2>`;
-  const mineT=teamRosters().find(t=>t.mine);
-  h+=(mineT&&mineT.players.length)
-    ? mineT.players.slice().sort((a,b)=>(a.ov||0)-(b.ov||0)).map(x=>`<div class="prow" style="cursor:default">
-        ${posPill(x.pos)}<span class="nm">${x.keeper?"🔒 ":""}${esc(x.name)}</span>
-        <span class="tm"></span><span class="mx">${x.keeper?"keeper":ovLabel(x.ov,c.n)}</span></div>`).join("")
-    : `<div class="empty">Nothing yet.</div>`;
-  h+=`</div>`;
 
   /* ---- WATCH LIST: one group per upcoming pick of YOURS ----
      Not "who now" but "who is realistically there when my turn comes round again". */
@@ -1026,101 +1383,86 @@ function renderTargets(){
           <span class="gp">Pick ${ovLabel(ov,c.n)} <i>(${ov})</i></span>
           <span class="ga">ADP ${lo}–${hi}</span></div>
         <div class="ghd2"><span class="gaway">${away===0?"on the clock":away===1?"1 pick away":away+" picks away"}</span>
-          ${grp.length?`<span class="gbadge">TOP ${grp.length} AVAILABLE</span>`:""}</div>`;
-      h+=grp.length?grp.map(r=>prow(r,`FFA <b>${r.ffaRank!=null?r.ffaRank:"—"}</b>${r.auction!=null?" · $"+r.auction:""}`)).join("")
+          ${grp.length?`<span class="gbadge">Top ${grp.length} available</span>`:""}</div>`;
+      h+=grp.length?grp.map(r=>prow(r,`FFA ${r.ffaRank!=null?r.ffaRank:"—"}${r.auction!=null?" · $"+r.auction:""}${r.note?" · 📝":""}`)).join("")
         :`<div class="empty">Nobody projects to be there in that ADP band.</div>`;
       h+=`</div>`;
     });
   }
   el.innerHTML=h;
-  el.querySelectorAll(".prow[data-pick]").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
+  el.querySelectorAll(".prow[data-pick]").forEach(b=>b.onclick=()=>openPlayer(b.dataset.pick));
 }
 
-/* ============ RENDER: SETUP ============ */
+/* ============ RENDER: SETTINGS ============ */
 let orderDraft=null;   // in-progress edit; null means "not editing"
 function seatNames(){
   const l=L();
   if(l.teamNames) return l.teamNames.slice();
-  const shipped=(STATE.keepers&&STATE.keepers.draftOrder)||[];
-  return shipped.map(e=>e.team);
+  return ((STATE.keepers&&STATE.keepers.draftOrder)||[]).map(e=>e.team);
 }
 function renderSetup(){
   const el=$("#setupEl"), l=L(), cur=order();
+  const standalone=window.navigator.standalone||matchMedia("(display-mode: standalone)").matches;
   let h="";
 
-  h+=`<div class="card"><h2>⚙︎ ${esc(l.name)}</h2>
-    <div class="kv"><span class="k">Teams</span><span class="v">${l.teams}</span></div>
-    <div class="kv"><span class="k">Scoring</span><span class="v">${esc(l.scoreLabel)}${l.dstMult!==1?" · D/ST ×"+l.dstMult:""}</span></div>
-    <div class="kv"><span class="k">Rounds</span><span class="v"><input id="roundsIn" type="number" min="1" max="30" value="${rounds()}"></span></div>
-    <div class="kv"><span class="k">Keepers</span><span class="v">${keepers().length||"none"}</span></div>
-    <div class="kv"><span class="k">Picks entered</span><span class="v">${int(DRAFT.picks.length)}</span></div>
-    <div class="kv"><span class="k">Installed to home screen</span><span class="v">${
-      (window.navigator.standalone||matchMedia("(display-mode: standalone)").matches)?"yes":'<span style="color:var(--bad)">no</span>'}</span></div>
-  </div>`;
+  h+=`<div class="card"><h2>${esc(l.name)}</h2>
+    <div class="kv2"><span class="k">Teams</span><span class="v">${l.teams}</span></div>
+    <div class="kv2"><span class="k">Scoring</span><span class="v">${esc(l.scoreLabel)}${l.dstMult!==1?" · D/ST ×"+l.dstMult:""}</span></div>
+    <div class="kv2"><span class="k">Lineup</span><span class="v" style="font-family:var(--mono);font-size:12px">${l.slots.join(" · ")}</span></div>
+    <div class="kv2"><span class="k">Rounds</span><span class="v"><input id="roundsIn" type="number" min="1" max="30" value="${rounds()}"></span></div>
+    <div class="kv2"><span class="k">Keepers</span><span class="v">${keepers().length||"none"}</span></div>
+    <div class="kv2"><span class="k">Picks entered</span><span class="v">${int(DRAFT.picks.length)}</span></div>
+    <div class="kv2"><span class="k">Player notes loaded</span><span class="v">${STATE.notes?int(Object.keys(STATE.notes.shared||{}).length)+" shared + "+int(Object.keys(STATE.notes[LG]||{}).length)+" "+LG:"none"}</span></div>
+    <div class="kv2"><span class="k">Installed to home screen</span><span class="v">${standalone?"yes":'<span style="color:var(--destructive)">no</span>'}</span></div></div>`;
 
-  if(!(window.navigator.standalone||matchMedia("(display-mode: standalone)").matches))
-    h+=`<div class="note bad"><b>Install this to your home screen before draft day.</b> Safari clears storage for
-      sites you have only visited, and every pick you enter lives in that storage. Share → Add to Home Screen.</div>`;
+  if(!standalone) h+=`<div class="note bad"><b>Install this to your home screen before draft day.</b> Safari clears storage for
+    sites you have only visited, and every pick you enter lives in that storage. Share → Add to Home Screen.</div>`;
 
-  /* ---- draft order editor ---- */
-  const names=seatNames();
-  const picked=orderDraft||[];
-  const isEditing=orderDraft!=null;
-  h+=`<div class="card"><h2>🎲 Draft order<span class="rt">${cur?cur.length+" seats set":"not set"}</span></h2>`;
+  const names=seatNames(), picked=orderDraft||[], isEditing=orderDraft!=null;
+  h+=`<div class="card"><h2>Draft order<span class="rt">${cur?cur.length+" seats set":"not set"}</span></h2>`;
   if(!isEditing){
     if(cur){
-      h+=cur.map(e=>`<div class="prow" style="cursor:default">
-        <span class="pos ${e.mine?"TE":"DST"}" style="font-family:var(--mono)">${e.slot}</span>
-        <span class="nm">${e.mine?"⭐ ":""}${esc(e.manager||e.team)}</span>
-        <span class="tm">${esc(e.team)}</span></div>`).join("");
+      h+=cur.map(e=>`<div class="slot"><span class="sc" style="color:var(--primary)">${e.slot}</span>
+        <span class="sn">${e.mine?"★ ":""}${esc(e.manager||e.team)}</span>
+        <span class="sx">${esc(e.team)}</span></div>`).join("");
     }else{
       h+=`<div class="empty">No order yet — the grid cannot be drawn without one.</div>`;
     }
     h+=`<div class="fbar" style="margin-top:11px">
-      <button data-edit="1">${cur?"✎ Re-enter order":"＋ Set the order"}</button>
-      ${localStorage.getItem(kOrder())?'<button data-clearorder="1">↺ Back to shipped order</button>':""}</div>`;
+      <button data-edit="1">${cur?"Re-enter order":"Set the order"}</button>
+      ${localStorage.getItem(kOrder())?'<button data-clearorder="1">Back to shipped order</button>':""}</div>`;
     h+=`<div class="note">Tap the teams in draft order — slot 1 first. Star the seat that is yours.
       A hand-set order always wins over whatever shipped with the app, so a re-randomized room takes thirty seconds to fix.</div>`;
   }else{
     const takenN=new Set(picked.map(e=>e.team));
     h+=`<div class="note"><b>Tap in draft order.</b> ${picked.length} of ${names.length} placed.
-      Tap a placed team to pull it back out. Then tap ⭐ next to your own seat.</div>`;
-    h+=`<div class="ochips">`;
-    picked.forEach(e=>{
-      h+=`<button class="ochip set${e.mine?" me":""}" data-un="${esc(e.team)}">
-        <span class="sl">${e.slot}</span>${e.mine?"⭐ ":""}${esc(e.team)}</button>`;
-    });
-    h+=`</div>`;
+      Tap a placed team to pull it back out. Then tap the slot number that is yours.</div>`;
+    h+=`<div class="ochips">`+picked.map(e=>`<button class="ochip set${e.mine?" me":""}" data-un="${esc(e.team)}">
+        <span class="sl">${e.slot}</span>${e.mine?"★ ":""}${esc(e.team)}</button>`).join("")+`</div>`;
     const left=names.filter(n=>!takenN.has(n));
-    if(left.length){
-      h+=`<div class="ochips">`+left.map(n=>`<button class="ochip" data-add="${esc(n)}">${esc(n)}</button>`).join("")+`</div>`;
-    }
-    if(picked.length){
-      h+=`<div class="fbar"><span class="lbl">Which seat is yours</span>`+
-        picked.map(e=>`<button data-me="${esc(e.team)}" class="${e.mine?"on":""}">${e.slot}</button>`).join("")+`</div>`;
-    }
+    if(left.length) h+=`<div class="ochips">`+left.map(n=>`<button class="ochip" data-add="${esc(n)}">${esc(n)}</button>`).join("")+`</div>`;
+    if(picked.length) h+=`<div class="fbar"><span class="ml" style="margin-right:4px">Your seat</span>`+
+      picked.map(e=>`<button data-me="${esc(e.team)}" class="${e.mine?"on":""}">${e.slot}</button>`).join("")+`</div>`;
     h+=`<div class="fbar" style="margin-top:8px">
-      <button data-save="1"${picked.length===names.length?"":" disabled"}>✅ Save order</button>
+      <button data-save="1"${picked.length===names.length?"":" disabled"}>Save order</button>
       <button data-cancel="1">Cancel</button>
       <button data-clear="1"${picked.length?"":" disabled"}>Clear</button></div>`;
   }
   h+=`</div>`;
 
-  /* ---- danger zone ---- */
-  h+=`<div class="card"><h2>🧨 Draft state</h2>
+  h+=`<div class="card"><h2>Draft state</h2>
     <div class="fbar">
-      <button data-undo="1"${DRAFT.picks.length?"":" disabled"}>↩ Undo last pick</button>
+      <button data-undo="1"${DRAFT.picks.length?"":" disabled"}>Undo last pick</button>
+      <button data-clearq="1"${QUEUE.length?"":" disabled"}>Clear queue (${QUEUE.length})</button>
       <button data-reset="1"${DRAFT.picks.length?"":" disabled"}>Reset ${LG} draft</button>
-      <button data-check="1">🔎 Run self-check</button></div>
-    <pre id="checkOut" style="font-family:var(--mono);font-size:11.5px;color:var(--mut);white-space:pre-wrap;margin-top:6px"></pre>
+      <button data-check="1">Run self-check</button></div>
+    <pre id="checkOut" style="font-family:var(--mono);font-size:11.5px;color:var(--mutfg);white-space:pre-wrap;margin-top:6px"></pre>
     <div class="note">Reset clears ${LG} only — the other league's board is untouched.</div></div>`;
 
   el.innerHTML=h;
-
   const ri=el.querySelector("#roundsIn");
   if(ri) ri.onchange=()=>{ const v=parseInt(ri.value,10);
     if(v>=1&&v<=30){ localStorage.setItem(kRounds(),String(v)); renderAll(); } };
-
   const q=(sel,fn)=>el.querySelectorAll(sel).forEach(b=>b.onclick=()=>fn(b));
   q("button[data-edit]",()=>{ orderDraft=(cur||[]).map(e=>({...e})); renderSetup(); });
   q("button[data-clearorder]",()=>{ localStorage.removeItem(kOrder()); renderAll(); });
@@ -1132,6 +1474,7 @@ function renderSetup(){
   q("button[data-cancel]",()=>{ orderDraft=null; renderSetup(); });
   q("button[data-clear]",()=>{ orderDraft=[]; renderSetup(); });
   q("button[data-undo]",()=>{ undoPick(); renderAll(); });
+  q("button[data-clearq]",()=>{ QUEUE=[]; saveQueue(); renderAll(); });
   q("button[data-reset]",()=>{ if(confirm(`Clear all ${DRAFT.picks.length} ${LG} picks? This cannot be undone.`)){ resetDraft(); renderAll(); } });
   q("button[data-check]",()=>{ el.querySelector("#checkOut").textContent=check(); });
 }
@@ -1145,11 +1488,11 @@ function startEdit(i){
   renderAll();
 }
 function cancelEdit(){ editIdx=null; pbQ=""; const s=$("#pbSearch"); if(s) s.value=""; renderAll(); }
-/* One entry point for every pickable surface — grid cell repair, board row, best-available,
-   watch list and the search hits all land here, so "is this an edit or a new pick" is decided once. */
+/* One entry point for every pickable surface — grid cell repair, board Draft button, the modal,
+   best-available and the search hits all land here, so "is this an edit or a new pick" is
+   decided in exactly one place. */
 function takeByName(name){
-  const r=STATE.board.find(b=>key(b.name)===key(name));
-  if(!r) return;
+  const r=findRow(name); if(!r) return;
   if(editIdx!=null){ replacePick(editIdx,r); editIdx=null; }
   else if(!addPick(r)) return;
   pbQ=""; const s=$("#pbSearch"); if(s) s.value="";
@@ -1157,8 +1500,7 @@ function takeByName(name){
 }
 function renderPickBar(){
   const bar=$("#pickbar"), c=clock();
-  const onDraftTab=$("#draft").classList.contains("on");
-  if(!c||!onDraftTab){ bar.classList.add("hidden"); return; }
+  if(!c){ bar.classList.add("hidden"); return; }
   bar.classList.remove("hidden");
   bar.classList.toggle("myturn",!!c.myTurn&&editIdx==null);
   bar.classList.toggle("editing",editIdx!=null);
@@ -1172,7 +1514,7 @@ function renderPickBar(){
     lbl.innerHTML=`<span class="lb">done</span><span class="tm">all ${c.live.length} picks in</span>`;
   }else{
     lbl.innerHTML=`<span class="lb">${ovLabel(c.cur,c.n)}</span>
-      <span class="tm">${c.myTurn?"⭐ YOUR PICK":esc(c.teamAt(c.cur))}</span>`;
+      <span class="tm">${c.myTurn?"★ YOUR PICK":esc(c.teamAt(c.cur))}</span>`;
   }
   $("#pbUndo").disabled=!DRAFT.picks.length||editIdx!=null;
   $("#pbSkip").disabled=c.cur==null||editIdx!=null;
@@ -1184,7 +1526,7 @@ function renderPickBar(){
   const q=key(pbQ);
   const list=pool().filter(r=>key(r.name).includes(q)).slice(0,12);
   hits.innerHTML=list.length
-    ? list.map(r=>prow(r,`${r.ffaRank!=null?"FFA <b>"+r.ffaRank+"</b>":""}${r.adp!=null?" · ADP "+num(r.adp):""}`)).join("")
+    ? list.map(r=>prow(r,`${r.ffaRank!=null?"FFA "+r.ffaRank:""}${r.adp!=null?" · ADP "+num(r.adp):""}`)).join("")
     : `<div class="empty">No match in the available pool — he may already be off the board.</div>`;
   hits.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
 }
@@ -1195,26 +1537,27 @@ function daysOld(stamp){ if(!stamp) return null; const t=Date.parse(stamp); retu
 function renderHeader(){
   const l=L();
   document.body.dataset.lg=LG;
-  $("#hTitle").textContent=l.name+" — draft";
-  $("#hSub").innerHTML=`${esc(l.myTeam)} · ${esc(l.note)}`;
+  $("#hTitle").childNodes[0].nodeValue=l.id+" Draft ";
+  $("#hSub").textContent=l.name+" · "+l.note;
   document.querySelectorAll("#lgsw button").forEach(b=>b.classList.toggle("on",b.dataset.lg===LG));
   const fr=STATE.ranks[l.ranks], d=fr?daysOld(fr.updated):null;
   $("#chipSnap").className="chip snap"+(d!=null&&d>STALE_DAYS?" stale":"");
-  $("#chipSnapTxt").textContent=fr?("FFA CSV "+String(fr.updated||"?")):"no snapshot";
+  $("#chipSnapTxt").textContent=fr?("CSV "+String(fr.updated||"?")):"no snapshot";
 }
-function renderAll(){ renderHeader(); renderDraft(); renderBoard(); renderTargets(); renderSetup(); renderPickBar(); }
-
+function renderAll(){
+  renderHeader(); renderBoard(); renderDraft(); renderTargets(); renderSetup(); renderRail(); renderPickBar();
+  if(modalName) renderModal();
+}
 function showTab(t){
   document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
   document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));
-  renderPickBar();
   if(t==="draft") centerClock();
 }
 function switchLeague(id){
   if(!LEAGUES[id]||id===LG) return;
   LG=id; try{ localStorage.setItem("dr-league",id); }catch(e){}
   orderDraft=null; editIdx=null; pbQ=""; onlyMine=false; boardPos="ALL"; boardQ=""; boardSortUser=false;
-  loadDraft(); rebuild(); saveCache(); renderAll();
+  closePlayer(); loadDraft(); rebuild(); saveCache(); renderAll();
 }
 
 /* Sim: fill N picks straight off the ADP board so the whole grid is eyeballable without typing
@@ -1236,7 +1579,7 @@ async function boot(){
   if(SIM&&!DRAFT.picks.length){ runSim(SIM); renderAll(); }
 }
 async function refresh(){
-  setChip("#chipFfa","#chipFfaTxt","load","Loading FFA…");
+  setChip("#chipFfa","#chipFfaTxt","load","Loading…");
   let ok=false;
   try{ ok=await loadFFA(); }catch(e){ ok=false; }
   if(ok){
@@ -1255,6 +1598,8 @@ $("#pbUndo").onclick=()=>{ undoPick(); renderAll(); };
 $("#pbSkip").onclick=()=>{ skipPick(); renderAll(); };
 $("#pbCancel").onclick=()=>cancelEdit();
 $("#pbSearch").oninput=e=>{ pbQ=e.target.value; renderPickBar(); };
+$("#ovl").onclick=e=>{ if(e.target.id==="ovl") closePlayer(); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(modalName) closePlayer(); else if(editIdx!=null) cancelEdit(); } });
 setInterval(()=>{ if(document.visibilityState==="visible") refresh(); },REFRESH_MS);
 window.check=check;   // console entry point for the self-check
 
