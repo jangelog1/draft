@@ -474,11 +474,13 @@
   <div class="main"><div class="wrap">
     <nav>
       <button data-t="board" class="on">Rankings</button>
+      <button data-t="plan">Plan</button>
       <button data-t="draft">Draft Board</button>
       <button data-t="targets">Targets</button>
       <button data-t="setup">Settings</button>
     </nav>
     <section class="on" id="board"><div id="boardEl"></div></section>
+    <section id="plan"><div id="planEl"></div></section>
     <section id="draft"><div id="draftEl"></div></section>
     <section id="targets"><div id="targetsEl"></div></section>
     <section id="setup"><div id="setupEl"></div></section>
@@ -1551,6 +1553,43 @@ function planCard(compact){
   return h+`</div>`;
 }
 
+/* The Plan tab. Split out of Draft Board because that tab had become four stacked cards above the
+   grid — the thing he actually came to look at was below the fold on an iPad. Decisions live here
+   (the Monte Carlo plan and the best available list); the grid tab is now just the grid and the
+   clock. */
+function renderPlan(){
+  const el=$("#planEl"), l=L(), g=grid();
+  let h="";
+
+  if(g&&g.c&&g.c.cur!=null){
+    const c=g.c;
+    h+=`<div class="card"><h2>On the clock<span class="rt">${esc(l.name)}</span></h2>`;
+    h+=`<div class="kv2"><span class="k">Now picking</span><span class="v">${ovLabel(c.cur,c.n)} · ${esc(c.teamAt(c.cur))}</span></div>`;
+    if(c.slot) h+=`<div class="kv2"><span class="k">Your next pick</span><span class="v">${
+      c.next!=null?`${ovLabel(c.next,c.n)} <span style="color:var(--mutfg);font-weight:500">(${c.live.filter(x=>x>=c.cur&&x<c.next).length} away · ${c.left} left)</span>`:"—"}</span></div>`;
+    h+=`</div>`;
+  }
+
+  h+=planCard(false);
+
+  /* Best available needs a clock to weight by need. Without a draft order it would be sorting on
+     raw value and quietly calling that a recommendation, so say so instead. */
+  if(g&&g.c){
+    const c=g.c, have=myHave(), sc=scorer(c,have);
+    const best=recPool(c).slice().sort((a,b)=>sc(b)-sc(a)).slice(0,8);
+    h+=`<div class="card"><h2>Best available<span class="rt">value × your need · tap to draft</span></h2>`;
+    h+=best.length?best.map(r=>prow(r,`${r.adp!=null?"ADP "+num(r.adp):""}`)).join("")
+      :`<div class="empty">Board empty.</div>`;
+    h+=`</div>`;
+  }else{
+    h+=`<div class="note bad"><b>No draft order for ${esc(l.name)} yet.</b>
+      Best available and the plan card both need a seat order — set it in <b>Settings</b>.</div>`;
+  }
+
+  el.innerHTML=h;
+  el.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
+}
+
 function renderDraft(){
   const el=$("#draftEl"), l=L(), g=grid();
   /* innerHTML below destroys the grid node, and with it scrollTop. Capture where he was looking
@@ -1584,8 +1623,6 @@ function renderDraft(){
     processed keepers yet. Fix the list or mark it final in <b>Settings</b>.</div>`;
   if(!c.ord.find(e=>e.mine)) h+=`<div class="note warn">No seat is starred as yours — Targets, My Team and run risk all need it. Set it in <b>Settings</b>.</div>`;
   h+=`</div>`;
-
-  h+=planCard(false);
 
   h+=`<div class="fbar">
     <button data-only="1" class="${onlyMine?"on":""}">${onlyMine?"★ My column":"★ Just mine"}</button>
@@ -1631,18 +1668,11 @@ function renderDraft(){
   }
   h+=`</div></div>`;
 
-  const have=myHave(), sc=scorer(c,have);
-  const best=recPool(c).slice().sort((a,b)=>sc(b)-sc(a)).slice(0,8);
-  h+=`<div class="card"><h2>Best available<span class="rt">value × your need · tap to draft</span></h2>`;
-  h+=best.length?best.map(r=>prow(r,`${r.adp!=null?"ADP "+num(r.adp):""}`)).join("")
-    :`<div class="empty">Board empty.</div>`;
-  h+=`</div>`;
   el.innerHTML=h;
 
   const xs=el.querySelector("button[data-exitsim]");
   if(xs) xs.onclick=()=>{ location.href=location.pathname+"?lg="+LG; };
   el.querySelector("button[data-only]").onclick=()=>{ onlyMine=!onlyMine; renderDraft(); };
-  el.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
   el.querySelectorAll(".gc[data-cell]").forEach(b=>b.onclick=()=>startEdit(+b.dataset.cell));
   const nw=document.getElementById("gridwrap");
   if(nw&&prevTop!=null) nw.scrollTop=prevTop;          // put him back exactly where he was
@@ -2020,7 +2050,7 @@ function renderHeader(){
   $("#chipSnapTxt").textContent=fr?("CSV "+String(fr.updated||"?")):"no snapshot";
 }
 function renderAll(){
-  renderHeader(); renderBoard(); renderDraft(); renderTargets(); renderSetup(); renderRail();
+  renderHeader(); renderBoard(); renderPlan(); renderDraft(); renderTargets(); renderSetup(); renderRail();
   renderPickBar(); renderHelper();
   if(modalName) renderModal();
 }
