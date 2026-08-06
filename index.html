@@ -144,7 +144,15 @@
   .brow.QB .stripe{background:var(--qb)} .brow.RB .stripe{background:var(--rb)}
   .brow.WR .stripe{background:var(--wr)} .brow.TE .stripe{background:var(--te)}
   .brow.K  .stripe{background:var(--k)}  .brow.DST .stripe{background:var(--dst)}
-  .pcell{display:flex;align-items:center;gap:8px;min-width:0;padding-left:10px}
+  /* The player column pins while the rest of the row scrolls. Without this, scrolling right on a
+     phone or a portrait iPad to reach $ / VBD carries the name off screen and you are reading a
+     row of numbers with no idea whose they are. The old <table> markup had this; the grid rewrite
+     dropped it. Sticky needs its own background or the cells underneath show through. */
+  .pcell{display:flex;align-items:center;gap:8px;min-width:0;padding-left:10px;
+    position:sticky;left:4px;z-index:2;background:var(--bg)}
+  .brow:hover .pcell{background:#0d1120}
+  .bhd span.l{position:sticky;left:4px;z-index:3;background:var(--bg)}
+  .brow .stripe{position:sticky;left:0;z-index:3}
   .pcell .pn{font-weight:600;font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .brow:hover .pcell .pn{color:rgba(220,38,38,.8)}
   .pcell .tm{font-size:10.5px;color:var(--mutfg);font-weight:600;font-family:var(--mono)}
@@ -438,6 +446,12 @@
     .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 62px 70px 44px 56px 50px 92px 54px 60px 66px 46px 66px}
     .brow{height:57px}
     .modal{max-width:480px}
+  }
+  /* Only where the board can actually scroll sideways. A hard right edge on the pinned column
+     makes it read as pinned rather than as a ragged seam, and it hides any compositing artifact
+     where the scrolling cells pass underneath. */
+  @media (max-width:1023px){
+    .pcell,.bhd span.l{border-right:1px solid var(--border)}
   }
   @media (max-width:430px){ .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 48px 52px 34px 42px 40px 72px 42px 48px 52px 36px 54px} }
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
@@ -1247,6 +1261,23 @@ function renderBoard(){
       <span class="bc"><button class="dbtn" data-draft="${esc(r.name)}">Draft</button></span></div>`;
   });
   h+=`</div></div>`;
+  /* A blank board with no explanation is the worst thing this screen can do on the clock. It is
+     reachable: sorting by ADP drops anyone without one, and FFA gives every K and D/ST the 999
+     "undrafted" placeholder, which we null — so ADP + K is legitimately empty every time. Say why,
+     and offer the way out. */
+  if(!shown.length){
+    const why = boardSort==="adp" ? `Nobody in this filter has an ADP. FFA does not publish one for ${boardPos==="ALL"?"these players":(boardPos==="DST"?"defenses":boardPos+"s")} — they carry an "undrafted" placeholder instead.`
+      : boardSort==="ffa" ? `Nobody in this filter is on FFA's published board.`
+      : boardQ ? `No player or team matches “${esc(boardQ)}”.`
+      : `Everyone at this position is already off the board.`;
+    h+=`<div class="note warn"><b>Nothing to show.</b> ${why}
+      <div class="fbar" style="margin-top:9px">
+        ${boardQ?`<button data-clearq2="1">Clear search</button>`:""}
+        ${!boardQ&&boardSort!=="vbd"&&STATE.live?`<button data-s="vbd">Sort by My VBD</button>`:""}
+        ${!boardQ&&boardSort!=="ffa"?`<button data-s="ffa">Sort by FFA Rank</button>`:""}
+        ${boardPos!=="ALL"?`<button data-p="ALL">Show all positions</button>`:""}
+      </div></div>`;
+  }
   if(rows.length>220) h+=`<div class="note">Showing the top 220 of ${int(rows.length)} — filter by position or search to go deeper.</div>`;
   h+=`<div class="note"><b>Tap a row</b> for FFA's notes on that player and the full stat card. <b>Draft</b> records
     him to whichever seat is on the clock. <b>Value</b>, <b>SOS</b> and <b>$</b> are FFA's own;
@@ -1263,6 +1294,8 @@ function renderBoard(){
     ranks well above FFA's published order here. That is the league, not a bug.</div>`;
   el.innerHTML=h;
 
+  const cq=el.querySelector("button[data-clearq2]");
+  if(cq) cq.onclick=()=>{ boardQ=""; renderBoard(); };
   const dsw=el.querySelector("[data-dyn]");
   if(dsw) dsw.onclick=()=>{ DYNAMIC=!DYNAMIC; localStorage.setItem("dr-dynamic",DYNAMIC?"1":"0"); renderAll(); };
   el.querySelectorAll(".fbar button[data-p]").forEach(b=>b.onclick=()=>{ boardPos=b.dataset.p; renderBoard(); });
