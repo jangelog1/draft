@@ -288,6 +288,64 @@
   body[data-lg="MWV"] .mfoot .go{background:#0284c7}
   .mfoot .go[disabled]{opacity:.4;pointer-events:none}
   .mfoot .sec{background:var(--sec);color:var(--mutfg);border:1px solid var(--border)}
+  /* ---------- DYNAMIC PILL ---------- */
+  /* FFA's "Dynamic" toggle with live per-position readouts. Here the percentages are the actual
+     need multiplier driving the recommendation engine, so the number is the model, not decoration. */
+  .dyn{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border-radius:999px;flex-wrap:wrap;
+    background:linear-gradient(135deg,rgba(124,59,237,.14),rgba(48,128,255,.10));
+    border:1px solid rgba(124,59,237,.35)}
+  .dyn .dl{font-size:11.5px;font-weight:800;letter-spacing:.02em;display:flex;align-items:center;gap:5px}
+  .dyn .sw{width:34px;height:19px;border-radius:999px;background:var(--sec);border:1px solid var(--border);
+    position:relative;cursor:pointer;flex:none;transition:background .2s var(--ease)}
+  .dyn .sw i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#64748b;
+    transition:transform .2s var(--ease),background .2s var(--ease)}
+  .dyn.on .sw{background:rgba(34,197,94,.35);border-color:rgba(34,197,94,.5)}
+  .dyn.on .sw i{transform:translateX(15px);background:#22c55e}
+  .dyn .adj{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:var(--rc);
+    background:var(--sec);font-family:var(--mono);font-size:10.5px;font-weight:700}
+  .dyn .adj b{font-weight:800}
+  .dyn.off .adj{opacity:.4}
+  /* ---------- LIVE HELPER: floating FAB + drawer ---------- */
+  .fab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:90;
+    width:54px;height:54px;border-radius:50%;background:var(--card);border:1px solid rgba(220,38,38,.5);
+    color:var(--primary);font-size:22px;cursor:pointer;font-family:inherit;
+    box-shadow:0 12px 30px -10px rgba(0,0,0,.9),0 0 0 4px rgba(220,38,38,.07)}
+  .fab:active{transform:scale(.93)}
+  .fab.myturn{border-color:var(--amber);color:var(--amber);animation:myturnpulse 1.2s ease-in-out infinite}
+  .fab.hidden{display:none}
+  .lh{position:fixed;right:0;bottom:0;top:0;width:min(400px,100vw);z-index:110;display:flex;flex-direction:column;
+    background:var(--card);border-left:1px solid var(--border);box-shadow:-24px 0 60px -30px #000;
+    padding-bottom:env(safe-area-inset-bottom,0px)}
+  .lh.hidden{display:none}
+  .lhhd{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:14px 14px 11px;
+    padding-top:calc(14px + env(safe-area-inset-top,0px));border-bottom:1px solid var(--border)}
+  .lhhd .t{font-size:17px;font-weight:800;letter-spacing:-.3px;display:flex;align-items:center;gap:7px}
+  .lhhd .cnts{display:flex;gap:5px;margin-left:auto;flex-wrap:wrap}
+  .lhhd .cx{padding:3px 7px;border-radius:var(--rc);font-family:var(--mono);font-size:10px;font-weight:800;border:1px solid}
+  .lhtabs{display:flex;box-shadow:inset 0 -1px 0 var(--border)}
+  .lhtabs button{flex:1;background:none;border:0;border-bottom:2px solid transparent;color:var(--mutfg);
+    font-family:inherit;font-size:13px;font-weight:800;padding:12px 6px;cursor:pointer}
+  .lhtabs button.on{color:var(--primary);border-bottom-color:var(--primary)}
+  body[data-lg="MWV"] .lhtabs button.on{color:#38bdf8;border-bottom-color:#38bdf8}
+  .lhbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:12px 14px 20px}
+  /* One row shape for every helper list — FFA's: pill, name, team, L, badge. Wraps rather than
+     truncates; at 375px an ellipsis turned every row into "Jonathan T…", and a name you cannot
+     read is not a recommendation. */
+  .lrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:9px 11px;margin-bottom:4px;
+    border-radius:var(--rc);background:var(--muted);border:1px solid var(--border);cursor:pointer}
+  .lrow:active{background:var(--sec)}
+  .lrow .nm{font-weight:700;font-size:13.5px}
+  .lrow .tm{color:var(--mutfg);font-size:10.5px;font-weight:700;margin-right:auto;font-family:var(--mono)}
+  .lrow .lx{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--sky);white-space:nowrap}
+  .lrow .lx i{font-style:normal;opacity:.6;margin-right:3px}
+  .conf{padding:3px 7px;border-radius:var(--rc);font-size:9px;font-weight:900;letter-spacing:.06em;white-space:nowrap}
+  .conf.wont{background:rgba(239,68,68,.16);color:var(--destructive)}
+  .conf.mid{background:rgba(56,189,248,.14);color:var(--sky)}
+  .conf.will{background:rgba(148,163,184,.14);color:var(--mutfg)}
+  .lwhy{color:var(--mutfg);font-size:11.5px;line-height:1.5;margin:-1px 0 9px;padding:0 11px}
+  .lhbig{font-size:23px;font-weight:800;letter-spacing:-.5px;margin:3px 0 5px}
+  .lhsub{font-size:13px;color:var(--mutfg);line-height:1.55}
+  @media (min-width:1024px){ .fab{bottom:calc(80px + env(safe-area-inset-bottom,0px))} }
   /* ---------- PICK BAR ---------- */
   .pickbar{position:fixed;left:0;right:0;bottom:0;z-index:80;
     padding:9px 12px calc(9px + env(safe-area-inset-bottom,0px));
@@ -416,6 +474,20 @@
 
 <div class="ovl hidden" id="ovl"><div class="modal" id="modal"></div></div>
 
+<button class="fab hidden" id="fab" aria-label="Open Live Helper">✦</button>
+<aside class="lh hidden" id="lh">
+  <div class="lhhd">
+    <span class="t">✦ Live Helper</span>
+    <span class="cnts" id="lhCnts"></span>
+    <button class="mx" id="lhClose" style="margin-left:0">✕</button>
+  </div>
+  <div class="lhtabs">
+    <button data-lh="strategy" class="on">Strategy</button>
+    <button data-lh="watch">Watch List</button>
+  </div>
+  <div class="lhbody" id="lhBody"></div>
+</aside>
+
 <div class="pickbar hidden" id="pickbar">
   <div class="phits" id="pbHits"></div>
   <div class="pbrow">
@@ -535,6 +607,7 @@ const kPicks =()=>(SIM?"dr-sim-":"dr-picks-")+LG;
 const kOrder =()=>"dr-order-"+LG;
 const kRounds=()=>"dr-rounds-"+LG;
 const kQueue =()=>"dr-queue-"+LG;
+const kKeepers=()=>"dr-keepers-"+LG;
 const kCache =()=>"dr-cache-"+LG;
 
 /* ============ DRAFT ORDER ============
@@ -558,7 +631,19 @@ function rounds(){
   const v=parseInt(localStorage.getItem(kRounds())||"",10);
   return (v>=1&&v<=30)?v:L().rounds;
 }
-const keepers=()=>(L().keepersFile&&STATE.keepers&&STATE.keepers.keepers)||[];
+/* Keepers, same override rule as the draft order: a hand-entered list beats whatever shipped.
+   This is not a nicety — CBS's /keepers page is blank ("displayed here once they have been
+   processed"), the commissioner never emailed a list, and the shipped ledger is a transcription
+   of a handwritten sheet. There is no authoritative source to sync from, so the app has to be
+   the place the list lives. */
+function keepers(){
+  try{
+    const k=JSON.parse(localStorage.getItem(kKeepers())||"null");
+    if(Array.isArray(k)) return k;                 // an empty saved list is a real answer, not a miss
+  }catch(e){}
+  return (L().keepersFile&&STATE.keepers&&STATE.keepers.keepers)||[];
+}
+function setKeepers(list){ try{ localStorage.setItem(kKeepers(),JSON.stringify(list)); }catch(e){} }
 const keeperKeys=()=>new Set(keepers().map(k=>key(k.player)).filter(Boolean));
 
 /* ============ PLAYER NOTES ============
@@ -977,12 +1062,57 @@ function scorer(c,have){
   return r=>{
     const v=(r.vbd!=null?r.vbd:(r.ffaValue!=null?r.ffaValue/8:0));
     const past=(c&&c.cur!=null&&r.adp!=null)?c.cur-r.adp:0;
-    return (v>0?v*needMult(r.pos,have[r.pos]||0):v)+Math.max(0,Math.min(24,past))*FALL_W;
+    const m=DYNAMIC?needMult(r.pos,have[r.pos]||0):1;
+    return (v>0?v*m:v)+Math.max(0,Math.min(24,past))*FALL_W;
   };
+}
+/* The Dynamic readouts are the need multiplier itself, rendered as the percentage it shifts a
+   player's value by. Not a decorative number — turn the toggle off and the board reorders. */
+let DYNAMIC=localStorage.getItem("dr-dynamic")!=="0";
+const dynPct=(pos,have)=>Math.round((needMult(pos,have[pos]||0)-1)*100);
+
+/* How many more picks he is expected to survive: his ADP measured from the pick on the clock.
+   Floored at 0 — a negative would mean "gone already", which is what the WON'T LAST badge beside
+   it says in words. Null when he has no ADP at all (every K and D/ST). */
+const lastsFor=(r,c)=>(!c||c.cur==null||r.adp==null)?null:Math.max(0,Math.round(r.adp-c.cur));
+/* Will he survive to your next turn? ADP is an average, not a guarantee, so the middle band is
+   wide on the optimistic side only: a player whose ADP is at or before your pick is called gone
+   (ADP 1.0 with your next at 2 is not a coin flip), while it takes a full extra round of cushion
+   before anyone is called safe. */
+const confOf=(adp,next)=>{
+  if(adp==null||next==null) return null;
+  if(adp<next) return "wont";
+  if(adp>=next+4) return "will";
+  return "mid";
+};
+const CONF_TXT={wont:"WON'T LAST",mid:"50/50 TO LAST",will:"SHOULD LAST"};
+function strategyLabel(mine){
+  const f=mine.slice(0,6), rb=f.filter(p=>p.pos==="RB").length, wr=f.filter(p=>p.pos==="WR").length;
+  if(!f.length)      return {n:"Not started",w:"No picks entered yet — this reads your build as it happens."};
+  if(rb>=3)          return {n:"RB-heavy",   w:"Loading backs early — the position this league starves fastest."};
+  if(!rb)            return {n:"Zero-RB",    w:"No backs yet. Every round you wait, the RB you settle for gets worse."};
+  if(wr>=4)          return {n:"WR-heavy",   w:"Stacking receivers — fine against a 6-WR target, but your RB floor is the risk."};
+  if(rb===1&&wr>=2)  return {n:"Hero-RB",    w:"One anchor back plus receivers — the slot 1–2 opener your plan lists."};
+  return {n:"Balanced",w:"Mixing positions early without leaning hard either direction."};
 }
 function pool(){
   const taken=takenKeys(), kept=keeperKeys();
   return STATE.board.filter(r=>!taken.has(key(r.name))&&!kept.has(key(r.name)));
+}
+/* Kickers and defenses are held OUT of every recommendation surface until they are actually
+   forced, and this is not a style preference — RPB doubles D/ST scoring, so defenses carry real
+   inflated VBD and the raw engine put three of them in the top three at pick 5.02. They are
+   correctly valued and completely undraftable that early: you start one, and the last one off the
+   board is worth nearly the first. The Rankings board still lists them at full value; only the
+   "what should I do right now" surfaces apply this. */
+const MANDATORY=["K","DST"], MANDATORY_SLACK=2;
+function recPool(c){
+  const p=pool();
+  if(!c||c.cur==null) return p;
+  const have=myHave();
+  const unfilled=MANDATORY.filter(x=>(have[x]||0)<(L().starters[x]||0)).length;
+  if(c.left<=unfilled+MANDATORY_SLACK) return p;          // late enough that they are now the pick
+  return p.filter(r=>MANDATORY.indexOf(r.pos)<0);
 }
 const findRow=name=>STATE.board.find(b=>key(b.name)===key(name))||null;
 
@@ -1036,7 +1166,13 @@ function renderBoard(){
   else if(boardSort==="adp") rows=rows.filter(r=>r.adp!=null).slice().sort((a,b)=>a.adp-b.adp);
   const shown=rows.slice(0,220);
 
-  let h=`<div class="fbar">`;
+  const have=myHave();
+  let h=`<div class="fbar"><span class="dyn ${DYNAMIC?"on":"off"}" id="dynPill">
+    <span class="dl">⚡ Dynamic</span><span class="sw" data-dyn="1"><i></i></span>`;
+  h+=["QB","RB","WR","TE"].map(pp=>{ const v=DYNAMIC?dynPct(pp,have):0;
+    return `<span class="adj">${pp} <b style="color:${v>0?"var(--emerald)":v<0?"var(--destructive)":"var(--mutfg)"}">${v>=0?"+":""}${v}%</b></span>`;}).join("");
+  h+=`</span></div>`;
+  h+=`<div class="fbar">`;
   h+=["ALL",...POS_ORDER].map(p=>`<button data-p="${p}" class="${boardPos===p?"on":""}">${p==="DST"?"D/ST":p}</button>`).join("");
   h+=`<input id="boardSearch" type="search" placeholder="Search player or team…" value="${esc(boardQ)}"></div>`;
   h+=`<div class="fbar"><span class="ml" style="margin-right:4px">Sort</span>
@@ -1108,6 +1244,8 @@ function renderBoard(){
     ranks well above FFA's published order here. That is the league, not a bug.</div>`;
   el.innerHTML=h;
 
+  const dsw=el.querySelector("[data-dyn]");
+  if(dsw) dsw.onclick=()=>{ DYNAMIC=!DYNAMIC; localStorage.setItem("dr-dynamic",DYNAMIC?"1":"0"); renderAll(); };
   el.querySelectorAll(".fbar button[data-p]").forEach(b=>b.onclick=()=>{ boardPos=b.dataset.p; renderBoard(); });
   el.querySelectorAll(".fbar button[data-s]").forEach(b=>b.onclick=()=>{ boardSort=b.dataset.s; boardSortUser=true; renderBoard(); });
   const s=el.querySelector("#boardSearch");
@@ -1329,7 +1467,7 @@ function renderDraft(){
   h+=`</div></div>`;
 
   const have=myHave(), sc=scorer(c,have);
-  const best=pool().slice().sort((a,b)=>sc(b)-sc(a)).slice(0,8);
+  const best=recPool(c).slice().sort((a,b)=>sc(b)-sc(a)).slice(0,8);
   h+=`<div class="card"><h2>Best available<span class="rt">value × your need · tap to draft</span></h2>`;
   h+=best.length?best.map(r=>prow(r,`${r.adp!=null?"ADP "+num(r.adp):""}`)).join("")
     :`<div class="empty">Board empty.</div>`;
@@ -1347,6 +1485,98 @@ function centerClock(){
   if(cell&&cell.scrollIntoView) try{ cell.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"}); }catch(e){}
 }
 
+/* ============ LIVE HELPER ============
+   FFA's floating panel, same two tabs. Both halves render from one function so the Targets tab and
+   the drawer can never drift apart — they are the same answer at two widths. */
+const lrow=(r,c,extra)=>{
+  const l=lastsFor(r,c);
+  return `<div class="lrow" data-open="${esc(r.name)}">${posPill(r.pos)}
+    <span class="nm">${r.note&&noteTone(r.note)==="love"?"★ ":""}${esc(r.name)}</span>
+    <span class="tm">${esc(r.team||"")}</span>
+    ${l==null?"":`<span class="lx"><i>L</i>${l}</span>`}${extra||""}</div>`;
+};
+function helperHTML(view){
+  const c=clock();
+  if(!c) return '<div class="note bad">No draft order set. Set it in <b>Settings</b>.</div>';
+  if(!c.slot) return '<div class="note bad">No seat starred as yours — star it in <b>Settings</b>.</div>';
+  if(!STATE.board.length) return '<div class="empty">Board unavailable.</div>';
+  const have=myHave(), sc=scorer(c,have), p=recPool(c);
+  let h="";
+
+  if(view==="strategy"){
+    if(c.cur==null) return '<div class="empty">Draft complete.</div>';
+    const top=p.slice().sort((a,b)=>sc(b)-sc(a)).slice(0,3);
+    const lead=top[0];
+    /* Name the position the engine is leaning on and by how much, so the recommendation is
+       auditable rather than an oracle. */
+    const pct=lead?dynPct(lead.pos,have):0;
+    h+=`<div class="card rec" style="margin-top:0"><h2 style="color:var(--destructive)">⚡ Recommended next pick
+      <span class="rt">${ovLabel(c.cur,c.n)} (${c.cur})</span></h2>`;
+    if(lead) h+=`<div class="lwhy" style="margin:0 0 10px;padding:0"><b style="color:var(--sky)">${esc(lead.pos==="DST"?"D/ST":lead.pos)}</b>
+      scores highest${DYNAMIC?` combining value with a <b>${pct>=0?"+":""}${pct}%</b> need weighting`:` on raw value — need weighting is <b>off</b>`}.</div>`;
+    h+=top.map(r=>{
+      const cf=confOf(r.adp,c.next);
+      return lrow(r,c,cf?`<span class="conf ${cf}">${CONF_TXT[cf]}</span>`:"");
+    }).join("")||'<div class="empty">Board empty.</div>';
+    h+=`</div>`;
+
+    const rr=runRisk();
+    if(rr&&rr.risk.length){
+      h+=`<div class="card"><h2>⚠️ Runs before ${ovLabel(rr.nextOv,c.n)}<span class="rt">${rr.teams} team${rr.teams===1?"":"s"} · ${rr.picks} pick${rr.picks===1?"":"s"}</span></h2>`;
+      rr.risk.forEach(x=>{
+        const w=Math.round(x.teams/Math.max(1,rr.teams)*100);
+        h+=`<div class="rrow">${posPill(x.pos)}<span class="rbar"><i style="width:${w}%"></i></span>
+          <b>${x.teams}</b><span class="rof">of ${rr.teams}</span></div>`;
+      });
+      h+=`</div>`;
+    }
+
+    const mine=teamRosters().find(t=>t.mine);
+    const st=strategyLabel(mine?mine.players.slice().sort((a,b)=>(a.ov||0)-(b.ov||0)):[]);
+    h+=`<div class="card"><div class="ml">Your strategy in progress</div>
+      <div class="lhbig">${esc(st.n)}</div><div class="lhsub">${esc(st.w)}</div></div>`;
+    return h;
+  }
+
+  /* ---- WATCH LIST: one group per upcoming pick of YOURS ----
+     Not "who now" but "who is realistically there when my turn comes round again". */
+  if(c.cur==null) return '<div class="empty">Draft complete — no picks left to plan for.</div>';
+  c.mine.filter(ov=>ov>=c.cur).slice(0,6).forEach(ov=>{
+    const away=c.live.filter(x=>x>=c.cur&&x<ov).length;
+    /* The window's FLOOR tracks the pick, and that is the whole point. Anchoring it below the
+       pick and widening it with distance — the obvious first try, and what FFA's own panel
+       appears to do — returns the same five names for every group, because the best players in
+       a wide band always win the sort. But a player with ADP 18 is not a round-3 target; he is
+       gone. So: from a few picks before this one (genuine sliders) out to about a round past it. */
+    const lo=Math.max(1,ov-ADP_SLIDE), hi=ov+c.n;
+    const grp=p.filter(r=>r.adp!=null&&r.adp>=lo&&r.adp<=hi).sort((a,b)=>sc(b)-sc(a)).slice(0,5);
+    h+=`<div class="card lgrp"><div class="ghd">
+        <span class="gp">Pick ${ovLabel(ov,c.n)} <i>(${ov})</i></span>
+        <span class="ga">ADP ${lo}–${hi}</span></div>
+      <div class="ghd2"><span class="gaway">${away===0?"on the clock":away===1?"1 pick away":away+" picks away"}</span>
+        ${grp.length?`<span class="gbadge">Top ${grp.length} available</span>`:""}</div>`;
+    h+=grp.length?grp.map(r=>lrow(r,c,`<span class="conf ${confOf(r.adp,ov)||"will"}">FFA ${r.ffaRank!=null?r.ffaRank:"—"}</span>`)).join("")
+      :`<div class="empty">Nobody projects to be there in that ADP band.</div>`;
+    h+=`</div>`;
+  });
+  return h;
+}
+let lhTab="strategy", lhOpen=false;
+function renderHelper(){
+  const c=clock(), have=myHave();
+  $("#fab").classList.toggle("hidden",!c);
+  $("#fab").classList.toggle("myturn",!!(c&&c.myTurn));
+  $("#lh").classList.toggle("hidden",!lhOpen);
+  document.querySelectorAll(".lhtabs button").forEach(b=>b.classList.toggle("on",b.dataset.lh===lhTab));
+  const COL={QB:"var(--qb)",RB:"var(--rb)",WR:"var(--wr)",TE:"var(--te)",K:"var(--k)",DST:"var(--dst)"};
+  $("#lhCnts").innerHTML=["QB","RB","WR","TE"].map(pp=>
+    `<span class="cx" style="color:${COL[pp]};border-color:${COL[pp]}55;background:${COL[pp]}18">${pp} ${have[pp]||0}</span>`).join("");
+  if(!lhOpen) return;
+  const body=$("#lhBody");
+  body.innerHTML=helperHTML(lhTab);
+  body.querySelectorAll(".lrow[data-open]").forEach(b=>b.onclick=()=>openPlayer(b.dataset.open));
+}
+
 /* ============ RENDER: TARGETS ============ */
 function renderTargets(){
   const el=$("#targetsEl"), c=clock();
@@ -1354,7 +1584,7 @@ function renderTargets(){
   if(!c.slot){ el.innerHTML='<div class="note bad">No seat starred as yours — star it in <b>Settings</b>.</div>'; return; }
   if(!STATE.board.length){ el.innerHTML='<div class="empty">Board unavailable.</div>'; return; }
 
-  const have=myHave(), sc=scorer(c,have), p=pool();
+  const have=myHave(), sc=scorer(c,have), p=recPool(c);
   let h="";
 
   /* The actionable card: a position most of the teams ahead of you still need is a position
@@ -1457,6 +1687,32 @@ function renderSetup(){
   }
   h+=`</div>`;
 
+  /* ---- keeper ledger ---- */
+  const ks=keepers(), seats=(cur||[]).map(e=>e.team);
+  h+=`<div class="card"><h2>Keepers<span class="rt">${ks.length} · costs a pick in that round</span></h2>`;
+  if(!seats.length){
+    h+=`<div class="empty">Set the draft order first — a keeper has to belong to a seat.</div>`;
+  }else{
+    h+=ks.length?ks.slice().sort((a,b)=>(+String(a.round).replace(/\D/g,""))-(+String(b.round).replace(/\D/g,"")))
+      .map((k,i)=>`<div class="slot"><span class="sc ${esc(normPos(k.pos))}">R${esc(String(k.round).replace(/\D/g,""))}</span>
+        <span class="sn">${esc(k.player)}</span><span class="sx">${esc(k.team)}</span>
+        <button class="pbtn" data-kdel="${esc(k.player)}" style="padding:3px 9px;font-size:11px;margin-left:8px">✕</button></div>`).join("")
+      : `<div class="empty">None set.</div>`;
+    h+=`<div class="fbar" style="margin-top:10px;gap:6px">
+      <select id="kTeam" class="ochip" style="padding:7px 10px">${seats.map(t=>`<option>${esc(t)}</option>`).join("")}</select>
+      <input id="kRound" type="number" min="1" max="${rounds()}" placeholder="Rd" style="max-width:64px;min-width:0;text-align:center;font-family:var(--mono)">
+      <input id="kPlayer" type="search" placeholder="Player name…" autocomplete="off">
+      <button data-kadd="1">Add keeper</button></div>
+      <div id="kHits"></div>`;
+    h+=`<div class="note"><b>CBS has published nothing.</b> Its keepers page reads "displayed here once they have
+      been processed", the commissioner's only 2026 email was the draft order, and the list shipped with the app is a
+      transcription of your handwritten sheet. So this editor is the source of truth — what you enter here overrides
+      the file and drives the grid, the clock and every recommendation. Each keeper consumes its owner's pick in that
+      round, so those overall picks never come up.</div>`;
+    if(localStorage.getItem(kKeepers())) h+=`<div class="fbar"><button data-krevert="1">Revert to shipped list (${((L().keepersFile&&STATE.keepers&&STATE.keepers.keepers)||[]).length})</button></div>`;
+  }
+  h+=`</div>`;
+
   h+=`<div class="card"><h2>Draft state</h2>
     <div class="fbar">
       <button data-undo="1"${DRAFT.picks.length?"":" disabled"}>Undo last pick</button>
@@ -1480,6 +1736,31 @@ function renderSetup(){
   q("button[data-save]",()=>{ setOrder(orderDraft); orderDraft=null; renderAll(); });
   q("button[data-cancel]",()=>{ orderDraft=null; renderSetup(); });
   q("button[data-clear]",()=>{ orderDraft=[]; renderSetup(); });
+  /* Keeper add: the name has to resolve to a real board row, so a typo cannot silently create a
+     keeper that never matches a player and quietly eats a pick. */
+  const kp=el.querySelector("#kPlayer");
+  if(kp) kp.oninput=()=>{
+    const qy=key(kp.value), box=el.querySelector("#kHits");
+    if(!qy){ box.innerHTML=""; return; }
+    box.innerHTML=STATE.board.filter(r=>key(r.name).includes(qy)).slice(0,6)
+      .map(r=>`<div class="prow" data-kpick="${esc(r.name)}">${posPill(r.pos)}<span class="nm">${esc(r.name)}</span>
+        <span class="tm">${esc(r.team||"")}</span></div>`).join("");
+    box.querySelectorAll("[data-kpick]").forEach(b=>b.onclick=()=>{ kp.value=b.dataset.kpick; box.innerHTML=""; });
+  };
+  q("button[data-kadd]",()=>{
+    const team=el.querySelector("#kTeam").value;
+    const rd=parseInt(el.querySelector("#kRound").value,10);
+    const row=findRow(kp.value);
+    if(!row) return alert("Pick a player from the suggestions — that name is not on the board.");
+    if(!(rd>=1&&rd<=rounds())) return alert("Round must be between 1 and "+rounds()+".");
+    const list=keepers().filter(x=>key(x.player)!==key(row.name));
+    if(list.some(x=>x.team===team&&(+String(x.round).replace(/\D/g,""))===rd))
+      return alert(team+" already has a keeper in round "+rd+" — one pick, one keeper.");
+    list.push({team,round:rd,player:row.name,pos:normPos(row.pos),cost:String(rd)+" (entered in app)"});
+    setKeepers(list); renderAll();
+  });
+  q("button[data-kdel]",b=>{ setKeepers(keepers().filter(x=>key(x.player)!==key(b.dataset.kdel))); renderAll(); });
+  q("button[data-krevert]",()=>{ localStorage.removeItem(kKeepers()); renderAll(); });
   q("button[data-undo]",()=>{ undoPick(); renderAll(); });
   q("button[data-clearq]",()=>{ QUEUE=[]; saveQueue(); renderAll(); });
   q("button[data-reset]",()=>{ if(confirm(`Clear all ${DRAFT.picks.length} ${LG} picks? This cannot be undone.`)){ resetDraft(); renderAll(); } });
@@ -1552,7 +1833,8 @@ function renderHeader(){
   $("#chipSnapTxt").textContent=fr?("CSV "+String(fr.updated||"?")):"no snapshot";
 }
 function renderAll(){
-  renderHeader(); renderBoard(); renderDraft(); renderTargets(); renderSetup(); renderRail(); renderPickBar();
+  renderHeader(); renderBoard(); renderDraft(); renderTargets(); renderSetup(); renderRail();
+  renderPickBar(); renderHelper();
   if(modalName) renderModal();
 }
 function showTab(t){
@@ -1585,12 +1867,19 @@ async function boot(){
   await refresh();
   if(SIM&&!DRAFT.picks.length){ runSim(SIM); renderAll(); }
 }
+/* Refresh means EVERYTHING, not just the API. The committed snapshots — rankings, tiers, Pop
+   grades, notes, the keeper ledger — change when a new capture is pushed, and before this they
+   only loaded once at boot, so an installed iPad would sit on the build it first opened until the
+   app was force-quit. loadStatic() re-fetches them with cache:"no-store", and the service worker
+   already forces /data/ to the network, so one tap of ↻ genuinely pulls the current everything. */
 async function refresh(){
   setChip("#chipFfa","#chipFfaTxt","load","Loading…");
   let ok=false;
+  try{ await loadStatic(); }catch(e){}
   try{ ok=await loadFFA(); }catch(e){ ok=false; }
+  rebuild();
   if(ok){
-    rebuild(); saveCache();
+    saveCache();
     setChip("#chipFfa","#chipFfaTxt","live",int(STATE.ffaRaw.length)+" live");
   }else{
     setChip("#chipFfa","#chipFfaTxt","err","offline — FFA snapshot");
@@ -1606,7 +1895,11 @@ $("#pbSkip").onclick=()=>{ skipPick(); renderAll(); };
 $("#pbCancel").onclick=()=>cancelEdit();
 $("#pbSearch").oninput=e=>{ pbQ=e.target.value; renderPickBar(); };
 $("#ovl").onclick=e=>{ if(e.target.id==="ovl") closePlayer(); };
-document.addEventListener("keydown",e=>{ if(e.key==="Escape"){ if(modalName) closePlayer(); else if(editIdx!=null) cancelEdit(); } });
+$("#fab").onclick=()=>{ lhOpen=true; renderHelper(); };
+$("#lhClose").onclick=()=>{ lhOpen=false; renderHelper(); };
+document.querySelectorAll(".lhtabs button").forEach(b=>b.onclick=()=>{ lhTab=b.dataset.lh; renderHelper(); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"){
+  if(modalName) closePlayer(); else if(lhOpen){ lhOpen=false; renderHelper(); } else if(editIdx!=null) cancelEdit(); } });
 setInterval(()=>{ if(document.visibilityState==="visible") refresh(); },REFRESH_MS);
 window.check=check;   // console entry point for the self-check
 
