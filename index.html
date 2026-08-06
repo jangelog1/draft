@@ -1419,6 +1419,10 @@ matchMedia("(min-width:1024px)").addEventListener("change",()=>renderRail());
 let onlyMine=false;
 function renderDraft(){
   const el=$("#draftEl"), l=L(), g=grid();
+  /* innerHTML below destroys the grid node, and with it scrollTop. Capture where he was looking
+     so the board does not jump to the top on every pick and every auto-refresh. */
+  const prevWrap=document.getElementById("gridwrap");
+  const prevTop=prevWrap?prevWrap.scrollTop:null;
   if(!g){
     el.innerHTML=`<div class="note bad"><b>No draft order for ${esc(l.name)} yet.</b>
       ${l.keepersFile?"keepers-rpb.json has no draftOrder.":"CBS had not scheduled this draft when the app was built, so no slot order exists to ship."}
@@ -1501,17 +1505,27 @@ function renderDraft(){
   el.querySelector("button[data-only]").onclick=()=>{ onlyMine=!onlyMine; renderDraft(); };
   el.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
   el.querySelectorAll(".gc[data-cell]").forEach(b=>b.onclick=()=>startEdit(+b.dataset.cell));
-  centerClock();
+  const nw=document.getElementById("gridwrap");
+  if(nw&&prevTop!=null) nw.scrollTop=prevTop;          // put him back exactly where he was
+  centerClock(prevTop==null);                          // only force-centre on the first paint
 }
-/* The clock finds his thumb, not the other way round. */
-function centerClock(){
+/* Bring the clock into view ONLY when it is actually out of view, and never with an animation.
+   The board was moving on every single pick for two compounding reasons: renderDraft rebuilds the
+   grid with innerHTML, which resets scrollTop to 0, and then this ran a smooth-scroll back. So the
+   board slid under his thumb on every pick AND every five-minute auto-refresh, even when he had
+   deliberately scrolled somewhere else to look. Now the scroll position is restored verbatim
+   (see renderDraft) and this only fires when the clock has genuinely scrolled off. */
+function centerClock(force){
   const cell=document.getElementById("clockCell"), wrap=document.getElementById("gridwrap");
   if(!cell||!wrap) return;
-  /* Scroll the WRAPPER, not the page, and only vertically. scrollIntoView used to yank the whole
-     document around on every pick; the columns fit now, so the only thing worth moving to is the
-     round you are on. */
-  const t=cell.offsetTop-wrap.clientHeight/2+cell.offsetHeight/2;
-  try{ wrap.scrollTo({top:Math.max(0,t),behavior:"smooth"}); }catch(e){ wrap.scrollTop=Math.max(0,t); }
+  /* Measured off bounding rects, not offsetTop: offsetTop is relative to the nearest POSITIONED
+     ancestor, and the scroll box is static, so it was returning a coordinate in the wrong space
+     and the "is it visible" test never matched. Rects are always relative to the viewport, so the
+     difference between the two is exactly the offset inside the scroller. */
+  const cr=cell.getBoundingClientRect(), wr=wrap.getBoundingClientRect();
+  const top=cr.top-wr.top+wrap.scrollTop, bot=top+cr.height;
+  if(!force && top>=wrap.scrollTop && bot<=wrap.scrollTop+wrap.clientHeight) return;  // already visible
+  wrap.scrollTop=Math.max(0,top-wrap.clientHeight/2+cr.height/2);
 }
 
 /* ============ LIVE HELPER ============
@@ -1874,7 +1888,7 @@ function showTab(t){
   /* The rail is My Team, and the Draft Board already shows every roster including his — so on that
      tab it is pure duplication, and giving its 320px back is what lets 12 columns fit unscrolled. */
   $("#railEl").style.display=(t==="draft")?"none":"";
-  if(t==="draft") centerClock();
+  if(t==="draft") centerClock(true);
 }
 function switchLeague(id){
   if(!LEAGUES[id]||id===LG) return;
