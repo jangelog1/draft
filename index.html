@@ -614,7 +614,7 @@ const STATE={board:[],ffaRaw:null,ffaProj:null,ffaStamp:null,live:false,
   tiers:null,ranks:{},keepers:null,notes:null};
 
 /* Storage keys are per league and never shared — two drafts, two boards, one app. */
-const kPicks =()=>(SIM?"dr-sim-":"dr-picks-")+LG;
+const kPicks =()=>"dr-picks-"+LG;
 const kOrder =()=>"dr-order-"+LG;
 const kRounds=()=>"dr-rounds-"+LG;
 const kQueue =()=>"dr-queue-"+LG;
@@ -845,7 +845,7 @@ function loadCache(){
 let DRAFT={v:1,picks:[]}, QUEUE=[];
 function loadDraft(){
   DRAFT={v:1,picks:[]}; QUEUE=[];
-  try{
+  if(!SIM) try{
     const d=JSON.parse(localStorage.getItem(kPicks())||"null");
     if(d&&Array.isArray(d.picks)) DRAFT.picks=d.picks;
   }catch(e){}
@@ -854,7 +854,9 @@ function loadDraft(){
     if(Array.isArray(q)) QUEUE=q;
   }catch(e){}
 }
-function saveDraft(){ try{ localStorage.setItem(kPicks(),JSON.stringify(DRAFT)); }catch(e){} }
+/* In sim mode this is a no-op: sim picks live in memory for the life of the tab and are gone the
+   moment the URL param is. Nothing a fake draft does can ever reach the real one. */
+function saveDraft(){ if(SIM) return; try{ localStorage.setItem(kPicks(),JSON.stringify(DRAFT)); }catch(e){} }
 function saveQueue(){ try{ localStorage.setItem(kQueue(),JSON.stringify(QUEUE)); }catch(e){} }
 function toggleQueue(name){
   const k=key(name), i=QUEUE.findIndex(x=>key(x)===k);
@@ -1431,9 +1433,10 @@ function renderDraft(){
   }
   const c=g.c;
   let h="";
-  if(SIM) h+=`<div class="note warn"><b>Sim mode.</b> ${int(DRAFT.picks.length)} picks were filled from the top of
-    the board to exercise the grid. Nothing here touches your real draft — sim picks are stored separately.
-    Drop <code>?sim=</code> from the URL to go back.</div>`;
+  if(SIM) h+=`<div class="note bad"><b>⚠ SIM MODE — this is not your draft.</b> ${int(DRAFT.picks.length)} fake picks
+    were filled from the top of the board to demo the grid, which is why it opens mid-draft. Nothing here is saved;
+    your real board is untouched.
+    <div class="fbar" style="margin-top:9px"><button data-exitsim="1">Exit sim mode</button></div></div>`;
 
   h+=`<div class="card"><h2>${esc(l.name)} draft board
     <span class="rt">${c.n} teams · ${c.R} rounds · ${int(DRAFT.picks.length)} in</span></h2>`;
@@ -1502,6 +1505,8 @@ function renderDraft(){
   h+=`</div>`;
   el.innerHTML=h;
 
+  const xs=el.querySelector("button[data-exitsim]");
+  if(xs) xs.onclick=()=>{ location.href=location.pathname+"?lg="+LG; };
   el.querySelector("button[data-only]").onclick=()=>{ onlyMine=!onlyMine; renderDraft(); };
   el.querySelectorAll(".prow").forEach(b=>b.onclick=()=>takeByName(b.dataset.pick));
   el.querySelectorAll(".gc[data-cell]").forEach(b=>b.onclick=()=>startEdit(+b.dataset.cell));
