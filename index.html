@@ -132,7 +132,7 @@
   .brdwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .brd{min-width:760px}
   .bhd,.brow{display:grid;align-items:center;
-    grid-template-columns:4px minmax(0,1fr) 58px 62px 40px 52px 46px 84px 48px 54px 62px 58px}
+    grid-template-columns:4px minmax(0,1fr) 54px 58px 38px 46px 44px 80px 46px 52px 58px 40px 58px}
   .bhd{padding:0 10px 0 0;height:34px;position:sticky;top:0;z-index:5;background:var(--bg);
     border-bottom:1px solid var(--border)}
   .bhd span{font-size:10.5px;font-weight:600;color:var(--mutfg);text-align:center;letter-spacing:.02em}
@@ -369,12 +369,12 @@
     .grid{--gw:112px}
     .gridwrap{max-height:64vh}
     .brd{min-width:0}
-    .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 66px 74px 46px 60px 52px 96px 56px 62px 70px 66px}
+    .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 62px 70px 44px 56px 50px 92px 54px 60px 66px 46px 66px}
     .brow{height:57px}
     .modal{max-width:480px}
   }
   @media (min-width:1180px){ .grid{--gw:124px} }
-  @media (max-width:430px){ .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 52px 56px 36px 46px 42px 76px 44px 50px 56px 54px} }
+  @media (max-width:430px){ .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 48px 52px 34px 42px 40px 72px 42px 48px 52px 36px 54px} }
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
 </style>
 </head>
@@ -405,9 +405,10 @@
     <div class="foot">
       ADP and projections are fetched live from the
       <a href="https://thefantasyfootballadvice.com" target="_blank" rel="noopener">Fantasy Football Advice</a> API
-      on load and every 5 minutes. Rank, Value, SOS and auction $ come from the FFA CSV export; tiers are FantasyPros
-      expert tiers; player notes are FFA's own calls and video intel, captured — the API serves none of these.
-      Every pick you enter stays on this device. Unofficial — not affiliated with CBS Sports, FantasyPros or the NFL.
+      on load and every 5 minutes. Rank, Value, SOS and auction $ come from the FFA CSV export; the tier bands
+      and Pop grades are FFA's own, read off their board; player notes are FFA's calls and video intel, captured —
+      the API serves none of these.
+      Every pick you enter stays on this device. Unofficial — not affiliated with CBS Sports, FFA or the NFL.
     </div>
   </div></div>
   <aside class="rail" id="railEl"></aside>
@@ -462,7 +463,7 @@ const LEAGUES={
     starters:{QB:1,RB:2,WR:3,TE:1,K:1,DST:1},
     slots:["QB","RB","RB","WR","WR","WR","TE","DST","K"],
     build:{QB:1,RB:5,WR:6,TE:1,K:1,DST:1},
-    ranks:"ffa-ranks-rpb", fpKey:"RPB",
+    ranks:"ffa-ranks-rpb",
     keepersFile:"keepers-rpb",          // draftOrder + keepers both live here
     myTeamRe:/^real midway monsters/i,
     note:"10-team · half-PPR · keeper · D/ST ×2"
@@ -473,7 +474,7 @@ const LEAGUES={
     starters:{QB:1,RB:2,WR:3,TE:1,K:1,DST:1},   // plus one FLEX, folded into replacement level below
     slots:["QB","RB","RB","WR","WR","WR","TE","FLEX","DST","K"],
     build:{QB:1,RB:5,WR:6,TE:1,K:1,DST:1},
-    ranks:"ffa-ranks-mwv", fpKey:"MWV",
+    ranks:"ffa-ranks-mwv",
     keepersFile:null,                   // clean redraft, no keepers
     myTeamRe:/^team spirit$/i,
     /* CBS had not scheduled the draft as of 2026-08-02 ("YOUR DRAFT HAS NOT BEEN SET UP"), so no
@@ -491,13 +492,13 @@ const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",
 async function fetchJSON(u){ const r=await fetch(u,{cache:"no-store"}); if(!r.ok) throw new Error(r.status); return r.json(); }
 const num=n=>(n==null||isNaN(n))?"—":(Math.round(n*10)/10).toFixed(1);
 const int=n=>(n==null||isNaN(n))?"—":Math.round(n).toLocaleString();
-/* FFA writes "D/ST", CBS and FantasyPros write "DST". One spelling internally. */
+/* FFA writes "D/ST" on the board and "DST" in the export. One spelling internally. */
 const normPos=p=>String(p||"").toUpperCase().replace(/[^A-Z]/g,"")==="DST"?"DST":String(p||"").toUpperCase();
 /* Join key across four sources that punctuate names differently (J.J. vs JJ, Jr. vs Jr). */
 const key=n=>String(n||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
   .replace(/\b(jr|sr|ii|iii|iv|v)\b/g,"").replace(/[^a-z ]/g,"").replace(/\s+/g," ").trim();
-/* FFA writes "Texans D/ST"; FantasyPros writes "Houston Texans". The nickname is the only
-   token both agree on, and NFL nicknames are unique, so it is a safe join. */
+/* FFA's board writes "Texans D/ST" where the keeper ledger writes "Houston Texans". The nickname
+   is the only token both agree on, and NFL nicknames are unique, so it is a safe join. */
 const dstKey=n=>{
   const w=String(n||"").toLowerCase().replace(/d\/?st|defense|special teams/g," ")
     .replace(/[^a-z0-9 ]/g," ").trim().split(/\s+/).filter(Boolean);
@@ -527,7 +528,7 @@ const L=()=>LEAGUES[LG];
 const SIM=Math.max(0,parseInt(params.get("sim")||"0",10)||0);
 
 const STATE={board:[],ffaRaw:null,ffaProj:null,ffaStamp:null,live:false,
-  fp:null,ranks:{},keepers:null,notes:null};
+  tiers:null,ranks:{},keepers:null,notes:null};
 
 /* Storage keys are per league and never shared — two drafts, two boards, one app. */
 const kPicks =()=>(SIM?"dr-sim-":"dr-picks-")+LG;
@@ -582,6 +583,24 @@ const POSITIVE={love:1,like:1,must:1}, NEGATIVE={fade:1,avoid:1,shy:1};
 const noteTone=n=>!n?"":(POSITIVE[n.stance]||POSITIVE[n.call])?"love":(NEGATIVE[n.stance]||NEGATIVE[n.call])?"fade":"";
 const stanceLabel=s=>({must:"Must draft",shy:"Shy away",love:"Love",like:"Like",watch:"Watch",fade:"Fade",avoid:"Avoid"}[s]||s);
 
+/* ============ FFA TIERS ============
+   Read off FFA's own rendered board, all 787 rows. Their tiers are contiguous blocks of THEIR
+   RANK — not a function of Value, which was the obvious guess and is wrong: the board carries 169
+   value-order violations and tier value ranges overlap outright (Rashee Rice is rank 30 / value
+   430 while Colston Loveland is rank 33 / value 463, same tier). So the whole thing stores as 13
+   rank boundaries, and `bounds[i]` is the last rank in tier i+1. Everything past the final bound
+   is FFA's tail tier, which on their board is 628 players deep — only ranks 1-159 carry signal. */
+function ffaTier(rank){
+  const b=(STATE.tiers&&STATE.tiers.tierBounds)||null;
+  if(!b||rank==null) return null;
+  for(let i=0;i<b.length;i++) if(rank<=b[i]) return i+1;
+  return b.length+1;
+}
+const ffaPop=name=>((STATE.tiers&&STATE.tiers.pop)||{})[key(name)]||null;
+/* FFA grades draft popularity A+ down to F-, and colours it on the same green-to-red ramp the
+   Value and SOS pills use. First letter is all the hue needs. */
+const GRADE_COLOR={A:"#22c55e",B:"#86efac",C:"#fbbf24",D:"#f97316",F:"#ef4444"};
+
 /* ============ BOARD ============ */
 function replacement(l){
   /* Replacement = the Nth-best player at each position, N = starters × teams. A FLEX league
@@ -595,7 +614,7 @@ function replacement(l){
   });
   return r;
 }
-function buildBoard(redraft,projections,fp,ffaRanks,l){
+function buildBoard(redraft,projections,ffaRanks,l){
   /* FFA's published Rank/Value/SOS/auction live ONLY in the CSV export — the API serves
      projections and ADP and nothing else. So this arrives as committed JSON and is joined on. */
   const fr=new Map(), frDst=new Map(), frAlt=new Map();
@@ -611,17 +630,6 @@ function buildBoard(redraft,projections,fp,ffaRanks,l){
 
   const proj=new Map();
   (projections||[]).forEach(p=>{ const k=key(p.player); if(k) proj.set(k,p); });
-  /* Three lookups, tried in order: exact name, D/ST nickname, then first-initial+surname
-     scoped to the position. Exact-name alone leaves every D/ST and several kickers unjoined. */
-  const fpMap=new Map(), fpDst=new Map(), fpAlt=new Map();
-  ((fp&&fp[l.fpKey])||[]).forEach(p=>{
-    const k=key(p.name); if(k) fpMap.set(k,p);
-    if(normPos(p.pos)==="DST"){ const d=dstKey(p.name); if(d) fpDst.set(d,p); }
-    const a=altKey(p.name); if(a) fpAlt.set(normPos(p.pos)+"|"+a,p);
-  });
-  const fpFind=(name,pos)=>fpMap.get(key(name))
-    || (pos==="DST"?fpDst.get(dstKey(name)):null)
-    || fpAlt.get(pos+"|"+altKey(name)) || null;
 
   const SF=l.score;
   const rows=(redraft||[]).filter(p=>p[SF]!=null&&p.player_name).map(p=>{
@@ -662,15 +670,12 @@ function buildBoard(redraft,projections,fp,ffaRanks,l){
     r.rank=i+1;
     /* Positive delta = the market is drafting them LATER than their value says: a falling bargain. */
     r.delta=(r.adpRank!=null)?Math.round(r.adpRank-r.rank):null;
-    const f=fpFind(r.name,r.pos), pj=proj.get(key(r.name));
-    /* fpTier is FantasyPros' OVERALL expert tier (1..16, monotonic with ECR) — the same shape
-       FFA's tier bands use. The per-position `tier` above is a computed heuristic and only reads
-       correctly inside one position; this one is real expert data and works on the whole board. */
-    if(f){ r.ecr=f.ecr; r.bye=f.bye; r.fpTier=f.tier; r.pop=f.pctRostered; }
+    const pj=proj.get(key(r.name));
     if(pj){ r.games=pj.games; }
     const fx=frFind(r.name,r.pos);
     if(fx){ r.ffaRank=fx.rank; r.ffaValue=fx.value; r.ffaPosRank=fx.posRank; r.sos=fx.sos; r.auction=fx.auction;
-            if(r.bye==null&&fx.bye!=null) r.bye=fx.bye; }
+            r.bye=fx.bye; }
+    r.ffaTier=ffaTier(r.ffaRank); r.pop=ffaPop(r.name);
     r.note=noteFor(r.name,r.pos);
   });
   return board;
@@ -678,22 +683,21 @@ function buildBoard(redraft,projections,fp,ffaRanks,l){
 /* Offline / API-down fallback. The CSV snapshot alone carries rank, value, adp, bye, sos and $ —
    enough to run an entire draft. Only VBD, live ADP drift and projections go missing, so the
    board degrades to FFA's own published order instead of going blank on draft night. */
-function boardFromSnapshot(ffaRanks,fp,l){
-  const fpMap=new Map(); ((fp&&fp[l.fpKey])||[]).forEach(p=>{ const k=key(p.name); if(k) fpMap.set(k,p); });
+function boardFromSnapshot(ffaRanks,l){
   return ((ffaRanks&&ffaRanks.players)||[]).map(p=>{
-    const f=fpMap.get(key(p.name)), pos=normPos(p.pos);
+    const pos=normPos(p.pos);
     return {name:p.name,pos,team:p.team||"",rank:p.rank,ffaRank:p.rank,ffaValue:p.value,
       ffaPosRank:p.posRank,posRank:p.posRank,adp:(p.adp!=null&&p.adp>=999)?null:p.adp,bye:p.bye,
-      sos:p.sos,auction:p.auction,pop:f?f.pctRostered:null,fpTier:f?f.tier:null,
+      sos:p.sos,auction:p.auction,pop:ffaPop(p.name),ffaTier:ffaTier(p.rank),
       tier:null,vbd:null,pts:null,delta:null,snapshot:true,note:noteFor(p.name,pos)};
   }).sort((a,b)=>(a.rank||9999)-(b.rank||9999));
 }
 
 /* ============ LOAD ============ */
 async function loadStatic(){
-  const files=["fantasypros","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb","notes"];
-  const [fp,rRpb,rMwv,kp,nt]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
-  STATE.fp=fp; STATE.ranks["ffa-ranks-rpb"]=rRpb; STATE.ranks["ffa-ranks-mwv"]=rMwv;
+  const files=["ffa-tiers","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb","notes"];
+  const [tg,rRpb,rMwv,kp,nt]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
+  STATE.tiers=tg; STATE.ranks["ffa-ranks-rpb"]=rRpb; STATE.ranks["ffa-ranks-mwv"]=rMwv;
   STATE.keepers=kp; STATE.notes=nt;
 }
 async function loadFFA(){
@@ -710,14 +714,14 @@ async function loadFFA(){
 /* Rebuilt on every league switch, because scoring, D/ST multiplier and replacement level all change. */
 function rebuild(){
   const l=L(), ranks=STATE.ranks[l.ranks];
-  if(STATE.ffaRaw){ STATE.board=buildBoard(STATE.ffaRaw,STATE.ffaProj,STATE.fp,ranks,l); STATE.live=true; }
-  else if(ranks){ STATE.board=boardFromSnapshot(ranks,STATE.fp,l); STATE.live=false; }
+  if(STATE.ffaRaw){ STATE.board=buildBoard(STATE.ffaRaw,STATE.ffaProj,ranks,l); STATE.live=true; }
+  else if(ranks){ STATE.board=boardFromSnapshot(ranks,l); STATE.live=false; }
   else if(loadCache()){ STATE.live=false; }
   else { STATE.board=[]; STATE.live=false; }
 }
 /* Only the fields the board actually prints. Losing the tail beats losing the cache, so the
    write degrades through smaller slices rather than guessing a safe row count up front. */
-const CACHE_FIELDS=["name","pos","team","bye","tier","fpTier","vbd","pts","rank","posRank","adp","delta",
+const CACHE_FIELDS=["name","pos","team","bye","tier","ffaTier","vbd","pts","rank","posRank","adp","delta",
                     "ffaRank","ffaValue","ffaPosRank","sos","auction","pop"];
 function saveCache(){
   const slim=STATE.board.map(r=>{ const o={}; for(const k of CACHE_FIELDS) if(r[k]!=null) o[k]=r[k]; return o; });
@@ -989,9 +993,9 @@ function valuePill(v){
   const c=rampAt(v/1000);
   return `<span class="pill" ${tint(c,null,.13)}>${int(v)}</span>`;
 }
-function popPill(p){
-  if(p==null) return `<span class="bc dim">—</span>`;
-  return `<span class="pill" ${tint(rampAt(p/100),null,.12)}>${Math.round(p)}%</span>`;
+function popPill(g){
+  if(!g) return `<span class="bc dim">—</span>`;
+  return `<span class="pill" ${tint(GRADE_COLOR[String(g)[0]]||"#94a3b8",null,.12)}>${esc(g)}</span>`;
 }
 function sosPill(s){
   if(s==null) return `<span class="bc dim">—</span>`;
@@ -1045,11 +1049,12 @@ function renderBoard(){
     <span></span><span class="l">Player</span><span>Rank</span><span>ADP</span><span>Bye</span>
     <span>Pop</span><span>SOS</span><span>Value</span><span>ADJ</span><span>$</span><span>VBD</span><span>Action</span></div>`;
 
-  /* Tier bands. Sorted by FFA rank or VBD across all positions we use FantasyPros' OVERALL expert
-     tier (real data, monotonic with ECR). Filtered to a single position we use the computed
-     per-position tier, which is what "RB tier 3" means to a drafter. Sorted by ADP, neither
-     ordering matches a tier sequence, so no bands at all. */
-  const bandBy=boardSort==="adp"?null:(boardPos==="ALL"?"fpTier":"tier");
+  /* Tier bands are FFA's own, and FFA's tiers are contiguous blocks of FFA RANK — so they only
+     mean anything while the board is in FFA rank order. They hold under a position filter, exactly
+     as on FFA's board. Under My VBD or ADP the rows no longer walk the ramp, and a band there
+     would be decoration: at 41 picks in, VBD sort opened tier 14 on row one and never opened
+     another. So bands follow the sort rather than being forced on. */
+  const bandBy=boardSort==="ffa"?"ffaTier":null;
   let lastBand=null, bandCount=0;
   shown.forEach(r=>{
     if(bandBy){
@@ -1083,15 +1088,17 @@ function renderBoard(){
       <span class="bc">${adjCell(r.delta)}</span>
       <span class="bc">${cashPill(r.auction)}</span>
       <span class="bc" style="color:${r.vbd!=null&&r.vbd>0?"var(--emerald)":"var(--mutfg)"}">${r.vbd!=null?num(r.vbd):"—"}</span>
+      <span class="bc mut">${r.ffaTier!=null?r.ffaTier:"—"}</span>
       <span class="bc"><button class="dbtn" data-draft="${esc(r.name)}">Draft</button></span></div>`;
   });
   h+=`</div></div>`;
   if(rows.length>220) h+=`<div class="note">Showing the top 220 of ${int(rows.length)} — filter by position or search to go deeper.</div>`;
   h+=`<div class="note"><b>Tap a row</b> for FFA's notes on that player and the full stat card. <b>Draft</b> records
     him to whichever seat is on the clock. <b>Value</b>, <b>SOS</b> and <b>$</b> are FFA's own;
-    <b>Pop</b> is FantasyPros roster%; <b>ADJ</b> compares VBD rank to market ADP — positive means the room
-    is letting him slide. <b>VBD</b> is projected ${esc(l.scoreLabel)} points above the last startable player
-    at that position.${bandBy?` <b>Tier bands</b> are ${boardPos==="ALL"?"FantasyPros expert consensus tiers":"computed value tiers inside "+esc(boardPos)}.`:""}</div>`;
+    <b>Pop</b> is FFA's draft-popularity grade; <b>ADJ</b> compares VBD rank to market ADP — positive means
+    the room is letting him slide. <b>VBD</b> is projected ${esc(l.scoreLabel)} points above the last startable player
+    at that position. <b>Tier</b> is FFA's own, read off their board — their tiers are blocks of FFA rank,
+    not of Value.${bandBy?" Bands are drawn because the board is in FFA rank order.":" Sort by <b>FFA Rank</b> to see the bands drawn."}</div>`;
   const fr=STATE.ranks[l.ranks];
   if(fr) h+=`<div class="note warn"><b>Rank, Value, SOS and $</b> come from the FFA CSV export captured
     <b>${esc(String(fr.updated||"—"))}</b> and do <b>not</b> refresh with the page — the API serves projections and
@@ -1163,9 +1170,9 @@ function renderModal(){
     <div class="mrow"><span class="ml">Schedule strength</span>${sosPill(r.sos)}
       <span style="font-family:var(--mono);font-size:10.5px;color:var(--mutfg)">of 32</span>
       <span class="ml">Auction</span>${cashPill(r.auction)}</div>`;
-  if(r.vbd!=null||r.fpTier!=null) h+=`<div class="mrow">
+  if(r.vbd!=null||r.ffaTier!=null) h+=`<div class="mrow">
       <span class="ml">VBD</span><span class="pill" ${tint(r.vbd>0?"#34d399":"#94a3b8",null,.1)}>${num(r.vbd)}</span>
-      <span class="ml">Tier</span><span class="pill" ${tint((r.fpTier&&r.fpTier<=13?TIER_COLORS[r.fpTier-1][1]:TIER_TAIL[1]),null,.12)}>${r.fpTier!=null?r.fpTier:"—"}</span>
+      <span class="ml">FFA tier</span><span class="pill" ${tint((r.ffaTier&&r.ffaTier<=13?TIER_COLORS[r.ffaTier-1][1]:TIER_TAIL[1]),null,.12)}>${r.ffaTier!=null?r.ffaTier:"—"}</span>
     </div>`;
 
   h+=`<div class="mnote"><div class="ml">Player notes</div>`;

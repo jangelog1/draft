@@ -26,9 +26,8 @@ come up on the clock.
 - **↩ undo** pops the last pick, repeatable, no confirm.
 
 **Tap any row** for the player card: market ADP vs FFA rank, Pop / SOS / Value / auction $ / VBD /
-tier, and FFA's own written notes. **Tier bands** across the board are FantasyPros expert consensus
-tiers; filtered to one position they are computed value tiers inside that position. **Queue** a
-player from the card and he shows in the rail.
+tier, and FFA's own written notes. **Tier bands** are FFA's own. **Queue** a player from the card
+and he shows in the rail.
 
 State is per-league localStorage (`dr-picks-RPB` / `dr-picks-MWV`). Nothing is sent anywhere.
 **Install to the home screen** — Safari clears storage for sites you have only visited.
@@ -39,7 +38,7 @@ State is per-league localStorage (`dr-picks-RPB` / `dr-picks-MWV`). Nothing is s
 |---|---|---|
 | `thefantasyfootballadvice.com/api/redraft-rankings` + `/projections` | ADP, projections (both `ppr` and `hppr`, so one fetch serves both leagues) | live, every 5 min |
 | `data/ffa-ranks-{rpb,mwv}.json` | FFA Rank, Value, SOS, auction $ — **not in the API** | the `ffa-redraft-rankings` skill (exports both league CSVs in one run) |
-| `data/fantasypros.json` | Pop (roster %), ECR. One file holds both leagues. | the `fantasypros-draft-research` skill |
+| `data/ffa-tiers.json` | FFA's 14 tier boundaries + their Pop letter grade per player | re-scraped from FFA's rendered board |
 | `data/keepers-rpb.json` | RPB draft order + keepers | hand-edited |
 | `data/notes.json` | Player notes — 94 FFA stances (`love`/`like`/`watch`/`fade`/`avoid`), 25 must-draft + 5 shy-away calls with a `why`, plus per-league video-intel verdicts | rebuilt from `ffa-intel.json`, `ffa-calls.json` and `plan-{rpb,mwv}.json` |
 
