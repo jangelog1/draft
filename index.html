@@ -170,32 +170,41 @@
      block a scroll container on both axes anyway, which kills `position:sticky;top` against
      the viewport — so the header row would never stick. Owning the vertical scroll here is
      what lets both the round column and the team header stay pinned. */
+  /* Columns are fractions, not fixed pixels, so the whole league fits the width it is given and
+     the board never scrolls sideways. A grid you have to drag is unreadable on the clock — you
+     lose your place every time it moves. Vertical scroll stays: 16 rounds will not fit a screen. */
+  /* minmax(58px,1fr): the columns stretch to fill the width when there is room — which on an iPad
+     there always is, so the whole league fits and nothing moves — and stop shrinking at 58px, below
+     which a surname is unreadable. Only then does it scroll, on a phone. */
   .gridwrap{overflow:auto;-webkit-overflow-scrolling:touch;max-height:70vh;
-    border-radius:var(--r);border:1px solid var(--border);background:var(--card);
-    scroll-snap-type:x proximity;overscroll-behavior:contain}
-  .grid{display:grid;grid-template-columns:40px repeat(var(--n),var(--gw,96px));gap:2px;padding:2px;width:max-content}
-  .gh{position:sticky;top:0;z-index:2;background:var(--muted);border-radius:var(--rc);padding:6px 5px;
-    font-size:10px;font-weight:700;line-height:1.25;text-align:center;scroll-snap-align:start}
+    border-radius:var(--r);border:1px solid var(--border);background:var(--card);overscroll-behavior:contain}
+  .grid{display:grid;grid-template-columns:26px repeat(var(--n),minmax(58px,1fr));gap:2px;padding:2px;width:100%}
+  .gh{position:sticky;top:0;z-index:2;background:var(--muted);border-radius:var(--rc);padding:5px 3px;
+    font-size:10px;font-weight:700;line-height:1.2;text-align:center;min-width:0}
   .gh .gt{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .gh .gm{display:block;color:var(--mutfg);font-size:9px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gh .gm{display:block;color:var(--mutfg);font-size:8.5px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  /* What that team still has to start. This is the column header's real job — scanning "who needs
+     a back before my turn" off the board beats reading it out of a separate card. */
+  .gh .gn{display:flex;gap:2px;flex-wrap:wrap;justify-content:center;margin-top:3px;min-height:11px}
+  .gh .gn b{font-size:7.5px;font-weight:900;padding:1px 3px;border-radius:3px;line-height:1.35}
+  .gh .gn .set{color:var(--emerald);font-size:8px;font-weight:800;letter-spacing:.03em}
   .gh.me{background:rgba(220,38,38,.22)} .gh.me .gm{color:#f8b4b4}
   body[data-lg="MWV"] .gh.me{background:rgba(2,132,199,.22)} body[data-lg="MWV"] .gh.me .gm{color:#a5dbf8}
-  .gcorner{position:sticky;left:0;top:0;z-index:4;background:var(--muted);color:var(--mutfg);
-    display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;border-radius:var(--rc)}
-  .gr{position:sticky;left:0;z-index:3;background:var(--muted);border-radius:var(--rc);
-    display:flex;align-items:center;justify-content:center;font-family:var(--mono);
-    font-size:11px;font-weight:700;color:var(--mutfg)}
-  .gc{min-height:40px;border-radius:var(--rc);padding:4px 5px;background:rgba(255,255,255,.022);
+  .gcorner{position:sticky;top:0;z-index:4;background:var(--muted);color:var(--mutfg);
+    display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;border-radius:var(--rc)}
+  .gr{background:var(--muted);border-radius:var(--rc);display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-size:10px;font-weight:700;color:var(--mutfg)}
+  .gc{min-height:38px;border-radius:var(--rc);padding:3px 4px;background:rgba(255,255,255,.022);
     border:1px solid transparent;border-left:3px solid transparent;
-    display:flex;flex-direction:column;justify-content:center;gap:2px;overflow:hidden;
-    scroll-snap-align:start;cursor:pointer}
+    display:flex;flex-direction:column;justify-content:center;gap:1px;overflow:hidden;
+    min-width:0;cursor:pointer}
   .gc.QB{border-left-color:var(--qb)} .gc.RB{border-left-color:var(--rb)} .gc.WR{border-left-color:var(--wr)}
   .gc.TE{border-left-color:var(--te)} .gc.K{border-left-color:var(--k)}  .gc.DST{border-left-color:var(--dst)}
   .gc.empty{background:transparent;border:1px dashed rgba(31,41,55,.8);cursor:default}
-  .gc .cn{font-size:11px;font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .gc .cn{font-size:10.5px;font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .gc .cm{display:flex;align-items:center;gap:4px}
-  .gc .cov{margin-left:auto;font-family:var(--mono);font-size:8.5px;color:var(--mutfg);font-weight:600}
-  .gc .pos{min-width:0;padding:1px 4px;font-size:8px}
+  .gc .cov{margin-left:auto;font-family:var(--mono);font-size:8px;color:var(--mutfg);font-weight:600}
+  .gc .pos{min-width:0;padding:0 3px;font-size:7.5px;border:0}
   .gc.mine{background:rgba(220,38,38,.14)} .gc.col-mine{background:rgba(220,38,38,.045)}
   body[data-lg="MWV"] .gc.mine{background:rgba(2,132,199,.14)}
   body[data-lg="MWV"] .gc.col-mine{background:rgba(2,132,199,.045)}
@@ -424,14 +433,12 @@
     .raild>summary{display:none}
     .raild>.body{padding-top:0}
     .wrap{padding:0 18px}
-    .grid{--gw:112px}
-    .gridwrap{max-height:64vh}
+    .gridwrap{max-height:66vh}
     .brd{min-width:0}
     .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 62px 70px 44px 56px 50px 92px 54px 60px 66px 46px 66px}
     .brow{height:57px}
     .modal{max-width:480px}
   }
-  @media (min-width:1180px){ .grid{--gw:124px} }
   @media (max-width:430px){ .bhd,.brow{grid-template-columns:4px minmax(0,1fr) 48px 52px 34px 42px 40px 72px 42px 48px 52px 36px 54px} }
   @media (prefers-reduced-motion:reduce){ *,*::before,*::after{animation:none!important;transition:none!important} }
 </style>
@@ -1445,10 +1452,14 @@ function renderDraft(){
 
   h+=`<div class="gridwrap" id="gridwrap"><div class="grid" style="--n:${onlyMine&&c.slot?1:c.n}">`;
   const seats=(onlyMine&&c.slot)?c.ord.filter(e=>(e.slot||0)===c.slot):c.ord;
+  const needBySlot={}; teamRosters().forEach(t=>needBySlot[t.slot]=t.needs);
   h+=`<div class="gcorner">RD</div>`;
   seats.forEach(e=>{
+    const nd=needBySlot[e.slot||0]||[];
     h+=`<div class="gh${e.mine?" me":""}"><span class="gt">${esc(e.manager||e.team)}</span>
-      <span class="gm">${esc(e.team)}</span></div>`;
+      <span class="gm">${esc(e.team)}</span>
+      <span class="gn">${nd.length?nd.map(p=>`<b class="pos ${p}">${p==="DST"?"DEF":p}</b>`).join("")
+        :'<span class="set">SET</span>'}</span></div>`;
   });
   for(let r=1;r<=c.R;r++){
     h+=`<div class="gr">${r}</div>`;
@@ -1494,8 +1505,13 @@ function renderDraft(){
 }
 /* The clock finds his thumb, not the other way round. */
 function centerClock(){
-  const cell=document.getElementById("clockCell");
-  if(cell&&cell.scrollIntoView) try{ cell.scrollIntoView({inline:"center",block:"nearest",behavior:"smooth"}); }catch(e){}
+  const cell=document.getElementById("clockCell"), wrap=document.getElementById("gridwrap");
+  if(!cell||!wrap) return;
+  /* Scroll the WRAPPER, not the page, and only vertically. scrollIntoView used to yank the whole
+     document around on every pick; the columns fit now, so the only thing worth moving to is the
+     round you are on. */
+  const t=cell.offsetTop-wrap.clientHeight/2+cell.offsetHeight/2;
+  try{ wrap.scrollTo({top:Math.max(0,t),behavior:"smooth"}); }catch(e){ wrap.scrollTop=Math.max(0,t); }
 }
 
 /* ============ LIVE HELPER ============
@@ -1855,6 +1871,9 @@ function renderAll(){
 function showTab(t){
   document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));
   document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));
+  /* The rail is My Team, and the Draft Board already shows every roster including his — so on that
+     tab it is pure duplication, and giving its 320px back is what lets 12 columns fit unscrolled. */
+  $("#railEl").style.display=(t==="draft")?"none":"";
   if(t==="draft") centerClock();
 }
 function switchLeague(id){

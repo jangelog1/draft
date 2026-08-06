@@ -13,6 +13,8 @@ modal were measured off the rendered site, not guessed.
 
 - **iPad / desktop (>=1024px):** board on the left, a sticky 320px rail on the right with My Team
   (positional counter + lineup slot grid + bench), the queue, and the keepers list.
+- **Draft Board tab** hides the rail and takes the full width, so all 10 (or 12) columns fit without
+  scrolling sideways. Each column header carries that team's outstanding starting slots.
 - **Phone:** the rail collapses to one tappable summary at the top of the page.
 
 ## How it works
