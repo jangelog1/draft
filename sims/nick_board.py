@@ -31,14 +31,6 @@ STARTERS = {"QB":1,"RB":2,"WR":3,"TE":1,"K":1,"DST":1}
 BUILD    = {"QB":1,"RB":5,"WR":7,"TE":1,"K":1,"DST":1}
 TAKE_ZONE = ["Saquon Barkley","Ken Walker","Chase Brown","Omarion Hampton","Derrick Henry","Devon Achane"]
 
-# Nick writes league-specific notes and the must/shy flags do not carry them. These are the players
-# whose own note says they are a worse buy in RPB's half-PPR than their rank implies. Demoted, not
-# banned — if the board hands you one at a steep discount he is still playable.
-RPB_DEMOTE = {
-    "Zay Flowers":     "MWV only — 'TD caps hurt him in half-PPR (RPB)'",
-    "Jayden Daniels":  "DOWNGRADED to 'watch' — WAS cutting no-huddle, rushing floor slashed",
-    "Derrick Henry":   "'watch' — declining targets, volatile half-PPR floor at 32",
-}
 
 
 def key(x):
@@ -55,14 +47,17 @@ def load():
     fade  = {key(v["name"]) for v in shared.values() if v.get("stance") in ("fade","avoid")}
     note  = {key(v["name"]): (v.get("note") or v.get("why") or "") for v in shared.values()}
     kept  = {key(x["player"]) for x in keep["keepers"] if x["team"] != MINE}
-    return players, must, shy | fade, note, kept
+    fmt = notes.get("rpbFormat", {})
+    up   = {n: w for n, w in fmt.get("up", {}).items()}
+    down = {n: w for n, w in fmt.get("down", {}).items()}
+    return players, must, shy | fade, note, kept, up, down
 
 
 def ovr(rd, pk):
     return (rd - 1) * 10 + pk
 
 
-def pick_for(rd, pk, avail, have, must, banned, note):
+def pick_for(rd, pk, avail, have, must, banned, note, UP, DOWN):
     """Nick's rules, in the order he actually applies them."""
     o = ovr(rd, pk)
     # Only offer players the board could plausibly still hold at this pick.
@@ -96,9 +91,13 @@ def pick_for(rd, pk, avail, have, must, banned, note):
         return max(pool, key=lambda p: p["pts"]), "only K/DST left"
 
     # A demoted player has to clear the next man by a real margin, not a rounding error.
+    def adj(p):
+        """Nick's own half-PPR language, as points. A player he only likes for a full-PPR
+        reception floor is worth less here; one he calls a 0.5/standard buy is worth more."""
+        return p["pts"] + (10 if p["name"] in UP else 0) - (14 if p["name"] in DOWN else 0)
+
     def best(lst):
-        if not lst: return None
-        return max(lst, key=lambda p: p["pts"] - (12 if p["name"] in RPB_DEMOTE else 0))
+        return max(lst, key=adj) if lst else None
 
     # --- round 1: Nick takes the back. The cliff is real. ---
     if rd == 1:
@@ -139,7 +138,7 @@ def pick_for(rd, pk, avail, have, must, banned, note):
 
 
 if __name__ == "__main__":
-    players, must, banned, note, kept = load()
+    players, must, banned, note, kept, UP, DOWN = load()
     avail = [p for p in players if key(p["name"]) not in kept]
     have = collections.Counter({p: 0 for p in STARTERS})
     have["TE"] = 0
@@ -150,13 +149,13 @@ if __name__ == "__main__":
     print(f"{'pick':<7}{'pos':<5}{'player':<24}{'why Nick takes him'}")
     print("-" * 100)
     for rd, pk in PICKS:
-        p, why = pick_for(rd, pk, avail, have, must, banned, note)
+        p, why = pick_for(rd, pk, avail, have, must, banned, note, UP, DOWN)
         if p is None:
             print(f"{rd}.{pk:02d}   -- board exhausted --"); continue
         avail.remove(p); have[p["pos"]] += 1
         star = " *" if key(p["name"]) in must else "  "
-        if p["name"] in RPB_DEMOTE:
-            why = f"{why}  [!] {RPB_DEMOTE[p['name']]}"
+        if p["name"] in UP:   why = f"{why}   [RPB+] {UP[p['name']][:70]}"
+        if p["name"] in DOWN: why = f"{why}   [RPB-] {DOWN[p['name']][:70]}"
         print(f"{rd}.{pk:02d}{star}  {p['pos']:<5}{p['name']:<24}{why}")
         if rd == 9:
             print(f"{'10.09':<7}{'RB':<5}{'Travis Etienne Jr.':<24}KEEPER — costs your round-10 pick")
