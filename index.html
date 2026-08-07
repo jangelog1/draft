@@ -668,7 +668,7 @@ const SIM=Math.max(0,parseInt(params.get("sim")||"0",10)||0);
 const RESET=params.get("reset")==="1";
 
 const STATE={board:[],ffaRaw:null,ffaProj:null,ffaStamp:null,live:false,
-  tiers:null,ranks:{},keepers:null,notes:null};
+  tiers:null,ranks:{},keepers:null,notes:null,plan:null};
 
 /* Storage keys are per league and never shared — two drafts, two boards, one app. */
 const kPicks =()=>"dr-picks-"+LG;
@@ -854,10 +854,14 @@ function boardFromSnapshot(ffaRanks,l){
 
 /* ============ LOAD ============ */
 async function loadStatic(){
-  const files=["ffa-tiers","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb","notes"];
-  const [tg,rRpb,rMwv,kp,nt]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
+  const files=["ffa-tiers","ffa-ranks-rpb","ffa-ranks-mwv","keepers-rpb","notes","plan-rpb"];
+  const [tg,rRpb,rMwv,kp,nt,pl]=await Promise.all(files.map(f=>fetchJSON(DATA+f+".json").catch(()=>null)));
   STATE.tiers=tg; STATE.ranks["ffa-ranks-rpb"]=rRpb; STATE.ranks["ffa-ranks-mwv"]=rMwv;
   STATE.keepers=kp; STATE.notes=nt;
+  /* plan-rpb.json is the canonical plan and carries the contingencies and standing conclusions
+     the PLAN constant below never had. The constant stays as the offline fallback: if this fetch
+     fails on draft day the card still renders the branches rather than disappearing. */
+  STATE.plan=pl;
 }
 async function loadFFA(){
   const [redraft,projections]=await Promise.all([
@@ -1535,9 +1539,12 @@ function needsLine(){
    RPB only — MWV was never simulated, and a plan card there would be a guess wearing a number. */
 function planCard(compact){
   const l=L();
-  if(l.id!==PLAN.league||!STATE.board.length) return "";
+  /* P is data/plan-rpb.json when it loaded, the PLAN constant when it did not. Same shape either
+     way; only the JSON carries contingencies and standing, so those sections self-hide offline. */
+  const P=STATE.plan||PLAN;
+  if(l.id!==P.league||!STATE.board.length) return "";
   const avail=new Set(pool().map(r=>key(r.name)));
-  const live=PLAN.takeZone.filter(n=>avail.has(key(n)));
+  const live=P.takeZone.filter(n=>avail.has(key(n)));
   const have=myHave(), rb=have.RB||0;
   const c=clock();
   /* The Bowers rule is round-dependent and inverts in round 1, so it is gated rather than always
@@ -1545,40 +1552,54 @@ function planCard(compact){
      round 2 on, once the top of the RB board is gone. Showing the instruction unconditionally
      would tell him to make the single worst pick available to him. */
   const nextRd=(c&&c.next!=null&&c.n)?Math.floor((c.next-1)/c.n)+1:null;
-  const bowers=avail.has(key(PLAN.bowers))&&nextRd!=null&&nextRd>=2;
+  const bowers=avail.has(key(P.bowers))&&nextRd!=null&&nextRd>=2;
 
-  let h=`<div class="card"><h2>🎯 Draft plan<span class="rt">Monte Carlo · ${esc(PLAN.updated)}</span></h2>`;
+  let h=`<div class="card"><h2>🎯 Draft plan<span class="rt">Monte Carlo · ${esc(P.updated)}</span></h2>`;
 
   /* Roster arithmetic before any advice: what the plan says is worth taking only matters if there
      are picks left to take it with. */
   h+=needsLine();
 
   /* The one instruction that overrides everything else on the card, so it goes first. */
-  if(bowers) h+=`<div class="note bad"><b>${esc(PLAN.bowers)} is still on the board.</b>
-    Take him at your next pick — ${esc(PLAN.bowersGain)}, the largest single edge in this draft.
+  if(bowers) h+=`<div class="note bad"><b>${esc(P.bowers)} is still on the board.</b>
+    Take him at your next pick — ${esc(P.bowersGain)}, the largest single edge in this draft.
     He went before pick 19 in every one of 52,200 simulated drafts, so this should never fire.</div>`;
 
   /* The live read on the RB cutoff. Only meaningful while he still needs starting backs. */
   if(rb<2){
     h+=live.length
-      ? `<div class="note good"><b>Take zone — ${live.length} of ${PLAN.takeZone.length} left:</b> ${live.map(esc).join(" · ")}.
+      ? `<div class="note good"><b>Take zone — ${live.length} of ${P.takeZone.length} left:</b> ${live.map(esc).join(" · ")}.
          Any of these is worth taking over the best WR, or within ~5 points of it.</div>`
-      : `<div class="note warn"><b>Past the cutoff.</b> Every back through ${esc(PLAN.cutoffAfter)} is gone.
-         From ${esc(PLAN.pivotFrom)} down, taking the back costs 14–29 points — take the WR and buy a back next round.</div>`;
+      : `<div class="note warn"><b>Past the cutoff.</b> Every back through ${esc(P.cutoffAfter)} is gone.
+         From ${esc(P.pivotFrom)} down, taking the back costs 14–29 points — take the WR and buy a back next round.</div>`;
   }else{
     h+=`<div class="note good"><b>Two backs in.</b> The RB cutoff no longer applies — take value from here.</div>`;
   }
 
   if(!compact){
-    PLAN.branches.forEach(b=>{
+    P.branches.forEach(b=>{
       h+=`<div class="lwhy" style="margin:0 0 10px;padding:0">
         <b style="color:var(--sky)">Plan ${esc(b.tag)}</b> · <b>${esc(b.when)}</b><br>${esc(b.do)}
         <div style="color:var(--mutfg);margin-top:3px">${esc(b.why)}</div></div>`;
     });
-    h+=`<div class="kv2"><span class="k">Keeper</span><span class="v">${esc(PLAN.keeper)} · round 10</span></div>`;
-    h+=`<div class="kv2"><span class="k">Round-2 edge</span><span class="v" style="font-weight:500">${esc(PLAN.edge)}</span></div>`;
+    /* plan-rpb.json's keeper string already names the round; the old constant did not. */
+    h+=`<div class="kv2"><span class="k">Keeper</span><span class="v">${
+      esc(/round/i.test(P.keeper)?P.keeper:P.keeper+" · round 10")}</span></div>`;
+    h+=`<div class="kv2"><span class="k">Round-2 edge</span><span class="v" style="font-weight:500">${esc(P.edge)}</span></div>`;
     h+=`<div class="lwhy" style="margin:10px 0 0;padding:0"><b style="color:var(--destructive)">Do not</b><ul style="margin:5px 0 0 16px;padding:0">${
-      PLAN.traps.map(t=>`<li style="margin-bottom:3px">${esc(t)}</li>`).join("")}</ul></div>`;
+      P.traps.map(t=>`<li style="margin-bottom:3px">${esc(t)}</li>`).join("")}</ul></div>`;
+    /* Only plan-rpb.json has these, so they vanish rather than break on the constant fallback.
+       They are the branches the sims called impossible and that then fired in live mocks — the
+       D/ST drain especially, which no simulation ever modelled. */
+    if(P.contingencies&&P.contingencies.length){
+      h+=`<div class="lwhy" style="margin:10px 0 0;padding:0"><b style="color:var(--warn,#facc15)">If this happens</b>${
+        P.contingencies.map(c=>`<div style="margin-top:6px"><b>${esc(c.when)}</b> → ${esc(c.do)}
+          <div style="color:var(--mutfg);margin-top:2px">${esc(c.why)}</div></div>`).join("")}</div>`;
+    }
+    if(P.standing&&P.standing.length){
+      h+=`<div class="lwhy" style="margin:10px 0 0;padding:0"><b style="color:var(--sky)">Standing</b><ul style="margin:5px 0 0 16px;padding:0">${
+        P.standing.map(t=>`<li style="margin-bottom:3px">${esc(t)}</li>`).join("")}</ul></div>`;
+    }
   }
   return h+`</div>`;
 }
