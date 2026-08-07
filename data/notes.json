@@ -62,6 +62,22 @@
     {
       "title": "The 'everyone is saying it' tell",
       "text": "His recurring signal for late-round bets: a beat writer alone means little, but when the GM, head coach, coordinator, quarterback and reporters all independently praise a player, nobody in that group has an incentive to lie together. He applied it to both Luther Burden and Jayden Higgins. Not a guarantee — injury or a crowded room still intervene — but on a player going in double-digit rounds he treats it as an obvious bet."
+    },
+    {
+      "title": "The RB dead zone — perceived volume vs real volume",
+      "text": "From the 2026-08-03 mock-draft video, his own definition: the dead zone is 'a range of running back that is being propped up on perceived volume.' The distinction is the whole idea — for the top dozen backs the volume is KNOWN (great talents, good teams, locked roles), while the next range is priced on volume people ASSUME will arrive. He says that top tier 'basically ends with Derrick Henry in all formats.' Independent confirmation of the take-zone cutoff already in plan-rpb.json, which lands at RB11-12 (Henry/Achane) from the VBD side. Two different methods, same line."
+    },
+    {
+      "title": "Never leave rounds 1-2 without a back",
+      "text": "Stated flatly in the 2026-08-03 video: he does not like teams that finish the first two rounds with no running back, EVEN WHEN the receiver value is obviously better. He walked through passing on a JSN + Amon-Ra start he called 'very enticing' and still took the back. You do not have to double-dip, but you must leave with at least one. He also calls double-dipping RB at a late first-round pick a good strategy this season."
+    },
+    {
+      "title": "The QB waiting rule, stated precisely",
+      "text": "2026-08-03: 'If you don't end up getting Josh Allen, just wait. You don't need to draft Lamar right away.' Round five is the beginning of the window but rounds SIX, SEVEN and EIGHT are where he actually wants to take his quarterback. Combined with the 2026-07-31 rankings video, the full rule is: Allen at a mid-to-late third is the one early exception; otherwise skip the position entirely until round six."
+    },
+    {
+      "title": "Round one has no bad picks",
+      "text": "From the 2026-08-05 must-draft RB video: 'realistically you can call every one of the top 13 or 14 players this season a must-draft player.' He deliberately leaves round-one players off his must-draft lists because the interesting decisions start after them. The corollary he repeats in the WR video: round one is about not making the one or two mistakes that exist, not about finding an edge."
     }
   ],
   "shared": {
@@ -92,7 +108,9 @@
           "s": "up",
           "take": "The only back Nick would take ahead of Brown at that turn; if he lasts to the tail of round one or the one-two turn, he goes first."
         }
-      ]
+      ],
+      "videoNote": "People are underrating how good he actually was, because the offense around him was terrible — no other playmakers with Bowers hurt, bad line, weak scheme. All three improve this year. He calls a late-first Cook + Jeanty pairing profiles that should cost a top-seven pick.",
+      "videoDate": "2026-08-05"
     },
     "bijan robinson": {
       "name": "Bijan Robinson",
@@ -164,7 +182,9 @@
           "s": "up",
           "take": "Called insane value at the three-four turn — he's had drafts where he took Hall a full round earlier."
         }
-      ]
+      ],
+      "videoNote": "MOVED DOWN, and explicitly moved down in half PPR too, not just full. He is optimistic about the Jets in theory but not enough to pay a round-three price. Sits at the edge of the dead zone.",
+      "videoDate": "2026-08-03"
     },
     "quinshon judkins": {
       "name": "Quinshon Judkins",
@@ -253,7 +273,9 @@
           "s": "up",
           "take": "Must-draft in round two: RB10 ADP on a round-one profile, roughly 20 touches with red-zone and receiving work, and Burrow calling him the featured back."
         }
-      ]
+      ],
+      "videoNote": "The reverse side of the Walker split — Nick takes Chase Brown in FULL PPR for reception certainty, and Walker in half. Separately a must-draft any time he reaches round two: best offensive line of the Burrow era, featured role, top-five upside if Burrow stays healthy.",
+      "videoDate": "2026-08-03"
     },
     "kenneth walker": {
       "name": "Kenneth Walker",
@@ -990,7 +1012,9 @@
           "s": "down",
           "take": "A dead-zone example: touchdowns and yardage should be there, but Corum could take an even split and the receptions will not be high."
         }
-      ]
+      ],
+      "videoNote": "Named as dead-zone: lead touchdown back on a potentially top-scoring offense, but Corum could take a 50/50 split and the receptions are known not to be there. Volume is perceived, not locked.",
+      "videoDate": "2026-08-03"
     },
     "josh jacobs": {
       "name": "Josh Jacobs",
@@ -1051,7 +1075,9 @@
           "s": "up",
           "take": "Honorable mention Nick loves in the late first. Camp reports point to an expanded receiving role, which he calls the only thing that was capping Cook's ceiling."
         }
-      ]
+      ],
+      "videoNote": "Honorable mention he loves in the late first. Camp reports indicate an increased receiving role — the one thing that was capping him. League's leading rusher last year with 15-plus TD upside; if the targets come, the ceiling is top-three overall.",
+      "videoDate": "2026-08-05"
     },
     "jeremiah love": {
       "name": "Jeremiah Love",
@@ -1065,7 +1091,9 @@
           "s": "watch",
           "take": "Strong value where he fell at the three-four turn, but Nick calls the situation super risky with Allgeier confirmed for a split."
         }
-      ]
+      ],
+      "videoNote": "Strong value at the 3-4 turn where he fell in this mock, but flagged as risky — the team is confirming an Allgeier split. Do not pay for a full workload.",
+      "videoDate": "2026-08-03"
     },
     "najee harris": {
       "name": "Najee Harris",
@@ -1091,7 +1119,9 @@
           "s": "up",
           "take": "The whole segment. Cutting freely in camp, off PUP, and Nick has him at the 2/3 turn with room to climb if the ramp-up keeps going well."
         }
-      ]
+      ],
+      "videoNote": "Off PUP and cutting freely in camp. Nick has him at the 2-3 turn with room to climb, and says if the recovery stays clean he would love him a tier behind Lamb and Jefferson. This directly addresses the PUP worry in the older fade note above.",
+      "videoDate": "2026-08-05"
     },
     "jameson williams": {
       "name": "Jameson Williams",
@@ -1512,7 +1542,9 @@
           "s": "down",
           "take": "An early-down grinder with no receiving role, which he argues is exactly the profile that becomes a dead-zone regret in full PPR."
         }
-      ]
+      ],
+      "videoNote": "Named as dead-zone: touchdowns and yardage will be there but he has zero role in the receiving game, and Jaylen Warren is being hyped for real work. An early-down grinder priced like more.",
+      "videoDate": "2026-08-03"
     },
     "jadenblue": {
       "name": "Jaden Blue",
@@ -1672,7 +1704,9 @@
           "s": "up",
           "take": "Great camp reports plus goal-line work and new screen and receiving usage; Nick says he probably deserves a first-round pick, not a second."
         }
-      ]
+      ],
+      "videoNote": "FORMAT SPLIT and it favours RPB: 'In half PPR scoring I have Ken Walker over Chase Brown. But once you flip on full PPR, the certainty there for the receptions is too great.' Yours is the half-PPR league — Walker is the preferred back of the two here.",
+      "videoDate": "2026-08-03"
     },
     "rickypearl": {
       "name": "Ricky Pearl",
@@ -2203,6 +2237,7 @@
     "_note": "Where an FFA video take disagrees with the stance/call already on the entry. Recorded 2026-08-07, NOT auto-resolved — read the dates and decide.",
     "Malik Nabers": "TWO videos (2026-08-03 and 2026-08-05) say UP — off PUP, cutting freely in camp, Nick has him at the 2/3 turn. The entry says 'fade to R5+, non-clean knee, PUP risk' and is UNDATED. The videos are almost certainly newer and the specific worry (PUP) is the thing they say has resolved. STRONG CANDIDATE TO FLIP — he is currently on your do-not-draft reflex and probably should not be.",
     "Quentin Johnston": "2026-08-03 video says he is drafting him a lot for the underneath/screen floor; entry says 'flat projection, no top-15 ceiling'. Low impact for RPB — Max's College Fund keeps him, so he never reaches your draft.",
-    "David Montgomery": "FALSE POSITIVE, no action. The 'down' take is from the Jared Goff video and is about Montgomery LEAVING Detroit freeing goal-line touchdowns for Goff. It is not a downgrade of Montgomery."
+    "David Montgomery": "FALSE POSITIVE, no action. The 'down' take is from the Jared Goff video and is about Montgomery LEAVING Detroit freeing goal-line touchdowns for Goff. It is not a downgrade of Montgomery.",
+    "_asr_warning": "Captions are ASR and mis-hear names constantly. In the 2026-08-03 dead-zone video the transcript reads 'Jahmyr Gibbs is on a bottom-three offense' — impossible (Detroit, and Nick has a separate video titled 'Draft Jahmyr Gibbs 1.01'). That is a mis-heard name and Gibbs is NOT a dead-zone back. Never attribute a take to a player on caption text alone when the claim contradicts what you know about his team or the rest of his content."
   }
 }
