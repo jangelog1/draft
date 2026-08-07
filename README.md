@@ -103,9 +103,14 @@ RB demand by ~3 picks.
 | mc10 | The RB-scarcity correction itself |
 | **mc11** | **Rounds 1–2 board on the corrected engine — current** |
 | **mc12** | **5.02: anchor RB vs the FFA must-draft list — 17,280 paired drafts** |
+| **mc13** | **All 15 picks start to finish, plan-A vs the opening the room actually gives** |
 
-`mc.py` is the broken first attempt, kept as a record. Rounds 3–4 are still unsimulated; mc12 is
-the first look past 2.09 and covers pick five only.
+`mc.py` is the broken first attempt, kept as a record. mc13 is the first run covering every pick.
+
+**The engine cannot model a player falling.** Opponents draft near ADP, so anyone whose ADP is
+earlier than your pick is always gone by the time you get there. Bowers at 2.09 and Breece Hall at
+5.02 both happened in real mocks and neither can occur in the sim. Use the sim for *which plan is
+better on an average board* and the live Pick Predictor for *is this man still here*.
 
 ### Standing preferences
 
