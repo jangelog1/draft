@@ -1114,6 +1114,10 @@ function check(){
       ok(new Set(placed).size===placed.length,"no player fills two lineup slots");
       ok(placed.length===mine.players.length,"every rostered player lands in a slot");
     }
+    /* The needs counter reads empty starter slots straight off fillSlots, so a change to how BN
+       is emitted would silently show "starters are full" at 1.01. */
+    ok(fillSlots([]).filter(s=>s.code!=="BN"&&!s.p).length===L().slots.length,
+       "an empty roster needs every starting slot");
   } finally { DRAFT.picks=saved; }
   return fails.length?("FAIL ("+fails.length+")\n"+fails.slice(0,20).join("\n"))
     :"OK — "+LG+" "+(clock()?clock().n:"?")+" teams × "+rounds()+" rounds, "+keepers().length+" keepers skipped";
@@ -1502,6 +1506,28 @@ matchMedia("(min-width:1024px)").addEventListener("change",()=>renderRail());
 
 /* ============ RENDER: DRAFT BOARD (the grid) ============ */
 let onlyMine=false;
+/* Picks remaining vs starting slots still empty. This got recomputed by hand on every single pick
+   of the 2026-08-06 mock and it drove more calls than any simulated number did — "5 picks left,
+   need 2 RB + 1 WR + K + DST = exactly 5, no slack" is the whole reason the last two rounds came
+   out right. fillSlots() already knows what counts as a starter, including FLEX, so ask it rather
+   than re-deriving needs from starters{}. */
+function needsLine(){
+  const c=clock();
+  if(!c||!c.slot||!c.left) return "";              // no seat, or the board is done — nothing to count
+  const mine=teamRosters().find(t=>t.mine);
+  const empty=fillSlots(mine?mine.players:[]).filter(s=>s.code!=="BN"&&!s.p).map(s=>s.code);
+  const grp=[];
+  empty.forEach(code=>{ const g=grp.find(x=>x.code===code); if(g) g.n++; else grp.push({code,n:1}); });
+  const need=grp.map(g=>(g.n>1?g.n+" ":"")+g.code).join(" · ");
+  const slack=c.left-empty.length;
+  const tone=slack<0?"bad":slack===0?"warn":"good";
+  const tail=slack<0 ? `<b>short ${-slack}</b> — the lineup cannot be filled, take the scarcest slot now`
+    : slack===0 ? `<b>no slack</b> — every remaining pick is spoken for`
+    : `${slack} spare pick${slack>1?"s":""}`;
+  return `<div class="note ${tone}"><b>${c.left} pick${c.left>1?"s":""} left</b> · ${
+    empty.length?`need ${need} · ${tail}`:`starters are full — ${c.left} pick${c.left>1?"s":""} of pure value`}</div>`;
+}
+
 /* The Monte Carlo plan, read against the live board rather than printed as static advice: the
    cutoff names are checked for availability every render, so on draft day the card says which
    backs are actually still sitting there. Shown on the Draft Board tab and inside the Live Helper,
@@ -1522,6 +1548,10 @@ function planCard(compact){
   const bowers=avail.has(key(PLAN.bowers))&&nextRd!=null&&nextRd>=2;
 
   let h=`<div class="card"><h2>🎯 Draft plan<span class="rt">Monte Carlo · ${esc(PLAN.updated)}</span></h2>`;
+
+  /* Roster arithmetic before any advice: what the plan says is worth taking only matters if there
+     are picks left to take it with. */
+  h+=needsLine();
 
   /* The one instruction that overrides everything else on the card, so it goes first. */
   if(bowers) h+=`<div class="note bad"><b>${esc(PLAN.bowers)} is still on the board.</b>
