@@ -1,0 +1,67 @@
+{
+  "source": "Week 1: EatDrinkAndSleepFootball implied-totals board + FanDuel Research week-1 table, cross-checked against ESPN and FOX schedule-release lines. Weeks 2-3: Yahoo Sports full-season look-ahead lines.",
+  "pulled": "2026-08-07",
+  "replaces": "dst-week1-2026.json — that file stored oppImplied by hand and had the Dolphins/Raiders game inverted (it recorded Miami's own 18.5 implied total as the Raiders' offense). Raw lines are stored here instead and the implied totals are computed by sims/dst_rank.py, so that class of mistake cannot recur.",
+  "note": "Each game stores the line as published: fav = the favored team, spread = how many points, total = the game over/under. Implied team total = total/2 +/- spread/2. A defense's oppImplied is the implied total of the offense it faces.",
+  "warning": "Weeks 2 and 3 are LOOK-AHEAD lines posted in August. They are far softer than week 1 and will move a lot by kickoff. Re-pull the week you actually care about before setting a lineup.",
+  "conflicts": [
+    "Jets at Titans: the EDS board had the Jets as the -2.5 favorite; FanDuel Research, ESPN and FOX all have Tennessee favored at home. Went with Tennessee (3 sources to 1), so the Titans defense faces a Jets offense implied at 18.0.",
+    "Dolphins at Raiders: FanDuel Research had Miami -3.5; EDS, ESPN and FOX all have Las Vegas favored at home. Went with Las Vegas, so the Dolphins defense faces a Raiders offense implied at 22.0 — not the 18.5 the old file carried."
+  ],
+  "weeks": {
+    "1": [
+      {"away": "Patriots", "home": "Seahawks", "fav": "Seahawks", "spread": 3.5, "total": 44.5},
+      {"away": "49ers", "home": "Rams", "fav": "Rams", "spread": 3.5, "total": 48.5},
+      {"away": "Ravens", "home": "Colts", "fav": "Ravens", "spread": 3.5, "total": 48.5},
+      {"away": "Bills", "home": "Texans", "fav": "Bills", "spread": 1.5, "total": 44.5},
+      {"away": "Saints", "home": "Lions", "fav": "Lions", "spread": 6.5, "total": 49.5},
+      {"away": "Jets", "home": "Titans", "fav": "Titans", "spread": 2.5, "total": 38.5},
+      {"away": "Falcons", "home": "Steelers", "fav": "Steelers", "spread": 2.5, "total": 41.5},
+      {"away": "Browns", "home": "Jaguars", "fav": "Jaguars", "spread": 7.5, "total": 40.5},
+      {"away": "Bears", "home": "Panthers", "fav": "Bears", "spread": 2.5, "total": 45.5},
+      {"away": "Buccaneers", "home": "Bengals", "fav": "Bengals", "spread": 3.5, "total": 51.5},
+      {"away": "Cardinals", "home": "Chargers", "fav": "Chargers", "spread": 10.5, "total": 46.5},
+      {"away": "Packers", "home": "Vikings", "fav": "Packers", "spread": 1.5, "total": 44.5},
+      {"away": "Dolphins", "home": "Raiders", "fav": "Raiders", "spread": 3.5, "total": 40.5},
+      {"away": "Commanders", "home": "Eagles", "fav": "Eagles", "spread": 4.5, "total": 47.5},
+      {"away": "Cowboys", "home": "Giants", "fav": "Cowboys", "spread": 2.5, "total": 48.5},
+      {"away": "Broncos", "home": "Chiefs", "fav": "Chiefs", "spread": 2.5, "total": 43.5}
+    ],
+    "2": [
+      {"away": "Lions", "home": "Bills", "fav": "Bills", "spread": 3.0, "total": 52.5},
+      {"away": "Packers", "home": "Jets", "fav": "Packers", "spread": 6.5, "total": 42.5},
+      {"away": "Eagles", "home": "Titans", "fav": "Eagles", "spread": 4.5, "total": 42.5},
+      {"away": "Saints", "home": "Ravens", "fav": "Ravens", "spread": 7.5, "total": 46.5},
+      {"away": "Panthers", "home": "Falcons", "fav": "Falcons", "spread": 1.5, "total": 43.5},
+      {"away": "Patriots", "home": "Steelers", "fav": "Patriots", "spread": 4.5, "total": 43.5},
+      {"away": "Vikings", "home": "Bears", "fav": "Bears", "spread": 3.5, "total": 45.5},
+      {"away": "Bengals", "home": "Texans", "fav": "Texans", "spread": 2.5, "total": 46.5},
+      {"away": "Browns", "home": "Buccaneers", "fav": "Buccaneers", "spread": 5.5, "total": 42.5},
+      {"away": "Raiders", "home": "Chargers", "fav": "Chargers", "spread": 8.5, "total": 42.5},
+      {"away": "Jaguars", "home": "Broncos", "fav": "Broncos", "spread": 2.5, "total": 43.5},
+      {"away": "Seahawks", "home": "Cardinals", "fav": "Seahawks", "spread": 10.0, "total": 44.5},
+      {"away": "49ers", "home": "Dolphins", "fav": "49ers", "spread": 10.5, "total": 46.5},
+      {"away": "Commanders", "home": "Cowboys", "fav": "Cowboys", "spread": 4.5, "total": 51.5},
+      {"away": "Colts", "home": "Chiefs", "fav": "Chiefs", "spread": 5.5, "total": 47.5},
+      {"away": "Giants", "home": "Rams", "fav": "Rams", "spread": 8.5, "total": 47.5}
+    ],
+    "3": [
+      {"away": "Falcons", "home": "Packers", "fav": "Packers", "spread": 7.5, "total": 46.5},
+      {"away": "Jets", "home": "Lions", "fav": "Lions", "spread": 9.5, "total": 45.5},
+      {"away": "Seahawks", "home": "Commanders", "fav": "Seahawks", "spread": 3.5, "total": 46.5},
+      {"away": "Titans", "home": "Giants", "fav": "Giants", "spread": 3.0, "total": 45.5},
+      {"away": "Patriots", "home": "Jaguars", "fav": "Jaguars", "spread": 1.5, "total": 45.5},
+      {"away": "Bengals", "home": "Steelers", "fav": "Bengals", "spread": 1.5, "total": 47.5},
+      {"away": "Panthers", "home": "Browns", "fav": "Panthers", "spread": 1.5, "total": 39.5},
+      {"away": "Chargers", "home": "Bills", "fav": "Bills", "spread": 2.5, "total": 48.5},
+      {"away": "Texans", "home": "Colts", "fav": "Texans", "spread": 1.5, "total": 45.5},
+      {"away": "Chiefs", "home": "Dolphins", "fav": "Chiefs", "spread": 7.0, "total": 44.5},
+      {"away": "Vikings", "home": "Buccaneers", "fav": "Buccaneers", "spread": 1.5, "total": 44.5},
+      {"away": "Cardinals", "home": "49ers", "fav": "49ers", "spread": 11.5, "total": 46.5},
+      {"away": "Ravens", "home": "Cowboys", "fav": "Ravens", "spread": 2.5, "total": 52.5},
+      {"away": "Raiders", "home": "Saints", "fav": "Saints", "spread": 3.0, "total": 42.5},
+      {"away": "Rams", "home": "Broncos", "fav": "Rams", "spread": 2.5, "total": 45.5},
+      {"away": "Eagles", "home": "Bears", "fav": "Bears", "spread": 1.5, "total": 46.5}
+    ]
+  }
+}

@@ -46,6 +46,23 @@ The simulated opponents draft **worse than Angelo's real room**. Absolute scores
 inflated and mean nothing. Only **paired** comparisons are valid: same seed, same opponents, one
 variable changed. Every conclusion below came from paired runs across multiple seeds.
 
+### Three things these sims structurally cannot see (added 2026-08-07)
+
+Every "0%" and "never" below is a statement about the model, not about the world. Two of them have
+already fired in live mocks.
+
+1. **A player cannot fall.** Opponents draft close to ADP, so anyone whose ADP precedes your pick is
+   gone by definition. This is why Bowers "never reaches pick 19" in 52,200 drafts and has reached
+   2.09 in five of five real ones, and why mc12 could never test Breece Hall at 5.02.
+2. **A run cannot happen.** Opponents have no positional aversion and no herd behaviour, so the RB
+   block "never" drains past RB12 — and drained entirely by 2.08 twice in a row live.
+3. **The FFA must/shy lists do not exist in here.** Left alone the sim takes Devon Achane 31% at
+   2.09 and Christian Watson 59% at 6.09, both shy-away. Sim output always needs the FFA layer
+   applied on top by hand.
+
+Use the sims for *which plan is better on an average board*. Use the live Pick Predictor for *is
+this specific man still here*.
+
 ## Findings so far (2026-08-06)
 - **Double RB at 1.02 + 2.09 beats taking the better player at 2.09 by +8.6 pts** (8 seeds, CI
   +8.2 to +8.9). Mechanism: picks 19 and 22 are three apart, so deferring WR costs 2 pts, while RB
@@ -74,20 +91,30 @@ not truth. Boards produced by mc9 without MUST_RB understate how many backs go i
 - **Order inside picks 1-3 barely matters; getting two backs inside them matters a lot.**
   RB,WR,RB beats RB,RB,WR by +2.1. Only one early back costs −11.8. *Forcing* the back back at
   4.09+5.02 to fix it costs **−32.4** — the recovery is worse than the miss.
-- **The RB block survives to 2.09 even when the room hoards backs.** With MUST_RB on, Barkley goes
-  ~2.05 and Hampton ~2.06 instead of falling to Angelo, but the best back left at 2.09 is RB7-9 64%
-  / RB10-12 36% / **RB13+ 0%**. Even at a +50% RB premium it is RB13+ 0%. The Achane cutoff never
-  binds, and RB-vs-WR at 2.09 stays a coin flip (+2.4 to −1.0 across all four settings).
-- **RB cutoff at 2.09 is Devon Achane (RB12).** Forced sweep: RB7-12 all within 5 pts of pivoting to
-  WR; RB13 (Jeremiyah Love) drops to −14.5, RB20 to −29.2. The cliff is in the projections — RB7-12
-  are a flat 25-29 VBD block, RB13 is 15.9.
-- **Bowers never reaches pick 19.** 0 of 52,200 drafts. VBD-weighted rooms take him at 5-11 (median
-  9, usually Achim at slot 9); held past round 1 he goes at pick 11 to Anthony 99.4% of the time.
+- ~~**The RB block survives to 2.09 even when the room hoards backs.**~~ **REFUTED BY LIVE MOCKS
+  2026-08-06/07.** The sim said: with MUST_RB on, Barkley goes ~2.05 and Hampton ~2.06, but the best
+  back left at 2.09 is RB7-9 64% / RB10-12 36% / **RB13+ 0%**, even at a +50% RB premium — "the
+  Achane cutoff never binds". In the real mocks **every take-zone back was gone by 2.08, in
+  back-to-back drafts.** RB13+ was not 0%, it was the actual outcome twice. The sim's RB-vs-WR coin
+  flip at 2.09 (+2.4 to −1.0 across all four settings) is still fine; its claim about *availability*
+  is not. See the "every take-zone back is gone" contingency in `../DRAFT-DAY.md`.
+- **RB cutoff at 2.09 was Devon Achane (RB12); it is now Derrick Henry.** Forced sweep: RB7-12 all
+  within 5 pts of pivoting to WR; RB13 (Jeremiyah Love) drops to −14.5, RB20 to −29.2. The cliff is
+  in the projections — RB7-12 are a flat 25-29 VBD block, RB13 is 15.9. **Achane was removed from
+  the take zone 2026-08-07** on the FFA layer, not the VBD one: he is shy-away and the fade is
+  RPB-format-specific. He still marks where the VBD shelf ends; he is no longer a name to take.
+- ~~**Bowers never reaches pick 19.**~~ **REFUTED BY LIVE MOCKS.** The sim said 0 of 52,200 drafts:
+  VBD-weighted rooms take him at 5-11 (median 9, usually Achim at slot 9); held past round 1 he goes
+  at pick 11 to Anthony 99.4% of the time. **He has fallen to 2.09 in five of five real mocks.** The
+  cause is structural, not luck: the sim's opponents draft close to ADP and have no positional
+  aversion, while a real room with nine of ten teams needing a TE still will not spend a top-12 pick
+  on one. Treat "Bowers at 2.09" as the expected case, not the miracle case.
 - **Taking Bowers is not a mistake for the room — it is a bargain.** Cost to the team that does it:
   −74 at pick 1, −49 at pick 3-4, ~0 by pick 9, and **+15 to +42 anywhere in picks 12-18**. The lone
   exception is DREADS (−25), who already keep Colston Loveland and would be doubling up at TE.
-- **If Bowers somehow falls to 2.09, take him: +36.8 over the back.** Conditional only — the
-  probability of it happening is ~0.
+- **If Bowers falls to 2.09, take him: +36.8 over the back.** The +36.8 is solid. The "~0
+  probability" that used to qualify it was wrong — see above. This is the largest single edge in
+  the draft and it is a likely branch, not a lottery ticket.
 - Angelo taking Bowers himself at 1.02 costs **−81.8** (Bowers 85.5 VBD vs Gibbs 150.9 / Bijan
   145.3). Reaching for the next TE at 2.09 (Tyler Warren) costs −9.1. Punt to Kittle at 6.09.
 - My sim and FFA's Strategy Lab heatmap have **near-zero rank correlation**. Likely causes: RPB's

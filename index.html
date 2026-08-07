@@ -603,12 +603,21 @@ const PLAN={
     {tag:"B", when:"2.09 — the only real decision", do:"Second RB, or an elite WR and the back at 3.02. Worth ~2 pts either way.",
      why:"The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway."},
     {tag:"C", when:"if you have one back after three picks", do:"Stop forcing it. Take value.",
-     why:"One early back costs −11.8. Forcing RB at 4.09 + 5.02 to fix it costs −32.4 — the recovery is worse than the miss."}
+     why:"One early back costs −11.8. Forcing RB at 4.09 + 5.02 to fix it costs −32.4 — the recovery is worse than the miss."},
+    {tag:"D", when:"4.09 / 5.02 / 6.09 — the WR block", do:"Luther Burden III, Mike Evans, Parker Washington. All three FFA must-draft.",
+     why:"Not sim-backed pick-by-pick, but the policy is: mc12 found must-draft-WR-only beat every alternative at 5.02 (+5.5, best in 92% of 24 seeds) while forcing best-available RB cost −19.7 to −27.6. Two RB starters and no FLEX put RB replacement at RB20 (191.1) and WR replacement at WR30 (154.9) — a mid RB is cheap to replace, a mid WR is not. Evans is a half-PPR format split in your favour."},
+    {tag:"D2", when:"4.09−6.09 — Bowers went and you still have no TE", do:"Kittle takes 6.09. Give up Parker Washington, not Burden or Evans.",
+     why:"The Kittle trap-line and the WR block both claim 6.09 and cannot both have it. 9 of 10 teams need a TE and you start exactly one, so TE wins the collision. Line becomes 4.09 Burden, 5.02 Evans, 6.09 Kittle, 7.02 QB, 8.09 WR3 — QB never has to move."}
   ],
-  /* RB cutoff at 2.09. Forced sweep: these six are all within 5 pts of pivoting to a WR.
-     The next back down (Jeremiyah Love) drops to −14.5, and it falls off a cliff from there. */
-  takeZone:["Saquon Barkley","Ken Walker","Chase Brown","Omarion Hampton","Derrick Henry","Devon Achane"],
-  cutoffAfter:"Devon Achane",
+  /* RB cutoff at 2.09. Forced sweep: these five are all within 5 pts of pivoting to a WR.
+     The next back down (Jeremiyah Love) drops to −14.5, and it falls off a cliff from there.
+     Devon Achane sat inside this shelf on VBD at RB12 and was REMOVED 2026-08-07: he is FFA
+     shy-away and the fade is specific to RPB's half-PPR ("R2 FADE in half-PPR") — McDaniel gone,
+     Willis scrambles instead of checking down, Miami bottom-five in points per game. Where the
+     VBD sweep and the FFA layer contradict each other, the FFA layer wins. Henry is the last
+     name in the zone and is himself a "watch" — take him last of the five. */
+  takeZone:["Saquon Barkley","Ken Walker","Chase Brown","Omarion Hampton","Derrick Henry"],
+  cutoffAfter:"Derrick Henry",
   pivotFrom:"Jeremiyah Love",
   /* Gone in 100% of 52,200 drafts before pick 19 — but the payoff if the room slips is so large
      it stays on the card as a standing instruction. */
