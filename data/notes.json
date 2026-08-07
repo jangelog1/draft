@@ -1,11 +1,12 @@
 {
-  "updated": "2026-08-06T00:00:00Z",
+  "updated": "2026-08-07T00:00:00Z",
   "sources": [
     "FFA video intel (love/fade stances)",
     "FFA must-draft / shy-away calls",
     "per-league video intel verdicts",
     "FFA must-draft + shy-away change logs (screenshots, 2026-08-06)",
-    "RPB format-split layer, derived from Nick's own half-PPR/full-PPR language (2026-08-07)"
+    "RPB format-split layer, derived from Nick's own half-PPR/full-PPR language (2026-08-07)",
+    "FFA video summaries via the huddle-fantasy-summaries pipeline (~/huddle-summaries.json), folded in 2026-08-07"
   ],
   "qbNote": "Nick does not name one quarterback — his stated goal is to land any of the top 8 at a value: Allen, Lamar, Maye, Daniels, Burrow, Hurts, Caleb Williams, Herbert. Goff is the fallback if you pass on that range.",
   "philosophy": [
@@ -52,6 +53,14 @@
     {
       "title": "Round 2 RBs — the league-wide decision point (half-PPR / RPB)",
       "text": "From picks 3–12, UNLESS an elite faller is there (Brock Bowers, Drake London, or CeeDee Lamb / Justin Jefferson if they slip), take the RB — they all project similarly with heavy upside, so your RANKING is the edge. Nick's R2 RB board (half-PPR): 1) Saquon Barkley — easiest Wk1–14 SOS, ~300 touches, Patullo→Mannion play-call upgrade; 2) Kenneth Walker — big new contract, zero early-down competition, locked goal-line; 3) Chase Brown — elite pass-catcher (he'd be ABOVE Walker in full PPR), lower rush ceiling in 0.5; 4) Omarion Hampton — huge goal-line/TD upside, volume capped by Keaton Mitchell (watch camp); 5) Derrick Henry — dominant runner but fading targets = volatile 0.5 floor at 32; 6) De'Von Achane — AVOID: McDaniel gone, mobile Willis kills his target floor, hardest Wk13+ SOS. R1 RBs stay locked in pairs: Gibbs/Bijan → Taylor/CMC → Hall/Cook."
+    },
+    {
+      "title": "The round 4-5-6 receiver block",
+      "text": "From the 2026-08-07 must-draft WR video, his most concrete stated build: running back with the first two picks, then Luther Burden, Mike Evans and Parker Washington in rounds four, five and six. He says if he avoided receiver until round four and came away with those three he'd be 'jumping for joy'. Amon-Ra St. Brown is the single receiver he'd break the RB-RB open for, and only outside the top-4 picks. Colston Loveland can swap in for Burden."
+    },
+    {
+      "title": "The 'everyone is saying it' tell",
+      "text": "His recurring signal for late-round bets: a beat writer alone means little, but when the GM, head coach, coordinator, quarterback and reporters all independently praise a player, nobody in that group has an incentive to lie together. He applied it to both Luther Burden and Jayden Higgins. Not a guarantee — injury or a crowded room still intervene — but on a player going in double-digit rounds he treats it as an obvious bet."
     }
   ],
   "shared": {
@@ -224,7 +233,9 @@
       "note": "FORMAT SPLIT: fade in full PPR (MWV) — too TD-dependent, lacks the 100-catch ceiling to maximize PPR. But a positive-TD-regression buy in 0.5/standard (RPB). (Note: he likes TD-regression elsewhere yet fades Evans for TD-reliance — a real tension.)",
       "call": "must",
       "why": "A top-three red-zone weapon on a team that will score — Nick's comparison is 2025 Davante Adams. Fifteen-touchdown upside now that Pearsall is out.",
-      "added": "2026-08-03"
+      "added": "2026-08-03",
+      "videoNote": "Round 5, explicitly. Pearsall out for the season and Deebo is not a red-zone threat, so Evans is the primary target inside the 20 on a team top-5 in red-zone plays three years running.",
+      "videoDate": "2026-08-07"
     },
     "ladd mcconkey": {
       "name": "Ladd McConkey",
@@ -278,7 +289,9 @@
       "note": "R6 safe high-floor in an elite scheme.",
       "call": "must",
       "why": "Highest yards per route run ever by a rookie receiver, and efficient from every alignment. Camp hype is loud enough that Nick now prefers him over Loveland in that pairing.",
-      "added": "2026-08-01"
+      "added": "2026-08-01",
+      "videoNote": "Round 4, explicitly. 2nd-best rookie yards-per-route-run since 2000 and top-4 in first-downs-per-route-run in a decade (he calls that the more predictive stat). Sees a WR1 finish.",
+      "videoDate": "2026-08-07"
     },
     "josh downs": {
       "name": "Josh Downs",
@@ -314,13 +327,17 @@
       "note": "R4 ONLY — loves the talent/role under Ben Johnson but strictly forbids drafting him in R3.",
       "call": "must",
       "why": "Nick's stated biggest flag plant of the season. Blocks elite rushers and wins as a slot receiver, so Ben Johnson can build constant mismatches around him.",
-      "added": "2026-07-06"
+      "added": "2026-07-06",
+      "videoNote": "The gap to McBride is 'very very thin' and the price gap is large — McBride goes at the 2-3 turn, Loveland in the 4th, so take Loveland every time. Closed last year with double-digit targets in all four final games incl playoffs.",
+      "videoDate": "2026-07-29"
     },
     "tyler warren": {
       "name": "Tyler Warren",
       "pos": "TE",
       "stance": "like",
-      "note": "R5 value — positive regression, functional IND WR1 with Pierce hurt."
+      "note": "R5 value — positive regression, functional IND WR1 with Pierce hurt.",
+      "videoNote": "Conditional: if Indianapolis keeps Josh Downs inside rather than outside, Warren becomes the default #1 target and Nick wants him aggressively. Otherwise a repeat of last year.",
+      "videoDate": "2026-07-29"
     },
     "george kittle": {
       "name": "George Kittle",
@@ -350,7 +367,9 @@
       "name": "Tucker Kraft",
       "pos": "TE",
       "stance": "like",
-      "note": "Late TE value, fits early-or-late rule."
+      "note": "Late TE value, fits early-or-late rule.",
+      "videoNote": "Was the top-scoring TE before tearing his ACL and is trending well, but goes in the early 7th with no discount — Nick is explicitly lukewarm at that price and would rather bad news drop the ADP first.",
+      "videoDate": "2026-07-29"
     },
     "josh allen": {
       "name": "Josh Allen",
@@ -359,7 +378,9 @@
       "note": "Premium value on recency bias — but in his 12-tm PPR mock he PASSED Allen in R3 to keep elite skill talent (equal-tier QBs like Hurts sit several rounds later).",
       "call": "must",
       "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24"
+      "added": "2026-07-24",
+      "videoNote": "QB video sharpens the price: worth a MID-TO-LATE third, never round 2 and never the early third. Six straight top-2 finishes, one game missed in seven years.",
+      "videoDate": "2026-07-31"
     },
     "drake maye": {
       "name": "Drake Maye",
@@ -377,7 +398,9 @@
       "note": "DOWNGRADED — WAS is cutting no-huddle concepts, slashing play volume and rushing-floor opportunity. Was a mid-round target; now a caution at cost.",
       "call": "must",
       "why": "A three-plus round discount purely because he got hurt. Was 3rd at 22.6 adjusted PPG as a rookie and is capable of 1,000 rushing yards.",
-      "added": "2026-07-24"
+      "added": "2026-07-24",
+      "videoNote": "CONFLICT — the 2026-07-31 QB video calls him the highest-ceiling tier-2 arm and a round-6 value (3rd in adjusted PPG as a rookie, discounted purely on last year's injuries). The 'DOWNGRADED / watch' note above cites Washington cutting no-huddle, which is camp news and therefore almost certainly NEWER than the video. The downgrade wins on recency; treat the video's round-6 enthusiasm as superseded unless a later video says otherwise.",
+      "videoDate": "2026-07-31"
     },
     "lamar jackson": {
       "name": "Lamar Jackson",
@@ -386,7 +409,9 @@
       "note": "Premium QB target.",
       "call": "must",
       "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24"
+      "added": "2026-07-24",
+      "videoNote": "Tier 1 on ceiling, not certainty — the only QB he sees realistically hitting 25-28 ppg. Offset by 15 games missed in 5 years. Last year's dip was compromised mobility dragging the passing game with it.",
+      "videoDate": "2026-07-31"
     },
     "jalen hurts": {
       "name": "Jalen Hurts",
@@ -590,7 +615,9 @@
       "note": "COMPLETE FADE at his ADP — refuses to spend premium capital on him in any primary league; too many ARI mouths + tanking bench risk.",
       "call": "shy",
       "why": "Arizona likely tanks late and moves from Brissett to Beck, meaning slower pace and more run. Nick would rather have Bowers a few picks earlier or Loveland two rounds later.",
-      "added": "2026-06-26"
+      "added": "2026-06-26",
+      "videoNote": "TE video adds the mechanism: Arizona paid their backup RB heavily and spent a top-3 pick on another, which is not what a team does before throwing more. Last year's route volume is not repeatable.",
+      "videoDate": "2026-07-29"
     },
     "kyle pitts": {
       "name": "Kyle Pitts",
@@ -672,7 +699,9 @@
       "pos": "WR",
       "call": "must",
       "why": "Closed last season 6/145/1, 8/115/0, 5/87/1, 7/107/1 and has been a camp favourite of Lawrence. Jacksonville appears to view him as their lead receiver.",
-      "added": "2026-08-01"
+      "added": "2026-08-01",
+      "videoNote": "Round 6 — a full round ahead of his round-7 ADP. Rotates Z and F, rarely off the field. Jacksonville averaged 33+ pts over their final nine weeks with Lawrence as overall QB1 and Washington as WR12.",
+      "videoDate": "2026-08-07"
     },
     "dallas goedert": {
       "name": "Dallas Goedert",
@@ -702,7 +731,9 @@
       "note": "",
       "call": "must",
       "why": "FFA must-draft list, added 2026-08-05.",
-      "added": "2026-08-05"
+      "added": "2026-08-05",
+      "videoNote": "MUST-DRAFT WR video: the ONE receiver he'd break his RB-RB open for in round 1 — but only outside the top-4 picks. Case is durability: 2 games missed in 5 seasons, 4 straight 140-target years.",
+      "videoDate": "2026-08-07"
     },
     "jayden higgins": {
       "name": "Jayden Higgins",
@@ -711,7 +742,9 @@
       "note": "",
       "call": "must",
       "why": "FFA must-draft list, added 2026-08-05.",
-      "added": "2026-08-05"
+      "added": "2026-08-05",
+      "videoNote": "Going round 11-12 (round 14 on ESPN). Starting Z opposite Nico Collins. Whole organisation talking him up, plus contingent upside — Collins has missed time every year of his career.",
+      "videoDate": "2026-08-07"
     },
     "rachaad white": {
       "name": "Rachaad White",
