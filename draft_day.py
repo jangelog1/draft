@@ -165,6 +165,9 @@ def build():
       "Only place rank, predictor %, ADP and notes appear together. Position tabs across the top.")
     w("- **Pick Predictor %** = chance he's gone before your next pick. At a turn, take the high-% "
       "player and expect the low-% one to come back.")
+    w("- **Set the predictor horizon to match the gap.** Your turn picks have a 2-player gap, so "
+      "`One round` overstates risk there. Your wrap picks have a ~17-player gap — nearly two "
+      "rounds — so switch the dropdown to `Two rounds` before every wrap pick or the number lies to you.")
     w("- **Suggestions tab right rail** lists every team picking before your turn with its needs badges.")
     w("- **Suggestions → Draft Strategy → team dropdown** shows what the engine would pick *for an opponent*.")
     w("- **Trust the rank column over 'Top Suggestion'** — they disagree often, and the suggestion "

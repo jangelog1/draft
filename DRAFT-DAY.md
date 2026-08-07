@@ -51,6 +51,10 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 - Pick Predictor % is only trustworthy across a short turn gap (2 picks). Across a 17-pick wrap even a 35% player disappears — Mike Evans went at 35%. Do not bank on a low-% player returning across a wrap.
 - The Pick Predictor does not see D/ST demand. It read <1% on every defense in round 12; six were gone by 14.09. Count the defenses gone, ignore the percentage.
 - Following the plan fills all seven skill starters by 6.09 (RB-TE-WR-QB-WR-WR off 1.02/2.09/3.02/4.09/5.02/6.09), leaving nine picks for bench, D/ST and K. If a skill starter is still open after round 7, something went wrong earlier.
+- MATCH THE PICK PREDICTOR HORIZON TO THE GAP. The dropdown offers One/Two/Three rounds. At your turn picks (2.09, 4.09, 6.09, 8.09, 12.09, 14.09) only 2 players come off, so the One-round number OVERSTATES risk. At your wrap picks (3.02, 5.02, 7.02, 9.02, 11.02, 13.02, 15.02) roughly 17 players come off — nearly two rounds — so One-round UNDERSTATES it. Switch to Two rounds at wraps. This explains every mistimed pick across three mocks.
+- The D/ST drain is variance, not a law. Mock 3 had ZERO defenses gone at pick 102 (round 11), then three by 12.09 and the top two at 64% by 13.02. Mock 2 had six gone by 14.09. Check the count every round from 11 on rather than assuming either outcome; when the top defenses cross ~60%, take one — RPB doubles D/ST scoring.
+- FantasyPros grades the finished draft (Analyze button, top toolbar): a consensus letter grade out of 100 from 91 experts, plus a bar per team. Plan-built roster scored A- / 92 in mock 3. Use it as a post-mock check, never as in-draft guidance.
+- Player cards carry a Consensus Draft Sentiment panel (Coach AI) with Overall / Upside / Bust meters and a written summary. Useful for breaking ties between two unflagged names late.
 
 
 ### Contingencies — the branches the sims called impossible
@@ -142,6 +146,7 @@ You start one QB and one TE. Once those two slots are filled, every remaining QB
 
 - **Cheat Sheets tab** is the view: set `RPB 2026` + `Pick Predictor: One round` + `Hide Drafted ✓`. Only place rank, predictor %, ADP and notes appear together. Position tabs across the top.
 - **Pick Predictor %** = chance he's gone before your next pick. At a turn, take the high-% player and expect the low-% one to come back.
+- **Set the predictor horizon to match the gap.** Your turn picks have a 2-player gap, so `One round` overstates risk there. Your wrap picks have a ~17-player gap — nearly two rounds — so switch the dropdown to `Two rounds` before every wrap pick or the number lies to you.
 - **Suggestions tab right rail** lists every team picking before your turn with its needs badges.
 - **Suggestions → Draft Strategy → team dropdown** shows what the engine would pick *for an opponent*.
 - **Trust the rank column over 'Top Suggestion'** — they disagree often, and the suggestion has pushed FFA-avoid players (Christian Watson, Jameson Williams).
