@@ -23,10 +23,11 @@ You are **slot 2**, 10 teams, 16 rounds, half-PPR, D/ST scores double.
 | **A** | 1.02 — always | **Take the back. Bijan Robinson 89%, Gibbs otherwise.** | Picks 3-6 are a four-WR run, so nobody is competing with you for backs early. |
 | **B** | 2.09 — the only real decision | **Second RB, or an elite WR and the back at 3.02. Worth ~2 pts either way.** | The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway. |
 | **C** | if you have one back after three picks | **Stop forcing it. Take value.** | One early back costs -11.8. Forcing RB at 4.09 + 5.02 to fix it costs -32.4 — the recovery is worse than the miss. |
+| **B2** | 3.02 — a take-zone back is still on the board | **Take the back over the higher-ranked WR.** | The take zone is a set of players, not a round. Backs sit on a flat shelf through RB12 (Achane) at 216-220 pts, then step down to 207. Passing one at 3.02 leaves you RB18 (193.4) by 4.09 — a 23-point fall — while the WR you'd pass only falls 18 (Collins 197.9 to Egbuka 180.3). Net +5.8 for the back. Confirmed live 2026-08-06: took Nico Collins at 3.02 and Derrick Henry went 3.03. |
 
 **Take zone (RB cutoff at 2.09):** Saquon Barkley · Ken Walker · Chase Brown · Omarion Hampton · Derrick Henry · Devon Achane.
 
-RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next back down (Jeremiyah Love) drops to -14.5 and falls off a cliff from there.
+RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next back down (Jeremiyah Love) drops to -14.5 and falls off a cliff from there. The zone is a PLAYER set, not a round: RB8-RB12 sit on a flat shelf (216-220 pts) and RB13 steps down to 207. If one of the six is still there in round 3, he is still the pick.
 
 
 **Brock Bowers rule:** if he is on the board, take him — +36.8 over the back. ⚠ Round 2 or later only. Taking him at 1.02 over an elite back costs -81.8; the +36.8 exists only once the top of the RB board is gone.
@@ -61,6 +62,7 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 - The simulator also does not know the FFA must/shy lists. Left alone it takes Devon Achane 31% of the time at 2.09 and Christian Watson 59% at 6.09 — both on the shy-away/avoid list. Sim output always needs the FFA layer applied on top by hand.
 - Full-draft run (mc13, 1,920 drafts): the plan lands only about 4 of your 15 picks on the FFA must-draft list. The list is a tiebreaker, not a shopping list — most picks are decided by value and by what the room leaves.
 - mc13 confirms the late-round script the plan already assumed: Rams D/ST at 15.02 in 94% of drafts and Brandon Aubrey at 16.09 in 72%. All nine starting slots fill in 100% of drafts either way, so there is no realistic path where you end up short a starter.
+- THE RANK COLUMN IS THE WRONG TOOL FOR RB-vs-WR. It scores against a season-long replacement level, which does not know what is left at YOUR next pick. At 3.02 it had Nico Collins 6 ranks above Derrick Henry, and Henry was still the better pick because the RB drop between picks is steeper than the WR drop. Compare the gap to your next pick, not the gap to average — the rank column is right about who is better, wrong about who to take.
 
 
 ### Contingencies — the branches the sims called impossible

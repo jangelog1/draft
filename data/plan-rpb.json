@@ -22,6 +22,12 @@
       "when": "if you have one back after three picks",
       "do": "Stop forcing it. Take value.",
       "why": "One early back costs -11.8. Forcing RB at 4.09 + 5.02 to fix it costs -32.4 — the recovery is worse than the miss."
+    },
+    {
+      "tag": "B2",
+      "when": "3.02 — a take-zone back is still on the board",
+      "do": "Take the back over the higher-ranked WR.",
+      "why": "The take zone is a set of players, not a round. Backs sit on a flat shelf through RB12 (Achane) at 216-220 pts, then step down to 207. Passing one at 3.02 leaves you RB18 (193.4) by 4.09 — a 23-point fall — while the WR you'd pass only falls 18 (Collins 197.9 to Egbuka 180.3). Net +5.8 for the back. Confirmed live 2026-08-06: took Nico Collins at 3.02 and Derrick Henry went 3.03."
     }
   ],
   "takeZone": [
@@ -34,7 +40,7 @@
   ],
   "cutoffAfter": "Devon Achane",
   "pivotFrom": "Jeremiyah Love",
-  "takeZoneNote": "RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next back down (Jeremiyah Love) drops to -14.5 and falls off a cliff from there.",
+  "takeZoneNote": "RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next back down (Jeremiyah Love) drops to -14.5 and falls off a cliff from there. The zone is a PLAYER set, not a round: RB8-RB12 sit on a flat shelf (216-220 pts) and RB13 steps down to 207. If one of the six is still there in round 3, he is still the pick.",
   "bowers": "Brock Bowers",
   "bowersGain": "+36.8 over the back",
   "bowersRule": "Round 2 or later only. Taking him at 1.02 over an elite back costs -81.8; the +36.8 exists only once the top of the RB board is gone.",
@@ -62,7 +68,8 @@
     "THE SIMULATOR CANNOT MODEL A PLAYER FALLING. Its opponents draft close to ADP, so anyone whose ADP is earlier than your pick is always gone. That is why mc12 could never test Breece Hall at 5.02 and why mc13's TE-at-2.09 line returns Tyler Warren 93% instead of Bowers — yet Bowers has fallen to 2.09 in three of three real mocks. Trust the sim for 'which plan is better on an average board' and the live Pick Predictor for 'is this specific man still here'.",
     "The simulator also does not know the FFA must/shy lists. Left alone it takes Devon Achane 31% of the time at 2.09 and Christian Watson 59% at 6.09 — both on the shy-away/avoid list. Sim output always needs the FFA layer applied on top by hand.",
     "Full-draft run (mc13, 1,920 drafts): the plan lands only about 4 of your 15 picks on the FFA must-draft list. The list is a tiebreaker, not a shopping list — most picks are decided by value and by what the room leaves.",
-    "mc13 confirms the late-round script the plan already assumed: Rams D/ST at 15.02 in 94% of drafts and Brandon Aubrey at 16.09 in 72%. All nine starting slots fill in 100% of drafts either way, so there is no realistic path where you end up short a starter."
+    "mc13 confirms the late-round script the plan already assumed: Rams D/ST at 15.02 in 94% of drafts and Brandon Aubrey at 16.09 in 72%. All nine starting slots fill in 100% of drafts either way, so there is no realistic path where you end up short a starter.",
+    "THE RANK COLUMN IS THE WRONG TOOL FOR RB-vs-WR. It scores against a season-long replacement level, which does not know what is left at YOUR next pick. At 3.02 it had Nico Collins 6 ranks above Derrick Henry, and Henry was still the better pick because the RB drop between picks is steeper than the WR drop. Compare the gap to your next pick, not the gap to average — the rank column is right about who is better, wrong about who to take."
   ],
   "contingencies": [
     {
