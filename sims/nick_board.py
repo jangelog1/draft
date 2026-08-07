@@ -31,6 +31,15 @@ STARTERS = {"QB":1,"RB":2,"WR":3,"TE":1,"K":1,"DST":1}
 BUILD    = {"QB":1,"RB":5,"WR":7,"TE":1,"K":1,"DST":1}
 TAKE_ZONE = ["Saquon Barkley","Ken Walker","Chase Brown","Omarion Hampton","Derrick Henry","Devon Achane"]
 
+# His most concrete stated build, from the 2026-08-07 must-draft WR video: back, back, then these
+# three in rounds four, five and six. "If I avoided wide receiver until round four and ended up with
+# Burden, Evans and Parker Washington, I would be jumping for joy."
+WR_BLOCK = {4: "Luther Burden III", 5: "Mike Evans", 6: "Parker Washington"}
+
+# Half-PPR preference inside the take zone. "In half PPR I have Ken Walker over Chase Brown. Once you
+# flip on full PPR, the certainty there for the receptions is too great." RPB is half-PPR.
+ZONE_ORDER = ["Saquon Barkley","Ken Walker","Chase Brown","Omarion Hampton","Derrick Henry"]
+
 
 
 def key(x):
@@ -112,13 +121,21 @@ def pick_for(rd, pk, avail, have, must, banned, note, UP, DOWN):
     # --- take-zone back: a set of players, not a round ---
     tz = [p for p in skill if p["name"] in TAKE_ZONE and have["RB"] < 2]
     if tz and rd <= 4:
-        return best(tz), f"take-zone back still on the board — 10-pt cliff right below him"
+        ranked = sorted(tz, key=lambda q: ZONE_ORDER.index(q["name"]) if q["name"] in ZONE_ORDER else 99)
+        return ranked[0], "take-zone back — his half-PPR order, and the dead zone starts right below"
+
+    # --- the round 4-5-6 receiver block, by name, exactly as he lays it out ---
+    want = WR_BLOCK.get(rd)
+    if want:
+        hit = next((p for p in skill if p["name"] == want and have["WR"] < BUILD["WR"]), None)
+        if hit:
+            return hit, f"the round 4-5-6 block — he names him at round {rd}"
 
     # --- QB: never rounds 1-3. Nick wants a top-8 arm at a discount. ---
     if have["QB"] == 0:
         qb = [p for p in skill if p["pos"] == "QB"]
-        if qb and rd >= 8:
-            return best(qb), "QB — six RPB teams keep one, so the tier lasts. Take it at the tail end"
+        if qb and rd >= 7:
+            return best(qb), "QB — 'if you don't get Allen, just wait'. Rounds 6-8 is his window"
 
     # Nick's TE rule is early OR late, not both. Bowers in round 2 IS the early play, so the
     # late Kittle/Andrews double-dip does not apply — RPB starts one TE and has no FLEX, so a
