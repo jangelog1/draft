@@ -47,6 +47,10 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 - Double-RB is worth +2.8 against a sharp room, not the +8.6 a soft room showed.
 - Only paired sim comparisons are valid. Simulated opponents draft worse than the real room, so absolute scores and win rates mean nothing.
 - Nothing past 2.09 has ever been simulated. Your 3.02, 4.09 and 5.02 have no sim-backed guidance.
+- The FantasyPros simulator DOES model all 13 real RPB keepers (they lock on the board). Mock QB scarcity therefore mirrors the real draft — Josh Allen lasted to 4.09 in the 2026-08-06 trial run.
+- Pick Predictor % is only trustworthy across a short turn gap (2 picks). Across a 17-pick wrap even a 35% player disappears — Mike Evans went at 35%. Do not bank on a low-% player returning across a wrap.
+- The Pick Predictor does not see D/ST demand. It read <1% on every defense in round 12; six were gone by 14.09. Count the defenses gone, ignore the percentage.
+- Following the plan fills all seven skill starters by 6.09 (RB-TE-WR-QB-WR-WR off 1.02/2.09/3.02/4.09/5.02/6.09), leaving nine picks for bench, D/ST and K. If a skill starter is still open after round 7, something went wrong earlier.
 
 
 ### Contingencies — the branches the sims called impossible
@@ -56,9 +60,9 @@ Both 0% branches fired in a single mock. Treat every 'never happens' number in `
 
 | if | then | why |
 |---|---|---|
-| Every take-zone back is gone before 2.09 | **Take the WR and buy a back next round. Do not reach past the cutoff.** | mc10 said the block never drains past Achane — RB13+ was 0% at every setting. In the 2026-08-06 mock all six drained by 2.08. Rare is not impossible. |
-| Brock Bowers is on the board in round 2 or later | **Take him immediately. Largest single edge in the draft.** | mc7 said he goes before pick 19 in 52,200 of 52,200 drafts. He fell to 2.09 in the mock and was worth +36.8. |
-| Five or more defenses are gone by your round-14 pick | **Take yours at 14.09 and push the last skill player back.** | The sims put D/ST at 15.02 and never modelled a run. Five went by 13.09 in the mock. RPB doubles D/ST scoring, so the #3-vs-#11 gap is real points. |
+| Every take-zone back is gone before 2.09 | **Take the WR and buy a back next round. Do not reach past the cutoff.** | mc10 said the block never drains past Achane — RB13+ was 0% at every setting. In the 2026-08-06 mock all six drained by 2.08. Rare is not impossible. Happened again in the 2026-08-06 trial run — all six gone by 2.08 in back-to-back mocks. |
+| Brock Bowers is on the board in round 2 or later | **Take him immediately. Largest single edge in the draft.** | mc7 said he goes before pick 19 in 52,200 of 52,200 drafts. He fell to 2.09 in the mock and was worth +36.8. He fell to 2.09 in both 2026-08-06 mocks. Treat this as likely, not miraculous. |
+| Five or more defenses are gone by your round-14 pick | **Take yours at 14.09 and push the last skill player back.** | The sims put D/ST at 15.02 and never modelled a run. Five went by 13.09 in the mock. RPB doubles D/ST scoring, so the #3-vs-#11 gap is real points. Fired in the 2026-08-06 trial run: six gone by 14.09, seven by 15.02. Taking Chargers D/ST #5 at 14.09 was correct. |
 | The ranked RB list is empty and Show More returns nothing | **Stop planning around a back. Last two picks become K + D/ST or a searched-by-name body.** | The sims always had a back available. FantasyPros' RB pool ran dry by 14.09 in the mock. |
 
 ## Block windows — the only places blocking is real
