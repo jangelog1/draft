@@ -1104,8 +1104,8 @@
     "malik nabers": {
       "name": "Malik Nabers",
       "pos": "WR",
-      "stance": "fade",
-      "note": "Fade to R5+ — non-clean knee, PUP risk; bulletproof only if he slides.",
+      "stance": "like",
+      "note": "FLIPPED 2026-08-07 off the 2026-08-05 video — he avoided the PUP (team expects him inside the first four weeks), multiple reports he could play week one, and he is cutting in camp with no hesitation. Nick's stated order at your turn: the take-zone backs (Saquon/Ken Walker/Chase Brown/Hampton), then Bowers, then Nabers. He takes Nabers OVER Pickens and still takes Nico Collins first. PRIOR NOTE, now superseded: 'fade to R5+ — non-clean knee, PUP risk' — that note was undated and the PUP risk it named has resolved.",
       "videoTakes": [
         {
           "d": "2026-08-03",
@@ -1120,7 +1120,7 @@
           "take": "The whole segment. Cutting freely in camp, off PUP, and Nick has him at the 2/3 turn with room to climb if the ramp-up keeps going well."
         }
       ],
-      "videoNote": "Off PUP and cutting freely in camp. Nick has him at the 2-3 turn with room to climb, and says if the recovery stays clean he would love him a tier behind Lamb and Jefferson. This directly addresses the PUP worry in the older fade note above.",
+      "videoNote": "2026-08-05, his latest mention: 'I'm still not going to take him over that range of running back that's Saquon, Ken Walker, Chase Brown, Hampton. And I'd probably still put Bowers at the end of that. But after that, I feel like I'm probably just going Malik Nabers.' Also: 'right now I'd probably take him over Pickens', and 'really tough between him and Nico — right now I'd probably still take Nico first.'",
       "videoDate": "2026-08-05"
     },
     "jameson williams": {
@@ -2235,7 +2235,7 @@
   },
   "videoConflicts": {
     "_note": "Where an FFA video take disagrees with the stance/call already on the entry. Recorded 2026-08-07, NOT auto-resolved — read the dates and decide.",
-    "Malik Nabers": "TWO videos (2026-08-03 and 2026-08-05) say UP — off PUP, cutting freely in camp, Nick has him at the 2/3 turn. The entry says 'fade to R5+, non-clean knee, PUP risk' and is UNDATED. The videos are almost certainly newer and the specific worry (PUP) is the thing they say has resolved. STRONG CANDIDATE TO FLIP — he is currently on your do-not-draft reflex and probably should not be.",
+    "Malik Nabers": "RESOLVED 2026-08-07. Flipped from fade to 'like'. The fade note was undated and cited PUP risk; the 2026-08-05 video says he avoided the PUP entirely. Newer source, and it addresses the exact objection. He now sits behind the take-zone backs, Bowers and Nico Collins, and ahead of George Pickens.",
     "Quentin Johnston": "2026-08-03 video says he is drafting him a lot for the underneath/screen floor; entry says 'flat projection, no top-15 ceiling'. Low impact for RPB — Max's College Fund keeps him, so he never reaches your draft.",
     "David Montgomery": "FALSE POSITIVE, no action. The 'down' take is from the Jared Goff video and is about Montgomery LEAVING Detroit freeing goal-line touchdowns for Goff. It is not a downgrade of Montgomery.",
     "_asr_warning": "Captions are ASR and mis-hear names constantly. In the 2026-08-03 dead-zone video the transcript reads 'Jahmyr Gibbs is on a bottom-three offense' — impossible (Detroit, and Nick has a separate video titled 'Draft Jahmyr Gibbs 1.01'). That is a mis-heard name and Gibbs is NOT a dead-zone back. Never attribute a take to a player on caption text alone when the claim contradicts what you know about his team or the rest of his content."
