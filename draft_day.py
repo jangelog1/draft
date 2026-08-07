@@ -155,6 +155,21 @@ def build():
     w("\n\nYou start one QB and one TE. Once those two slots are filled, every remaining "
       "QB/TE must-draft is noise — ignore them.\n")
 
+    fmt = n.get("rpbFormat")
+    if fmt:
+        w("\n## Half-PPR format splits — where Nick's advice moves in YOUR league\n")
+        w("His notes are written for 12-team full-PPR with a FLEX. RPB is half-PPR, 2RB/3WR, no "
+          "FLEX, D/ST doubled, no playoffs. These are the players whose verdict changes.\n")
+        w("\n**Better in RPB than his rank implies:**\n")
+        for nm, why in fmt["up"].items():
+            w(f"- **{nm}** — {why}")
+        w("\n**Worse in RPB — discount or avoid:**\n")
+        for nm, why in fmt["down"].items():
+            w(f"- **{nm}** — {why}")
+        w("\n**Structural differences to keep in mind:**\n")
+        for line in fmt["structural"]:
+            w(f"- {line}")
+
     w("\n## FFA shy-away — do not draft\n")
     for v in sorted(shys, key=lambda x: x["name"]):
         why = (v.get("why") or v.get("note") or "").strip()

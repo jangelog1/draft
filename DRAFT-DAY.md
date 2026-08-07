@@ -138,6 +138,35 @@ At your **turn picks** only two or three players come off between your picks, so
 You start one QB and one TE. Once those two slots are filled, every remaining QB/TE must-draft is noise — ignore them.
 
 
+## Half-PPR format splits — where Nick's advice moves in YOUR league
+
+His notes are written for 12-team full-PPR with a FLEX. RPB is half-PPR, 2RB/3WR, no FLEX, D/ST doubled, no playoffs. These are the players whose verdict changes.
+
+
+**Better in RPB than his rank implies:**
+
+- **Mike Evans** — FORMAT SPLIT in your favour. He fades Evans in full PPR (too TD-dependent) but calls him a positive-TD-regression buy in 0.5/standard. Your RPB verdict: 'PERFECT RPB FIT — 13-17 TD upside, fixes your 2025 receiving-TD deficit'. Target the R5/6 turn.
+- **Quinshon Judkins** — BUY at R5. Monken red-zone run scheme is a direct RPB TD-edge fit. 'Judkins >= Swift in RPB.'
+- **Saquon Barkley** — His #1 round-2 back. The one caution he gives — brutal Wk15-17 playoff schedule — DOES NOT APPLY: RPB has no playoffs. Free money here.
+- **Jonathan Taylor** — He fades JT at pick 4 in FULL PPR for lacking a receiving floor. That knock is much weaker in half-PPR — he is playable at his RPB cost.
+
+**Worse in RPB — discount or avoid:**
+
+- **Zay Flowers** — MWV ONLY. 'TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games.' Do not draft him in RPB at his rank.
+- **Derrick Henry** — 'watch', not a buy. Declining targets = volatile half-PPR floor at 32; last year's RB8 finish inflated by one Wk17 four-TD game. Safe floor, capped ceiling. Still a take-zone back — just the LAST of the six you'd take, not the first.
+- **De'Andre Swift** — His R5 case is explicitly a full-PPR reception floor. RPB verdict: 'rec-heavy upside halved by 0.5 PPR'. Judkins over Swift here.
+- **Christian McCaffrey** — 'Loves him if he falls' is a full-PPR receiving-floor argument. Discount it in half-PPR.
+- **Devon Achane** — Already shy-away, and the reason is format-specific: 'R2 FADE in half-PPR (RPB)' — mobile Willis kills the reception floor.
+- **Bhayshul Tuten** — Below the RB20 replacement line in RPB. Fade the R6 reach; R12-13 dart only.
+- **Jayden Daniels** — DOWNGRADED to 'watch' — WAS cutting no-huddle concepts slashes play volume and his rushing floor. Was a mid-round target, now a caution at cost.
+
+**Structural differences to keep in mind:**
+
+- RPB starts 2 RB and has NO FLEX, so RB depth matters less than Nick's 'three backs in the first four rounds' implies. Lock two anchors before the RB16-18 cliff, then stop.
+- One TE, no FLEX: his 'early OR late' tight-end rule is an either/or. Bowers in round 2 spends the early option — never also take the late Kittle/Andrews double-dip.
+- D/ST scores double in RPB, so the gap between the #1 and #9 defense is real points, unlike in his default league.
+- No playoffs in RPB, so every playoff-schedule caution he gives (Barkley, DeVonta Smith) is irrelevant here.
+
 ## FFA shy-away — do not draft
 
 - **Chuba Hubbard** (RB) — Among 49 backs with 100+ carries he was last in explosive run rate, last in missed tackles forced per attempt and 2nd-last in touchdown rate. Brooks w
