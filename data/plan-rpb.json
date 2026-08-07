@@ -1,0 +1,68 @@
+{
+  "league": "RPB",
+  "updated": "2026-08-06",
+  "source": "~150,000 simulated RPB drafts, sims/mc5.py through mc11.py, run against a sharp room in which every team must own a running back by the end of round two.",
+  "keeper": "Travis Etienne Jr. — round 10",
+  "mirrorNote": "index.html holds the same conclusions in its PLAN constant so the app can render them offline. draft_day.py asserts the key strings appear in both; if you edit one, edit the other or the generator fails.",
+  "branches": [
+    {
+      "tag": "A",
+      "when": "1.02 — always",
+      "do": "Take the back. Bijan Robinson 89%, Gibbs otherwise.",
+      "why": "Picks 3-6 are a four-WR run, so nobody is competing with you for backs early."
+    },
+    {
+      "tag": "B",
+      "when": "2.09 — the only real decision",
+      "do": "Second RB, or an elite WR and the back at 3.02. Worth ~2 pts either way.",
+      "why": "The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway."
+    },
+    {
+      "tag": "C",
+      "when": "if you have one back after three picks",
+      "do": "Stop forcing it. Take value.",
+      "why": "One early back costs -11.8. Forcing RB at 4.09 + 5.02 to fix it costs -32.4 — the recovery is worse than the miss."
+    }
+  ],
+  "takeZone": ["Saquon Barkley", "Ken Walker", "Chase Brown", "Omarion Hampton", "Derrick Henry", "Devon Achane"],
+  "cutoffAfter": "Devon Achane",
+  "pivotFrom": "Jeremiyah Love",
+  "takeZoneNote": "RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next back down (Jeremiyah Love) drops to -14.5 and falls off a cliff from there.",
+  "bowers": "Brock Bowers",
+  "bowersGain": "+36.8 over the back",
+  "bowersRule": "Round 2 or later only. Taking him at 1.02 over an elite back costs -81.8; the +36.8 exists only once the top of the RB board is gone.",
+  "edge": "Josh Allen (374 pts) lasts to picks 15-18 — six teams already keep a QB. Best value on the board in round 2 and nobody has a slot for him.",
+  "traps": [
+    "Reaching for D/ST or K. Rams D/ST at 15.02, Aubrey at 16.09. Reaching costs 19-179.",
+    "Forcing a back at 4.09/5.02 after missing RB2 — costs -32.4, worse than living with one back.",
+    "Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs -9.1; Kittle at 6.09 is free."
+  ],
+  "standing": [
+    "Keep Etienne — regret, not points. His worst case is -1.2; Burden's is -34.2.",
+    "Double-RB is worth +2.8 against a sharp room, not the +8.6 a soft room showed.",
+    "Only paired sim comparisons are valid. Simulated opponents draft worse than the real room, so absolute scores and win rates mean nothing.",
+    "Nothing past 2.09 has ever been simulated. Your 3.02, 4.09 and 5.02 have no sim-backed guidance."
+  ],
+  "contingencies": [
+    {
+      "when": "Every take-zone back is gone before 2.09",
+      "do": "Take the WR and buy a back next round. Do not reach past the cutoff.",
+      "why": "mc10 said the block never drains past Achane — RB13+ was 0% at every setting. In the 2026-08-06 mock all six drained by 2.08. Rare is not impossible."
+    },
+    {
+      "when": "Brock Bowers is on the board in round 2 or later",
+      "do": "Take him immediately. Largest single edge in the draft.",
+      "why": "mc7 said he goes before pick 19 in 52,200 of 52,200 drafts. He fell to 2.09 in the mock and was worth +36.8."
+    },
+    {
+      "when": "Five or more defenses are gone by your round-14 pick",
+      "do": "Take yours at 14.09 and push the last skill player back.",
+      "why": "The sims put D/ST at 15.02 and never modelled a run. Five went by 13.09 in the mock. RPB doubles D/ST scoring, so the #3-vs-#11 gap is real points."
+    },
+    {
+      "when": "The ranked RB list is empty and Show More returns nothing",
+      "do": "Stop planning around a back. Last two picks become K + D/ST or a searched-by-name body.",
+      "why": "The sims always had a back available. FantasyPros' RB pool ran dry by 14.09 in the mock."
+    }
+  ]
+}

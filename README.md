@@ -51,7 +51,8 @@ State is per-league localStorage (`dr-picks-RPB` / `dr-picks-MWV`). Nothing is s
 | `data/ffa-ranks-{rpb,mwv}.json` | FFA Rank, Value, SOS, auction $ — **not in the API** | the `ffa-redraft-rankings` skill (exports both league CSVs in one run) |
 | `data/ffa-tiers.json` | FFA's 14 tier boundaries + their Pop letter grade per player | re-scraped from FFA's rendered board |
 | `data/keepers-rpb.json` | RPB draft order + **predicted** keepers | **edit in Settings** — CBS publishes nothing (its keepers page is blank), so the app is the source of truth |
-| `data/notes.json` | Player notes — 94 FFA stances (`love`/`like`/`watch`/`fade`/`avoid`), 25 must-draft + 5 shy-away calls with a `why`, plus per-league video-intel verdicts | rebuilt from `ffa-intel.json`, `ffa-calls.json` and `plan-{rpb,mwv}.json` |
+| `data/notes.json` | Player notes — FFA stances (`love`/`like`/`watch`/`fade`/`avoid`), 28 must-draft + 9 shy-away calls with a `why`, plus per-league video-intel verdicts | rebuilt from `ffa-intel.json`, `ffa-calls.json` and `plan-{rpb,mwv}.json`; must/shy reconciled against FFA's change-log pages |
+| `data/plan-rpb.json` | The Monte Carlo plan — branches A/B/C, take zone, Bowers rule, traps, standing conclusions, contingencies | hand-edited; mirrored in `index.html`'s `PLAN` const and drift-checked by `draft_day.py --check` |
 
 **Regenerate both `ffa-ranks` files the morning of each draft.** ADP is live but $/SOS/Value are
 from the CSV, and a stale snapshot reads as one coherent opinion when it isn't.
@@ -69,3 +70,52 @@ Use the apex host for the API, never `tools.` — that subdomain 307-redirects w
 - `?lg=MWV` — open a specific league.
 - `?reset=1` — empty that league's entered picks and start at 1.01. Keepers, draft order and queue survive. The param drops itself so a reload cannot wipe twice.
 - The ↻ button re-pulls the API **and** every committed snapshot, so a pushed data update reaches an installed iPad without a force-quit.
+
+## Draft-day knowledge
+
+`DRAFT-DAY.md` is the one page to open on draft day — pick ladder, the Monte Carlo plan,
+contingencies, block windows, every team's needs, live FFA must/shy lists, and how to read the
+FantasyPros simulator. It is **generated**: edit the JSON, never the markdown.
+
+```bash
+python3 draft_day.py           # rewrite DRAFT-DAY.md
+python3 draft_day.py --check   # verify the pick ladder + plan/app drift, write nothing
+```
+
+Reads `data/keepers-rpb.json`, `data/notes.json`, `data/plan-rpb.json`. The check asserts the
+snake ladder, that keeper picks never come up live, that you hold 15 picks, that every take-zone
+name in `plan-rpb.json` also appears in `index.html`, and that the `nextRd>=2` gate on the Bowers
+rule is still in the app — taking Bowers at 1.02 costs −81.8.
+
+### Simulations
+
+Sharp room + must-own-a-back-by-round-2 are the defaults. The unmodified engine left 3.3 of 9
+opponents with zero RBs after two rounds, so any board built without that rule understates round-2
+RB demand by ~3 picks.
+
+| file | what it answers |
+|---|---|
+| mc5 | 14 strategies × both keepers, full grid |
+| mc6 | Plan A/B/C for the double-RB open × room strength |
+| mc7 | RB cutoff at 2.09; the Bowers question |
+| mc8 | Where Bowers goes, what he costs the team that takes him |
+| mc9 | Rounds 1–2 board (**superseded by mc11** — built on the uncorrected engine) |
+| mc10 | The RB-scarcity correction itself |
+| **mc11** | **Rounds 1–2 board on the corrected engine — current** |
+
+`mc.py` is the broken first attempt, kept as a record. Nothing past 2.09 has ever been simulated.
+
+### Standing preferences
+
+- Sharp room is the default for every sim, by explicit instruction.
+- **Nothing gets removed from the app** — add and combine, don't strip.
+- Commits: Conventional Commits, explain the *why*, `Co-Authored-By: Claude Opus 5`.
+- Opus 5 for sim design and statistical judgment; Sonnet 5 is the right tier for single-file HTML/JS edits.
+
+### Settled — do not re-open unprompted
+
+- Keeper is **Etienne**, decided. The Burden case exists in mc5; he chose. FFA added Etienne to its
+  shy-away list on 2026-08-03 — noted, does not change the R10 keep, but it does mean RB2 is soft.
+- MWV has **no draft order** — CBS never scheduled it. Use the Settings order editor once slots are known.
+- The sims and FFA's Strategy Lab heatmap have near-zero rank correlation. FFA's is real drafts.
+- Only **paired** sim comparisons are valid; absolute scores and win rates mean nothing.

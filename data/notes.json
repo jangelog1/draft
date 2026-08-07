@@ -1,893 +1,945 @@
 {
- "updated": "2026-06-24T17:38:10Z",
- "sources": [
-  "FFA video intel (love/fade stances)",
-  "FFA must-draft / shy-away calls",
-  "per-league video intel verdicts"
- ],
- "qbNote": "Nick does not name one quarterback — his stated goal is to land any of the top 8 at a value: Allen, Lamar, Maye, Daniels, Burrow, Hurts, Caleb Williams, Herbert. Goff is the fallback if you pass on that range.",
- "philosophy": [
-  {
-   "title": "Running backs early — the cliff is real",
-   "text": "His #1 2026 thesis: attack high-volume starting RBs early. 'Robust RB' / double-hero-RB (3 RBs in the first 4 rounds) is winning at a high rate. Starting NFL backs keep weekly value; backups ≈ zero. The late-round RB pool is a dead zone."
+  "updated": "2026-08-06T00:00:00Z",
+  "sources": [
+    "FFA video intel (love/fade stances)",
+    "FFA must-draft / shy-away calls",
+    "per-league video intel verdicts",
+    "FFA must-draft + shy-away change logs (screenshots, 2026-08-06)"
+  ],
+  "qbNote": "Nick does not name one quarterback — his stated goal is to land any of the top 8 at a value: Allen, Lamar, Maye, Daniels, Burrow, Hurts, Caleb Williams, Herbert. Goff is the fallback if you pass on that range.",
+  "philosophy": [
+    {
+      "title": "Running backs early — the cliff is real",
+      "text": "His #1 2026 thesis: attack high-volume starting RBs early. 'Robust RB' / double-hero-RB (3 RBs in the first 4 rounds) is winning at a high rate. Starting NFL backs keep weekly value; backups ≈ zero. The late-round RB pool is a dead zone."
+    },
+    {
+      "title": "Tight end: early or late, NEVER the middle",
+      "text": "'Mid-round TE is a losing bet, year after year.' Pay up for an elite anchor (Bowers R2 / Loveland R4) OR wait and double-dip late (Kittle/Andrews/Kincaid). Avoid the round 6–10 TE range."
+    },
+    {
+      "title": "Quarterback: elite value early OR wait to R5–7, then ride one",
+      "text": "Never QB in round 1 or 2. Elite QBs slipping on recency bias (Josh Allen) are fine value, but he prefers the R5–7 margins (Maye). THE MID-ROUND QB TRAP: if you miss the elite tier, do NOT pay up for the next sub-tier early (Dak/Herbert/Lawrence in R6) — wait to the absolute tail-end of that tier for the max discount (he took Trevor Lawrence at R8 in his 12-tm PPR mock). Pick one QB and ride him. Caveat: a full QB embargo R3–7 assumes no league-wide run — if your league panics you can get stuck streaming, so stay flexible."
+    },
+    {
+      "title": "Don't stack teammates in redraft",
+      "text": "Negative correlation kills you in season-long (e.g. won't pair Ja'Marr Chase + Chase Brown, or 3 Chargers). Stacking is a best-ball play, not a redraft play."
+    },
+    {
+      "title": "Rookies are mostly irrelevant in redraft",
+      "text": "Pass on deep rookies — only elite feature backs (Jeanty, Jeremiah Love) matter, and even those he'll fade if hype inflates the cost or the team is tanking."
+    },
+    {
+      "title": "Playoff schedule & domes matter; fade tankers",
+      "text": "Target Lions/Saints/Eagles anchors for late-season dome games; fade open-air northern teams and brutal playoff slates (Eagles Wk15–17 vs SEA/HOU/SF). Fade tanking teams (Cardinals, Panthers) that bench young stars in the fantasy playoffs."
+    },
+    {
+      "title": "Chase positive TD regression",
+      "text": "Target elite players with high red-zone/green-zone volume but unlucky TD totals (Justin Jefferson, Mike Evans, Tyler Warren) — TD luck is volatile and self-corrects."
+    },
+    {
+      "title": "Value vs ADP discipline",
+      "text": "Don't reach — temper projections with market ADP; you can usually get your guy a round later."
+    },
+    {
+      "title": "Single-flex roster balance — don't multiply too early",
+      "text": "In single-flex builds (MWV) keep RB/WR balanced early: don't take back-to-back WRs in Rounds 1–2. If a Round 3 RB run hits while you're WR-heavy, you're forced into sub-optimal builds. (RPB has NO flex at all, so early balance matters even more.)"
+    },
+    {
+      "title": "Tight end: wait, then double-dip athletic TEs on elite QBs",
+      "text": "In the 12-tm PPR mock he boycotted TE until the single-digit-ADP rounds, then double-dipped highly athletic profiles attached to elite/high-volume QBs (Kincaid–Buffalo, Gadsden–Chargers). Reinforces the 'early or late, never the middle' rule from the late side."
+    },
+    {
+      "title": "Round 2 RBs — the league-wide decision point (half-PPR / RPB)",
+      "text": "From picks 3–12, UNLESS an elite faller is there (Brock Bowers, Drake London, or CeeDee Lamb / Justin Jefferson if they slip), take the RB — they all project similarly with heavy upside, so your RANKING is the edge. Nick's R2 RB board (half-PPR): 1) Saquon Barkley — easiest Wk1–14 SOS, ~300 touches, Patullo→Mannion play-call upgrade; 2) Kenneth Walker — big new contract, zero early-down competition, locked goal-line; 3) Chase Brown — elite pass-catcher (he'd be ABOVE Walker in full PPR), lower rush ceiling in 0.5; 4) Omarion Hampton — huge goal-line/TD upside, volume capped by Keaton Mitchell (watch camp); 5) Derrick Henry — dominant runner but fading targets = volatile 0.5 floor at 32; 6) De'Von Achane — AVOID: McDaniel gone, mobile Willis kills his target floor, hardest Wk13+ SOS. R1 RBs stay locked in pairs: Gibbs/Bijan → Taylor/CMC → Hall/Cook."
+    }
+  ],
+  "shared": {
+    "ashton jeanty": {
+      "name": "Ashton Jeanty",
+      "pos": "RB",
+      "stance": "love",
+      "note": "Elite 1.01-tier feature back; ascending LV offense.",
+      "call": "must",
+      "why": "The public is underrating him because the Raiders offense was awful, not because of him. Improved line, Kubiak scheme and a healthy Bowers mean far fewer stacked boxes, and he can be had at the end of round one.",
+      "added": "2026-08-04"
+    },
+    "bijan robinson": {
+      "name": "Bijan Robinson",
+      "pos": "RB",
+      "stance": "love",
+      "note": "1-2 overall lock in every format."
+    },
+    "jahmyr gibbs": {
+      "name": "Jahmyr Gibbs",
+      "pos": "RB",
+      "stance": "love",
+      "note": "1-2 overall lock; Lions dome + schedule = elite."
+    },
+    "breece hall": {
+      "name": "Breece Hall",
+      "pos": "RB",
+      "stance": "like",
+      "note": "R3 VALUE — elite pedigree (5,000 yds before 25). Robust-RB anchor."
+    },
+    "quinshon judkins": {
+      "name": "Quinshon Judkins",
+      "pos": "RB",
+      "stance": "like",
+      "note": "R5 value — 300-touch ceiling, Monken features his best players."
+    },
+    "bhayshul tuten": {
+      "name": "Bhayshul Tuten",
+      "pos": "RB",
+      "stance": "like",
+      "note": "R6 value — 250-280 touch ceiling in fast JAX offense."
+    },
+    "omarion hampton": {
+      "name": "Omarion Hampton",
+      "pos": "RB",
+      "stance": "like",
+      "note": "Anchor-RB tier; volume + goal-line role."
+    },
+    "chase brown": {
+      "name": "Chase Brown",
+      "pos": "RB",
+      "stance": "like",
+      "note": "R2 value — unchanged CIN offense (same QB/WRs), elite target retention, converts high-value TDs; exceptionally productive with a healthy Burrow.",
+      "call": "must",
+      "why": "Featured back on a good offense with a very high touch floor. Was RB5 in PPG in games Burrow started and finished, and Cincinnati has its best line of the Burrow era.",
+      "added": "2026-08-01"
+    },
+    "kenneth walker": {
+      "name": "Kenneth Walker",
+      "pos": "RB",
+      "stance": "like",
+      "note": "R3 — heavy team investment locks early downs + goal-line work on an offense projected to win games; high-leverage volume."
+    },
+    "derrick henry": {
+      "name": "Derrick Henry",
+      "pos": "RB",
+      "stance": "watch",
+      "note": "R2 RB5 (≈RB11) — still dominant on the ground (8 straight 10-TD seasons) but declining targets = volatile half-PPR floor at 32; last year's RB8 finish was inflated by one Wk17 4-TD game. Safe floor, capped ceiling, new OC unknown."
+    },
+    "christian mccaffrey": {
+      "name": "Christian McCaffrey",
+      "pos": "RB",
+      "stance": "like",
+      "note": "Loves him if he falls (full-PPR receiving floor)."
+    },
+    "kenneth gainwell": {
+      "name": "Kenneth Gainwell",
+      "pos": "RB",
+      "stance": "like",
+      "note": "Premium ADP value handcuff."
+    },
+    "deandre swift": {
+      "name": "De'Andre Swift",
+      "pos": "RB",
+      "stance": "like",
+      "note": "R5 value — full-PPR reception floor fits like a glove; top-10 upside at a steep discount, prime age, Monangai no threat."
+    },
+    "rhamondre stevenson": {
+      "name": "Rhamondre Stevenson",
+      "pos": "RB",
+      "stance": "like",
+      "note": "Tactical chain-mover — staff trusts him to hit reads and grind the 4-5 yards to move the chains; under-the-radar volume."
+    },
+    "keaton mitchell": {
+      "name": "Keaton Mitchell",
+      "pos": "RB",
+      "stance": "like",
+      "note": "Ideal late bench stash — high-potency BAL offense yields premium efficiency on ~10 touches/gm.",
+      "call": "must",
+      "why": "Essentially free in drafts. Hit 20+ MPH a league-leading seven times on just 59 carries, and McDaniel reportedly asked for him by name.",
+      "added": "2026-07-24"
+    },
+    "kyle monangai": {
+      "name": "Kyle Monangai",
+      "pos": "RB",
+      "stance": "like",
+      "note": "~R8 handcuff value — 11 touches/gm on an elite offense, TD luck."
+    },
+    "jamarr chase": {
+      "name": "Ja'Marr Chase",
+      "pos": "WR",
+      "stance": "love",
+      "note": "Elite alpha target hog; premier WR baseline."
+    },
+    "puka nacua": {
+      "name": "Puka Nacua",
+      "pos": "WR",
+      "stance": "love",
+      "note": "Elite anchor WR."
+    },
+    "justin jefferson": {
+      "name": "Justin Jefferson",
+      "pos": "WR",
+      "stance": "love",
+      "note": "#1 positive-regression target (career-worst luck). Watch MIN QB."
+    },
+    "jaxon smithnjigba": {
+      "name": "Jaxon Smith-Njigba",
+      "pos": "WR",
+      "stance": "love",
+      "note": "Elite efficiency + huge target share; defends him vs ADP doubters."
+    },
+    "emeka egbuka": {
+      "name": "Emeka Egbuka",
+      "pos": "WR",
+      "stance": "love",
+      "note": "Elite young target hog — NYG WR1 vacuum, Cooper Kupp-style comp.",
+      "call": "must",
+      "why": "Was on a 76/1,279/12 pace through nine games before a hamstring injury and Baker's shoulder derailed it. The new coordinator has talked about using him in the Cooper Kupp role.",
+      "added": "2026-06-19"
+    },
+    "nico collins": {
+      "name": "Nico Collins",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Premier smash-play (over Nabers)."
+    },
+    "george pickens": {
+      "name": "George Pickens",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Pivot-point WR target."
+    },
+    "chris olave": {
+      "name": "Chris Olave",
+      "pos": "WR",
+      "stance": "like",
+      "note": "R3 elite — high-tempo NO offense, heavy target share."
+    },
+    "devonta smith": {
+      "name": "DeVonta Smith",
+      "pos": "WR",
+      "stance": "love",
+      "note": "Favorite Eagles target — 30%+ target share, 10 tgt/gm early."
+    },
+    "mike evans": {
+      "name": "Mike Evans",
+      "pos": "WR",
+      "stance": "watch",
+      "note": "FORMAT SPLIT: fade in full PPR (MWV) — too TD-dependent, lacks the 100-catch ceiling to maximize PPR. But a positive-TD-regression buy in 0.5/standard (RPB). (Note: he likes TD-regression elsewhere yet fades Evans for TD-reliance — a real tension.)",
+      "call": "must",
+      "why": "A top-three red-zone weapon on a team that will score — Nick's comparison is 2025 Davante Adams. Fifteen-touchdown upside now that Pearsall is out.",
+      "added": "2026-08-03"
+    },
+    "ladd mcconkey": {
+      "name": "Ladd McConkey",
+      "pos": "WR",
+      "stance": "love",
+      "note": "R4 favorite value — elite TPRR in 12-personnel."
+    },
+    "terry mclaurin": {
+      "name": "Terry McLaurin",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Safe locked-in target monster (over aging Davante)."
+    },
+    "tetairoa mcmillan": {
+      "name": "Tetairoa McMillan",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Safe boundary target vacuum."
+    },
+    "jayden reed": {
+      "name": "Jayden Reed",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Consolidated GB target share after Doubs/Wicks left."
+    },
+    "travis hunter": {
+      "name": "Travis Hunter",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Last-round STEAL — supreme talent, highest TPRR upside."
+    },
+    "rashee rice": {
+      "name": "Rashee Rice",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Least-risky of the risk trio — R3 contrarian buy (knee minor).",
+      "call": "shy",
+      "why": "Solid against zone in the short area and not much else — cannot win deep, against man, or against press. Nick expects the force-fed designed touches to taper off.",
+      "added": "2026-07-07"
+    },
+    "tank dell": {
+      "name": "Tank Dell",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Zero-risk last-pick flier; elite share if Collins misses time."
+    },
+    "luther burden": {
+      "name": "Luther Burden III",
+      "pos": "WR",
+      "stance": "like",
+      "note": "R6 safe high-floor in an elite scheme.",
+      "call": "must",
+      "why": "Highest yards per route run ever by a rookie receiver, and efficient from every alignment. Camp hype is loud enough that Nick now prefers him over Loveland in that pairing.",
+      "added": "2026-08-01"
+    },
+    "josh downs": {
+      "name": "Josh Downs",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Polished target earner — clear path to 5-7 catches/wk with the WR room thinned (Pierce's foot surgery); high-floor flex."
+    },
+    "zay flowers": {
+      "name": "Zay Flowers",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Full-PPR volume play (MWV) — TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games."
+    },
+    "dj moore": {
+      "name": "DJ Moore",
+      "pos": "WR",
+      "stance": "like",
+      "note": "Elite value — ADP artificially depressed by 'foot callus' panic; if he's running fluidly in camp the value skyrockets."
+    },
+    "brock bowers": {
+      "name": "Brock Bowers",
+      "pos": "TE",
+      "stance": "love",
+      "note": "Elite R2 anchor TE — the early-TE play.",
+      "call": "must",
+      "why": "Most receptions by any rookie in NFL history, then hurt from week one onward. Goes in the mid-second with a play-calling upgrade and no real target competition.",
+      "added": "2026-06-18"
+    },
+    "colston loveland": {
+      "name": "Colston Loveland",
+      "pos": "TE",
+      "stance": "like",
+      "note": "R4 ONLY — loves the talent/role under Ben Johnson but strictly forbids drafting him in R3.",
+      "call": "must",
+      "why": "Nick's stated biggest flag plant of the season. Blocks elite rushers and wins as a slot receiver, so Ben Johnson can build constant mismatches around him.",
+      "added": "2026-07-06"
+    },
+    "tyler warren": {
+      "name": "Tyler Warren",
+      "pos": "TE",
+      "stance": "like",
+      "note": "R5 value — positive regression, functional IND WR1 with Pierce hurt."
+    },
+    "george kittle": {
+      "name": "George Kittle",
+      "pos": "TE",
+      "stance": "like",
+      "note": "R10 late double-dip value."
+    },
+    "mark andrews": {
+      "name": "Mark Andrews",
+      "pos": "TE",
+      "stance": "like",
+      "note": "Late TE double-dip."
+    },
+    "dalton kincaid": {
+      "name": "Dalton Kincaid",
+      "pos": "TE",
+      "stance": "like",
+      "note": "Late TE double-dip — athletic profile tied to an elite QB (Buffalo); live ADP outpaces market."
+    },
+    "oronde gadsden": {
+      "name": "Oronde Gadsden II",
+      "pos": "TE",
+      "stance": "like",
+      "note": "Late athletic-TE double-dip tied to a high-volume QB (Chargers/Herbert)."
+    },
+    "tucker kraft": {
+      "name": "Tucker Kraft",
+      "pos": "TE",
+      "stance": "like",
+      "note": "Late TE value, fits early-or-late rule."
+    },
+    "josh allen": {
+      "name": "Josh Allen",
+      "pos": "QB",
+      "stance": "like",
+      "note": "Premium value on recency bias — but in his 12-tm PPR mock he PASSED Allen in R3 to keep elite skill talent (equal-tier QBs like Hurts sit several rounds later).",
+      "call": "must",
+      "why": "One of the eight quarterbacks Nick wants, at a value.",
+      "added": "2026-07-24"
+    },
+    "drake maye": {
+      "name": "Drake Maye",
+      "pos": "QB",
+      "stance": "like",
+      "note": "Mid-round QB target (R5-6) — admitted homer pick, but backed by an improved line, year-2 leap, and upgraded weapons opening the deep field.",
+      "call": "must",
+      "why": "A must-draft last season too, when he finished 2nd in adjusted PPG. Improved line, A.J. Brown and Doubs added, with a rushing floor baked in.",
+      "added": "2026-07-24"
+    },
+    "jayden daniels": {
+      "name": "Jayden Daniels",
+      "pos": "QB",
+      "stance": "watch",
+      "note": "DOWNGRADED — WAS is cutting no-huddle concepts, slashing play volume and rushing-floor opportunity. Was a mid-round target; now a caution at cost.",
+      "call": "must",
+      "why": "A three-plus round discount purely because he got hurt. Was 3rd at 22.6 adjusted PPG as a rookie and is capable of 1,000 rushing yards.",
+      "added": "2026-07-24"
+    },
+    "lamar jackson": {
+      "name": "Lamar Jackson",
+      "pos": "QB",
+      "stance": "like",
+      "note": "Premium QB target.",
+      "call": "must",
+      "why": "One of the eight quarterbacks Nick wants, at a value.",
+      "added": "2026-07-24"
+    },
+    "jalen hurts": {
+      "name": "Jalen Hurts",
+      "pos": "QB",
+      "stance": "like",
+      "note": "Premium QB target.",
+      "call": "must",
+      "why": "One of the eight quarterbacks Nick wants, at a value.",
+      "added": "2026-07-24"
+    },
+    "caleb williams": {
+      "name": "Caleb Williams",
+      "pos": "QB",
+      "stance": "like",
+      "note": "Premium QB target (mid-round value).",
+      "call": "must",
+      "why": "One of the eight quarterbacks Nick wants, at a value.",
+      "added": "2026-07-24"
+    },
+    "justin herbert": {
+      "name": "Justin Herbert",
+      "pos": "QB",
+      "stance": "like",
+      "note": "R7 organic-stack QB with Hampton/Tuten.",
+      "call": "must",
+      "why": "All in on the Chargers offense, with a healthy top-seven line this year. Herbert goes at the end of the top-8 range, making him the best value of the group.",
+      "added": "2026-07-24"
+    },
+    "trevor lawrence": {
+      "name": "Trevor Lawrence",
+      "pos": "QB",
+      "stance": "like",
+      "note": "Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries.",
+      "call": "must",
+      "added": "2026-08-05",
+      "why": "FFA must-draft list, added 2026-08-05. Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries."
+    },
+    "bucky irving": {
+      "name": "Bucky Irving",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "#1 'regret' RB — committee + injury; 13-carry/1-target risk."
+    },
+    "travis etienne": {
+      "name": "Travis Etienne",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)",
+      "call": "shy",
+      "added": "2026-08-03",
+      "why": "FFA shy-away list, added 2026-08-03. Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)"
+    },
+    "jonathan taylor": {
+      "name": "Jonathan Taylor",
+      "pos": "RB",
+      "stance": "fade",
+      "note": "Fade at pick 4 in full-PPR — lacks the receiving floor."
+    },
+    "jaylen warren": {
+      "name": "Jaylen Warren",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "Muddy committee; explicitly avoided."
+    },
+    "rj harvey": {
+      "name": "RJ Harvey",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "R7 fade — Dobbins signed, role collapses."
+    },
+    "jadarian price": {
+      "name": "Jadarian Price",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "Overrated — no receiving profile; Charbonnet reclaims SEA RB1."
+    },
+    "chuba hubbard": {
+      "name": "Chuba Hubbard",
+      "pos": "RB",
+      "stance": "fade",
+      "note": "Fade — hardest rush SOS, Bryce Young, value craters as Brooks ramps.",
+      "call": "shy",
+      "why": "Among 49 backs with 100+ carries he was last in explosive run rate, last in missed tackles forced per attempt and 2nd-last in touchdown rate. Brooks will eat into the work.",
+      "added": "2026-07-02"
+    },
+    "kyren williams": {
+      "name": "Kyren Williams",
+      "pos": "RB",
+      "stance": "fade",
+      "note": "R3 fade — Corum cuts snaps; Rams bottom-5 in RB targets (zero floor)."
+    },
+    "josh jacobs": {
+      "name": "Josh Jacobs",
+      "pos": "RB",
+      "stance": "fade",
+      "note": "R3 fade — conduct probe / 8-12 wk suspension risk; pounce only at R5."
+    },
+    "saquon barkley": {
+      "name": "Saquon Barkley",
+      "pos": "RB",
+      "stance": "watch",
+      "note": "Nick's #1 round-2 RB (RB7) — easiest Wk1–14 SOS, ~300-touch workload, Patullo→Mannion play-call upgrade. One caution: brutal playoff SOS (SEA/HOU/SF Wk15-17)."
+    },
+    "devon achane": {
+      "name": "Devon Achane",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "R2 FADE in half-PPR (RPB) — the premier back to avoid: McDaniel gone guts the MIA offense, mobile Willis scrambles instead of checking down (kills the reception floor), bottom-tier WR room, and the hardest schedule from Wk13 on (4th-qtr benchings in blowouts).",
+      "call": "shy",
+      "why": "McDaniel has left for the Chargers, Malik Willis will scramble rather than check down, and Miami projects bottom-five in points per game. A scary floor and a capped ceiling in round two.",
+      "added": "2026-06-21"
+    },
+    "james cook": {
+      "name": "James Cook",
+      "pos": "RB",
+      "stance": "watch",
+      "note": "Fade early — brutal opening SOS; acquire via trade after a slow month."
+    },
+    "jeremiah love": {
+      "name": "Jeremiah Love",
+      "pos": "RB",
+      "stance": "watch",
+      "note": "Scale back — ARI tanking limits touches; needs 80-90% share at R3 cost."
+    },
+    "najee harris": {
+      "name": "Najee Harris",
+      "pos": "RB",
+      "stance": "watch",
+      "note": "Only as a last-pick zero-risk injury insurance."
+    },
+    "malik nabers": {
+      "name": "Malik Nabers",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Fade to R5+ — non-clean knee, PUP risk; bulletproof only if he slides."
+    },
+    "jameson williams": {
+      "name": "Jameson Williams",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Best-ball only — volatile target floor wrecks redraft lineups."
+    },
+    "christian watson": {
+      "name": "Christian Watson",
+      "pos": "WR",
+      "stance": "avoid",
+      "note": "R6 fade — 1 double-digit-target game in 51 career games."
+    },
+    "alec pierce": {
+      "name": "Alec Pierce",
+      "pos": "WR",
+      "stance": "avoid",
+      "note": "R6 fade — efficiency regresses; Downs & Warren out-target him."
+    },
+    "dk metcalf": {
+      "name": "DK Metcalf",
+      "pos": "WR",
+      "stance": "avoid",
+      "note": "R6/7 fade — name value only; aging Rodgers can't push it deep, <100 tgts."
+    },
+    "michael pittman": {
+      "name": "Michael Pittman Jr.",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Low aDOT / low-volume scheme; passed on."
+    },
+    "davante adams": {
+      "name": "Davante Adams",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Aging — prefers Terry McLaurin's safer volume."
+    },
+    "jordan addison": {
+      "name": "Jordan Addison",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Unfavorable ecosystem — buried behind alpha Justin Jefferson, catching from a volatile/unproven MIN QB room."
+    },
+    "quentin johnston": {
+      "name": "Quentin Johnston",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Flat projection, no top-15 ceiling."
+    },
+    "jakobi meyers": {
+      "name": "Jakobi Meyers",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Low-ceiling depth play."
+    },
+    "chris godwin": {
+      "name": "Chris Godwin",
+      "pos": "WR",
+      "stance": "fade",
+      "note": "Lacks a league-winning ceiling; aging role."
+    },
+    "trey mcbride": {
+      "name": "Trey McBride",
+      "pos": "TE",
+      "stance": "avoid",
+      "note": "COMPLETE FADE at his ADP — refuses to spend premium capital on him in any primary league; too many ARI mouths + tanking bench risk.",
+      "call": "shy",
+      "why": "Arizona likely tanks late and moves from Brissett to Beck, meaning slower pace and more run. Nick would rather have Bowers a few picks earlier or Loveland two rounds later.",
+      "added": "2026-06-26"
+    },
+    "kyle pitts": {
+      "name": "Kyle Pitts",
+      "pos": "TE",
+      "stance": "fade",
+      "note": "Fade — unstable ATL QB carousel (Tua/Penix).",
+      "call": "shy",
+      "why": "Was 21st in PPG through week 13 and cleared 12 HPPR points just three times in 17 games. The production came almost entirely in the five games Drake London missed.",
+      "added": "2026-07-16"
+    },
+    "harold fannin": {
+      "name": "Harold Fannin Jr.",
+      "pos": "TE",
+      "stance": "fade",
+      "note": "Mid-TE trap — prior output inflated by garbage-time targets."
+    },
+    "cj stroud": {
+      "name": "CJ Stroud",
+      "pos": "QB",
+      "stance": "fade",
+      "note": "Risk — run-first offense regression."
+    },
+    "sam darnold": {
+      "name": "Sam Darnold",
+      "pos": "QB",
+      "stance": "fade",
+      "note": "Risk — lost the Kubiak system."
+    },
+    "aaron rodgers": {
+      "name": "Aaron Rodgers",
+      "pos": "QB",
+      "stance": "fade",
+      "note": "Risk — age/durability; can't drive the ball downfield."
+    },
+    "david montgomery": {
+      "name": "David Montgomery",
+      "pos": "RB",
+      "call": "must",
+      "why": "Touches are locked in and he gets the ball every time Houston is inside the five. Not a top-five ceiling, but very hard to finish outside the top 20.",
+      "added": "2026-07-06"
+    },
+    "cam skattebo": {
+      "name": "Cam Skattebo",
+      "pos": "RB",
+      "call": "must",
+      "why": "Finished 7th in adjusted PPG as a rookie. Elite receiving back who scores in close, and the foot injury looks resolved — he was in 11-on-11s during OTAs.",
+      "added": "2026-07-06"
+    },
+    "dandre swift": {
+      "name": "D'Andre Swift",
+      "pos": "RB",
+      "call": "must",
+      "why": "Still 27, with 34+ receptions in all six pro seasons and back-to-back 1,340-yard years. Thin competition behind him on a Bears offense poised to step up.",
+      "added": "2026-07-06"
+    },
+    "tony pollard": {
+      "name": "Tony Pollard",
+      "pos": "RB",
+      "call": "must",
+      "why": "Four straight 1,000-yard seasons and a shot at 300 touches while going as RB29. Was 28th in PPG last year despite a bottom-three quarterback and offense.",
+      "added": "2026-07-17"
+    },
+    "jonathon brooks": {
+      "name": "Jonathon Brooks",
+      "pos": "RB",
+      "call": "must",
+      "why": "Hubbard is replacement level and Carolina did nothing to replace Dowdle. A steep discount for the injury history in round 8 or 9, for a back who could start week one.",
+      "added": "2026-08-04"
+    },
+    "jordan mason": {
+      "name": "Jordan Mason",
+      "pos": "RB",
+      "call": "must",
+      "why": "Reports have him as the lead back, Aaron Jones is 32 and fading, and Kevin O'Connell offenses travel. A discount David Montgomery, closing out games.",
+      "added": "2026-07-06"
+    },
+    "parker washington": {
+      "name": "Parker Washington",
+      "pos": "WR",
+      "call": "must",
+      "why": "Closed last season 6/145/1, 8/115/0, 5/87/1, 7/107/1 and has been a camp favourite of Lawrence. Jacksonville appears to view him as their lead receiver.",
+      "added": "2026-08-01"
+    },
+    "dallas goedert": {
+      "name": "Dallas Goedert",
+      "pos": "TE",
+      "call": "must",
+      "why": "Top-11 in adjusted PPG five straight years and top-8 in four of five. A.J. Brown's departure frees 120+ targets and he is the 12th tight end off boards.",
+      "added": "2026-07-17"
+    },
+    "joe burrow": {
+      "name": "Joe Burrow",
+      "pos": "QB",
+      "call": "must",
+      "why": "One of the eight quarterbacks Nick wants, at a value.",
+      "added": "2026-07-24"
+    },
+    "jared goff": {
+      "name": "Jared Goff",
+      "pos": "QB",
+      "call": "must",
+      "why": "The fallback if you pass on the top 8. Easiest schedule in the NFL, mostly domes late, a poor defense forcing shootouts, and more passing near the goal line with Montgomery gone.",
+      "added": "2026-08-01"
+    },
+    "amon ra st brown": {
+      "name": "Amon-Ra St. Brown",
+      "pos": "WR",
+      "stance": "love",
+      "note": "",
+      "call": "must",
+      "why": "FFA must-draft list, added 2026-08-05.",
+      "added": "2026-08-05"
+    },
+    "jayden higgins": {
+      "name": "Jayden Higgins",
+      "pos": "WR",
+      "stance": "love",
+      "note": "",
+      "call": "must",
+      "why": "FFA must-draft list, added 2026-08-05.",
+      "added": "2026-08-05"
+    },
+    "rachaad white": {
+      "name": "Rachaad White",
+      "pos": "RB",
+      "stance": "avoid",
+      "note": "",
+      "call": "shy",
+      "why": "FFA shy-away list, added 2026-08-03.",
+      "added": "2026-08-03"
+    },
+    "jake ferguson": {
+      "name": "Jake Ferguson",
+      "pos": "TE",
+      "stance": "avoid",
+      "note": "",
+      "call": "shy",
+      "why": "FFA shy-away list, added 2026-08-03.",
+      "added": "2026-08-03"
+    },
+    "courtland sutton": {
+      "name": "Courtland Sutton",
+      "pos": "WR",
+      "stance": "avoid",
+      "note": "",
+      "call": "shy",
+      "why": "FFA shy-away list, added 2026-08-05.",
+      "added": "2026-08-05"
+    }
   },
-  {
-   "title": "Tight end: early or late, NEVER the middle",
-   "text": "'Mid-round TE is a losing bet, year after year.' Pay up for an elite anchor (Bowers R2 / Loveland R4) OR wait and double-dip late (Kittle/Andrews/Kincaid). Avoid the round 6–10 TE range."
+  "RPB": {
+    "breece hall": {
+      "name": "Breece Hall",
+      "adp": "mid-R3",
+      "board": "RB14 / #39 (209.6)",
+      "verdict": "BUY. Anchor RB w/ top-3 ceiling; $29M gtd workhorse. Enables Hero-RB or WR-WR-then-anchor."
+    },
+    "quinshon judkins": {
+      "name": "Quinshon Judkins",
+      "adp": "mid-R5",
+      "board": "RB21 / #71 (186.4)",
+      "verdict": "BUY at R5. Monken RZ-run = direct RPB TD-edge fit; spike weeks = league-winner."
+    },
+    "deandre swift": {
+      "name": "De'Andre Swift",
+      "adp": "mid-R5",
+      "board": "RB23 / #74 (184.6)",
+      "verdict": "OK at R5. Rec-heavy upside halved by 0.5 PPR, but ~10 TDs travel. Judkins ≥ Swift in RPB."
+    },
+    "bhayshul tuten": {
+      "name": "Bhayshul Tuten",
+      "adp": "RB24 / VBD −12 / ADP 61",
+      "board": "Below RB20 replacement in RPB — confirms FADE the R6 reach; R12–13 dart only.",
+      "verdict": ""
+    },
+    "keaton mitchell": {
+      "name": "Keaton Mitchell",
+      "adp": "R7–R8",
+      "board": "not ranked (deep)",
+      "verdict": "Late dart only. Hampton handcuff-lottery; RB1 upside if Hampton hurt. Reassess on Aug camp."
+    },
+    "topic player": {
+      "name": "Topic / Player",
+      "adp": "RPB board",
+      "board": "Verdict for RMM",
+      "verdict": ""
+    },
+    "rb cliff rb": {
+      "name": "RB cliff (RB16–18)",
+      "adp": "Montgomery / Javonte",
+      "board": "Confirmed. RPB starts only 2 RB + NO flex, so RB depth needs are lower than the video — but still lock 2 anchors before the cliff.",
+      "verdict": ""
+    },
+    "saquon barkley": {
+      "name": "Saquon Barkley",
+      "adp": "RB9 / VBD +30 / ADP 14",
+      "board": "Playoff trap does NOT apply (no playoffs). AJ-Brown-gone efficiency dip is a mild regular-season note, but volume + easy early SOS = cumulative upside — stay willing.",
+      "verdict": ""
+    },
+    "omarion hampton": {
+      "name": "Omarion Hampton",
+      "adp": "RB8 / VBD +31 / ADP 16",
+      "board": "Anchor-RB tier; explosive + goal-line role.",
+      "verdict": ""
+    },
+    "chase brown": {
+      "name": "Chase Brown",
+      "adp": "RB12 / VBD +27 / ADP 15",
+      "board": "Anchor tier; explosive, unchanged CIN offense.",
+      "verdict": ""
+    },
+    "trey mcbride": {
+      "name": "Trey McBride",
+      "adp": "TE2 / VBD +65 / ADP 20",
+      "board": "⚠ CONFLICT with your R3 rule: Nick FADES McBride (too many mouths, worst team, Brissett→Beck). Board still has him TE2. At the R3 TE trigger, LEAN BOWERS over McBride.",
+      "verdict": ""
+    },
+    "george kittle": {
+      "name": "George Kittle",
+      "adp": "TE9 / VBD +9 / ADP 106",
+      "board": "Falls-to-value; OK if Bowers/McBride missed, but below your top-7 TE target.",
+      "verdict": ""
+    },
+    "caleb williams": {
+      "name": "Caleb Williams",
+      "adp": "QB4 / VBD +19 / ADP 72",
+      "board": "Playoff-weather concern is diluted here (no bracket), but those late outdoor games still count toward your 18-week total. Minor.",
+      "verdict": ""
+    },
+    "stacking": {
+      "name": "Stacking",
+      "adp": "—",
+      "board": "Don't pair two early same-team skill players; a later QB+RB stack is fine.",
+      "verdict": ""
+    },
+    "bucky irving": {
+      "name": "Bucky Irving",
+      "adp": "RB25 / VBD −24 / ADP 46",
+      "board": "FADE — TB 3-way committee (Gainwell 3rd-down, Tucker goal-line) + injury worse than reported, low TD ceiling.",
+      "verdict": ""
+    },
+    "jarian price": {
+      "name": "Jarian Price",
+      "adp": "not ranked",
+      "board": "FADE — wish-casting; 15 rec in 41 college games; Charbonnet reclaims RB1 by mid-season.",
+      "verdict": ""
+    },
+    "chuba hubbard": {
+      "name": "Chuba Hubbard",
+      "adp": "RB29 / VBD −34 / ADP 66",
+      "board": "FADE — hardest rush SOS; value craters mid-season as Jonathon Brooks ramps in.",
+      "verdict": ""
+    },
+    "rj harvey": {
+      "name": "RJ Harvey",
+      "adp": "RB32 / VBD −42 / ADP 81",
+      "board": "FADE — Dobbins signed starter money (Payton: \"top priority\"), Coleman for pass-pro. ⚠ UPDATE handcuff plan (§⑤): DROP RJ Harvey from the R7 lottery-handcuff list.",
+      "verdict": ""
+    },
+    "kyren williams": {
+      "name": "Kyren Williams",
+      "adp": "RB17 / VBD +12 / ADP 31",
+      "board": "Corum cut snaps 75%→64% + Rams bottom-5 RB targets → prefer Etienne. REINFORCES your keeper: Etienne ADP 33 (R3 talent) kept at R10 = elite value; he is insulated.",
+      "verdict": ""
+    },
+    "mike evans": {
+      "name": "Mike Evans",
+      "adp": "WR22 / VBD +20 / ADP 59",
+      "board": "⭐ PERFECT RPB FIT — red-zone TD monster (13–17 TD upside) directly fixes your 2025 receiving-TD deficit (your title gap). Target at the R5/6 turn.",
+      "verdict": ""
+    },
+    "devonta smith": {
+      "name": "DeVonta Smith",
+      "adp": "WR12 / VBD +32 / ADP 32",
+      "board": "Playoff trap does NOT apply (no playoffs) → PURE upside here. Alpha post-AJB + easiest early passing SOS = cumulative-points gold.",
+      "verdict": ""
+    },
+    "ladd mcconkey": {
+      "name": "Ladd McConkey",
+      "adp": "WR16 / VBD +27 / ADP 41",
+      "board": "Chargers alpha, elite separation (88th pct vs man/press/zone), top-5–7 ceiling. Strong R3–R4 WR.",
+      "verdict": ""
+    },
+    "travis hunter": {
+      "name": "Travis Hunter",
+      "adp": "WR54 / VBD −41 / ADP 193",
+      "board": "Nearly free; WR1 upside in a Liam Coen offense. Great late WR-depth dart (your trade currency).",
+      "verdict": ""
+    },
+    "tank dell": {
+      "name": "Tank Dell",
+      "adp": "WR70 / ADP 203",
+      "board": "Deepest flier; contingent on Nico Collins missing time. Last-pick dart only.",
+      "verdict": ""
+    },
+    "josh jacobs": {
+      "name": "Josh Jacobs",
+      "adp": "RB18 / VBD +4 / ADP 34",
+      "board": "HARD FADE — barely above replacement (+4) AND a 6–12-wk conduct suspension would erase weeks of cumulative points. Worse bet here than in H2H.",
+      "verdict": ""
+    },
+    "malik nabers": {
+      "name": "Malik Nabers",
+      "adp": "WR19 / VBD +26 / ADP 30",
+      "board": "FADE early — multi-ligament knee, misses ~the first month = lost cumulative points. Only at a steep R5+ discount.",
+      "verdict": ""
+    },
+    "rashee rice": {
+      "name": "Rashee Rice",
+      "adp": "WR15 / VBD +29 / ADP 27",
+      "board": "Contrarian buy IF the parole/knee truly resolve before Week 1 (Nick's read) — but in cumulative, any missed week costs you, so size the risk.",
+      "verdict": ""
+    },
+    "stefon diggs": {
+      "name": "Stefon Diggs",
+      "adp": "ADP 138 (deep)",
+      "board": "Zero-risk late WR-depth stash (your trade currency); waiver-dump if he doesn't sign somewhere good.",
+      "verdict": ""
+    }
   },
-  {
-   "title": "Quarterback: elite value early OR wait to R5–7, then ride one",
-   "text": "Never QB in round 1 or 2. Elite QBs slipping on recency bias (Josh Allen) are fine value, but he prefers the R5–7 margins (Maye). THE MID-ROUND QB TRAP: if you miss the elite tier, do NOT pay up for the next sub-tier early (Dak/Herbert/Lawrence in R6) — wait to the absolute tail-end of that tier for the max discount (he took Trevor Lawrence at R8 in his 12-tm PPR mock). Pick one QB and ride him. Caveat: a full QB embargo R3–7 assumes no league-wide run — if your league panics you can get stuck streaming, so stay flexible."
-  },
-  {
-   "title": "Don't stack teammates in redraft",
-   "text": "Negative correlation kills you in season-long (e.g. won't pair Ja'Marr Chase + Chase Brown, or 3 Chargers). Stacking is a best-ball play, not a redraft play."
-  },
-  {
-   "title": "Rookies are mostly irrelevant in redraft",
-   "text": "Pass on deep rookies — only elite feature backs (Jeanty, Jeremiah Love) matter, and even those he'll fade if hype inflates the cost or the team is tanking."
-  },
-  {
-   "title": "Playoff schedule & domes matter; fade tankers",
-   "text": "Target Lions/Saints/Eagles anchors for late-season dome games; fade open-air northern teams and brutal playoff slates (Eagles Wk15–17 vs SEA/HOU/SF). Fade tanking teams (Cardinals, Panthers) that bench young stars in the fantasy playoffs."
-  },
-  {
-   "title": "Chase positive TD regression",
-   "text": "Target elite players with high red-zone/green-zone volume but unlucky TD totals (Justin Jefferson, Mike Evans, Tyler Warren) — TD luck is volatile and self-corrects."
-  },
-  {
-   "title": "Value vs ADP discipline",
-   "text": "Don't reach — temper projections with market ADP; you can usually get your guy a round later."
-  },
-  {
-   "title": "Single-flex roster balance — don't multiply too early",
-   "text": "In single-flex builds (MWV) keep RB/WR balanced early: don't take back-to-back WRs in Rounds 1–2. If a Round 3 RB run hits while you're WR-heavy, you're forced into sub-optimal builds. (RPB has NO flex at all, so early balance matters even more.)"
-  },
-  {
-   "title": "Tight end: wait, then double-dip athletic TEs on elite QBs",
-   "text": "In the 12-tm PPR mock he boycotted TE until the single-digit-ADP rounds, then double-dipped highly athletic profiles attached to elite/high-volume QBs (Kincaid–Buffalo, Gadsden–Chargers). Reinforces the 'early or late, never the middle' rule from the late side."
-  },
-  {
-   "title": "Round 2 RBs — the league-wide decision point (half-PPR / RPB)",
-   "text": "From picks 3–12, UNLESS an elite faller is there (Brock Bowers, Drake London, or CeeDee Lamb / Justin Jefferson if they slip), take the RB — they all project similarly with heavy upside, so your RANKING is the edge. Nick's R2 RB board (half-PPR): 1) Saquon Barkley — easiest Wk1–14 SOS, ~300 touches, Patullo→Mannion play-call upgrade; 2) Kenneth Walker — big new contract, zero early-down competition, locked goal-line; 3) Chase Brown — elite pass-catcher (he'd be ABOVE Walker in full PPR), lower rush ceiling in 0.5; 4) Omarion Hampton — huge goal-line/TD upside, volume capped by Keaton Mitchell (watch camp); 5) Derrick Henry — dominant runner but fading targets = volatile 0.5 floor at 32; 6) De'Von Achane — AVOID: McDaniel gone, mobile Willis kills his target floor, hardest Wk13+ SOS. R1 RBs stay locked in pairs: Gibbs/Bijan → Taylor/CMC → Hall/Cook."
+  "MWV": {
+    "breece hall": {
+      "name": "Breece Hall",
+      "adp": "mid-R3 (29)",
+      "board": "RB11 / #20 (234.8 · VBD +67.8)",
+      "verdict": "BUY. Full-PPR bell-cow + 36 rec; the pick-13 Robust-RB lever."
+    },
+    "deandre swift": {
+      "name": "De'Andre Swift",
+      "adp": "mid-R5 (51)",
+      "board": "RB22 / #41 (201.9 · VBD +34.9)",
+      "verdict": "BEST FIT. 50–60 rec + 10 TD is Full-PPR/FLEX gold — opposite of RPB, where 0.5 PPR halves him."
+    },
+    "quinshon judkins": {
+      "name": "Quinshon Judkins",
+      "adp": "mid-R5 (53)",
+      "board": "RB21 / #40 (203.3 · VBD +36.3)",
+      "verdict": "BUY at R5 if there; RZ/TD role + ~30 rec."
+    },
+    "bhayshul tuten": {
+      "name": "Bhayshul Tuten",
+      "adp": "R6 (61)",
+      "board": "RB24 / #57 (190.4 · VBD +23.4)",
+      "verdict": "TAKE at 61 — ADP = your pick (opposite of RPB, where he's a fade to R12–13)."
+    },
+    "keaton mitchell": {
+      "name": "Keaton Mitchell",
+      "adp": "R7–8 (192)",
+      "board": "RB42 / #153 (117.3 · VBD −49.7)",
+      "verdict": "Free late dart; RB1 upside if Hampton hurt."
+    }
   }
- ],
- "shared": {
-  "ashton jeanty": {
-   "name": "Ashton Jeanty",
-   "pos": "RB",
-   "stance": "love",
-   "note": "Elite 1.01-tier feature back; ascending LV offense.",
-   "call": "must",
-   "why": "The public is underrating him because the Raiders offense was awful, not because of him. Improved line, Kubiak scheme and a healthy Bowers mean far fewer stacked boxes, and he can be had at the end of round one.",
-   "added": "2026-08-04"
-  },
-  "bijan robinson": {
-   "name": "Bijan Robinson",
-   "pos": "RB",
-   "stance": "love",
-   "note": "1-2 overall lock in every format."
-  },
-  "jahmyr gibbs": {
-   "name": "Jahmyr Gibbs",
-   "pos": "RB",
-   "stance": "love",
-   "note": "1-2 overall lock; Lions dome + schedule = elite."
-  },
-  "breece hall": {
-   "name": "Breece Hall",
-   "pos": "RB",
-   "stance": "like",
-   "note": "R3 VALUE — elite pedigree (5,000 yds before 25). Robust-RB anchor."
-  },
-  "quinshon judkins": {
-   "name": "Quinshon Judkins",
-   "pos": "RB",
-   "stance": "like",
-   "note": "R5 value — 300-touch ceiling, Monken features his best players."
-  },
-  "bhayshul tuten": {
-   "name": "Bhayshul Tuten",
-   "pos": "RB",
-   "stance": "like",
-   "note": "R6 value — 250-280 touch ceiling in fast JAX offense."
-  },
-  "omarion hampton": {
-   "name": "Omarion Hampton",
-   "pos": "RB",
-   "stance": "like",
-   "note": "Anchor-RB tier; volume + goal-line role."
-  },
-  "chase brown": {
-   "name": "Chase Brown",
-   "pos": "RB",
-   "stance": "like",
-   "note": "R2 value — unchanged CIN offense (same QB/WRs), elite target retention, converts high-value TDs; exceptionally productive with a healthy Burrow.",
-   "call": "must",
-   "why": "Featured back on a good offense with a very high touch floor. Was RB5 in PPG in games Burrow started and finished, and Cincinnati has its best line of the Burrow era.",
-   "added": "2026-08-01"
-  },
-  "kenneth walker": {
-   "name": "Kenneth Walker",
-   "pos": "RB",
-   "stance": "like",
-   "note": "R3 — heavy team investment locks early downs + goal-line work on an offense projected to win games; high-leverage volume."
-  },
-  "derrick henry": {
-   "name": "Derrick Henry",
-   "pos": "RB",
-   "stance": "watch",
-   "note": "R2 RB5 (≈RB11) — still dominant on the ground (8 straight 10-TD seasons) but declining targets = volatile half-PPR floor at 32; last year's RB8 finish was inflated by one Wk17 4-TD game. Safe floor, capped ceiling, new OC unknown."
-  },
-  "christian mccaffrey": {
-   "name": "Christian McCaffrey",
-   "pos": "RB",
-   "stance": "like",
-   "note": "Loves him if he falls (full-PPR receiving floor)."
-  },
-  "kenneth gainwell": {
-   "name": "Kenneth Gainwell",
-   "pos": "RB",
-   "stance": "like",
-   "note": "Premium ADP value handcuff."
-  },
-  "deandre swift": {
-   "name": "De'Andre Swift",
-   "pos": "RB",
-   "stance": "like",
-   "note": "R5 value — full-PPR reception floor fits like a glove; top-10 upside at a steep discount, prime age, Monangai no threat."
-  },
-  "rhamondre stevenson": {
-   "name": "Rhamondre Stevenson",
-   "pos": "RB",
-   "stance": "like",
-   "note": "Tactical chain-mover — staff trusts him to hit reads and grind the 4-5 yards to move the chains; under-the-radar volume."
-  },
-  "keaton mitchell": {
-   "name": "Keaton Mitchell",
-   "pos": "RB",
-   "stance": "like",
-   "note": "Ideal late bench stash — high-potency BAL offense yields premium efficiency on ~10 touches/gm.",
-   "call": "must",
-   "why": "Essentially free in drafts. Hit 20+ MPH a league-leading seven times on just 59 carries, and McDaniel reportedly asked for him by name.",
-   "added": "2026-07-24"
-  },
-  "kyle monangai": {
-   "name": "Kyle Monangai",
-   "pos": "RB",
-   "stance": "like",
-   "note": "~R8 handcuff value — 11 touches/gm on an elite offense, TD luck."
-  },
-  "jamarr chase": {
-   "name": "Ja'Marr Chase",
-   "pos": "WR",
-   "stance": "love",
-   "note": "Elite alpha target hog; premier WR baseline."
-  },
-  "puka nacua": {
-   "name": "Puka Nacua",
-   "pos": "WR",
-   "stance": "love",
-   "note": "Elite anchor WR."
-  },
-  "justin jefferson": {
-   "name": "Justin Jefferson",
-   "pos": "WR",
-   "stance": "love",
-   "note": "#1 positive-regression target (career-worst luck). Watch MIN QB."
-  },
-  "jaxon smithnjigba": {
-   "name": "Jaxon Smith-Njigba",
-   "pos": "WR",
-   "stance": "love",
-   "note": "Elite efficiency + huge target share; defends him vs ADP doubters."
-  },
-  "emeka egbuka": {
-   "name": "Emeka Egbuka",
-   "pos": "WR",
-   "stance": "love",
-   "note": "Elite young target hog — NYG WR1 vacuum, Cooper Kupp-style comp.",
-   "call": "must",
-   "why": "Was on a 76/1,279/12 pace through nine games before a hamstring injury and Baker's shoulder derailed it. The new coordinator has talked about using him in the Cooper Kupp role.",
-   "added": "2026-06-19"
-  },
-  "nico collins": {
-   "name": "Nico Collins",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Premier smash-play (over Nabers)."
-  },
-  "george pickens": {
-   "name": "George Pickens",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Pivot-point WR target."
-  },
-  "chris olave": {
-   "name": "Chris Olave",
-   "pos": "WR",
-   "stance": "like",
-   "note": "R3 elite — high-tempo NO offense, heavy target share."
-  },
-  "devonta smith": {
-   "name": "DeVonta Smith",
-   "pos": "WR",
-   "stance": "love",
-   "note": "Favorite Eagles target — 30%+ target share, 10 tgt/gm early."
-  },
-  "mike evans": {
-   "name": "Mike Evans",
-   "pos": "WR",
-   "stance": "watch",
-   "note": "FORMAT SPLIT: fade in full PPR (MWV) — too TD-dependent, lacks the 100-catch ceiling to maximize PPR. But a positive-TD-regression buy in 0.5/standard (RPB). (Note: he likes TD-regression elsewhere yet fades Evans for TD-reliance — a real tension.)",
-   "call": "must",
-   "why": "A top-three red-zone weapon on a team that will score — Nick's comparison is 2025 Davante Adams. Fifteen-touchdown upside now that Pearsall is out.",
-   "added": "2026-08-03"
-  },
-  "ladd mcconkey": {
-   "name": "Ladd McConkey",
-   "pos": "WR",
-   "stance": "love",
-   "note": "R4 favorite value — elite TPRR in 12-personnel."
-  },
-  "terry mclaurin": {
-   "name": "Terry McLaurin",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Safe locked-in target monster (over aging Davante)."
-  },
-  "tetairoa mcmillan": {
-   "name": "Tetairoa McMillan",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Safe boundary target vacuum."
-  },
-  "jayden reed": {
-   "name": "Jayden Reed",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Consolidated GB target share after Doubs/Wicks left."
-  },
-  "travis hunter": {
-   "name": "Travis Hunter",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Last-round STEAL — supreme talent, highest TPRR upside."
-  },
-  "rashee rice": {
-   "name": "Rashee Rice",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Least-risky of the risk trio — R3 contrarian buy (knee minor).",
-   "call": "shy",
-   "why": "Solid against zone in the short area and not much else — cannot win deep, against man, or against press. Nick expects the force-fed designed touches to taper off.",
-   "added": "2026-07-07"
-  },
-  "tank dell": {
-   "name": "Tank Dell",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Zero-risk last-pick flier; elite share if Collins misses time."
-  },
-  "luther burden": {
-   "name": "Luther Burden III",
-   "pos": "WR",
-   "stance": "like",
-   "note": "R6 safe high-floor in an elite scheme.",
-   "call": "must",
-   "why": "Highest yards per route run ever by a rookie receiver, and efficient from every alignment. Camp hype is loud enough that Nick now prefers him over Loveland in that pairing.",
-   "added": "2026-08-01"
-  },
-  "josh downs": {
-   "name": "Josh Downs",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Polished target earner — clear path to 5-7 catches/wk with the WR room thinned (Pierce's foot surgery); high-floor flex."
-  },
-  "zay flowers": {
-   "name": "Zay Flowers",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Full-PPR volume play (MWV) — TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games."
-  },
-  "dj moore": {
-   "name": "DJ Moore",
-   "pos": "WR",
-   "stance": "like",
-   "note": "Elite value — ADP artificially depressed by 'foot callus' panic; if he's running fluidly in camp the value skyrockets."
-  },
-  "brock bowers": {
-   "name": "Brock Bowers",
-   "pos": "TE",
-   "stance": "love",
-   "note": "Elite R2 anchor TE — the early-TE play.",
-   "call": "must",
-   "why": "Most receptions by any rookie in NFL history, then hurt from week one onward. Goes in the mid-second with a play-calling upgrade and no real target competition.",
-   "added": "2026-06-18"
-  },
-  "colston loveland": {
-   "name": "Colston Loveland",
-   "pos": "TE",
-   "stance": "like",
-   "note": "R4 ONLY — loves the talent/role under Ben Johnson but strictly forbids drafting him in R3.",
-   "call": "must",
-   "why": "Nick's stated biggest flag plant of the season. Blocks elite rushers and wins as a slot receiver, so Ben Johnson can build constant mismatches around him.",
-   "added": "2026-07-06"
-  },
-  "tyler warren": {
-   "name": "Tyler Warren",
-   "pos": "TE",
-   "stance": "like",
-   "note": "R5 value — positive regression, functional IND WR1 with Pierce hurt."
-  },
-  "george kittle": {
-   "name": "George Kittle",
-   "pos": "TE",
-   "stance": "like",
-   "note": "R10 late double-dip value."
-  },
-  "mark andrews": {
-   "name": "Mark Andrews",
-   "pos": "TE",
-   "stance": "like",
-   "note": "Late TE double-dip."
-  },
-  "dalton kincaid": {
-   "name": "Dalton Kincaid",
-   "pos": "TE",
-   "stance": "like",
-   "note": "Late TE double-dip — athletic profile tied to an elite QB (Buffalo); live ADP outpaces market."
-  },
-  "oronde gadsden": {
-   "name": "Oronde Gadsden II",
-   "pos": "TE",
-   "stance": "like",
-   "note": "Late athletic-TE double-dip tied to a high-volume QB (Chargers/Herbert)."
-  },
-  "tucker kraft": {
-   "name": "Tucker Kraft",
-   "pos": "TE",
-   "stance": "like",
-   "note": "Late TE value, fits early-or-late rule."
-  },
-  "josh allen": {
-   "name": "Josh Allen",
-   "pos": "QB",
-   "stance": "like",
-   "note": "Premium value on recency bias — but in his 12-tm PPR mock he PASSED Allen in R3 to keep elite skill talent (equal-tier QBs like Hurts sit several rounds later).",
-   "call": "must",
-   "why": "One of the eight quarterbacks Nick wants, at a value.",
-   "added": "2026-07-24"
-  },
-  "drake maye": {
-   "name": "Drake Maye",
-   "pos": "QB",
-   "stance": "like",
-   "note": "Mid-round QB target (R5-6) — admitted homer pick, but backed by an improved line, year-2 leap, and upgraded weapons opening the deep field.",
-   "call": "must",
-   "why": "A must-draft last season too, when he finished 2nd in adjusted PPG. Improved line, A.J. Brown and Doubs added, with a rushing floor baked in.",
-   "added": "2026-07-24"
-  },
-  "jayden daniels": {
-   "name": "Jayden Daniels",
-   "pos": "QB",
-   "stance": "watch",
-   "note": "DOWNGRADED — WAS is cutting no-huddle concepts, slashing play volume and rushing-floor opportunity. Was a mid-round target; now a caution at cost.",
-   "call": "must",
-   "why": "A three-plus round discount purely because he got hurt. Was 3rd at 22.6 adjusted PPG as a rookie and is capable of 1,000 rushing yards.",
-   "added": "2026-07-24"
-  },
-  "lamar jackson": {
-   "name": "Lamar Jackson",
-   "pos": "QB",
-   "stance": "like",
-   "note": "Premium QB target.",
-   "call": "must",
-   "why": "One of the eight quarterbacks Nick wants, at a value.",
-   "added": "2026-07-24"
-  },
-  "jalen hurts": {
-   "name": "Jalen Hurts",
-   "pos": "QB",
-   "stance": "like",
-   "note": "Premium QB target.",
-   "call": "must",
-   "why": "One of the eight quarterbacks Nick wants, at a value.",
-   "added": "2026-07-24"
-  },
-  "caleb williams": {
-   "name": "Caleb Williams",
-   "pos": "QB",
-   "stance": "like",
-   "note": "Premium QB target (mid-round value).",
-   "call": "must",
-   "why": "One of the eight quarterbacks Nick wants, at a value.",
-   "added": "2026-07-24"
-  },
-  "justin herbert": {
-   "name": "Justin Herbert",
-   "pos": "QB",
-   "stance": "like",
-   "note": "R7 organic-stack QB with Hampton/Tuten.",
-   "call": "must",
-   "why": "All in on the Chargers offense, with a healthy top-seven line this year. Herbert goes at the end of the top-8 range, making him the best value of the group.",
-   "added": "2026-07-24"
-  },
-  "trevor lawrence": {
-   "name": "Trevor Lawrence",
-   "pos": "QB",
-   "stance": "like",
-   "note": "Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries."
-  },
-  "bucky irving": {
-   "name": "Bucky Irving",
-   "pos": "RB",
-   "stance": "avoid",
-   "note": "#1 'regret' RB — committee + injury; 13-carry/1-target risk."
-  },
-  "travis etienne": {
-   "name": "Travis Etienne",
-   "pos": "RB",
-   "stance": "fade",
-   "note": "Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)"
-  },
-  "jonathan taylor": {
-   "name": "Jonathan Taylor",
-   "pos": "RB",
-   "stance": "fade",
-   "note": "Fade at pick 4 in full-PPR — lacks the receiving floor."
-  },
-  "jaylen warren": {
-   "name": "Jaylen Warren",
-   "pos": "RB",
-   "stance": "avoid",
-   "note": "Muddy committee; explicitly avoided."
-  },
-  "rj harvey": {
-   "name": "RJ Harvey",
-   "pos": "RB",
-   "stance": "avoid",
-   "note": "R7 fade — Dobbins signed, role collapses."
-  },
-  "jadarian price": {
-   "name": "Jadarian Price",
-   "pos": "RB",
-   "stance": "avoid",
-   "note": "Overrated — no receiving profile; Charbonnet reclaims SEA RB1."
-  },
-  "chuba hubbard": {
-   "name": "Chuba Hubbard",
-   "pos": "RB",
-   "stance": "fade",
-   "note": "Fade — hardest rush SOS, Bryce Young, value craters as Brooks ramps.",
-   "call": "shy",
-   "why": "Among 49 backs with 100+ carries he was last in explosive run rate, last in missed tackles forced per attempt and 2nd-last in touchdown rate. Brooks will eat into the work.",
-   "added": "2026-07-02"
-  },
-  "kyren williams": {
-   "name": "Kyren Williams",
-   "pos": "RB",
-   "stance": "fade",
-   "note": "R3 fade — Corum cuts snaps; Rams bottom-5 in RB targets (zero floor)."
-  },
-  "josh jacobs": {
-   "name": "Josh Jacobs",
-   "pos": "RB",
-   "stance": "fade",
-   "note": "R3 fade — conduct probe / 8-12 wk suspension risk; pounce only at R5."
-  },
-  "saquon barkley": {
-   "name": "Saquon Barkley",
-   "pos": "RB",
-   "stance": "watch",
-   "note": "Nick's #1 round-2 RB (RB7) — easiest Wk1–14 SOS, ~300-touch workload, Patullo→Mannion play-call upgrade. One caution: brutal playoff SOS (SEA/HOU/SF Wk15-17)."
-  },
-  "devon achane": {
-   "name": "Devon Achane",
-   "pos": "RB",
-   "stance": "avoid",
-   "note": "R2 FADE in half-PPR (RPB) — the premier back to avoid: McDaniel gone guts the MIA offense, mobile Willis scrambles instead of checking down (kills the reception floor), bottom-tier WR room, and the hardest schedule from Wk13 on (4th-qtr benchings in blowouts).",
-   "call": "shy",
-   "why": "McDaniel has left for the Chargers, Malik Willis will scramble rather than check down, and Miami projects bottom-five in points per game. A scary floor and a capped ceiling in round two.",
-   "added": "2026-06-21"
-  },
-  "james cook": {
-   "name": "James Cook",
-   "pos": "RB",
-   "stance": "watch",
-   "note": "Fade early — brutal opening SOS; acquire via trade after a slow month."
-  },
-  "jeremiah love": {
-   "name": "Jeremiah Love",
-   "pos": "RB",
-   "stance": "watch",
-   "note": "Scale back — ARI tanking limits touches; needs 80-90% share at R3 cost."
-  },
-  "najee harris": {
-   "name": "Najee Harris",
-   "pos": "RB",
-   "stance": "watch",
-   "note": "Only as a last-pick zero-risk injury insurance."
-  },
-  "malik nabers": {
-   "name": "Malik Nabers",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Fade to R5+ — non-clean knee, PUP risk; bulletproof only if he slides."
-  },
-  "jameson williams": {
-   "name": "Jameson Williams",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Best-ball only — volatile target floor wrecks redraft lineups."
-  },
-  "christian watson": {
-   "name": "Christian Watson",
-   "pos": "WR",
-   "stance": "avoid",
-   "note": "R6 fade — 1 double-digit-target game in 51 career games."
-  },
-  "alec pierce": {
-   "name": "Alec Pierce",
-   "pos": "WR",
-   "stance": "avoid",
-   "note": "R6 fade — efficiency regresses; Downs & Warren out-target him."
-  },
-  "dk metcalf": {
-   "name": "DK Metcalf",
-   "pos": "WR",
-   "stance": "avoid",
-   "note": "R6/7 fade — name value only; aging Rodgers can't push it deep, <100 tgts."
-  },
-  "michael pittman": {
-   "name": "Michael Pittman Jr.",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Low aDOT / low-volume scheme; passed on."
-  },
-  "davante adams": {
-   "name": "Davante Adams",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Aging — prefers Terry McLaurin's safer volume."
-  },
-  "jordan addison": {
-   "name": "Jordan Addison",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Unfavorable ecosystem — buried behind alpha Justin Jefferson, catching from a volatile/unproven MIN QB room."
-  },
-  "quentin johnston": {
-   "name": "Quentin Johnston",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Flat projection, no top-15 ceiling."
-  },
-  "jakobi meyers": {
-   "name": "Jakobi Meyers",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Low-ceiling depth play."
-  },
-  "chris godwin": {
-   "name": "Chris Godwin",
-   "pos": "WR",
-   "stance": "fade",
-   "note": "Lacks a league-winning ceiling; aging role."
-  },
-  "trey mcbride": {
-   "name": "Trey McBride",
-   "pos": "TE",
-   "stance": "avoid",
-   "note": "COMPLETE FADE at his ADP — refuses to spend premium capital on him in any primary league; too many ARI mouths + tanking bench risk.",
-   "call": "shy",
-   "why": "Arizona likely tanks late and moves from Brissett to Beck, meaning slower pace and more run. Nick would rather have Bowers a few picks earlier or Loveland two rounds later.",
-   "added": "2026-06-26"
-  },
-  "kyle pitts": {
-   "name": "Kyle Pitts",
-   "pos": "TE",
-   "stance": "fade",
-   "note": "Fade — unstable ATL QB carousel (Tua/Penix).",
-   "call": "shy",
-   "why": "Was 21st in PPG through week 13 and cleared 12 HPPR points just three times in 17 games. The production came almost entirely in the five games Drake London missed.",
-   "added": "2026-07-16"
-  },
-  "harold fannin": {
-   "name": "Harold Fannin Jr.",
-   "pos": "TE",
-   "stance": "fade",
-   "note": "Mid-TE trap — prior output inflated by garbage-time targets."
-  },
-  "cj stroud": {
-   "name": "CJ Stroud",
-   "pos": "QB",
-   "stance": "fade",
-   "note": "Risk — run-first offense regression."
-  },
-  "sam darnold": {
-   "name": "Sam Darnold",
-   "pos": "QB",
-   "stance": "fade",
-   "note": "Risk — lost the Kubiak system."
-  },
-  "aaron rodgers": {
-   "name": "Aaron Rodgers",
-   "pos": "QB",
-   "stance": "fade",
-   "note": "Risk — age/durability; can't drive the ball downfield."
-  },
-  "david montgomery": {
-   "name": "David Montgomery",
-   "pos": "RB",
-   "call": "must",
-   "why": "Touches are locked in and he gets the ball every time Houston is inside the five. Not a top-five ceiling, but very hard to finish outside the top 20.",
-   "added": "2026-07-06"
-  },
-  "cam skattebo": {
-   "name": "Cam Skattebo",
-   "pos": "RB",
-   "call": "must",
-   "why": "Finished 7th in adjusted PPG as a rookie. Elite receiving back who scores in close, and the foot injury looks resolved — he was in 11-on-11s during OTAs.",
-   "added": "2026-07-06"
-  },
-  "dandre swift": {
-   "name": "D'Andre Swift",
-   "pos": "RB",
-   "call": "must",
-   "why": "Still 27, with 34+ receptions in all six pro seasons and back-to-back 1,340-yard years. Thin competition behind him on a Bears offense poised to step up.",
-   "added": "2026-07-06"
-  },
-  "tony pollard": {
-   "name": "Tony Pollard",
-   "pos": "RB",
-   "call": "must",
-   "why": "Four straight 1,000-yard seasons and a shot at 300 touches while going as RB29. Was 28th in PPG last year despite a bottom-three quarterback and offense.",
-   "added": "2026-07-17"
-  },
-  "jonathon brooks": {
-   "name": "Jonathon Brooks",
-   "pos": "RB",
-   "call": "must",
-   "why": "Hubbard is replacement level and Carolina did nothing to replace Dowdle. A steep discount for the injury history in round 8 or 9, for a back who could start week one.",
-   "added": "2026-08-04"
-  },
-  "jordan mason": {
-   "name": "Jordan Mason",
-   "pos": "RB",
-   "call": "must",
-   "why": "Reports have him as the lead back, Aaron Jones is 32 and fading, and Kevin O'Connell offenses travel. A discount David Montgomery, closing out games.",
-   "added": "2026-07-06"
-  },
-  "parker washington": {
-   "name": "Parker Washington",
-   "pos": "WR",
-   "call": "must",
-   "why": "Closed last season 6/145/1, 8/115/0, 5/87/1, 7/107/1 and has been a camp favourite of Lawrence. Jacksonville appears to view him as their lead receiver.",
-   "added": "2026-08-01"
-  },
-  "dallas goedert": {
-   "name": "Dallas Goedert",
-   "pos": "TE",
-   "call": "must",
-   "why": "Top-11 in adjusted PPG five straight years and top-8 in four of five. A.J. Brown's departure frees 120+ targets and he is the 12th tight end off boards.",
-   "added": "2026-07-17"
-  },
-  "joe burrow": {
-   "name": "Joe Burrow",
-   "pos": "QB",
-   "call": "must",
-   "why": "One of the eight quarterbacks Nick wants, at a value.",
-   "added": "2026-07-24"
-  },
-  "jared goff": {
-   "name": "Jared Goff",
-   "pos": "QB",
-   "call": "must",
-   "why": "The fallback if you pass on the top 8. Easiest schedule in the NFL, mostly domes late, a poor defense forcing shootouts, and more passing near the goal line with Montgomery gone.",
-   "added": "2026-08-01"
-  }
- },
- "RPB": {
-  "breece hall": {
-   "name": "Breece Hall",
-   "adp": "mid-R3",
-   "board": "RB14 / #39 (209.6)",
-   "verdict": "BUY. Anchor RB w/ top-3 ceiling; $29M gtd workhorse. Enables Hero-RB or WR-WR-then-anchor."
-  },
-  "quinshon judkins": {
-   "name": "Quinshon Judkins",
-   "adp": "mid-R5",
-   "board": "RB21 / #71 (186.4)",
-   "verdict": "BUY at R5. Monken RZ-run = direct RPB TD-edge fit; spike weeks = league-winner."
-  },
-  "deandre swift": {
-   "name": "De'Andre Swift",
-   "adp": "mid-R5",
-   "board": "RB23 / #74 (184.6)",
-   "verdict": "OK at R5. Rec-heavy upside halved by 0.5 PPR, but ~10 TDs travel. Judkins ≥ Swift in RPB."
-  },
-  "bhayshul tuten": {
-   "name": "Bhayshul Tuten",
-   "adp": "RB24 / VBD −12 / ADP 61",
-   "board": "Below RB20 replacement in RPB — confirms FADE the R6 reach; R12–13 dart only.",
-   "verdict": ""
-  },
-  "keaton mitchell": {
-   "name": "Keaton Mitchell",
-   "adp": "R7–R8",
-   "board": "not ranked (deep)",
-   "verdict": "Late dart only. Hampton handcuff-lottery; RB1 upside if Hampton hurt. Reassess on Aug camp."
-  },
-  "topic player": {
-   "name": "Topic / Player",
-   "adp": "RPB board",
-   "board": "Verdict for RMM",
-   "verdict": ""
-  },
-  "rb cliff rb": {
-   "name": "RB cliff (RB16–18)",
-   "adp": "Montgomery / Javonte",
-   "board": "Confirmed. RPB starts only 2 RB + NO flex, so RB depth needs are lower than the video — but still lock 2 anchors before the cliff.",
-   "verdict": ""
-  },
-  "saquon barkley": {
-   "name": "Saquon Barkley",
-   "adp": "RB9 / VBD +30 / ADP 14",
-   "board": "Playoff trap does NOT apply (no playoffs). AJ-Brown-gone efficiency dip is a mild regular-season note, but volume + easy early SOS = cumulative upside — stay willing.",
-   "verdict": ""
-  },
-  "omarion hampton": {
-   "name": "Omarion Hampton",
-   "adp": "RB8 / VBD +31 / ADP 16",
-   "board": "Anchor-RB tier; explosive + goal-line role.",
-   "verdict": ""
-  },
-  "chase brown": {
-   "name": "Chase Brown",
-   "adp": "RB12 / VBD +27 / ADP 15",
-   "board": "Anchor tier; explosive, unchanged CIN offense.",
-   "verdict": ""
-  },
-  "trey mcbride": {
-   "name": "Trey McBride",
-   "adp": "TE2 / VBD +65 / ADP 20",
-   "board": "⚠ CONFLICT with your R3 rule: Nick FADES McBride (too many mouths, worst team, Brissett→Beck). Board still has him TE2. At the R3 TE trigger, LEAN BOWERS over McBride.",
-   "verdict": ""
-  },
-  "george kittle": {
-   "name": "George Kittle",
-   "adp": "TE9 / VBD +9 / ADP 106",
-   "board": "Falls-to-value; OK if Bowers/McBride missed, but below your top-7 TE target.",
-   "verdict": ""
-  },
-  "caleb williams": {
-   "name": "Caleb Williams",
-   "adp": "QB4 / VBD +19 / ADP 72",
-   "board": "Playoff-weather concern is diluted here (no bracket), but those late outdoor games still count toward your 18-week total. Minor.",
-   "verdict": ""
-  },
-  "stacking": {
-   "name": "Stacking",
-   "adp": "—",
-   "board": "Don't pair two early same-team skill players; a later QB+RB stack is fine.",
-   "verdict": ""
-  },
-  "bucky irving": {
-   "name": "Bucky Irving",
-   "adp": "RB25 / VBD −24 / ADP 46",
-   "board": "FADE — TB 3-way committee (Gainwell 3rd-down, Tucker goal-line) + injury worse than reported, low TD ceiling.",
-   "verdict": ""
-  },
-  "jarian price": {
-   "name": "Jarian Price",
-   "adp": "not ranked",
-   "board": "FADE — wish-casting; 15 rec in 41 college games; Charbonnet reclaims RB1 by mid-season.",
-   "verdict": ""
-  },
-  "chuba hubbard": {
-   "name": "Chuba Hubbard",
-   "adp": "RB29 / VBD −34 / ADP 66",
-   "board": "FADE — hardest rush SOS; value craters mid-season as Jonathon Brooks ramps in.",
-   "verdict": ""
-  },
-  "rj harvey": {
-   "name": "RJ Harvey",
-   "adp": "RB32 / VBD −42 / ADP 81",
-   "board": "FADE — Dobbins signed starter money (Payton: \"top priority\"), Coleman for pass-pro. ⚠ UPDATE handcuff plan (§⑤): DROP RJ Harvey from the R7 lottery-handcuff list.",
-   "verdict": ""
-  },
-  "kyren williams": {
-   "name": "Kyren Williams",
-   "adp": "RB17 / VBD +12 / ADP 31",
-   "board": "Corum cut snaps 75%→64% + Rams bottom-5 RB targets → prefer Etienne. REINFORCES your keeper: Etienne ADP 33 (R3 talent) kept at R10 = elite value; he is insulated.",
-   "verdict": ""
-  },
-  "mike evans": {
-   "name": "Mike Evans",
-   "adp": "WR22 / VBD +20 / ADP 59",
-   "board": "⭐ PERFECT RPB FIT — red-zone TD monster (13–17 TD upside) directly fixes your 2025 receiving-TD deficit (your title gap). Target at the R5/6 turn.",
-   "verdict": ""
-  },
-  "devonta smith": {
-   "name": "DeVonta Smith",
-   "adp": "WR12 / VBD +32 / ADP 32",
-   "board": "Playoff trap does NOT apply (no playoffs) → PURE upside here. Alpha post-AJB + easiest early passing SOS = cumulative-points gold.",
-   "verdict": ""
-  },
-  "ladd mcconkey": {
-   "name": "Ladd McConkey",
-   "adp": "WR16 / VBD +27 / ADP 41",
-   "board": "Chargers alpha, elite separation (88th pct vs man/press/zone), top-5–7 ceiling. Strong R3–R4 WR.",
-   "verdict": ""
-  },
-  "travis hunter": {
-   "name": "Travis Hunter",
-   "adp": "WR54 / VBD −41 / ADP 193",
-   "board": "Nearly free; WR1 upside in a Liam Coen offense. Great late WR-depth dart (your trade currency).",
-   "verdict": ""
-  },
-  "tank dell": {
-   "name": "Tank Dell",
-   "adp": "WR70 / ADP 203",
-   "board": "Deepest flier; contingent on Nico Collins missing time. Last-pick dart only.",
-   "verdict": ""
-  },
-  "josh jacobs": {
-   "name": "Josh Jacobs",
-   "adp": "RB18 / VBD +4 / ADP 34",
-   "board": "HARD FADE — barely above replacement (+4) AND a 6–12-wk conduct suspension would erase weeks of cumulative points. Worse bet here than in H2H.",
-   "verdict": ""
-  },
-  "malik nabers": {
-   "name": "Malik Nabers",
-   "adp": "WR19 / VBD +26 / ADP 30",
-   "board": "FADE early — multi-ligament knee, misses ~the first month = lost cumulative points. Only at a steep R5+ discount.",
-   "verdict": ""
-  },
-  "rashee rice": {
-   "name": "Rashee Rice",
-   "adp": "WR15 / VBD +29 / ADP 27",
-   "board": "Contrarian buy IF the parole/knee truly resolve before Week 1 (Nick's read) — but in cumulative, any missed week costs you, so size the risk.",
-   "verdict": ""
-  },
-  "stefon diggs": {
-   "name": "Stefon Diggs",
-   "adp": "ADP 138 (deep)",
-   "board": "Zero-risk late WR-depth stash (your trade currency); waiver-dump if he doesn't sign somewhere good.",
-   "verdict": ""
-  }
- },
- "MWV": {
-  "breece hall": {
-   "name": "Breece Hall",
-   "adp": "mid-R3 (29)",
-   "board": "RB11 / #20 (234.8 · VBD +67.8)",
-   "verdict": "BUY. Full-PPR bell-cow + 36 rec; the pick-13 Robust-RB lever."
-  },
-  "deandre swift": {
-   "name": "De'Andre Swift",
-   "adp": "mid-R5 (51)",
-   "board": "RB22 / #41 (201.9 · VBD +34.9)",
-   "verdict": "BEST FIT. 50–60 rec + 10 TD is Full-PPR/FLEX gold — opposite of RPB, where 0.5 PPR halves him."
-  },
-  "quinshon judkins": {
-   "name": "Quinshon Judkins",
-   "adp": "mid-R5 (53)",
-   "board": "RB21 / #40 (203.3 · VBD +36.3)",
-   "verdict": "BUY at R5 if there; RZ/TD role + ~30 rec."
-  },
-  "bhayshul tuten": {
-   "name": "Bhayshul Tuten",
-   "adp": "R6 (61)",
-   "board": "RB24 / #57 (190.4 · VBD +23.4)",
-   "verdict": "TAKE at 61 — ADP = your pick (opposite of RPB, where he's a fade to R12–13)."
-  },
-  "keaton mitchell": {
-   "name": "Keaton Mitchell",
-   "adp": "R7–8 (192)",
-   "board": "RB42 / #153 (117.3 · VBD −49.7)",
-   "verdict": "Free late dart; RB1 upside if Hampton hurt."
-  }
- }
 }
