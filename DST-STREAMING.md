@@ -75,55 +75,109 @@ Two things to weigh against it:
 
 ---
 
-# Scoring the defenses under RPB's own rules
+# Scoring the defenses under RPB's REAL rules
 
 ```bash
 python3 sims/dst_rank.py            # week 1 + full season, top 10 each
 python3 sims/dst_rank.py --formula  # the formula and its sources
 ```
 
-## ⚠ One input is still missing
+`data/dst-scoring-rpb.json` now holds **RPB's actual CBS settings** (screenshotted 2026-08-07,
+`VERIFIED: true`). Two things about them changed the whole picture.
 
-`data/dst-scoring-rpb.json` currently holds **CBS defaults, not RPB's real settings**. Nobody has
-ever read the league's actual D/ST scoring into this repo — the app only ever carried a flat
-`dstMult: 2`. The script prints a loud warning until `VERIFIED` is set to true.
+## 1. There is no literal 2x — it is baked into the categories
 
-**Get it from:** CBS league site → League → Settings → Scoring → Team Defense/Special Teams.
-Paste the numbers in, flip `VERIFIED` to true, re-run. That is the only step left.
+RPB gets its doubled D/ST by inflating the values, not by multiplying: interceptions and fumble
+recoveries pay **3** where CBS default is 2, forced fumbles pay **1 on top of** the recovery, and
+the points-allowed tiers run all the way to **+20**. Yards allowed pays **nothing**.
 
-## Why a flat 2x was never enough
+The multiplier in the config is therefore set to **1.0 on purpose**. Applying a 2x on top of these
+values would double-count. The app's old `dstMult: 2` was an approximation of this, not a rule.
 
-Doubling scales every defense identically, so it cannot change the ORDER — it only made the gaps
-look bigger. Recomputing from the raw stat line does change the order, and the reason is tier
-boundaries:
+## 2. The tiers compress every good defense together
 
-- **Steelers** allow 288 points = **16.9 a game** → lands in the `<= 17` tier, **+1.0 a week**
-- **Jaguars** allow 290 points = **17.1 a game** → lands in the `<= 27` tier, **0.0**
+| PA in a game | Points |
+|---|---|
+| 0-3 | 20 |
+| 4-6 | 18 |
+| 7-9 | 16 |
+| 10-13 | 10 |
+| **14-20** | **8** |
+| 21-27 | 4 |
+| 28-34 | 0 |
+| 35-41 | -4 |
+| 42+ | -8 |
 
-Two points of scoring defense across a whole season, and it swings **34 RPB points**. That is the
-entire gap between 5th and 6th. Which tiers RPB actually uses is therefore the single most
-important unknown here — it matters far more than whose projections you start from.
+**Every defense in the top ten allows 16-19 points a game.** They all land in the same 14-20 tier,
+all collect the same 8 points a week from it, and the only thing separating them is sacks and
+turnovers. Over a season that is worth about a point a week.
+
+## Season — real scoring
+
+| # | Defense | RPB pts | per week |
+|---|---|---|---|
+| 1 | Rams | 315.2 | 18.5 |
+| 2 | Texans | 315.2 | 18.5 |
+| 3 | Seahawks | 310.8 | 18.3 |
+| 4 | Broncos | 307.4 | 18.1 |
+| 5 | Steelers | 306.4 | 18.0 |
+| 6 | Jaguars | 302.0 | 17.8 |
+| 7 | Vikings | 301.0 | 17.7 |
+| 8 | Patriots | 297.6 | 17.5 |
+| 9 | Ravens | 296.6 | 17.4 |
+| 10 | Browns | 295.6 | 17.4 |
+
+**1st to 10th is 1.1 points a week.** The 45-point cliff that appeared under the old flat-2x model
+was an artifact of using CBS default tiers. It does not exist in this league.
+
+## Week 1 — real scoring
+
+| # | Defense | vs | RPB pts | Opp implied |
+|---|---|---|---|---|
+| **1** | **Jaguars** | Browns | **23.7** | 16.5 |
+| 2 | Steelers | Falcons | 20.3 | 19.5 |
+| 3 | Seahawks | Patriots | 19.6 | 20.5 |
+| 4 | Rams | 49ers | 18.1 | 22.5 |
+| 5 | Texans | Bills | 17.7 | 23.0 |
+| 6 | Broncos | Chiefs | 17.3 | 23.0 |
+| 7 | Ravens | Colts | 17.1 | 22.5 |
+| 8 | Vikings | Packers | 16.9 | 23.0 |
+
+## The conclusion this forces
+
+**Stream. Do not pay for a defense.**
+
+- Season-long talent gap, 1st to 10th: **1.1 points a week**
+- Week-1 matchup gap, best to worst of the same ten: **6.8 points**
+
+**The matchup is worth six times the unit.** Chasing the "best defense" is chasing a rounding error
+while ignoring the thing that actually moves your score. Take a defense late, take the best matchup
+every week, and never spend an early pick on one.
+
+The one caveat: this only covers 4for4's top ten. Defenses outside it allow more points and start
+dropping into the 21-27 tier, which costs 4 points a game — that gap is real. Stream among good
+defenses, not among all of them.
 
 ## Formula
 
 ```
-season = sacks x W_sack + INT x W_int + fumble_rec x W_fum
-       + defensive_TD x W_td + safety x W_saf + blocked_kick x W_blk
+season = sacks x 1 + INT x 3 + fumble_rec x 3 + forced_fumble x 1
+       + defensive_TD x 6 + safety x 2 + blocked_kick x 2
        + 17 x tier_bonus(points_allowed / 17)
-       then x multiplier
+       (no multiplier - it is already in the category values)
 
 week 1 = (season / 17) x (22.0 / opponent_implied_team_total)
 ```
 
-Opponent implied team total = `game_total/2 -/+ spread/2`. It is the best single predictor of D/ST
-scoring and the part of this that is hardest to get and most reliable.
+Opponent implied team total = `game_total/2 -/+ spread/2`. Best single predictor of D/ST scoring.
 
 ## Sources
 
 | What | Where | Pulled |
 |---|---|---|
+| **RPB D/ST scoring settings** | **CBS league settings page (screenshot)** | **2026-08-07** |
 | Season stat lines (PA, yards, sacks, forced TO) | 4for4 DEF projections | 2026-08-07 |
 | Week-1 spreads and totals | FanDuel Research week-1 odds | 2026-08-07 |
 | Week-1 D/ST consensus + matchup grades | FantasyPros (only 2 experts posted) | 2026-08-06 |
-| Cross-check, unit-based | CBS Sports D/ST — **stale, updated Jan 4** | 2026-08-07 |
+| Cross-check, unit-based | CBS Sports D/ST — stale, updated Jan 4 | 2026-08-07 |
 | Expert accuracy by position | FantasyPros accuracy scores | 2026-08-07 |

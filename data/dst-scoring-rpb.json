@@ -1,28 +1,32 @@
 {
   "league": "RPB",
   "updated": "2026-08-07",
-  "VERIFIED": false,
-  "_warning": "THE WEIGHTS BELOW ARE CBS DEFAULTS, NOT YOUR LEAGUE'S. Nobody has ever read RPB's real D/ST scoring into this repo — the app only ever carried a flat dstMult:2 shortcut. Pull the real numbers from the CBS league scoring-settings page and set VERIFIED to true. Until then every ranking derived from this file is indicative, not exact.",
-  "_where": "CBS league site -> League -> Settings -> Scoring -> Team Defense/Special Teams.",
+  "VERIFIED": true,
+  "_source": "CBS league scoring settings, screenshotted by Angelo 2026-08-07.",
   "perEvent": {
     "sack": 1.0,
-    "interception": 2.0,
-    "fumbleRecovery": 2.0,
+    "interception": 3.0,
+    "fumbleRecovery": 3.0,
+    "forcedFumble": 1.0,
     "safety": 2.0,
     "defensiveTD": 6.0,
-    "blockedKick": 2.0
+    "blockedKick": 2.0,
+    "blockedKickTD": 6.0
   },
+  "_eventNote": "Forced fumble (1) is scored SEPARATELY from the recovery (3), so a fumble the defense forces and recovers is worth 4, not 3. INT and fumble recovery are both 3 — CBS default is 2. Yards allowed scores ZERO in this league.",
   "pointsAllowedTiers": [
-    {"max": 0,  "pts": 10.0},
-    {"max": 6,  "pts": 7.0},
-    {"max": 13, "pts": 4.0},
-    {"max": 17, "pts": 1.0},
-    {"max": 27, "pts": 0.0},
-    {"max": 34, "pts": -1.0},
-    {"max": 45, "pts": -3.0},
-    {"max": 999,"pts": -5.0}
+    {"max": 3,   "pts": 20.0},
+    {"max": 6,   "pts": 18.0},
+    {"max": 9,   "pts": 16.0},
+    {"max": 13,  "pts": 10.0},
+    {"max": 20,  "pts": 8.0},
+    {"max": 27,  "pts": 4.0},
+    {"max": 34,  "pts": 0.0},
+    {"max": 41,  "pts": -4.0},
+    {"max": 100, "pts": -8.0}
   ],
   "yardsAllowedTiers": [],
-  "multiplier": 2.0,
-  "_multiplierNote": "RPB doubles D/ST scoring. If the real settings achieve the doubling through inflated per-event values instead of a literal 2x, set this to 1.0 so it is not applied twice."
+  "multiplier": 1.0,
+  "_multiplierNote": "SET TO 1.0 DELIBERATELY. RPB achieves its doubled D/ST scoring through inflated category values (INT and fumble recovery at 3 rather than 2, points-allowed tiers running to +20) rather than a literal 2x. The app's dstMult:2 shortcut approximated this. Applying a multiplier on top of these settings would double-count.",
+  "_tierWarning": "The tiers are PER GAME and the steps are large — 10-13 PA scores 10 while 14-20 scores 8 and 21-27 only 4. Scoring a season from an AVERAGE points-allowed understates the value of a volatile defense that posts shutouts. Treat season totals as indicative of order, not exact."
 }

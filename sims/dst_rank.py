@@ -54,6 +54,9 @@ def season_points(t, rules):
     ints = t["to"] * 0.6
     fums = t["to"] * 0.4
     pts = t["sacks"] * e["sack"] + ints * e["interception"] + fums * e["fumbleRecovery"]
+    # RPB pays the forced fumble separately from the recovery, so a fumble the defense both
+    # forces and recovers is worth 4 rather than 3. Most recovered fumbles are self-forced.
+    pts += fums * e.get("forcedFumble", 0.0)
     # Defensive touchdowns are not in the 4for4 line. League-average is roughly 3 a season;
     # applying the same figure to everyone keeps it from distorting the ORDER.
     pts += 3.0 * e["defensiveTD"]
