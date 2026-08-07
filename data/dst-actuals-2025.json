@@ -1,0 +1,16 @@
+{
+  "source": "CBS league stats page, 2025 season, RPB scoring — screenshotted by Angelo 2026-08-07",
+  "note": "ACTUAL fantasy points scored in this league. Preseason projections compress the field toward the mean; these do not. Use them as the talent prior and let projections adjust only for personnel change.",
+  "teams": [
+    {"team":"Texans","fpts":306,"ppg":18.00,"sack":47,"int":19,"intTD":1,"ff":14,"fr":10,"fumTD":3,"pa":295},
+    {"team":"Seahawks","fpts":291,"ppg":17.12,"sack":47,"int":18,"intTD":1,"ff":9,"fr":7,"fumTD":2,"pa":292},
+    {"team":"Rams","fpts":274,"ppg":16.12,"sack":47,"int":16,"intTD":1,"ff":12,"fr":9,"fumTD":0,"pa":346},
+    {"team":"Eagles","fpts":265,"ppg":15.59,"sack":42,"int":12,"intTD":1,"ff":12,"fr":9,"fumTD":0,"pa":325},
+    {"team":"Jaguars","fpts":264,"ppg":15.53,"sack":32,"int":22,"intTD":2,"ff":11,"fr":9,"fumTD":0,"pa":336},
+    {"team":"Vikings","fpts":260,"ppg":15.29,"sack":49,"int":8,"intTD":1,"ff":18,"fr":13,"fumTD":1,"pa":333},
+    {"team":"Broncos","fpts":259,"ppg":15.24,"sack":68,"int":10,"intTD":1,"ff":9,"fr":4,"fumTD":0,"pa":311},
+    {"team":"Steelers","fpts":246,"ppg":14.47,"sack":48,"int":15,"intTD":1,"ff":12,"fr":10,"fumTD":2,"pa":373},
+    {"team":"Browns","fpts":240,"ppg":14.12,"sack":53,"int":11,"intTD":3,"ff":7,"fr":11,"fumTD":1,"pa":353}
+  ],
+  "validation": "Recomputing these stat lines under RPB's scoring rules reproduces the actual FPTS to a mean absolute error of 13.2 on a 240-306 range (~5%). The residual is because points-allowed tiers apply PER GAME and we only have season totals — a defense that alternates shutouts and blowouts scores differently from one that allows the same total evenly."
+}

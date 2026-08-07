@@ -38,7 +38,7 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 
 **Do not:**
 
-- Reaching for D/ST or K. Rams D/ST at 15.02, Aubrey at 16.09. Reaching costs 19-179.
+- Reaching for D/ST or K. D/ST at 15.02, kicker at 16.09. Under RPB's real scoring the gap from the best defense to the tenth-best is 1.1 points a week, so paying up for a 'good' defense buys a rounding error while the weekly matchup swing is six times larger.
 - Forcing a back at 4.09/5.02 after missing RB2 — costs -32.4, worse than living with one back.
 - Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs -9.1; Kittle at 6.09 is free.
 - Treating 'anchor RB' as a rule at 5.02. The right test is not RB-vs-WR, it is whether the RB upgrade beats the WR you would otherwise land: with Etienne at 188.7 (below the 191.1 RB replacement) the break-even for taking Breece Hall over Luther Burden was a 162.8-point WR at your next pick, and the round-6/7 board offers 151-158. Burden was correct by roughly 8 points, not by the 27 the general rule implies.
@@ -63,6 +63,7 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 - Full-draft run (mc13, 1,920 drafts): the plan lands only about 4 of your 15 picks on the FFA must-draft list. The list is a tiebreaker, not a shopping list — most picks are decided by value and by what the room leaves.
 - mc13 confirms the late-round script the plan already assumed: Rams D/ST at 15.02 in 94% of drafts and Brandon Aubrey at 16.09 in 72%. All nine starting slots fill in 100% of drafts either way, so there is no realistic path where you end up short a starter.
 - THE RANK COLUMN IS THE WRONG TOOL FOR RB-vs-WR. It scores against a season-long replacement level, which does not know what is left at YOUR next pick. At 3.02 it had Nico Collins 6 ranks above Derrick Henry, and Henry was still the better pick because the RB drop between picks is steeper than the WR drop. Compare the gap to your next pick, not the gap to average — the rank column is right about who is better, wrong about who to take.
+- D/ST — stream on matchup, but the unit is NOT a rounding error. Corrected 2026-08-07 against Angelo's own 2025 CBS results. The formula in sims/dst_rank.py reproduces real RPB scoring to ~5%, but 4for4's preseason projections compress every defense toward the mean, which made an earlier answer claim 1st-to-10th was only 1.1 pts/week. REAL 2025 spread was 3.9 pts/game (Texans 18.00 down to Browns 14.12). Week-1 matchup adjustment adds another 3.9, so matchup is worth about 2x the unit — meaningful, not overwhelming. Practical rule: draft a defense at 15.02, prefer a good unit in a good spot over a great unit in a bad one, and never use projections alone to conclude defenses are interchangeable.
 
 
 ### Contingencies — the branches the sims called impossible
@@ -74,7 +75,7 @@ Both 0% branches fired in a single mock. Treat every 'never happens' number in `
 |---|---|---|
 | Every take-zone back is gone before 2.09 | **Take the WR and buy a back next round. Do not reach past the cutoff.** | mc10 said the block never drains past Achane — RB13+ was 0% at every setting. In the 2026-08-06 mock all six drained by 2.08. Rare is not impossible. Happened again in the 2026-08-06 trial run — all six gone by 2.08 in back-to-back mocks. |
 | Brock Bowers is on the board in round 2 or later | **Take him immediately. Largest single edge in the draft.** | mc7 said he goes before pick 19 in 52,200 of 52,200 drafts. He fell to 2.09 in the mock and was worth +36.8. He fell to 2.09 in both 2026-08-06 mocks. Treat this as likely, not miraculous. |
-| Five or more defenses are gone by your round-14 pick | **Take yours at 14.09 and push the last skill player back.** | The sims put D/ST at 15.02 and never modelled a run. Five went by 13.09 in the mock. RPB doubles D/ST scoring, so the #3-vs-#11 gap is real points. Fired in the 2026-08-06 trial run: six gone by 14.09, seven by 15.02. Taking Chargers D/ST #5 at 14.09 was correct. |
+| Defenses start draining in round 13-14 | **Let them go. Take your D/ST at 15.02 and stream it all year.** | SUPERSEDED 2026-08-07 by RPB's real D/ST scoring. The old advice was 'take yours at 14.09' and it rested on CBS default points-allowed tiers. RPB's actual tiers are far flatter at the top: every top-10 defense allows 16-19 PPG, all land in the same 14-20 band worth 8 points, and 1st to 10th is only 1.1 points a WEEK. Meanwhile the week-1 matchup spread across those same ten is 6.8 points. The matchup is worth six times the unit, so the defense you get after the round-14 run costs you about a point a week — not worth a pick two rounds earlier. Take one at 15.02 and churn it. |
 | The ranked RB list is empty and Show More returns nothing | **Stop planning around a back. Last two picks become K + D/ST or a searched-by-name body.** | The sims always had a back available. FantasyPros' RB pool ran dry by 14.09 in the mock. |
 
 ## Block windows — the only places blocking is real

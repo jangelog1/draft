@@ -127,8 +127,10 @@ turnovers. Over a season that is worth about a point a week.
 | 9 | Ravens | 296.6 | 17.4 |
 | 10 | Browns | 295.6 | 17.4 |
 
-**1st to 10th is 1.1 points a week.** The 45-point cliff that appeared under the old flat-2x model
-was an artifact of using CBS default tiers. It does not exist in this league.
+**CORRECTED 2026-08-07.** These projected numbers show 1st to 10th at 1.1 pts/week, but that is an artifact of
+preseason projections regressing everyone to the mean. Angelo's ACTUAL 2025 results in this league spread
+**3.9 points a game** — Texans 18.00 down to Browns 14.12. See `data/dst-actuals-2025.json`. Trust the actuals
+for how wide the position really is; trust the projections only for who changed personnel.
 
 ## Week 1 — real scoring
 
@@ -147,12 +149,16 @@ was an artifact of using CBS default tiers. It does not exist in this league.
 
 **Stream. Do not pay for a defense.**
 
-- Season-long talent gap, 1st to 10th: **1.1 points a week**
-- Week-1 matchup gap, best to worst of the same ten: **6.8 points**
+Using **2025 actuals** rather than projections:
 
-**The matchup is worth six times the unit.** Chasing the "best defense" is chasing a rounding error
-while ignoring the thing that actually moves your score. Take a defense late, take the best matchup
-every week, and never spend an early pick on one.
+- Season-long talent gap, best to 9th: **3.9 points a game**
+- Additional spread from week-1 matchup: **3.9 points a game**
+
+**The matchup is worth about twice the unit — meaningful, not overwhelming.** An earlier version of
+this file said six times, off compressed projections. Both factors matter and they are the same
+order of magnitude, so the rule is: **a good unit in a good spot beats a great unit in a bad one,
+and beats a mediocre unit in a great one.** Draft at 15.02, stream on matchup, but do not conclude
+defenses are interchangeable — they are not.
 
 The one caveat: this only covers 4for4's top ten. Defenses outside it allow more points and start
 dropping into the 21-27 tier, which costs 4 points a game — that gap is real. Stream among good
