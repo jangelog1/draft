@@ -40,6 +40,7 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 - Reaching for D/ST or K. Rams D/ST at 15.02, Aubrey at 16.09. Reaching costs 19-179.
 - Forcing a back at 4.09/5.02 after missing RB2 — costs -32.4, worse than living with one back.
 - Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs -9.1; Kittle at 6.09 is free.
+- Treating 'anchor RB' as a rule at 5.02. The right test is not RB-vs-WR, it is whether the RB upgrade beats the WR you would otherwise land: with Etienne at 188.7 (below the 191.1 RB replacement) the break-even for taking Breece Hall over Luther Burden was a 162.8-point WR at your next pick, and the round-6/7 board offers 151-158. Burden was correct by roughly 8 points, not by the 27 the general rule implies.
 
 **Standing conclusions:**
 
@@ -55,6 +56,7 @@ RB cutoff at 2.09. These six are all within 5 pts of pivoting to a WR. The next 
 - Player cards carry a Consensus Draft Sentiment panel (Coach AI) with Overall / Upside / Bust meters and a written summary. Useful for breaking ties between two unflagged names late.
 - The predictor LAGS on D/ST rather than being blind to it. In mock 2 it read <1% on every defense in round 12 and six were gone by 14.09; in mock 3 it correctly moved the top two to 64% by 13.02. Treat a defense still under ~20% as safe for one more round only, and re-check the count every round from 11.
 - A low percentage is a real probability, not a promise either way — Jordan Mason survived a 17-pick wrap at 17% while Mike Evans died twice at 29-35%. Read it as odds and weight by what the loss costs, after fixing the horizon.
+- 5.02 — the must-draft list beats an anchor RB (mc12, 17,280 paired drafts). Forcing 'best RB' at 5.02 costs -19.7 to -27.6 and lost in 0% of 24 seeds, because RB replacement level in RPB is the RB20 (191.1 pts) while WR replacement is the WR30 (154.9) — two RB starters and no FLEX make a mid RB cheap to replace and a mid WR expensive. Narrowing the rule to must-draft WR ONLY was the best policy tested (+5.5 vs control, best in 92% of seeds).
 
 
 ### Contingencies — the branches the sims called impossible

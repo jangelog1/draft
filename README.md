@@ -102,8 +102,10 @@ RB demand by ~3 picks.
 | mc9 | Rounds 1–2 board (**superseded by mc11** — built on the uncorrected engine) |
 | mc10 | The RB-scarcity correction itself |
 | **mc11** | **Rounds 1–2 board on the corrected engine — current** |
+| **mc12** | **5.02: anchor RB vs the FFA must-draft list — 17,280 paired drafts** |
 
-`mc.py` is the broken first attempt, kept as a record. Nothing past 2.09 has ever been simulated.
+`mc.py` is the broken first attempt, kept as a record. Rounds 3–4 are still unsimulated; mc12 is
+the first look past 2.09 and covers pick five only.
 
 ### Standing preferences
 
