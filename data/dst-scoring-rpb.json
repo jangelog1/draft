@@ -1,0 +1,28 @@
+{
+  "league": "RPB",
+  "updated": "2026-08-07",
+  "VERIFIED": false,
+  "_warning": "THE WEIGHTS BELOW ARE CBS DEFAULTS, NOT YOUR LEAGUE'S. Nobody has ever read RPB's real D/ST scoring into this repo — the app only ever carried a flat dstMult:2 shortcut. Pull the real numbers from the CBS league scoring-settings page and set VERIFIED to true. Until then every ranking derived from this file is indicative, not exact.",
+  "_where": "CBS league site -> League -> Settings -> Scoring -> Team Defense/Special Teams.",
+  "perEvent": {
+    "sack": 1.0,
+    "interception": 2.0,
+    "fumbleRecovery": 2.0,
+    "safety": 2.0,
+    "defensiveTD": 6.0,
+    "blockedKick": 2.0
+  },
+  "pointsAllowedTiers": [
+    {"max": 0,  "pts": 10.0},
+    {"max": 6,  "pts": 7.0},
+    {"max": 13, "pts": 4.0},
+    {"max": 17, "pts": 1.0},
+    {"max": 27, "pts": 0.0},
+    {"max": 34, "pts": -1.0},
+    {"max": 45, "pts": -3.0},
+    {"max": 999,"pts": -5.0}
+  ],
+  "yardsAllowedTiers": [],
+  "multiplier": 2.0,
+  "_multiplierNote": "RPB doubles D/ST scoring. If the real settings achieve the doubling through inflated per-event values instead of a literal 2x, set this to 1.0 so it is not applied twice."
+}

@@ -1,0 +1,25 @@
+{
+  "source": "Vegas lines via FanDuel Research; FantasyPros week-1 D/ST consensus projections",
+  "pulled": "2026-08-07",
+  "note": "oppImplied is the opposing offense's implied team total = gameTotal/2 -/+ spread/2. It is the single best predictor of D/ST scoring. fpProj is FantasyPros' own week-1 projection (only 2 experts had posted as of this pull).",
+  "games": [
+    {"def":"Jaguars","opp":"Browns","oppImplied":16.5,"total":40.5,"fpProj":8.8},
+    {"def":"Titans","opp":"Jets","oppImplied":18.0,"total":38.5,"fpProj":6.3},
+    {"def":"Chargers","opp":"Cardinals","oppImplied":18.0,"total":46.5,"fpProj":7.4},
+    {"def":"Dolphins","opp":"Raiders","oppImplied":18.5,"total":40.5,"fpProj":null},
+    {"def":"Steelers","opp":"Falcons","oppImplied":19.5,"total":41.5,"fpProj":6.7},
+    {"def":"Seahawks","opp":"Patriots","oppImplied":20.5,"total":44.5,"fpProj":6.8},
+    {"def":"Chiefs","opp":"Broncos","oppImplied":20.5,"total":43.5,"fpProj":null},
+    {"def":"Jets","opp":"Titans","oppImplied":20.5,"total":38.5,"fpProj":null},
+    {"def":"Bills","opp":"Texans","oppImplied":21.5,"total":44.5,"fpProj":6.6},
+    {"def":"Lions","opp":"Saints","oppImplied":21.5,"total":49.5,"fpProj":6.4},
+    {"def":"Bears","opp":"Panthers","oppImplied":21.5,"total":45.5,"fpProj":null},
+    {"def":"Packers","opp":"Vikings","oppImplied":21.5,"total":44.5,"fpProj":6.2},
+    {"def":"Eagles","opp":"Commanders","oppImplied":21.5,"total":47.5,"fpProj":7.2},
+    {"def":"Ravens","opp":"Colts","oppImplied":22.5,"total":48.5,"fpProj":7.7},
+    {"def":"Rams","opp":"49ers","oppImplied":22.5,"total":48.5,"fpProj":7.5},
+    {"def":"Broncos","opp":"Chiefs","oppImplied":23.0,"total":43.5,"fpProj":7.8},
+    {"def":"Vikings","opp":"Packers","oppImplied":23.0,"total":44.5,"fpProj":7.0},
+    {"def":"Texans","opp":"Bills","oppImplied":23.0,"total":44.5,"fpProj":8.0}
+  ]
+}

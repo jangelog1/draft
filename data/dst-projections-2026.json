@@ -1,0 +1,17 @@
+{
+  "source": "4for4 season-long DEF projections, https://www.4for4.com/fantasy-football-draft-rankings/def",
+  "pulled": "2026-08-07",
+  "note": "Season totals over 17 games. FF Pts is 4for4's own standard scoring, kept for reference only — the ranker recomputes from the raw stats using RPB rules.",
+  "teams": [
+    {"team":"Rams","ff":149.3,"pa":275,"yds":5165,"sacks":49,"to":33},
+    {"team":"Texans","ff":148.2,"pa":278,"yds":5236,"sacks":49,"to":33},
+    {"team":"Seahawks","ff":146.5,"pa":281,"yds":5277,"sacks":48,"to":32},
+    {"team":"Broncos","ff":143.5,"pa":285,"yds":5300,"sacks":48,"to":31},
+    {"team":"Steelers","ff":143.0,"pa":288,"yds":5388,"sacks":47,"to":31},
+    {"team":"Jaguars","ff":139.1,"pa":290,"yds":5393,"sacks":46,"to":30},
+    {"team":"Vikings","ff":120.5,"pa":298,"yds":5463,"sacks":45,"to":30},
+    {"team":"Patriots","ff":118.5,"pa":304,"yds":5490,"sacks":45,"to":29},
+    {"team":"Browns","ff":115.6,"pa":318,"yds":5653,"sacks":43,"to":29},
+    {"team":"Ravens","ff":115.4,"pa":304,"yds":5523,"sacks":44,"to":29}
+  ]
+}
