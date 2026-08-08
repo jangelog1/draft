@@ -142,28 +142,55 @@ Chase Brown ahead of Henry.**
 The shelf itself is confirmed: RB7 through RB12 span **7.2 points**. Genuinely flat, exactly as the
 plan says. Take whichever survives.
 
-## 5. ⚠ The one real problem: Parker Washington is below replacement
+## 5. Parker Washington — the biggest single edge in your setup
 
-**Parker Washington is WR29, VBD −6.3, 74th overall.** WR replacement is DJ Moore at 168.4;
-Washington projects 162.1. On these numbers, spending 6.09 on him costs you points.
+**VERDICT REVERSED 2026-08-07 (same day).** The first cut of this board had him at WR29, −6.3 VBD,
+below replacement, and recommended dropping him. That was wrong: the board was not pricing return
+work.
 
-**But this board cannot see the thing that probably justifies him.** RPB scores individual return
-work — **punt return yards 0.1/yd (+3 at 100), kick return yards 0.05/yd (+3 at 150), return TDs 6
-plus distance bonuses** — and FFA does not project returns at all.
+**RPB scores individual returns and no projection source does.** Punt return yards 0.1/yd with a +3
+bonus at 100 in a game, kick return 0.05/yd with +3 at 150, any return TD 6 plus distance bonuses.
+FFA, FantasyPros and CBS all omit it.
 
-A full-time punt returner is worth roughly **300–450 return yards ≈ +30 to +45 points**, which
-would move Washington from −6.3 to somewhere around **+25 to +40 VBD** — i.e. from a mistake to a
-genuine target.
+**Washington was Jacksonville's primary punt returner in 2025 and an elite one:** 341 punt return
+yards (**5th in the NFL**), 13.6 per return (6th), and he **led the league in punt return
+touchdowns** — the first Jaguar ever to house multiple returns in a season. Verified against
+RotoWire, Big Cat Country, SI/Jaguar Report and ESPN camp coverage.
 
-**Two things must be checked before draft day, and I have not verified either:**
+Priced conservatively in `data/return-roles-2026.json` — 300 yards and 0.5 return TDs, well under
+what he actually did — the scorer now has him at:
 
-1. **Is Parker Washington actually Jacksonville's punt returner in 2026?** I asserted this earlier
-   from memory. It is the load-bearing assumption and it is unverified.
-2. **Who else in this league is a designated returner?** Every one of them is systematically
-   undervalued by this board and by FFA's rankings, because neither prices return work.
+| | RPB pts | VBD | position |
+|---|---|---|---|
+| before returns | 162.1 | −6.3 | WR29 |
+| **after returns** | **196.1** | **+23.4** | **WR13** |
 
-This is the single largest un-modelled edge in your setup. Nobody else in the league is likely to
-be pricing it either.
+| scenario | return pts | VBD |
+|---|---|---|
+| 2025 repeated exactly | +50.1 | +43.8 |
+| conservative (used) | +34.0 | +23.4 |
+| bear — loses the job midseason | +17.0 | +10.7 |
+
+**Even the bear case is positive.** His FFA ADP is **73**; his board neighbours DeVonta Smith
+(197.4) and Chris Olave (195.1) both go around **ADP 28**. That is a 45-pick arbitrage that exists
+only because every ranking in the league prices him without the returns.
+
+**Nick's case is entirely independent and stacks on top of this.** He never mentions returns — he
+calls Washington Jacksonville's lead receiver, a round-6 take a round ahead of ADP, ranked above
+Odunze, rotating Z and F on an offense that averaged 33+ points over its final nine weeks. FFA's own
+projection agrees, giving him more receptions and yards than Brian Thomas Jr.
+
+**The risk, stated plainly:** he is expecting a full-time offensive workload for the first time, and
+teams routinely pull a full-time starter off punt returns to limit exposure. His own words are
+soft — *"I'm just open for the opportunity, whatever it is."* Jacksonville's receiver room also now
+includes Jakobi Meyers alongside Brian Thomas Jr. and Travis Hunter.
+
+### This generalises, and nobody else in the league is doing it
+
+`data/return-roles-2026.json` currently contains **one researched player**. Every other designated
+returner in the NFL is mispriced by every board in this league, including this one. An empty entry
+in that file means "not looked at yet", never "no return value". **Widening it is the highest-value
+research left before draft day.**
 
 ## 6. Burden and Evans are fine
 

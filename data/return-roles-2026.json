@@ -1,0 +1,19 @@
+{
+  "note": "RPB scores INDIVIDUAL return work and no projection source prices it. CBS rules, read 2026-08-07: punt return yards 0.1/yd with a +3 bonus at 100+ in a game; kick return yards 0.05/yd with a +3 bonus at 150+; any return TD 6 points plus the standard distance bonus (+1 at 40yd, +2 at 60, +3 at 80). FFA projects none of this, so every designated returner is systematically undervalued by every board in the league — including RPB-BOARD.csv until this file is applied.",
+  "howToUse": "sims/rpb_score.py adds these on top of the FFA stat line. Entries are SEASON projections, deliberately conservative — return touchdowns are the most volatile stat in football and must not be projected at last year's rate.",
+  "coverage": "INCOMPLETE. Only players actually researched are listed. An empty entry means 'not looked at yet', NOT 'no return value'. Widening this file is the highest-value research left: it is a real edge nobody else in the league is pricing.",
+  "players": [
+    {
+      "name": "Parker Washington",
+      "team": "JAX",
+      "puntRetYd": 300,
+      "puntRetTD": 0.5,
+      "kickRetYd": 0,
+      "kickRetTD": 0,
+      "confidence": "high on the role, medium on the volume",
+      "basis": "2025 actuals: 341 punt return yards (5th in the NFL), 13.6 yards per return (6th), and he LED the league in punt return touchdowns with 2 — the first Jaguar ever to house multiple returns in a season. Verified 2026-08-07.",
+      "risk": "He is expecting a full-time offensive workload for the first time, and teams routinely pull a full-time starter off punt returns to limit exposure. Reporting has him likely to keep the job and the staff praised him through the offseason program, but his own words are softer — 'I'm just open for the opportunity, whatever it is.' Projected at 300 yards rather than 341, and at 0.5 return TDs rather than the 2 he actually scored.",
+      "sources": "RotoWire (top candidate to return punts), Big Cat Country ('feared across the league'), SI/Jaguar Report (likely to remain primary returner), ESPN camp coverage"
+    }
+  ]
+}

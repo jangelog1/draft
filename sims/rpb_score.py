@@ -76,13 +76,35 @@ def score(p, rules, bonus=True):
         s += 3.0 * games_over(p["recYd"], 100, SD["rec"])
         s += (p["passTD"] * TD_BONUS["pass"] + p["rushTD"] * TD_BONUS["rush"]
               + p["recTD"] * TD_BONUS["rec"])
+    if rules is RPB:
+        # Return work is RPB scoring the half-PPR baseline does not have, bonus flag or not.
+        s += p.get("retPts", 0.0)
     return s
+
+
+def return_points(r):
+    """RPB pays individual return work. Nobody's projections include it — see return-roles-2026.json.
+
+    Punt return TDs are almost always long, so the distance bonus is applied as a flat +2.
+    """
+    pts = r.get("puntRetYd", 0) * 0.1 + r.get("kickRetYd", 0) * 0.05
+    pts += (r.get("puntRetTD", 0) + r.get("kickRetTD", 0)) * (6.0 + 2.0)
+    return pts
 
 
 def load():
     proj = json.loads((D / "ffa-proj-2026.json").read_text())["players"]
     for p in proj:
         p.setdefault("fumLost", 0.0)
+        p.setdefault("retPts", 0.0)
+    returns = json.loads((D / "return-roles-2026.json").read_text())["players"]
+    by_name = {key(p["name"]): p for p in proj}
+    for r in returns:
+        p = by_name.get(key(r["name"]))
+        if p is None:
+            print(f"!! return-roles lists {r['name']}, who is not in the FFA projections", file=sys.stderr)
+            continue
+        p["retPts"] = return_points(r)
     keep = json.loads((D / "keepers-rpb.json").read_text())
     return proj, keep
 
@@ -118,10 +140,16 @@ def selftest():
     assert abs(base - exact) < 1e-6, f"{base} != {exact}"
     # RPB must pay a pocket passer more than half-PPR does, purely on the yardage rate.
     assert score(allen, RPB, bonus=False) > score(allen, HALF, bonus=False)
-    # A receiver's score must be identical under both rulebooks — RPB only differs on passing
-    # yards, interceptions and fumbles, none of which a WR accumulates.
+    # A receiver with no return role must score identically under both rulebooks — RPB only differs
+    # on passing yards, interceptions, fumbles and returns, none of which he accumulates.
     wr = next(p for p in proj if p["name"] == "Puka Nacua")
+    assert wr["retPts"] == 0.0
     assert abs(score(wr, RPB, bonus=False) - score(wr, HALF, bonus=False)) < 1e-9
+    # A returner must NOT: 300 punt return yards and half a return TD is 34 points RPB pays and
+    # vanilla half-PPR does not. This is the whole Parker Washington argument.
+    pw = next(p for p in proj if p["name"].startswith("Parker Washington"))
+    assert abs(pw["retPts"] - 34.0) < 1e-6, pw["retPts"]
+    assert score(pw, RPB, bonus=False) - score(pw, HALF, bonus=False) > 30
     # Bonus model sanity: more yards must never mean fewer bonus games.
     assert games_over(4500, 300, SD["pass"]) > games_over(3000, 300, SD["pass"])
     assert games_over(0, 100, SD["rush"]) == 0.0

@@ -30,22 +30,22 @@
       "why": "The take zone is a set of players, not a round. Backs sit on a flat shelf through RB12 (Achane — he marks where the shelf ends, he is NOT a target, see the take-zone note) at 216-220 pts, then step down to 207. Passing one at 3.02 leaves you RB18 (193.4) by 4.09 — a 23-point fall — while the WR you'd pass only falls 18 (Collins 197.9 to Egbuka 180.3). Net +5.8 for the back. Confirmed live 2026-08-06: took Nico Collins at 3.02 and Derrick Henry went 3.03."
     },
     {
-      "tag": "D",
-      "when": "4.09 / 5.02 — the WR block, BURDEN-KEEPER VERSION",
-      "do": "Two WRs, not three. 4.09 McConkey (+20.5) or Egbuka (+19.6, must-draft); 5.02 Mike Evans (+14.8, must-draft).",
-      "why": "REVISED 2026-08-07 after the keeper flipped from Etienne to Burden. Burden IS a starting WR now (WR19, +18.7 VBD), so the old three-WR block at 4.09/5.02/6.09 becomes a two-WR block and 6.09 is freed. PARKER WASHINGTON DROPS OUT — he was the third WR and he is below replacement on RPB numbers (WR29, -6.3; WR replacement is DJ Moore at 168.4). The returner question that might have rescued him is still unresolved, but you no longer need to gamble on it."
-    },
-    {
-      "tag": "D2",
-      "when": "6.09 — the pick Burden freed",
-      "do": "Two backs already? Take Joe Burrow (+13.9). Only one back? Take David Montgomery (+5.8, must-draft) and let the QB slide to 7.02.",
-      "why": "RB3 never starts in RPB — two RB slots, no FLEX — so a mid-round back is worth ~0 to the lineup when you already have two. Burrow is QB2 under your scoring and RPB's 0.05/yd passing favours pocket volume arms. But if you came out of round 3 with one back, Montgomery at ADP 55 will not survive to 7.02, and he replaces exactly what Etienne used to do while being BETTER at it (+5.8 vs Etienne's -0.2). Herbert (+9.8, must-draft) is the 7.02 fallback either way."
-    },
-    {
       "tag": "E",
       "when": "2.09 — Bowers is gone",
       "do": "Take the take-zone back, then Tyler Warren at 6.09.",
       "why": "ADDED 2026-08-07. Warren is TE4 at +44.7 VBD and ADP 59, which is exactly your 6.09 — the largest VBD still on the board at that pick by a distance. Behind him Kraft +28.9 (ADP 71), LaPorta +25.3 (85), Fannin +23.0 (87) and KITTLE +17.6 at ADP 107, which is your 11.02. The old 'TE early or late, never the middle' rule does not survive contact with these numbers: the middle is where the value is once Bowers is gone."
+    },
+    {
+      "tag": "D",
+      "when": "4.09 / 5.02 / 6.09 — the WR block, BURDEN-KEEPER VERSION",
+      "do": "4.09 best WR on the board (Nabers if he falls, else McConkey or Egbuka). 5.02 Mike Evans. 6.09 PARKER WASHINGTON — and he is a take, not a fallback.",
+      "why": "REVISED TWICE on 2026-08-07. Burden as keeper is already a starting WR, so this looked like a two-WR block and Washington looked cuttable at -6.3 VBD. That was wrong, because the board did not price RETURN WORK. RPB pays punt return yards 0.1/yd, a +3 bonus at 100 in a game, and 6 plus distance for a return TD; FFA projects none of it. Washington was Jacksonville's primary punt returner in 2025 — 341 yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return TDs. Priced conservatively (300 yards, 0.5 TD) in data/return-roles-2026.json, he is WR13 at +23.4 VBD with an ADP of 73 — neighbours DeVonta Smith and Chris Olave go around ADP 28. A 45-pick arbitrage that exists only because every ranking in the league prices him without the returns. Nick's case is INDEPENDENT of all this and stacks on top: he calls Washington Jacksonville's lead receiver, a round-6 take a round ahead of ADP, ranked above Odunze, on an offense that averaged 33+ points over its final nine weeks. FFA's own projection agrees, giving him more receptions and yards than Brian Thomas Jr."
+    },
+    {
+      "tag": "D2",
+      "when": "6.09 vs 7.02 — Washington and the QB collide",
+      "do": "Washington at 6.09, quarterback at 7.02. Take Burrow at 7.02 if he somehow lasted, otherwise Herbert.",
+      "why": "Burrow (+13.9) and Herbert (+9.8) both project 20.2 hppr/wk and are separated by about 4 points, so sliding the QB one pick is nearly free. Washington at 6.09 is +23.4 VBD against roughly +4 for the next receiver, so the WR pick is worth about 20 points more than the QB pick is worth waiting for. Six teams keep a quarterback, which is what makes the slide safe. IF YOU HAVE ONLY ONE BACK after 3.02, David Montgomery (+5.8, must-draft, ADP 55) will not survive to 7.02 either — in that branch take Montgomery at 6.09, Washington at 7.02 and the QB at 8.09, where Herbert's ADP of 74 still sits."
     }
   ],
   "takeZone": [
@@ -106,7 +106,9 @@
     "TWO LEAGUE-SETTINGS QUESTIONS ARE STILL OPEN AND ONE OF THEM IS BIG. The CBS rules page says 'Managers may not do add/drops' — if that is live, streaming is IMPOSSIBLE and the whole 15.02 D/ST conclusion inverts toward drafting the best unit earlier, because a 3.9 pts/week unit gap you cannot escape is worth ~66 points. The same page also lists an Add Fee of $5.00, which contradicts it. Separately, 'Season Ends: Week 22' contradicts the 'RPB has no playoffs' assumption used to dismiss Nick's Week 15-17 schedule cautions on Barkley and DeVonta Smith. Both need Angelo to confirm.",
     "KEEPER FLIPPED TO BURDEN 2026-08-07, reversing the long-standing 'keep Etienne on regret not points' conclusion. Scored under RPB's real rules: Etienne is RB21 at 198.8 pts and -0.2 VBD — EXACTLY replacement level, so he adds nothing even in the branch where he starts — while Burden is WR19 at +18.7 and slots into a starting WR spot. Etienne also never starts under the actual plan (two backs by 3.02, no FLEX, he is RB3), the insurance argument collapses because Kyren Williams/Jeremiyah Love/Breece Hall all beat him by ~17 pts at 4.09 if the early backs fail, and the FFA layer points the same way — Etienne is SHY-AWAY, Burden is MUST-DRAFT with a 2026-08-07 video calling him a round-4 pick with WR1 upside. Etienne is a New Orleans Saint in 2026, which also resolves the garbled handcuff entry in FANTASYPROS-SWEEP.md.",
     "UNVERIFIED AND IT MATTERS: this assumes Burden costs the R10 pick, like-for-like with Etienne. The keeper rules say R9-13 keeps cost that round but R14-15/waiver keeps allow TWO. Burden was a 2025 rookie, so if he was drafted R14-15 or added off waivers, the consumed pick changes and Angelo may not have to choose at all. Check before draft day.",
-    "THE RB DEAD ZONE IS CONFIRMED BY YOUR OWN SCORING AND IT IS VICIOUS. RB18 David Montgomery +5.8, then RB23 TreVeyon Henderson -15.8, RB25 Bucky Irving -21.7, RB30 Jonathon Brooks -47.4. There is nothing between Montgomery and the graveyard. DO NOT SPEND 7.02-9.02 ON A RUNNING BACK. With Burden as the keeper you now enter the draft with ZERO backs, so coming out of 3.02 with two of them matters more than it did."
+    "THE RB DEAD ZONE IS CONFIRMED BY YOUR OWN SCORING AND IT IS VICIOUS. RB18 David Montgomery +5.8, then RB23 TreVeyon Henderson -15.8, RB25 Bucky Irving -21.7, RB30 Jonathon Brooks -47.4. There is nothing between Montgomery and the graveyard. DO NOT SPEND 7.02-9.02 ON A RUNNING BACK. With Burden as the keeper you now enter the draft with ZERO backs, so coming out of 3.02 with two of them matters more than it did.",
+    "PARKER WASHINGTON IS BACK IN THE PLAN AND THE EARLIER '-6.3, below replacement' VERDICT IS WITHDRAWN. Verified 2026-08-07: he was Jacksonville's primary punt returner in 2025 with 341 return yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return touchdowns — the first Jaguar to house multiple returns in a season. RPB scores that and no projection source does. Priced conservatively in data/return-roles-2026.json he is WR13, +23.4 VBD, at ADP 73, next to DeVonta Smith and Chris Olave who both go near ADP 28. Even the bear case where he loses the return job midseason is +10.7. THE RISK: he is expecting a full-time offensive workload for the first time and teams routinely pull full-time starters off returns; his own words are 'I'm just open for the opportunity, whatever it is'. Also note Jacksonville's WR room now includes Jakobi Meyers alongside Brian Thomas Jr. and Travis Hunter.",
+    "WIDEN data/return-roles-2026.json — IT IS THE BIGGEST REMAINING EDGE. RPB pays individual punt and kick return yards and return TDs; FFA, FantasyPros and CBS projections all omit them, so EVERY designated returner in this league is mispriced on every board including this one. Only Parker Washington has been researched. An empty entry in that file means 'not looked at yet', never 'no return value'. Nobody else in the league is pricing this."
   ],
   "contingencies": [
     {
@@ -128,6 +130,88 @@
       "when": "The ranked RB list is empty and Show More returns nothing",
       "do": "Stop planning around a back. Last two picks become K + D/ST or a searched-by-name body.",
       "why": "The sims always had a back available. FantasyPros' RB pool ran dry by 14.09 in the mock."
+    }
+  ],
+  "roundByRound": [
+    {
+      "pick": "1.02",
+      "take": "Jahmyr Gibbs",
+      "note": "RB1, 20.3 hppr/wk. Bijan Robinson 20.0 if Gibbs is gone. +164 VBD, the biggest edge in the draft."
+    },
+    {
+      "pick": "2.09",
+      "take": "Brock Bowers",
+      "note": "TE1, 11.8 hppr/wk, +93.7 VBD. Fallen to you 5 of 5. If gone, take a take-zone back and get Tyler Warren at 6.09."
+    },
+    {
+      "pick": "3.02",
+      "take": "Take-zone back",
+      "note": "Barkley / Ken Walker / Chase Brown / Hampton all 13.1 hppr/wk, Henry 12.9. Dead heat — Chase Brown breaks ties as must-draft. All gone? A.J. Brown 11.9, Drake London 11.8, Nico Collins 11.7."
+    },
+    {
+      "pick": "4.09",
+      "take": "Best WR — Malik Nabers if he falls",
+      "note": "Nabers 11.6 hppr/wk (+32.9). Else Ladd McConkey 10.6 or Emeka Egbuka 10.6 (must-draft)."
+    },
+    {
+      "pick": "5.02",
+      "take": "Mike Evans",
+      "note": "10.4 hppr/wk, must-draft. Half-PPR TD-regression buy — a format split in your favour. Garrett Wilson 10.5 as the alternate."
+    },
+    {
+      "pick": "6.09",
+      "take": "Parker Washington",
+      "note": "WR13 once returns are priced, +23.4 VBD at ADP 73. A take, not a fallback. If you have only one back, Montgomery instead and Washington at 7.02."
+    },
+    {
+      "pick": "7.02",
+      "take": "Justin Herbert (or Burrow)",
+      "note": "Both 20.2 hppr/wk. Burrow +13.9 / Herbert +9.8. Six teams keep a QB so the tier holds. Never QB before round 4."
+    },
+    {
+      "pick": "8.09",
+      "take": "Jaylen Warren / Tony Pollard / Rhamondre Stevenson",
+      "note": "All 9.9 hppr/wk. The last real backs — after these it is 8.7 and a cliff. Do not reach earlier, do not expect more later."
+    },
+    {
+      "pick": "9.02",
+      "take": "Best available, lean WR",
+      "note": "Jayden Reed 8.4, Jordan Addison 8.3."
+    },
+    {
+      "pick": "10.09",
+      "take": "LUTHER BURDEN III — KEEPER",
+      "note": "WR19, 10.6 hppr/wk, +18.7 VBD. Consumes this pick."
+    },
+    {
+      "pick": "11.02",
+      "take": "Kyle Monangai or Jonathon Brooks",
+      "note": "Both 8.7 hppr/wk. Brooks is must-draft and graded standalone-value behind shy-away Chuba Hubbard."
+    },
+    {
+      "pick": "12.09",
+      "take": "Xavier Worthy",
+      "note": "7.5 hppr/wk. Jakobi Meyers 7.2, Jayden Higgins 7.1 (must-draft)."
+    },
+    {
+      "pick": "13.02",
+      "take": "Jordan Mason",
+      "note": "7.4 hppr/wk. Croskey-Merritt 7.4."
+    },
+    {
+      "pick": "14.09",
+      "take": "Keaton Mitchell",
+      "note": "7.3 hppr/wk, must-draft AND Hampton's handcuff — the double-dip if you landed Hampton at 3.02."
+    },
+    {
+      "pick": "15.02",
+      "take": "Seattle D/ST",
+      "note": "20.5 RPB pts/wk across weeks 1-3, top-3 in all three. Jacksonville instead only if you are genuinely churning weekly — best single week (23.7) then 7th in week 2."
+    },
+    {
+      "pick": "16.09",
+      "take": "Kicker",
+      "note": "FFA does not project kickers. Nick is 70th of 150+ at the position. Do not spend thought here."
     }
   ]
 }

@@ -82,6 +82,16 @@ def build():
     w("`" + "` · `".join(label(o) for o in mine) + "`\n")
     w(f"\n{len(mine)} live picks (round 10 is consumed by the Etienne keeper).\n")
 
+    rbr = plan.get("roundByRound")
+    if rbr:
+        w("\n## Round by round\n")
+        w("Half-PPR points per week, from FFA's own projections scored under RPB's rules "
+          "(`sims/rpb_score.py`). ★ = FFA must-draft.\n")
+        w("\n| pick | take | why |")
+        w("|---|---|---|")
+        for r in rbr:
+            w(f"| **{r['pick']}** | **{r['take']}** | {r['note']} |")
+
     w("\n## The plan — Monte Carlo\n")
     w(f"{plan['source']}\n")
     w("\n| branch | when | do | why |")
