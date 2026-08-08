@@ -26,10 +26,32 @@ ARSB is the highest-ranked starred player, so the queue served him up.
 takes your best available *must-draft* player. At 1.02 that is a 76-point error
 (Bijan +163.7 vs ARSB +87.6).
 
-**Action before draft day:** either clear the queue, or re-populate it in board
-order rather than must-draft order. The must-draft list is a tiebreaker, never a
-value ranking — that is already a standing conclusion, and the queue silently
-violates it.
+**Mechanism confirmed 2026-08-08.** The queue is not edited directly — it is
+generated from the **"Tags: Target 🎯"** list on the cheat sheet, in board-rank
+order. Cheat Sheet Creator → New RPB → the TAGS column. Currently tagged:
+Amon-Ra St. Brown, Ashton Jeanty, Chase Brown, D'Andre Swift, David Montgomery,
+Jonathon Brooks, Jordan Mason, Keaton Mitchell, Tony Pollard, Emeka Egbuka,
+Brock Bowers, and the rest of the FFA must-draft set.
+
+**Gibbs (rank 1) and Bijan (rank 2) are NOT tagged.** That is the whole bug: the
+queue's first name is ARSB at rank 6.
+
+### The fix — two clicks, manual
+
+Cheat Sheet Creator → **New RPB** → View/Edit → TAGS column → **Add Tag →
+Target** on **Jahmyr Gibbs** and **Bijan Robinson**. That puts the true top of
+the board at the head of the queue and the 1.02 failure disappears.
+
+I could not apply this through the browser tooling — the Add Tag control would
+not open its picker (clicking it scrolls the table instead). It is a fast manual
+edit.
+
+### Cheaper mitigation if you skip the tagging
+
+**The queue is only dangerous in rounds 1–3**, where the gap between best
+available and best *tagged* is large (Bijan +163.7 vs ARSB +87.6). From round 4
+on, the tagged list is roughly the right answer anyway. So: never let the clock
+expire in the first three rounds and the trap never fires.
 
 ---
 

@@ -1,220 +1,220 @@
 {
-  "league": "RPB",
-  "updated": "2026-08-07",
-  "source": "~150,000 simulated RPB drafts, sims/mc5.py through mc11.py, run against a sharp room in which every team must own a running back by the end of round two.",
-  "keeper": "Luther Burden III — round 10 ASSUMED (see keepers-rpb.json; the round is unconfirmed and CBS has not processed keepers yet)",
-  "mirrorNote": "index.html holds the same conclusions in its PLAN constant so the app can render them offline. draft_day.py asserts the key strings appear in both; if you edit one, edit the other or the generator fails.",
-  "branches": [
-    {
-      "tag": "A",
-      "when": "1.02 — always",
-      "do": "Take the back. Bijan Robinson 89%, Gibbs otherwise.",
-      "why": "Picks 3-6 are a four-WR run, so nobody is competing with you for backs early."
-    },
-    {
-      "tag": "B",
-      "when": "2.09 — the only real decision",
-      "do": "Second RB, or an elite WR and the back at 3.02. Worth ~2 pts either way.",
-      "why": "The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway."
-    },
-    {
-      "tag": "C",
-      "when": "if you have one back after three picks",
-      "do": "Stop forcing it. Take value.",
-      "why": "One early back costs -11.8. Forcing RB at 4.09 + 5.02 to fix it costs -32.4 — the recovery is worse than the miss."
-    },
-    {
-      "tag": "B2",
-      "when": "3.02 — a take-zone back is still on the board",
-      "do": "Take the back over the higher-ranked WR.",
-      "why": "The take zone is a set of players, not a round. Backs sit on a flat shelf through RB12 (Achane — he marks where the shelf ends, he is NOT a target, see the take-zone note) at 216-220 pts, then step down to 207. Passing one at 3.02 leaves you RB18 (193.4) by 4.09 — a 23-point fall — while the WR you'd pass only falls 18 (Collins 197.9 to Egbuka 180.3). Net +5.8 for the back. Confirmed live 2026-08-06: took Nico Collins at 3.02 and Derrick Henry went 3.03."
-    },
-    {
-      "tag": "E",
-      "when": "2.09 — Bowers is gone",
-      "do": "Take the take-zone back, then Tyler Warren at 6.09.",
-      "why": "ADDED 2026-08-07. Warren is TE4 at +44.7 VBD and ADP 59, which is exactly your 6.09 — the largest VBD still on the board at that pick by a distance. Behind him Kraft +28.9 (ADP 71), LaPorta +25.3 (85), Fannin +23.0 (87) and KITTLE +17.6 at ADP 107, which is your 11.02. The old 'TE early or late, never the middle' rule does not survive contact with these numbers: the middle is where the value is once Bowers is gone."
-    },
-    {
-      "tag": "D",
-      "when": "4.09 / 5.02 / 6.09 — the WR block, BURDEN-KEEPER VERSION",
-      "do": "4.09 best WR on the board (Nabers if he falls, else McConkey or Egbuka). 5.02 Mike Evans. 6.09 PARKER WASHINGTON — and he is a take, not a fallback.",
-      "why": "REVISED TWICE on 2026-08-07. Burden as keeper is already a starting WR, so this looked like a two-WR block and Washington looked cuttable at -6.3 VBD. That was wrong, because the board did not price RETURN WORK. RPB pays punt return yards 0.1/yd, a +3 bonus at 100 in a game, and 6 plus distance for a return TD; FFA projects none of it. Washington was Jacksonville's primary punt returner in 2025 — 341 yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return TDs. Priced conservatively (300 yards, 0.5 TD) in data/return-roles-2026.json, he is WR13 at +23.4 VBD with an ADP of 73 — neighbours DeVonta Smith and Chris Olave go around ADP 28. A 45-pick arbitrage that exists only because every ranking in the league prices him without the returns. Nick's case is INDEPENDENT of all this and stacks on top: he calls Washington Jacksonville's lead receiver, a round-6 take a round ahead of ADP, ranked above Odunze, on an offense that averaged 33+ points over its final nine weeks. FFA's own projection agrees, giving him more receptions and yards than Brian Thomas Jr."
-    },
-    {
-      "tag": "D2",
-      "when": "6.09 vs 7.02 — Washington and the QB collide",
-      "do": "Washington at 6.09, quarterback at 7.02. Take Burrow at 7.02 if he somehow lasted, otherwise Herbert.",
-      "why": "Burrow (+13.9) and Herbert (+9.8) both project 20.2 hppr/wk and are separated by about 4 points, so sliding the QB one pick is nearly free. Washington at 6.09 is +23.4 VBD against roughly +4 for the next receiver, so the WR pick is worth about 20 points more than the QB pick is worth waiting for. Six teams keep a quarterback, which is what makes the slide safe. IF YOU HAVE ONLY ONE BACK after 3.02, David Montgomery (+5.8, must-draft, ADP 55) will not survive to 7.02 either — in that branch take Montgomery at 6.09, Washington at 7.02 and the QB at 8.09, where Herbert's ADP of 74 still sits."
-    }
-  ],
-  "takeZone": [
-    "Saquon Barkley",
-    "Ken Walker",
-    "Chase Brown",
-    "Omarion Hampton",
-    "Derrick Henry"
-  ],
-  "cutoffAfter": "Derrick Henry",
-  "pivotFrom": "Jeremiyah Love",
-  "takeZoneNote": "RB cutoff at 2.09. These five are all within 5 pts of pivoting to a WR. The zone is a PLAYER set, not a round: RB8-RB12 sit on a flat shelf (216-220 pts), RB13 steps down to 207, and the next back after that (Jeremiyah Love) drops to -14.5 and falls off a cliff. If one of the five is still there in round 3, he is still the pick. DEVON ACHANE WAS REMOVED 2026-08-07. The VBD sweep put him inside the shelf at RB12, so older copies of this list ran to six names — but he is on the FFA shy-away list AND the fade is format-specific to RPB ('R2 FADE in half-PPR'): McDaniel is gone to the Chargers, Malik Willis scrambles instead of checking down, and Miami projects bottom-five in points per game. A shy-away name inside the take zone is the one place these two layers contradict each other, and the FFA layer wins. Derrick Henry is now the last name in the zone, and he is a 'watch' too — take him last of the five. SLOT-2 REALITY CHECK, 2026-08-07: in FOUR straight mocks every one of these five was gone before pick 19. Hampton 2.04, Henry 2.07, Ken Walker 2.08 in the latest. AT YOUR SEAT THE TAKE ZONE IS A ROUND-2 CONCEPT ONLY. Plan 3.02 as a WR pick and treat a surviving back as a bonus, not an expectation.",
-  "bowers": "Brock Bowers",
-  "bowersGain": "+57.9 over the best take-zone back",
-  "bowersRule": "Round 2 or later only. Taking him at 1.02 over an elite back costs -81.8; the +36.8 exists only once the top of the RB board is gone.",
-  "edge": "Josh Allen (374 pts) lasts to picks 15-18 — six teams already keep a QB. Best value on the board in round 2 and nobody has a slot for him.",
-  "traps": [
-    "Reaching for D/ST or K. D/ST at 13.02, kicker at 16.09. CORRECTED AGAIN 2026-08-07 after a live mock: at 15.02 the ENTIRE TOP FIVE was gone (Seattle, Houston, Denver, Philadelphia, Rams, Pittsburgh) and the best left was the Vikings at 253.4 against Seattle's 294.2 — a 41-point cliff, exactly the 21-27 points-allowed band DST-STREAMING.md warns about. 15.02 was too late. Take one at 13.02. CORRECTED 2026-08-07 — the old version of this line said the best-to-tenth gap was 1.1 points a week and the matchup swing was six times larger. Both numbers were wrong. Recomputed from the files: the REAL unit gap in your own 2025 results is 3.9 pts/week (Texans 18.00 down to Browns 14.12, data/dst-actuals-2025.json), and the week-1 matchup swing is 5.9 pts/week across the full slate or 4.2 with the Jacksonville outlier removed (data/dst-weeks-2026.json). So matchup is worth roughly 1.1x to 1.5x the unit — the same order of magnitude, not six times. The reason to wait is NOT that defenses are interchangeable; they are not. It is that you cannot identify the good ones in August: preseason projections show a 1.1-pt spread where reality delivered 3.9, so the projections are compressing away the very thing you would be paying up for. You cannot buy an edge you cannot see. Take one at 13.02 — late enough that you are not paying for a unit you cannot identify, early enough that the top five are still on the board — and let the weekly matchup, which IS visible, do the work.",
-    "Forcing a back at 4.09/5.02 after missing RB2 — costs -32.4, worse than living with one back.",
-    "Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs -9.1; Kittle at 6.09 is free.",
-    "Treating 'anchor RB' as a rule at 5.02. The right test is not RB-vs-WR, it is whether the RB upgrade beats the WR you would otherwise land: with Etienne at 188.7 (below the 191.1 RB replacement) the break-even for taking Breece Hall over Luther Burden was a 162.8-point WR at your next pick, and the round-6/7 board offers 151-158. Burden was correct by roughly 8 points, not by the 27 the general rule implies."
-  ],
-  "standing": [
-    "Keep Etienne — regret, not points. His worst case is -1.2; Burden's is -34.2.",
-    "Double-RB is worth +2.8 against a sharp room, not the +8.6 a soft room showed.",
-    "Only paired sim comparisons are valid. Simulated opponents draft worse than the real room, so absolute scores and win rates mean nothing.",
-    "Nothing past 2.09 has ever been simulated pick-by-pick. Your 3.02, 4.09, 5.02 and 6.09 have no sim-backed guidance about WHO to take — only about the POLICY to use (mc12's must-draft-WR rule, mc13's full-draft shape). Branch D names Burden/Evans/Washington on that policy plus the FFA layer, not on a simulation of those three picks.",
-    "The FantasyPros simulator DOES model all 13 real RPB keepers (they lock on the board). Mock QB scarcity therefore mirrors the real draft — Josh Allen lasted to 4.09 in the 2026-08-06 trial run.",
-    "CORRECTED 2026-08-07 — the old version of this line said the plan fills all seven skill starters by 6.09 as RB-TE-WR-QB-WR-WR, which put QB at 4.09. That contradicts the standing rule of never taking a QB before round 4 and taking one at 7.02, and it contradicts the 4.09/5.02/6.09 WR block. The real line is RB-TE-RB-WR-WR-WR off 1.02/2.09/3.02/4.09/5.02/6.09, then QB at 7.02 — seven skill starters filled by 7.02, not 6.09. Your RB2 is the 3.02 take-zone back if one survives; if none does, Etienne (R10 keeper) starts as RB2 at 188.7, which is below the 191.1 RB replacement line and is the weakest cell in the whole plan. Nine picks remain for bench, D/ST and K. If a skill starter is still open after round 8, something went wrong earlier.",
-    "MATCH THE PICK PREDICTOR HORIZON TO THE GAP. The dropdown offers One/Two/Three rounds. At your turn picks (2.09, 4.09, 6.09, 8.09, 12.09, 14.09) only 2 players come off, so the One-round number OVERSTATES risk. At your wrap picks (3.02, 5.02, 7.02, 9.02, 11.02, 13.02, 15.02) roughly 17 players come off — nearly two rounds — so One-round UNDERSTATES it. Switch to Two rounds at wraps. This explains every mistimed pick across three mocks.",
-    "The D/ST drain is variance, not a law. Mock 3 had ZERO defenses gone at pick 102 (round 11), then three by 12.09 and the top two at 64% by 13.02. Mock 2 had six gone by 14.09. Check the count every round from 11 on rather than assuming either outcome; when the top defenses cross ~60%, take one — RPB doubles D/ST scoring.",
-    "FantasyPros grades the finished draft (Analyze button, top toolbar): a consensus letter grade out of 100 from 91 experts, plus a bar per team. Plan-built roster scored A- / 92 in mock 3. Use it as a post-mock check, never as in-draft guidance.",
-    "Player cards carry a Consensus Draft Sentiment panel (Coach AI) with Overall / Upside / Bust meters and a written summary. Useful for breaking ties between two unflagged names late.",
-    "The predictor LAGS on D/ST rather than being blind to it. In mock 2 it read <1% on every defense in round 12 and six were gone by 14.09; in mock 3 it correctly moved the top two to 64% by 13.02. Treat a defense still under ~20% as safe for one more round only, and re-check the count every round from 11.",
-    "A low percentage is a real probability, not a promise either way — Jordan Mason survived a 17-pick wrap at 17% while Mike Evans died twice at 29-35%. Read it as odds and weight by what the loss costs, after fixing the horizon.",
-    "5.02 — the must-draft list beats an anchor RB (mc12, 17,280 paired drafts). Forcing 'best RB' at 5.02 costs -19.7 to -27.6 and lost in 0% of 24 seeds, because RB replacement level in RPB is the RB20 (191.1 pts) while WR replacement is the WR30 (154.9) — two RB starters and no FLEX make a mid RB cheap to replace and a mid WR expensive. Narrowing the rule to must-draft WR ONLY was the best policy tested (+5.5 vs control, best in 92% of seeds).",
-    "THE SIMULATOR CANNOT MODEL A PLAYER FALLING. Its opponents draft close to ADP, so anyone whose ADP is earlier than your pick is always gone. That is why mc12 could never test Breece Hall at 5.02 and why mc13's TE-at-2.09 line returns Tyler Warren 93% instead of Bowers — yet Bowers has fallen to 2.09 in three of three real mocks. Trust the sim for 'which plan is better on an average board' and the live Pick Predictor for 'is this specific man still here'.",
-    "The simulator also does not know the FFA must/shy lists. Left alone it takes Devon Achane 31% of the time at 2.09 and Christian Watson 59% at 6.09 — both on the shy-away/avoid list. Sim output always needs the FFA layer applied on top by hand.",
-    "Full-draft run (mc13, 1,920 drafts): the plan lands only about 4 of your 15 picks on the FFA must-draft list. The list is a tiebreaker, not a shopping list — most picks are decided by value and by what the room leaves.",
-    "mc13 confirms the late-round script the plan already assumed: Rams D/ST at 15.02 in 94% of drafts and Brandon Aubrey at 16.09 in 72%. All nine starting slots fill in 100% of drafts either way, so there is no realistic path where you end up short a starter.",
-    "THE RANK COLUMN IS THE WRONG TOOL FOR RB-vs-WR. It scores against a season-long replacement level, which does not know what is left at YOUR next pick. At 3.02 it had Nico Collins 6 ranks above Derrick Henry, and Henry was still the better pick because the RB drop between picks is steeper than the WR drop. Compare the gap to your next pick, not the gap to average — the rank column is right about who is better, wrong about who to take.",
-    "D/ST RULE (verified 2026-08-07). SCORING: RPB doubles D/ST through inflated categories, NOT a 2x multiplier — sack 1, INT 3, fumble recovery 3, forced fumble 1 ON TOP of the recovery, safety 2, any defensive/return TD 6, blocked FG 2, yards allowed ZERO. Points-allowed tiers PER GAME: 0-3=20, 4-6=18, 7-9=16, 10-13=10, 14-20=8, 21-27=4, 28-34=0, 35-41=-4, 42+=-8. Never apply a further multiplier. SOURCE HIERARCHY: (1) Vegas implied team total = gameTotal/2 -/+ spread/2, the weekly call, beats every ranking site; (2) last season's ACTUAL results for the talent baseline and the true spread; (3) 4for4 for what personnel changed. Preseason projections understate the spread — 4for4 showed 1.1 pts/week between 1st and 10th where the real 2025 gap was 3.9. DRAFT: take a defense at 15.02, never earlier. Matchup is worth ~1.1x to 1.5x the unit (5.9 pts/wk of week-1 matchup swing, 4.2 without the Jacksonville outlier, against a 3.9 pts/wk real unit gap) — the same order of magnitude, so a good unit in a good spot beats a great unit in a bad one, but defenses are NOT interchangeable and an average matchup edge does not buy much. The big edges come from outlier spots like Jacksonville vs Cleveland, not from ordinary ones. Run sims/dst_rank.py after re-pulling lines each week.",
-    "WHICH defense at 15.02 (re-pulled 2026-08-07, real weeks 1-3 lines, no longer a week-1 proxy). SEATTLE if you want to hold one through the opening month — 61.6 over three weeks, 20.5/wk, top-3 in all three. JACKSONVILLE if you are genuinely churning weekly — best single week in football at 23.7 (Cleveland implied 16.5, the lowest offense on the board) and then 7th in week 2 at Denver, so it is a one-week rental. Rams third at 58.0. HOUSTON IS THE TRAP: the best unit in your actual 2025 results at 18.00/game, and it cracks the top five in none of the first three weeks — Bills, Bengals, Colts is a brutal opening draw. mc13's 'Rams at 15.02 in 94% of drafts' is what the sim reaches for on ADP, not what the matchups say; Seattle and Jacksonville both beat the Rams over the opening stretch.",
-    "FANTASYPROS SWEEP 2026-08-07 (FANTASYPROS-SWEEP.md, first run ever). Nick Zylak ranked #10 of 150+ analysts in 2025 DRAFT accuracy — RB 11, DST 15, TE 15, QB 22, WR 22, K 70. His best position is RB, which is exactly the thesis this plan is built on. His worst by far is kicker: ignore him at 16.09, nobody is good at it. Weight his WR calls on the FORMAT reasoning (Evans in half-PPR) rather than the raw rank, since WR is a mid position for him.",
-    "TWO LATE NAMES ARE DOUBLE-CORROBORATED (FantasyPros handcuff chart + FFA must-draft, the only two on the list that are both). KEATON MITCHELL is Omarion Hampton's handcuff — if Hampton is the take-zone back you land, Mitchell late is a real double-dip, not a dead bench spot (caveat: 5'8\", 179 lbs). JONATHON BROOKS is graded Tier 0 'standalone value' and backs up Chuba Hubbard, who is on your shy-away list — Nick fades the starter and buys the backup on the same depth chart and FantasyPros agrees the backup has value without an injury. 8th-round ADP.",
-    "HANDCUFFS FOR YOUR OWN BACKS ARE MOSTLY BAD, so do not plan around them: Bijan -> Brian Robinson Jr. (12th rd, early-down only), Gibbs -> Isiah Pacheco (declining role), Barkley -> Tank Bigsby (tier 3, behind Shipley on passing downs), Ken Walker -> Emmett Johnson (5th-rounder, Kareem Hunt return looms), Chase Brown -> Samaje Perine (26th rd), Henry -> Justice Hill (tier 4, minimal upside). Only Hampton's handcuff is worth a pick. OPEN ITEM: the source contradicted itself on Travis Etienne's backfield and it did not resolve — he is your R10 keeper, so check it before draft day.",
-    "ECR-VS-ADP CROSS-CHECK (92-expert consensus, 2026-08-07). Devon Achane is -16 — the market drafts him 16 picks ahead of consensus, independent support for pulling him out of the take zone. Hampton -9 and Jeanty -9 are also being over-drafted. Breece Hall -10, which is more reason the 5.02 anchor-RB temptation is a trap. BOWERS IS RANKED 17TH OVERALL AND YOUR 2.09 IS OVERALL PICK 19 — that is the whole reason he keeps falling to you. He is not falling far; the sim's '0 of 52,200 drafts' was model error, not a miracle. Zay Flowers shows +15 but is MWV-ONLY — do not act on it in RPB.",
-    "SNAP COUNTS WERE NOT OBTAINED. Three of the four FantasyPros reports came back on the free tier; the Snap Count Analysis report renders one team and then hard-gates. It needs the logged-in Chrome session, and the Chrome MCP has now returned 'This site is blocked' on every call across two consecutive sessions. Restarting Chrome/the extension is the fix and it is Angelo's to do.",
-    "RPB-RESCORED BOARD 2026-08-07 (RPB-RESCORED-BOARD.md + RPB-BOARD.csv, all 723 players, rebuild with `python3 sims/rpb_score.py --csv`). FFA's own Detailed Projections stat lines scored under RPB's real CBS rules. HEADLINE: skill-position ORDER barely moves — no RB, WR or TE inside the top 60 shifts more than two position ranks — so the plan's player judgements survive intact. RPB's rules are a level shift, not a re-ranking.",
-    "BOWERS IS BIGGER THAN THE PLAN SAID: +93.7 VBD, TE1, 6th overall, against the best take-zone back (Barkley) at +35.8. Taking him at 2.09 is worth +57.9, not +36.8 — the old figure came from the sims' VBD on different projections. TE cliff: Bowers 210.3, McBride 185.1, Loveland kept, Warren 161.3. Instruction unchanged, number much larger.",
-    "QB IS EVEN CHEAPER THAN THE PLAN SAID. Josh Allen is +30.0 VBD — BELOW Saquon Barkley (+35.8) and 27th overall. RPB adds 31-61 pts to every QB (0.05/yd passing vs 0.04, plus 300-yd game bonuses), which makes QB totals look huge but lifts replacement level with them; six teams keep a QB so only four are drafted. QB1-to-replacement is 30 pts = 1.8/week, and Allen through Prescott span 33 pts total. Wait to 7.02 with confidence.",
-    "RPB QUIETLY DE-VALUES RUSHING QBs. Passing yards go 0.04 -> 0.05 while rushing yards stay 0.10, so volume pocket passers gain most. Herbert QB7->QB3, Burrow QB5->QB2, Caleb Williams QB8->QB5; LAMAR JACKSON QB2->QB6, Jayden Daniels QB4->QB7, Hurts QB6->QB8. Nick's QB preferences lean mobile; your scoring leans the other way. At 7.02 prefer the pocket volume arm when they are close — Burrow and Herbert are the two your rules like best.",
-    "TAKE-ZONE ORDER SHUFFLES BUT DO NOT ACT ON IT. Under RPB: Barkley +35.8, Ken Walker +33.9, Henry +32.0, Hampton +31.3, Chase Brown +30.9. Henry rises two ranks and Chase Brown falls two, because the 100-yard-game and long-TD bonuses reward Henry's big-play profile. The gap is 1.1 points over a SEASON — noise — and the FFA layer breaks the tie the other way: Chase Brown is must-draft, Henry is an explicit 'watch, not a buy'. KEEP TAKING CHASE BROWN AHEAD OF HENRY. The shelf is confirmed: RB7-RB12 span just 7.2 points.",
-    "PARKER WASHINGTON IS BELOW REPLACEMENT ON THESE NUMBERS — WR29, -6.3 VBD, 74th overall (WR replacement is DJ Moore at 168.4; Washington projects 162.1). BUT this board cannot see return work, which RPB scores and FFA does not project: punt return yards 0.1/yd (+3 at 100), kick return 0.05/yd (+3 at 150), return TD 6 plus distance. A full-time punt returner is worth roughly +30 to +45 points, which would move him to about +25 to +40 VBD. TWO UNVERIFIED THINGS BEFORE DRAFT DAY: (1) is Washington actually Jacksonville's punt returner in 2026 — this is load-bearing and was asserted from memory, not checked; (2) which OTHER designated returners are being undervalued by every ranking in this league. Largest un-modelled edge in the setup.",
-    "BURDEN AND EVANS CHECK OUT on RPB numbers: Luther Burden WR19 +18.7 VBD (39th overall), Mike Evans WR23 +14.8 (47th). The 4.09/5.02 half of branch D is sound.",
-    "TEMPER THE SWEEP'S TWO LATE NAMES on RPB numbers: Jonathon Brooks RB30 at -47.4 VBD and Keaton Mitchell RB40 at -71.8. Deep-bench upside, not value. Their case was corroboration between two lists, not projected points — draft late, never reach.",
-    "REPLACEMENT LEVELS UNDER RPB (10 teams, no FLEX, keepers removed): QB = Jayden Daniels 390.3 (4 drafted), RB = D'Andre Swift 199.0 (18 drafted), WR = DJ Moore 168.4 (26 drafted), TE = Dalton Kincaid 116.6 (9 drafted). Etienne sits at RB21 / 198.8 / -0.2 VBD — exactly replacement, confirming he is the weakest cell in the roster.",
-    "TWO LEAGUE-SETTINGS QUESTIONS ARE STILL OPEN AND ONE OF THEM IS BIG. The CBS rules page says 'Managers may not do add/drops' — if that is live, streaming is IMPOSSIBLE and the whole 15.02 D/ST conclusion inverts toward drafting the best unit earlier, because a 3.9 pts/week unit gap you cannot escape is worth ~66 points. The same page also lists an Add Fee of $5.00, which contradicts it. Separately, 'Season Ends: Week 22' contradicts the 'RPB has no playoffs' assumption used to dismiss Nick's Week 15-17 schedule cautions on Barkley and DeVonta Smith. Both need Angelo to confirm.",
-    "KEEPER FLIPPED TO BURDEN 2026-08-07, reversing the long-standing 'keep Etienne on regret not points' conclusion. Scored under RPB's real rules: Etienne is RB21 at 198.8 pts and -0.2 VBD — EXACTLY replacement level, so he adds nothing even in the branch where he starts — while Burden is WR19 at +18.7 and slots into a starting WR spot. Etienne also never starts under the actual plan (two backs by 3.02, no FLEX, he is RB3), the insurance argument collapses because Kyren Williams/Jeremiyah Love/Breece Hall all beat him by ~17 pts at 4.09 if the early backs fail, and the FFA layer points the same way — Etienne is SHY-AWAY, Burden is MUST-DRAFT with a 2026-08-07 video calling him a round-4 pick with WR1 upside. Etienne is a New Orleans Saint in 2026, which also resolves the garbled handcuff entry in FANTASYPROS-SWEEP.md.",
-    "UNVERIFIED AND IT MATTERS: this assumes Burden costs the R10 pick, like-for-like with Etienne. The keeper rules say R9-13 keeps cost that round but R14-15/waiver keeps allow TWO. Burden was a 2025 rookie, so if he was drafted R14-15 or added off waivers, the consumed pick changes and Angelo may not have to choose at all. Check before draft day.",
-    "THE RB DEAD ZONE IS CONFIRMED BY YOUR OWN SCORING AND IT IS VICIOUS. RB18 David Montgomery +5.8, then RB23 TreVeyon Henderson -15.8, RB25 Bucky Irving -21.7, RB30 Jonathon Brooks -47.4. There is nothing between Montgomery and the graveyard. DO NOT SPEND 7.02-9.02 ON A RUNNING BACK. With Burden as the keeper you now enter the draft with ZERO backs, so coming out of 3.02 with two of them matters more than it did.",
-    "PARKER WASHINGTON IS BACK IN THE PLAN AND THE EARLIER '-6.3, below replacement' VERDICT IS WITHDRAWN. Verified 2026-08-07: he was Jacksonville's primary punt returner in 2025 with 341 return yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return touchdowns — the first Jaguar to house multiple returns in a season. RPB scores that and no projection source does. Priced conservatively in data/return-roles-2026.json he is WR13, +23.4 VBD, at ADP 73, next to DeVonta Smith and Chris Olave who both go near ADP 28. Even the bear case where he loses the return job midseason is +10.7. THE RISK: he is expecting a full-time offensive workload for the first time and teams routinely pull full-time starters off returns; his own words are 'I'm just open for the opportunity, whatever it is'. Also note Jacksonville's WR room now includes Jakobi Meyers alongside Brian Thomas Jr. and Travis Hunter.",
-    "WIDEN data/return-roles-2026.json — IT IS THE BIGGEST REMAINING EDGE. RPB pays individual punt and kick return yards and return TDs; FFA, FantasyPros and CBS projections all omit them, so EVERY designated returner in this league is mispriced on every board including this one. Only Parker Washington has been researched. An empty entry in that file means 'not looked at yet', never 'no return value'. Nobody else in the league is pricing this.",
-    "PREDICTOR HORIZON, RE-LEARNED THE HARD WAY 2026-08-07. At 5.02 the live Pick Predictor read <1% on David Montgomery, D'Andre Swift AND Quinshon Judkins. By 8.09 all three were gone and the best back left was RB34. <1% means 'safe until your NEXT pick' and your 5.02-to-6.09 gap is 17 picks. AT EVERY WRAP PICK (3.02, 5.02, 7.02, 9.02, 11.02, 13.02, 15.02) SWITCH THE DROPDOWN TO TWO ROUNDS. The one-round number is a lie at a wrap.",
-    "THE PREDICTOR IS BLIND TO KEEPER-DRIVEN QB COLLAPSE, IN YOUR FAVOUR. It read Josh Allen 99% GONE at 7.02; he was still on the board at 8.09 and did not go until round 10-11. Six teams keep a quarterback and only four are drafted, which the model does not know. Never let a high QB percentage panic you into reaching. Corollary learned the same day: IF you are spending a pick on a QB, spend it on the BEST one — taking Burrow (+13.9) over Allen (+30.0) at 7.02 cost about 16 points.",
-    "BYE WEEKS ARE NOT TRACKED ANYWHERE and a live mock flagged FOUR starters on bye in one week. Observed collisions in that roster: Gibbs and Burrow both bye 6; Nico Collins and Mike Evans both bye 8. Neither the board, the plan nor notes.json carries bye data — check the bye column in the FantasyPros draft view before confirming a pick that stacks an existing bye."
-  ],
-  "contingencies": [
-    {
-      "when": "Every take-zone back is gone before 2.09",
-      "do": "Take the WR and buy a back next round. Do not reach past the cutoff.",
-      "why": "mc10 said the block never drains past Achane — RB13+ was 0% at every setting. In the 2026-08-06 mock all six then-listed backs drained by 2.08. Rare is not impossible. Happened again in the 2026-08-06 trial run — gone by 2.08 in back-to-back mocks. Now that Achane is off the list the zone is five names, so it drains one pick sooner."
-    },
-    {
-      "when": "Brock Bowers is on the board in round 2 or later",
-      "do": "Take him immediately. Largest single edge in the draft.",
-      "why": "mc7 said he goes before pick 19 in 52,200 of 52,200 drafts. He fell to 2.09 in the mock and was worth +36.8. He fell to 2.09 in both 2026-08-06 mocks. Treat this as likely, not miraculous."
-    },
-    {
-      "when": "Defenses start draining in round 13-14",
-      "do": "Let them go. Take your D/ST at 15.02 and stream it all year.",
-      "why": "SUPERSEDED 2026-08-07 by RPB's real D/ST scoring, then CORRECTED again the same day. RPB's points-allowed tiers are flat at the top — every top-10 defense allows 16-19 PPG and they all land in the same 14-20 band worth 8 points — so the PROJECTED gap from 1st to 10th is only 1.1 points a week. That 1.1 is a projection artifact, not the truth: your actual 2025 results spread 3.9 points a week. The week-1 matchup swing is 5.9 across the full slate, 4.2 without the Jacksonville outlier — so matchup beats unit by about 1.1x to 1.5x, not the 'six times' an earlier version claimed. The case for letting the round-13/14 run go is therefore not that the units are the same. It is that in August you cannot tell which unit is which, while you CAN read the matchup. Take one at 15.02 and churn it."
-    },
-    {
-      "when": "The ranked RB list is empty and Show More returns nothing",
-      "do": "Stop planning around a back. Last two picks become K + D/ST or a searched-by-name body.",
-      "why": "The sims always had a back available. FantasyPros' RB pool ran dry by 14.09 in the mock."
-    }
-  ],
-  "roundByRound": [
-    {
-      "pick": "1.02",
-      "take": "Jahmyr Gibbs",
-      "note": "RB1, 20.3 hppr/wk. Bijan Robinson 20.0 if Gibbs is gone. +164 VBD, the biggest edge in the draft."
-    },
-    {
-      "pick": "2.09",
-      "take": "Brock Bowers",
-      "note": "TE1, 11.8 hppr/wk, +93.7 VBD. Fallen to you 5 of 5. If gone, take a take-zone back and get Tyler Warren at 6.09."
-    },
-    {
-      "pick": "3.02",
-      "take": "Take-zone back",
-      "note": "Barkley / Ken Walker / Chase Brown / Hampton all 13.1 hppr/wk, Henry 12.9. Dead heat — Chase Brown breaks ties as must-draft. All gone? A.J. Brown 11.9, Drake London 11.8, Nico Collins 11.7."
-    },
-    {
-      "pick": "4.09",
-      "take": "Best WR — Malik Nabers if he falls",
-      "note": "Nabers 11.6 hppr/wk (+32.9). Else Ladd McConkey 10.6 or Emeka Egbuka 10.6 (must-draft)."
-    },
-    {
-      "pick": "5.02",
-      "take": "Mike Evans",
-      "note": "10.4 hppr/wk, must-draft. Half-PPR TD-regression buy — a format split in your favour. Garrett Wilson 10.5 as the alternate."
-    },
-    {
-      "pick": "6.09",
-      "take": "Parker Washington",
-      "note": "WR13 once returns are priced, +23.4 VBD at ADP 73. A take, not a fallback. If you have only one back, Montgomery instead and Washington at 7.02."
-    },
-    {
-      "pick": "7.02",
-      "take": "Justin Herbert (or Burrow)",
-      "note": "Both 20.2 hppr/wk. Burrow +13.9 / Herbert +9.8. Six teams keep a QB so the tier holds. Never QB before round 4."
-    },
-    {
-      "pick": "8.09",
-      "take": "Jaylen Warren / Tony Pollard / Rhamondre Stevenson",
-      "note": "All 9.9 hppr/wk. The last real backs — after these it is 8.7 and a cliff. Do not reach earlier, do not expect more later."
-    },
-    {
-      "pick": "9.02",
-      "take": "Best available, lean WR",
-      "note": "Jayden Reed 8.4, Jordan Addison 8.3."
-    },
-    {
-      "pick": "10.09",
-      "take": "LUTHER BURDEN III — KEEPER",
-      "note": "WR19, 10.6 hppr/wk, +18.7 VBD. Consumes this pick."
-    },
-    {
-      "pick": "11.02",
-      "take": "Kyle Monangai or Jonathon Brooks",
-      "note": "Both 8.7 hppr/wk. Brooks is must-draft and graded standalone-value behind shy-away Chuba Hubbard."
-    },
-    {
-      "pick": "12.09",
-      "take": "Xavier Worthy",
-      "note": "7.5 hppr/wk. Jakobi Meyers 7.2, Jayden Higgins 7.1 (must-draft)."
-    },
-    {
-      "pick": "13.02",
-      "take": "SEATTLE D/ST — moved up from 15.02",
-      "note": "MOVED 2026-08-07. A live mock had the entire top five gone by 15.02 and left only the Vikings (253.4) against Seattle's 294.2 — a 41-point cliff. Seattle is 61.6 over weeks 1-3 and top-3 in all three. Jacksonville instead only if you are genuinely churning weekly."
-    },
-    {
-      "pick": "14.09",
-      "take": "Keaton Mitchell",
-      "note": "7.3 hppr/wk, must-draft AND Hampton's handcuff — the double-dip if you landed Hampton at 3.02."
-    },
-    {
-      "pick": "15.02",
-      "take": "Best available skill player",
-      "note": "D/ST moved to 13.02. Use this on RB or WR depth — or a second defense if the board somehow held."
-    },
-    {
-      "pick": "16.09",
-      "take": "Kicker",
-      "note": "FFA does not project kickers. Nick is 70th of 150+ at the position. Do not spend thought here."
-    }
-  ]
+ "league": "RPB",
+ "updated": "2026-08-07",
+ "source": "~150,000 simulated RPB drafts, sims/mc5.py through mc11.py, run against a sharp room in which every team must own a running back by the end of round two.",
+ "keeper": "Luther Burden III — round 10 ASSUMED (see keepers-rpb.json; the round is unconfirmed and CBS has not processed keepers yet)",
+ "mirrorNote": "index.html holds the same conclusions in its PLAN constant so the app can render them offline. draft_day.py asserts the key strings appear in both; if you edit one, edit the other or the generator fails.",
+ "branches": [
+  {
+   "tag": "A",
+   "when": "1.02 — always",
+   "do": "Take the back. Bijan Robinson 89%, Gibbs otherwise.",
+   "why": "Picks 3-6 are a four-WR run, so nobody is competing with you for backs early."
+  },
+  {
+   "tag": "B",
+   "when": "2.09 — the only real decision",
+   "do": "Second RB, or an elite WR and the back at 3.02. Worth ~2 pts either way.",
+   "why": "The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway."
+  },
+  {
+   "tag": "C",
+   "when": "if you have one back after three picks",
+   "do": "Stop forcing it. Take value.",
+   "why": "One early back costs -11.8. Forcing RB at 4.09 + 5.02 to fix it costs -32.4 — the recovery is worse than the miss."
+  },
+  {
+   "tag": "B2",
+   "when": "3.02 — a take-zone back is still on the board",
+   "do": "Take the back over the higher-ranked WR.",
+   "why": "The take zone is a set of players, not a round. Backs sit on a flat shelf through RB12 (Achane — he marks where the shelf ends, he is NOT a target, see the take-zone note) at 216-220 pts, then step down to 207. Passing one at 3.02 leaves you RB18 (193.4) by 4.09 — a 23-point fall — while the WR you'd pass only falls 18 (Collins 197.9 to Egbuka 180.3). Net +5.8 for the back. Confirmed live 2026-08-06: took Nico Collins at 3.02 and Derrick Henry went 3.03."
+  },
+  {
+   "tag": "E",
+   "when": "2.09 — Bowers is gone",
+   "do": "Take the take-zone back, then Tyler Warren at 6.09.",
+   "why": "ADDED 2026-08-07. Warren is TE4 at +44.7 VBD and ADP 59, which is exactly your 6.09 — the largest VBD still on the board at that pick by a distance. Behind him Kraft +28.9 (ADP 71), LaPorta +25.3 (85), Fannin +23.0 (87) and KITTLE +17.6 at ADP 107, which is your 11.02. The old 'TE early or late, never the middle' rule does not survive contact with these numbers: the middle is where the value is once Bowers is gone."
+  },
+  {
+   "tag": "D",
+   "when": "4.09 / 5.02 / 6.09 — the WR block, BURDEN-KEEPER VERSION",
+   "do": "4.09 best WR on the board (Nabers if he falls, else McConkey or Egbuka). 5.02 Mike Evans. 6.09 PARKER WASHINGTON — and he is a take, not a fallback.",
+   "why": "REVISED TWICE on 2026-08-07. Burden as keeper is already a starting WR, so this looked like a two-WR block and Washington looked cuttable at -6.3 VBD. That was wrong, because the board did not price RETURN WORK. RPB pays punt return yards 0.1/yd, a +3 bonus at 100 in a game, and 6 plus distance for a return TD; FFA projects none of it. Washington was Jacksonville's primary punt returner in 2025 — 341 yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return TDs. Priced conservatively (300 yards, 0.5 TD) in data/return-roles-2026.json, he is WR13 at +23.4 VBD with an ADP of 73 — neighbours DeVonta Smith and Chris Olave go around ADP 28. A 45-pick arbitrage that exists only because every ranking in the league prices him without the returns. Nick's case is INDEPENDENT of all this and stacks on top: he calls Washington Jacksonville's lead receiver, a round-6 take a round ahead of ADP, ranked above Odunze, on an offense that averaged 33+ points over its final nine weeks. FFA's own projection agrees, giving him more receptions and yards than Brian Thomas Jr."
+  },
+  {
+   "tag": "D2",
+   "when": "6.09 vs 7.02 — Washington and the QB collide",
+   "do": "Washington at 6.09, quarterback at 7.02. Take Burrow at 7.02 if he somehow lasted, otherwise Herbert.",
+   "why": "Burrow (+13.9) and Herbert (+9.8) both project 20.2 hppr/wk and are separated by about 4 points, so sliding the QB one pick is nearly free. Washington at 6.09 is +23.4 VBD against roughly +4 for the next receiver, so the WR pick is worth about 20 points more than the QB pick is worth waiting for. Six teams keep a quarterback, which is what makes the slide safe. IF YOU HAVE ONLY ONE BACK after 3.02, David Montgomery (+5.8, must-draft, ADP 55) will not survive to 7.02 either — in that branch take Montgomery at 6.09, Washington at 7.02 and the QB at 8.09, where Herbert's ADP of 74 still sits."
+  }
+ ],
+ "takeZone": [
+  "Saquon Barkley",
+  "Ken Walker",
+  "Chase Brown",
+  "Omarion Hampton",
+  "Derrick Henry"
+ ],
+ "cutoffAfter": "Derrick Henry",
+ "pivotFrom": "Jeremiyah Love",
+ "takeZoneNote": "RB cutoff at 2.09. These five are all within 5 pts of pivoting to a WR. The zone is a PLAYER set, not a round: RB8-RB12 sit on a flat shelf (216-220 pts), RB13 steps down to 207, and the next back after that (Jeremiyah Love) drops to -14.5 and falls off a cliff. If one of the five is still there in round 3, he is still the pick. DEVON ACHANE WAS REMOVED 2026-08-07. The VBD sweep put him inside the shelf at RB12, so older copies of this list ran to six names — but he is on the FFA shy-away list AND the fade is format-specific to RPB ('R2 FADE in half-PPR'): McDaniel is gone to the Chargers, Malik Willis scrambles instead of checking down, and Miami projects bottom-five in points per game. A shy-away name inside the take zone is the one place these two layers contradict each other, and the FFA layer wins. Derrick Henry is now the last name in the zone, and he is a 'watch' too — take him last of the five. SLOT-2 REALITY CHECK, 2026-08-07: in FOUR straight mocks every one of these five was gone before pick 19. Hampton 2.04, Henry 2.07, Ken Walker 2.08 in the latest. AT YOUR SEAT THE TAKE ZONE IS A ROUND-2 CONCEPT ONLY. Plan 3.02 as a WR pick and treat a surviving back as a bonus, not an expectation.",
+ "bowers": "Brock Bowers",
+ "bowersGain": "+57.9 over the best take-zone back",
+ "bowersRule": "Round 2 or later only. Taking him at 1.02 over an elite back costs -81.8; the +36.8 exists only once the top of the RB board is gone.",
+ "edge": "Josh Allen (374 pts) lasts to picks 15-18 — six teams already keep a QB. Best value on the board in round 2 and nobody has a slot for him.",
+ "traps": [
+  "Reaching for D/ST or K. D/ST at 13.02, kicker at 16.09. CORRECTED AGAIN 2026-08-07 after a live mock: at 15.02 the ENTIRE TOP FIVE was gone (Seattle, Houston, Denver, Philadelphia, Rams, Pittsburgh) and the best left was the Vikings at 253.4 against Seattle's 294.2 — a 41-point cliff, exactly the 21-27 points-allowed band DST-STREAMING.md warns about. 15.02 was too late. Take one at 13.02. CORRECTED 2026-08-07 — the old version of this line said the best-to-tenth gap was 1.1 points a week and the matchup swing was six times larger. Both numbers were wrong. Recomputed from the files: the REAL unit gap in your own 2025 results is 3.9 pts/week (Texans 18.00 down to Browns 14.12, data/dst-actuals-2025.json), and the week-1 matchup swing is 5.9 pts/week across the full slate or 4.2 with the Jacksonville outlier removed (data/dst-weeks-2026.json). So matchup is worth roughly 1.1x to 1.5x the unit — the same order of magnitude, not six times. The reason to wait is NOT that defenses are interchangeable; they are not. It is that you cannot identify the good ones in August: preseason projections show a 1.1-pt spread where reality delivered 3.9, so the projections are compressing away the very thing you would be paying up for. You cannot buy an edge you cannot see. Take one at 13.02 — late enough that you are not paying for a unit you cannot identify, early enough that the top five are still on the board — and let the weekly matchup, which IS visible, do the work.",
+  "Forcing a back at 4.09/5.02 after missing RB2 — costs -32.4, worse than living with one back.",
+  "Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs -9.1; Kittle at 6.09 is free.",
+  "Treating 'anchor RB' as a rule at 5.02. The right test is not RB-vs-WR, it is whether the RB upgrade beats the WR you would otherwise land: with Etienne at 188.7 (below the 191.1 RB replacement) the break-even for taking Breece Hall over Luther Burden was a 162.8-point WR at your next pick, and the round-6/7 board offers 151-158. Burden was correct by roughly 8 points, not by the 27 the general rule implies."
+ ],
+ "standing": [
+  "Keep Etienne — regret, not points. His worst case is -1.2; Burden's is -34.2.",
+  "Double-RB is worth +2.8 against a sharp room, not the +8.6 a soft room showed.",
+  "Only paired sim comparisons are valid. Simulated opponents draft worse than the real room, so absolute scores and win rates mean nothing.",
+  "Nothing past 2.09 has ever been simulated pick-by-pick. Your 3.02, 4.09, 5.02 and 6.09 have no sim-backed guidance about WHO to take — only about the POLICY to use (mc12's must-draft-WR rule, mc13's full-draft shape). Branch D names Burden/Evans/Washington on that policy plus the FFA layer, not on a simulation of those three picks.",
+  "The FantasyPros simulator DOES model all 13 real RPB keepers (they lock on the board). Mock QB scarcity therefore mirrors the real draft — Josh Allen lasted to 4.09 in the 2026-08-06 trial run.",
+  "CORRECTED 2026-08-07 — the old version of this line said the plan fills all seven skill starters by 6.09 as RB-TE-WR-QB-WR-WR, which put QB at 4.09. That contradicts the standing rule of never taking a QB before round 4 and taking one at 7.02, and it contradicts the 4.09/5.02/6.09 WR block. The real line is RB-TE-RB-WR-WR-WR off 1.02/2.09/3.02/4.09/5.02/6.09, then QB at 7.02 — seven skill starters filled by 7.02, not 6.09. Your RB2 is the 3.02 take-zone back if one survives; if none does, Etienne (R10 keeper) starts as RB2 at 188.7, which is below the 191.1 RB replacement line and is the weakest cell in the whole plan. Nine picks remain for bench, D/ST and K. If a skill starter is still open after round 8, something went wrong earlier.",
+  "MATCH THE PICK PREDICTOR HORIZON TO THE GAP. The dropdown offers One/Two/Three rounds. At your turn picks (2.09, 4.09, 6.09, 8.09, 12.09, 14.09) only 2 players come off, so the One-round number OVERSTATES risk. At your wrap picks (3.02, 5.02, 7.02, 9.02, 11.02, 13.02, 15.02) roughly 17 players come off — nearly two rounds — so One-round UNDERSTATES it. Switch to Two rounds at wraps. This explains every mistimed pick across three mocks.",
+  "The D/ST drain is variance, not a law. Mock 3 had ZERO defenses gone at pick 102 (round 11), then three by 12.09 and the top two at 64% by 13.02. Mock 2 had six gone by 14.09. Check the count every round from 11 on rather than assuming either outcome; when the top defenses cross ~60%, take one — RPB doubles D/ST scoring.",
+  "FantasyPros grades the finished draft (Analyze button, top toolbar): a consensus letter grade out of 100 from 91 experts, plus a bar per team. Plan-built roster scored A- / 92 in mock 3. Use it as a post-mock check, never as in-draft guidance.",
+  "Player cards carry a Consensus Draft Sentiment panel (Coach AI) with Overall / Upside / Bust meters and a written summary. Useful for breaking ties between two unflagged names late.",
+  "The predictor LAGS on D/ST rather than being blind to it. In mock 2 it read <1% on every defense in round 12 and six were gone by 14.09; in mock 3 it correctly moved the top two to 64% by 13.02. Treat a defense still under ~20% as safe for one more round only, and re-check the count every round from 11.",
+  "A low percentage is a real probability, not a promise either way — Jordan Mason survived a 17-pick wrap at 17% while Mike Evans died twice at 29-35%. Read it as odds and weight by what the loss costs, after fixing the horizon.",
+  "5.02 — the must-draft list beats an anchor RB (mc12, 17,280 paired drafts). Forcing 'best RB' at 5.02 costs -19.7 to -27.6 and lost in 0% of 24 seeds, because RB replacement level in RPB is the RB20 (191.1 pts) while WR replacement is the WR30 (154.9) — two RB starters and no FLEX make a mid RB cheap to replace and a mid WR expensive. Narrowing the rule to must-draft WR ONLY was the best policy tested (+5.5 vs control, best in 92% of seeds).",
+  "THE SIMULATOR CANNOT MODEL A PLAYER FALLING. Its opponents draft close to ADP, so anyone whose ADP is earlier than your pick is always gone. That is why mc12 could never test Breece Hall at 5.02 and why mc13's TE-at-2.09 line returns Tyler Warren 93% instead of Bowers — yet Bowers has fallen to 2.09 in three of three real mocks. Trust the sim for 'which plan is better on an average board' and the live Pick Predictor for 'is this specific man still here'.",
+  "The simulator also does not know the FFA must/shy lists. Left alone it takes Devon Achane 31% of the time at 2.09 and Christian Watson 59% at 6.09 — both on the shy-away/avoid list. Sim output always needs the FFA layer applied on top by hand.",
+  "Full-draft run (mc13, 1,920 drafts): the plan lands only about 4 of your 15 picks on the FFA must-draft list. The list is a tiebreaker, not a shopping list — most picks are decided by value and by what the room leaves.",
+  "mc13 confirms the late-round script the plan already assumed: Rams D/ST at 15.02 in 94% of drafts and Brandon Aubrey at 16.09 in 72%. All nine starting slots fill in 100% of drafts either way, so there is no realistic path where you end up short a starter.",
+  "THE RANK COLUMN IS THE WRONG TOOL FOR RB-vs-WR. It scores against a season-long replacement level, which does not know what is left at YOUR next pick. At 3.02 it had Nico Collins 6 ranks above Derrick Henry, and Henry was still the better pick because the RB drop between picks is steeper than the WR drop. Compare the gap to your next pick, not the gap to average — the rank column is right about who is better, wrong about who to take.",
+  "D/ST RULE (verified 2026-08-07). SCORING: RPB doubles D/ST through inflated categories, NOT a 2x multiplier — sack 1, INT 3, fumble recovery 3, forced fumble 1 ON TOP of the recovery, safety 2, any defensive/return TD 6, blocked FG 2, yards allowed ZERO. Points-allowed tiers PER GAME: 0-3=20, 4-6=18, 7-9=16, 10-13=10, 14-20=8, 21-27=4, 28-34=0, 35-41=-4, 42+=-8. Never apply a further multiplier. SOURCE HIERARCHY: (1) Vegas implied team total = gameTotal/2 -/+ spread/2, the weekly call, beats every ranking site; (2) last season's ACTUAL results for the talent baseline and the true spread; (3) 4for4 for what personnel changed. Preseason projections understate the spread — 4for4 showed 1.1 pts/week between 1st and 10th where the real 2025 gap was 3.9. DRAFT: take a defense at 15.02, never earlier. Matchup is worth ~1.1x to 1.5x the unit (5.9 pts/wk of week-1 matchup swing, 4.2 without the Jacksonville outlier, against a 3.9 pts/wk real unit gap) — the same order of magnitude, so a good unit in a good spot beats a great unit in a bad one, but defenses are NOT interchangeable and an average matchup edge does not buy much. The big edges come from outlier spots like Jacksonville vs Cleveland, not from ordinary ones. Run sims/dst_rank.py after re-pulling lines each week.",
+  "WHICH defense at 15.02 (re-pulled 2026-08-07, real weeks 1-3 lines, no longer a week-1 proxy). SEATTLE if you want to hold one through the opening month — 61.6 over three weeks, 20.5/wk, top-3 in all three. JACKSONVILLE if you are genuinely churning weekly — best single week in football at 23.7 (Cleveland implied 16.5, the lowest offense on the board) and then 7th in week 2 at Denver, so it is a one-week rental. Rams third at 58.0. HOUSTON IS THE TRAP: the best unit in your actual 2025 results at 18.00/game, and it cracks the top five in none of the first three weeks — Bills, Bengals, Colts is a brutal opening draw. mc13's 'Rams at 15.02 in 94% of drafts' is what the sim reaches for on ADP, not what the matchups say; Seattle and Jacksonville both beat the Rams over the opening stretch.",
+  "FANTASYPROS SWEEP 2026-08-07 (FANTASYPROS-SWEEP.md, first run ever). Nick Zylak ranked #10 of 150+ analysts in 2025 DRAFT accuracy — RB 11, DST 15, TE 15, QB 22, WR 22, K 70. His best position is RB, which is exactly the thesis this plan is built on. His worst by far is kicker: ignore him at 16.09, nobody is good at it. Weight his WR calls on the FORMAT reasoning (Evans in half-PPR) rather than the raw rank, since WR is a mid position for him.",
+  "TWO LATE NAMES ARE DOUBLE-CORROBORATED (FantasyPros handcuff chart + FFA must-draft, the only two on the list that are both). KEATON MITCHELL is Omarion Hampton's handcuff — if Hampton is the take-zone back you land, Mitchell late is a real double-dip, not a dead bench spot (caveat: 5'8\", 179 lbs). JONATHON BROOKS is graded Tier 0 'standalone value' and backs up Chuba Hubbard, who is on your shy-away list — Nick fades the starter and buys the backup on the same depth chart and FantasyPros agrees the backup has value without an injury. 8th-round ADP.",
+  "HANDCUFFS FOR YOUR OWN BACKS ARE MOSTLY BAD, so do not plan around them: Bijan -> Brian Robinson Jr. (12th rd, early-down only), Gibbs -> Isiah Pacheco (declining role), Barkley -> Tank Bigsby (tier 3, behind Shipley on passing downs), Ken Walker -> Emmett Johnson (5th-rounder, Kareem Hunt return looms), Chase Brown -> Samaje Perine (26th rd), Henry -> Justice Hill (tier 4, minimal upside). Only Hampton's handcuff is worth a pick. OPEN ITEM: the source contradicted itself on Travis Etienne's backfield and it did not resolve — he is your R10 keeper, so check it before draft day.",
+  "ECR-VS-ADP CROSS-CHECK (92-expert consensus, 2026-08-07). Devon Achane is -16 — the market drafts him 16 picks ahead of consensus, independent support for pulling him out of the take zone. Hampton -9 and Jeanty -9 are also being over-drafted. Breece Hall -10, which is more reason the 5.02 anchor-RB temptation is a trap. BOWERS IS RANKED 17TH OVERALL AND YOUR 2.09 IS OVERALL PICK 19 — that is the whole reason he keeps falling to you. He is not falling far; the sim's '0 of 52,200 drafts' was model error, not a miracle. Zay Flowers shows +15 but is MWV-ONLY — do not act on it in RPB.",
+  "SNAP COUNTS WERE NOT OBTAINED. Three of the four FantasyPros reports came back on the free tier; the Snap Count Analysis report renders one team and then hard-gates. It needs the logged-in Chrome session, and the Chrome MCP has now returned 'This site is blocked' on every call across two consecutive sessions. Restarting Chrome/the extension is the fix and it is Angelo's to do.",
+  "RPB-RESCORED BOARD 2026-08-07 (RPB-RESCORED-BOARD.md + RPB-BOARD.csv, all 723 players, rebuild with `python3 sims/rpb_score.py --csv`). FFA's own Detailed Projections stat lines scored under RPB's real CBS rules. HEADLINE: skill-position ORDER barely moves — no RB, WR or TE inside the top 60 shifts more than two position ranks — so the plan's player judgements survive intact. RPB's rules are a level shift, not a re-ranking.",
+  "BOWERS IS BIGGER THAN THE PLAN SAID: +93.7 VBD, TE1, 6th overall, against the best take-zone back (Barkley) at +35.8. Taking him at 2.09 is worth +57.9, not +36.8 — the old figure came from the sims' VBD on different projections. TE cliff: Bowers 210.3, McBride 185.1, Loveland kept, Warren 161.3. Instruction unchanged, number much larger.",
+  "QB IS EVEN CHEAPER THAN THE PLAN SAID. Josh Allen is +30.0 VBD — BELOW Saquon Barkley (+35.8) and 27th overall. RPB adds 31-61 pts to every QB (0.05/yd passing vs 0.04, plus 300-yd game bonuses), which makes QB totals look huge but lifts replacement level with them; six teams keep a QB so only four are drafted. QB1-to-replacement is 30 pts = 1.8/week, and Allen through Prescott span 33 pts total. Wait to 7.02 with confidence.",
+  "RPB QUIETLY DE-VALUES RUSHING QBs. Passing yards go 0.04 -> 0.05 while rushing yards stay 0.10, so volume pocket passers gain most. Herbert QB7->QB3, Burrow QB5->QB2, Caleb Williams QB8->QB5; LAMAR JACKSON QB2->QB6, Jayden Daniels QB4->QB7, Hurts QB6->QB8. Nick's QB preferences lean mobile; your scoring leans the other way. At 7.02 prefer the pocket volume arm when they are close — Burrow and Herbert are the two your rules like best.",
+  "TAKE-ZONE ORDER SHUFFLES BUT DO NOT ACT ON IT. Under RPB: Barkley +35.8, Ken Walker +33.9, Henry +32.0, Hampton +31.3, Chase Brown +30.9. Henry rises two ranks and Chase Brown falls two, because the 100-yard-game and long-TD bonuses reward Henry's big-play profile. The gap is 1.1 points over a SEASON — noise — and the FFA layer breaks the tie the other way: Chase Brown is must-draft, Henry is an explicit 'watch, not a buy'. KEEP TAKING CHASE BROWN AHEAD OF HENRY. The shelf is confirmed: RB7-RB12 span just 7.2 points.",
+  "PARKER WASHINGTON IS BELOW REPLACEMENT ON THESE NUMBERS — WR29, -6.3 VBD, 74th overall (WR replacement is DJ Moore at 168.4; Washington projects 162.1). BUT this board cannot see return work, which RPB scores and FFA does not project: punt return yards 0.1/yd (+3 at 100), kick return 0.05/yd (+3 at 150), return TD 6 plus distance. A full-time punt returner is worth roughly +30 to +45 points, which would move him to about +25 to +40 VBD. TWO UNVERIFIED THINGS BEFORE DRAFT DAY: (1) is Washington actually Jacksonville's punt returner in 2026 — this is load-bearing and was asserted from memory, not checked; (2) which OTHER designated returners are being undervalued by every ranking in this league. Largest un-modelled edge in the setup.",
+  "BURDEN AND EVANS RECHECKED 2026-08-08 — BOTH NUMBERS WERE STALE AND EVANS CHANGED TEAMS. Current RPB-BOARD.csv: Luther Burden III is WR20, 187.2 pts, +14.4 VBD, 44th overall (was quoted WR19 / +18.7 / 39th). MIKE EVANS IS A SAN FRANCISCO 49ER, WR24, 183.3 pts, +10.5 VBD, 50th overall (was quoted WR23 / +14.8 / 47th). The half-PPR TD-regression case for Evans was written about Tampa and Baker Mayfield and does NOT survive the move — treat him as a +10.5 depth WR, not a 5.02 target. That 4.3-point overstatement was enough to flip a 5.02 decision, and it did: 5.02 is now the Parker Washington pick (+23.4), with Evans available later around ADP 50.",
+  "TEMPER THE SWEEP'S TWO LATE NAMES on RPB numbers: Jonathon Brooks RB30 at -47.4 VBD and Keaton Mitchell RB40 at -71.8. Deep-bench upside, not value. Their case was corroboration between two lists, not projected points — draft late, never reach.",
+  "REPLACEMENT LEVELS UNDER RPB (10 teams, no FLEX, keepers removed): QB = Jayden Daniels 390.3 (4 drafted), RB = D'Andre Swift 199.0 (18 drafted), WR = DJ Moore 168.4 (26 drafted), TE = Dalton Kincaid 116.6 (9 drafted). Etienne sits at RB21 / 198.8 / -0.2 VBD — exactly replacement, confirming he is the weakest cell in the roster.",
+  "TWO LEAGUE-SETTINGS QUESTIONS ARE STILL OPEN AND ONE OF THEM IS BIG. The CBS rules page says 'Managers may not do add/drops' — if that is live, streaming is IMPOSSIBLE and the whole 15.02 D/ST conclusion inverts toward drafting the best unit earlier, because a 3.9 pts/week unit gap you cannot escape is worth ~66 points. The same page also lists an Add Fee of $5.00, which contradicts it. Separately, 'Season Ends: Week 22' contradicts the 'RPB has no playoffs' assumption used to dismiss Nick's Week 15-17 schedule cautions on Barkley and DeVonta Smith. Both need Angelo to confirm.",
+  "KEEPER FLIPPED TO BURDEN 2026-08-07, reversing the long-standing 'keep Etienne on regret not points' conclusion. Scored under RPB's real rules: Etienne is RB21 at 198.8 pts and -0.2 VBD — EXACTLY replacement level, so he adds nothing even in the branch where he starts — while Burden is WR19 at +18.7 and slots into a starting WR spot. Etienne also never starts under the actual plan (two backs by 3.02, no FLEX, he is RB3), the insurance argument collapses because Kyren Williams/Jeremiyah Love/Breece Hall all beat him by ~17 pts at 4.09 if the early backs fail, and the FFA layer points the same way — Etienne is SHY-AWAY, Burden is MUST-DRAFT with a 2026-08-07 video calling him a round-4 pick with WR1 upside. Etienne is a New Orleans Saint in 2026, which also resolves the garbled handcuff entry in FANTASYPROS-SWEEP.md.",
+  "UNVERIFIED AND IT MATTERS: this assumes Burden costs the R10 pick, like-for-like with Etienne. The keeper rules say R9-13 keeps cost that round but R14-15/waiver keeps allow TWO. Burden was a 2025 rookie, so if he was drafted R14-15 or added off waivers, the consumed pick changes and Angelo may not have to choose at all. Check before draft day.",
+  "THE RB DEAD ZONE IS CONFIRMED BY YOUR OWN SCORING AND IT IS VICIOUS. RB18 David Montgomery +5.8, then RB23 TreVeyon Henderson -15.8, RB25 Bucky Irving -21.7, RB30 Jonathon Brooks -47.4. There is nothing between Montgomery and the graveyard. DO NOT SPEND 7.02-9.02 ON A RUNNING BACK. With Burden as the keeper you now enter the draft with ZERO backs, so coming out of 3.02 with two of them matters more than it did.",
+  "PARKER WASHINGTON IS BACK IN THE PLAN AND THE EARLIER '-6.3, below replacement' VERDICT IS WITHDRAWN. Verified 2026-08-07: he was Jacksonville's primary punt returner in 2025 with 341 return yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return touchdowns — the first Jaguar to house multiple returns in a season. RPB scores that and no projection source does. Priced conservatively in data/return-roles-2026.json he is WR13, +23.4 VBD, at ADP 73, next to DeVonta Smith and Chris Olave who both go near ADP 28. Even the bear case where he loses the return job midseason is +10.7. THE RISK: he is expecting a full-time offensive workload for the first time and teams routinely pull full-time starters off returns; his own words are 'I'm just open for the opportunity, whatever it is'. Also note Jacksonville's WR room now includes Jakobi Meyers alongside Brian Thomas Jr. and Travis Hunter.",
+  "WIDEN data/return-roles-2026.json — IT IS THE BIGGEST REMAINING EDGE. RPB pays individual punt and kick return yards and return TDs; FFA, FantasyPros and CBS projections all omit them, so EVERY designated returner in this league is mispriced on every board including this one. Only Parker Washington has been researched. An empty entry in that file means 'not looked at yet', never 'no return value'. Nobody else in the league is pricing this.",
+  "PREDICTOR HORIZON, RE-LEARNED THE HARD WAY 2026-08-07. At 5.02 the live Pick Predictor read <1% on David Montgomery, D'Andre Swift AND Quinshon Judkins. By 8.09 all three were gone and the best back left was RB34. <1% means 'safe until your NEXT pick' and your 5.02-to-6.09 gap is 17 picks. AT EVERY WRAP PICK (3.02, 5.02, 7.02, 9.02, 11.02, 13.02, 15.02) SWITCH THE DROPDOWN TO TWO ROUNDS. The one-round number is a lie at a wrap.",
+  "THE PREDICTOR IS BLIND TO KEEPER-DRIVEN QB COLLAPSE, IN YOUR FAVOUR. It read Josh Allen 99% GONE at 7.02; he was still on the board at 8.09 and did not go until round 10-11. Six teams keep a quarterback and only four are drafted, which the model does not know. Never let a high QB percentage panic you into reaching. Corollary learned the same day: IF you are spending a pick on a QB, spend it on the BEST one — taking Burrow (+13.9) over Allen (+30.0) at 7.02 cost about 16 points.",
+  "BYE WEEKS ARE NOT TRACKED ANYWHERE and a live mock flagged FOUR starters on bye in one week. Observed collisions in that roster: Gibbs and Burrow both bye 6; Nico Collins and Mike Evans both bye 8. Neither the board, the plan nor notes.json carries bye data — check the bye column in the FantasyPros draft view before confirming a pick that stacks an existing bye."
+ ],
+ "contingencies": [
+  {
+   "when": "Every take-zone back is gone before 2.09",
+   "do": "Take the WR and buy a back next round. Do not reach past the cutoff.",
+   "why": "mc10 said the block never drains past Achane — RB13+ was 0% at every setting. In the 2026-08-06 mock all six then-listed backs drained by 2.08. Rare is not impossible. Happened again in the 2026-08-06 trial run — gone by 2.08 in back-to-back mocks. Now that Achane is off the list the zone is five names, so it drains one pick sooner."
+  },
+  {
+   "when": "Brock Bowers is on the board in round 2 or later",
+   "do": "Take him immediately. Largest single edge in the draft.",
+   "why": "mc7 said he goes before pick 19 in 52,200 of 52,200 drafts. He fell to 2.09 in the mock and was worth +36.8. He fell to 2.09 in both 2026-08-06 mocks. Treat this as likely, not miraculous."
+  },
+  {
+   "when": "Defenses start draining in round 13-14",
+   "do": "Let them go. Take your D/ST at 15.02 and stream it all year.",
+   "why": "SUPERSEDED 2026-08-07 by RPB's real D/ST scoring, then CORRECTED again the same day. RPB's points-allowed tiers are flat at the top — every top-10 defense allows 16-19 PPG and they all land in the same 14-20 band worth 8 points — so the PROJECTED gap from 1st to 10th is only 1.1 points a week. That 1.1 is a projection artifact, not the truth: your actual 2025 results spread 3.9 points a week. The week-1 matchup swing is 5.9 across the full slate, 4.2 without the Jacksonville outlier — so matchup beats unit by about 1.1x to 1.5x, not the 'six times' an earlier version claimed. The case for letting the round-13/14 run go is therefore not that the units are the same. It is that in August you cannot tell which unit is which, while you CAN read the matchup. Take one at 15.02 and churn it."
+  },
+  {
+   "when": "The ranked RB list is empty and Show More returns nothing",
+   "do": "Stop planning around a back. Last two picks become K + D/ST or a searched-by-name body.",
+   "why": "The sims always had a back available. FantasyPros' RB pool ran dry by 14.09 in the mock."
+  }
+ ],
+ "roundByRound": [
+  {
+   "pick": "1.02",
+   "take": "Jahmyr Gibbs",
+   "note": "RB1, 20.3 hppr/wk. Bijan Robinson 20.0 if Gibbs is gone. +164 VBD, the biggest edge in the draft."
+  },
+  {
+   "pick": "2.09",
+   "take": "Brock Bowers",
+   "note": "TE1, 11.8 hppr/wk, +93.7 VBD. Fallen to you 5 of 5. If gone, take a take-zone back and get Tyler Warren at 6.09."
+  },
+  {
+   "pick": "3.02",
+   "take": "Take-zone back",
+   "note": "Barkley / Ken Walker / Chase Brown / Hampton all 13.1 hppr/wk, Henry 12.9. Dead heat — Chase Brown breaks ties as must-draft. All gone? A.J. Brown 11.9, Drake London 11.8, Nico Collins 11.7."
+  },
+  {
+   "pick": "4.09",
+   "take": "RB2 — Love / Hall / Javonte",
+   "note": "RB2 HERE, NON-NEGOTIABLE. Love (adp 31), Hall (34), Javonte (38) all land on overall 39. If all three are gone, Montgomery (55) or Swift (53) at 5.02 — then stop; below Swift the board falls off a cliff."
+  },
+  {
+   "pick": "5.02",
+   "take": "Parker Washington",
+   "note": "+23.4 VBD at FFA ADP 73 — the largest value-vs-cost gap on the board. TAKE HIM HERE, ONE TO TWO ROUNDS EARLY. Measured 2026-08-08: 23-28% gone at 5.02 but 76% at 6.09 in the same draft, so 6.09 is no longer safe. Order of operations: RB2 at 4.09, Washington at 5.02."
+  },
+  {
+   "pick": "6.09",
+   "take": "Best WR available",
+   "note": "Washington moved up to 5.02, so this is a plain best-available WR pick. Mike Evans (SF, +10.5 VBD, ADP 50) is the likeliest name to last to here. Garrett Wilson the alternate."
+  },
+  {
+   "pick": "7.02",
+   "take": "Justin Herbert (or Burrow)",
+   "note": "Both 20.2 hppr/wk. Burrow +13.9 / Herbert +9.8. NO QB BEFORE ROUND 7 — round 7 is the floor, not the target. Measured 2026-08-08: Burrow was still on the board at 9.02 and Herbert survived to 15.02 at 77%, so later is fine. Six teams keep a QB and only three opponents ever need one."
+  },
+  {
+   "pick": "8.09",
+   "take": "Jaylen Warren / Tony Pollard / Rhamondre Stevenson",
+   "note": "All 9.9 hppr/wk. The last real backs — after these it is 8.7 and a cliff. Do not reach earlier, do not expect more later."
+  },
+  {
+   "pick": "9.02",
+   "take": "Best available, lean WR",
+   "note": "Jayden Reed 8.4, Jordan Addison 8.3."
+  },
+  {
+   "pick": "10.09",
+   "take": "LUTHER BURDEN III — KEEPER",
+   "note": "WR20, 187.2 pts, +14.4 VBD, 44th overall. Consumes this pick."
+  },
+  {
+   "pick": "11.02",
+   "take": "Kyle Monangai or Jonathon Brooks",
+   "note": "Both 8.7 hppr/wk. Brooks is must-draft and graded standalone-value behind shy-away Chuba Hubbard."
+  },
+  {
+   "pick": "12.09",
+   "take": "Xavier Worthy",
+   "note": "7.5 hppr/wk. Jakobi Meyers 7.2, Jayden Higgins 7.1 (must-draft)."
+  },
+  {
+   "pick": "13.02",
+   "take": "SEATTLE D/ST — moved up from 15.02",
+   "note": "MOVED 2026-08-07. A live mock had the entire top five gone by 15.02 and left only the Vikings (253.4) against Seattle's 294.2 — a 41-point cliff. Seattle is 61.6 over weeks 1-3 and top-3 in all three. Jacksonville instead only if you are genuinely churning weekly."
+  },
+  {
+   "pick": "14.09",
+   "take": "Keaton Mitchell",
+   "note": "7.3 hppr/wk, must-draft AND Hampton's handcuff — the double-dip if you landed Hampton at 3.02."
+  },
+  {
+   "pick": "15.02",
+   "take": "Best available skill player",
+   "note": "D/ST moved to 13.02. Use this on RB or WR depth — or a second defense if the board somehow held."
+  },
+  {
+   "pick": "16.09",
+   "take": "Kicker",
+   "note": "FFA does not project kickers. Nick is 70th of 150+ at the position. Do not spend thought here."
+  }
+ ]
 }
