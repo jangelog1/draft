@@ -45,12 +45,16 @@ def load():
     for v in notes.values():
         if v.get("call") in ("must", "shy"):
             tag[v["name"].lower()] = "MUST" if v["call"] == "must" else "SHY"
+    def norm(s):
+        # Suffixes are the whole problem: notes.json says "Travis Etienne", the projections say
+        # "Travis Etienne Jr.", and a naive first/last-word match leaves a shy-away on the board.
+        s = s.lower().replace(".", "").replace("'", "")
+        return " ".join(w for w in s.split() if w not in ("jr", "sr", "ii", "iii", "iv", "v"))
+
+    lookup = {norm(k): v for k, v in tag.items()}
+
     def ffa(name):
-        n = name.lower()
-        for kk, vv in tag.items():
-            if kk.split()[0] == n.split()[0] and kk.split()[-1].strip(".") == n.split()[-1].strip("."):
-                return vv
-        return ""
+        return lookup.get(norm(name), "")
     for r in board:
         r["ffa"] = ffa(r["name"])
     return [r for r in board if not r["kept"]], kd
@@ -99,10 +103,20 @@ def selftest():
     # Skill players must be in non-increasing VBD order.
     v = [p["vbd"] for p in b if p["pos"] in ("QB", "RB", "WR", "TE")]
     assert all(a >= z for a, z in zip(v, v[1:])), "skill board is not sorted by VBD"
-    assert any(p.get("ffa") == "SHY" for p in b), "FFA tags did not attach"
+    assert any(p.get("ffa") == "SHY" for p in b), "FFA tags did not attach to the value board"
     # No keeper may appear — they never reach the draft.
     kept = {x["player"] for x in json.loads((D / "keepers-rpb.json").read_text())["keepers"]}
     assert not (kept & {p["name"] for p in b}), kept & {p["name"] for p in b}
+    # The TARGET board is the one that must be clean: shy-aways removed, suffixes and all.
+    tb = targets()
+    shy = {v["name"] for v in json.loads((D / "notes.json").read_text())["shared"].values()
+           if v.get("call") == "shy"}
+    def _n(s):
+        s = s.lower().replace(".", "").replace("'", "")
+        return " ".join(w for w in s.split() if w not in ("jr", "sr", "ii", "iii", "iv", "v"))
+    on = {_n(p["name"]) for p in tb} & {_n(s) for s in shy}
+    assert not on, f"shy-away survived onto the target board: {on}"
+    assert len(tb) == SLOTS
     print("selftest OK")
 
 
