@@ -41,10 +41,25 @@ def load():
     # shy-away player highly -- Rashee Rice and Devon Achane both land inside the top 30 on
     # value alone. The tag is the FFA layer riding on top, exactly as it does in DRAFT-DAY.md.
     notes = json.loads((D / "notes.json").read_text())["shared"]
+    # notes.json carries TWO independent opinion fields and both matter:
+    #   call   -- the formal lists: must (28) / shy (9)
+    #   stance -- the softer read: love / like / watch / fade / avoid
+    # Building only off `call` left 10 fades and 6 avoids on the target board, Kyren Williams
+    # among them. AVOID is unconditional ("#1 regret RB", "explicitly avoided") so those are
+    # dropped like shy-aways. FADE is usually conditional on PRICE or FORMAT -- Jonathan Taylor is
+    # a fade "at pick 4 in FULL-PPR" and is fine in your half-PPR, Josh Jacobs is an R3 fade with
+    # "pounce only at R5" -- so fades are TAGGED and left on the board for you to judge.
     tag = {}
     for v in notes.values():
-        if v.get("call") in ("must", "shy"):
-            tag[v["name"].lower()] = "MUST" if v["call"] == "must" else "SHY"
+        call, stance = v.get("call"), v.get("stance")
+        if call == "must":
+            tag[v["name"].lower()] = "MUST"
+        elif call == "shy":
+            tag[v["name"].lower()] = "SHY"
+        elif stance == "avoid":
+            tag[v["name"].lower()] = "AVOID"
+        elif stance == "fade":
+            tag[v["name"].lower()] = "FADE"
     def norm(s):
         # Suffixes are the whole problem: notes.json says "Travis Etienne", the projections say
         # "Travis Etienne Jr.", and a naive first/last-word match leaves a shy-away on the board.
@@ -114,8 +129,11 @@ def selftest():
     def _n(s):
         s = s.lower().replace(".", "").replace("'", "")
         return " ".join(w for w in s.split() if w not in ("jr", "sr", "ii", "iii", "iv", "v"))
-    on = {_n(p["name"]) for p in tb} & {_n(s) for s in shy}
-    assert not on, f"shy-away survived onto the target board: {on}"
+    drop = {v["name"] for v in json.loads((D / "notes.json").read_text())["shared"].values()
+            if v.get("call") == "shy" or v.get("stance") == "avoid"}
+    on = {_n(p["name"]) for p in tb} & {_n(s) for s in drop}
+    assert not on, f"shy-away or avoid survived onto the target board: {on}"
+    assert any(p.get("ffa") == "FADE" for p in tb), "fades should be TAGGED, not dropped"
     assert len(tb) == SLOTS
     print("selftest OK")
 
@@ -157,7 +175,8 @@ POS_FLOOR = {}
 
 def targets():
     live, kd = load()
-    skill = [r for r in live if r["pos"] in ("QB", "RB", "WR", "TE") and r.get("ffa") != "SHY"]
+    DROP = {"SHY", "AVOID"}
+    skill = [r for r in live if r["pos"] in ("QB", "RB", "WR", "TE") and r.get("ffa") not in DROP]
     skill.sort(key=lambda r: -r["vbd"])
     for i, r in enumerate(skill, 1):
         adp = float(r["hpprAdp"]) if r["hpprAdp"] not in ("", "999") else 999.0
