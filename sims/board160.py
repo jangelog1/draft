@@ -106,13 +106,88 @@ def selftest():
     print("selftest OK")
 
 
+# ---------------------------------------------------------------------------
+# The TARGET board: what to actually draft from, as opposed to what players are
+# worth. Three things separate it from the value board above.
+#
+#   1. Shy-aways are REMOVED, not demoted. Nick's fades are not tie-breakers.
+#   2. Nobody sits far below his ADP. If the room will take him 30 picks before
+#      his value says, listing him at his value rank just means losing him. Each
+#      player is pulled up to min(valueRank, adp + CUSHION).
+#   3. Must-drafts get a one-round bump, which is exactly how Nick words it
+#      himself -- "round six, a round ahead of his round-seven ADP".
+#
+# The bump is deliberately ONE round. Reaching further costs more than the FFA
+# layer is worth; the take-zone shelf is 7.2 points wide and a round of ADP is
+# worth about that.
+MUST_BUMP, ADP_CUSHION = 10, 5
+# A must-draft bump breaks ties and near-ties. It must never overturn a large value gap: Bowers is
+# a must-draft at +93.7 and Gibbs is +164, and no amount of Nick liking a tight end makes that a
+# 70-point argument. A player may therefore only jump ahead of players within VBD_TOL of him.
+VBD_TOL = 25.0
+# One plan rule is not derivable from VBD and has to be enforced by name. Taking Bowers at 1.02 over
+# an elite back cost -81.8 across paired sims; his +57.9 edge only exists once the top of the RB
+# board is gone. draft_day.py asserts the same gate on index.html.
+ROUND2_ONLY = {"Brock Bowers"}
+# Nick's must-draft list carries seven quarterbacks, and bumping all of them drags QB into round 2.
+# That is exactly backwards here: six teams keep a quarterback, only four are drafted, and the whole
+# QB1-to-replacement gap is 30 points (1.8/week). The tier cannot run dry, so a QB is never worth
+# reaching for. The plan's standing rule -- never a QB before round 4 -- is enforced as a floor.
+POS_FLOOR = {"QB": 4}
+
+
+def targets():
+    live, kd = load()
+    skill = [r for r in live if r["pos"] in ("QB", "RB", "WR", "TE") and r.get("ffa") != "SHY"]
+    skill.sort(key=lambda r: -r["vbd"])
+    for i, r in enumerate(skill, 1):
+        adp = float(r["hpprAdp"]) if r["hpprAdp"] not in ("", "999") else 999.0
+        r["_v"] = i
+        r["_d"] = min(i, adp + ADP_CUSHION) - (MUST_BUMP if r.get("ffa") == "MUST" else 0)
+    # Floor each player at the earliest slot his own value can justify.
+    vbds = [r["vbd"] for r in skill]
+    for r in skill:
+        earliest = next(j for j, v in enumerate(vbds, 1) if v <= r["vbd"] + VBD_TOL)
+        r["_d"] = max(r["_d"], earliest)
+        if r["name"] in ROUND2_ONLY:
+            r["_d"] = max(r["_d"], TEAMS + 1)
+        if r["pos"] in POS_FLOOR:
+            r["_d"] = max(r["_d"], (POS_FLOOR[r["pos"]] - 1) * TEAMS + 1)
+    skill.sort(key=lambda r: (r["_d"], -r["vbd"]))
+
+    picked, seen = [], {"QB": 0, "TE": 0}
+    for r in skill:
+        if len(picked) >= SLOTS - CAP["K"] - CAP["DST"]:
+            break
+        if r["pos"] in seen:
+            if seen[r["pos"]] >= CAP[r["pos"]]:
+                continue
+            seen[r["pos"]] += 1
+        picked.append(dict(name=r["name"], pos=r["pos"], team=r["team"], rpb=r["rpb"],
+                           vbd=r["vbd"], adp=r["hpprAdp"], ffa=r.get("ffa", ""), valueRank=r["_v"]))
+    for d in kd["defenses"][:CAP["DST"]]:
+        picked.append(dict(name=d["name"], pos="DST", team=d["team"], rpb=d["rpb"],
+                           vbd="", adp="", ffa="", valueRank=""))
+    for k in kd["kickers"][:CAP["K"]]:
+        picked.append(dict(name=k["name"], pos="K", team=k["team"], rpb=k["rpb"],
+                           vbd="", adp="", ffa="", valueRank=""))
+    for i, p in enumerate(picked, 1):
+        rd, j = divmod(i - 1, TEAMS)
+        p["rank"] = i
+        p["slot"] = f"{rd + 1}.{j + 1:02d}"
+        p["mine"] = (rd % 2 == 0 and j == 1) or (rd % 2 == 1 and j == TEAMS - 2)
+    return picked
+
+
 if __name__ == "__main__":
     if "--selftest" in sys.argv:
         selftest(); sys.exit(0)
-    board = build()
+    tgt = "--targets" in sys.argv
+    board = targets() if tgt else build()
     if "--csv" in sys.argv:
-        dest = ROOT / "RPB-DRAFT-160.csv"
-        cols = ["rank", "slot", "pos", "name", "team", "rpb", "vbd", "adp", "ffa", "mine"]
+        dest = ROOT / ("RPB-TARGETS-160.csv" if tgt else "RPB-DRAFT-160.csv")
+        cols = (["rank", "slot", "pos", "name", "team", "rpb", "vbd", "adp", "ffa", "valueRank", "mine"]
+                if tgt else ["rank", "slot", "pos", "name", "team", "rpb", "vbd", "adp", "ffa", "mine"])
         with dest.open("w") as f:
             f.write(",".join(cols) + "\n")
             for p in board:
