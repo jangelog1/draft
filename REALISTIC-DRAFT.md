@@ -1,79 +1,100 @@
 # The realistic aggressive draft — RPB, slot 2
 
-Built 2026-08-07 from `RPB-TARGETS-160.csv` + FFA ADP. "Realistic" means every name here is one
-ADP says will actually still be on the board at that pick. Rebuild the inputs with
-`python3 sims/board160.py --targets --csv`.
+Rebuilt 2026-08-07. Every name is one ADP says will actually be on the board at that pick.
+Shy-aways, avoids and fades are all cut — the only fade kept is Jonathan Taylor, because his fade
+is explicitly **full-PPR** and `rpbFormat.up` says the knock is much weaker in your half-PPR.
 
-**Keeper: Luther Burden III (WR, consumes 10.09).** So you enter needing QB / 2 RB / 2 more WR /
-TE / K / DST.
-
-| pick | ov | TAKE | pos | ADP | VBD | why |
-|---|---|---|---|---|---|---|
-| **1.02** | 2 | **Bijan Robinson** | RB | 2 | +163.7 | Gibbs goes 1.01. +164 is the biggest edge in the draft — no decision here. |
-| **2.09** | 19 | **Brock Bowers** | TE | 17 | **+93.7** | See "the 2.09 gamble" below. Take him. |
-| **3.02** | 22 | **Ken Walker III** or **Derrick Henry** | RB | 20 | +34 | The only take-zone backs whose ADP survives to 22. Barkley (14), Chase Brown (16), Hampton (17) are gone. |
-| **4.09** | 39 | **Emeka Egbuka** | WR | 35 | +15.4 | MUST. Won't last to 5.02. 76/1279/12 pace before injury; new OC talking Cooper Kupp role. |
-| **5.02** | 42 | **Ladd McConkey** | WR | 38 | +16.2 | Elite TPRR in 12-personnel. Mike Evans (ADP 50) survives to 6.09 — take McConkey now, Evans later. |
-| **6.09** | 59 | **David Montgomery** | RB | 55 | +6.1 | MUST. Your RB2. Will NOT reach 7.02. Gets the ball every time Houston is inside the five. |
-| **7.02** | 62 | **Parker Washington** | WR | 73 | +23.4 | MUST. **The biggest edge you have.** Do not wait to 8.09 — 6 picks past his ADP is a real risk. |
-| **8.09** | 79 | **Justin Herbert** | QB | 74 | +9.8 | MUST. Six teams keep a QB so the tier holds this long. 20.2 hppr/wk, same as Burrow. |
-| **9.02** | 82 | **Jordyn Tyson** | WR | 79 | −14.8 | Bench WR with a real role. |
-| ~~10.09~~ | — | **BURDEN — keeper** | WR | — | +18.7 | — |
-| **11.02** | 102 | **Jayden Reed** | WR | 98 | −26.2 | Consolidated GB target share after Doubs/Wicks left. |
-| **12.09** | 119 | **Jacory Croskey-Merritt** | RB | 114 | −69.8 | RB depth. The pool is dead here — take a body. |
-| **13.02** | 122 | **Matthew Golden** | WR | 123 | −45.1 | Upside dart. |
-| **14.09** | 139 | **Kenneth Gainwell** | RB | 343 | −58.0 | Biggest ADP gap on the board — worth #136, drafted at 343. Free handcuff. |
-| **15.02** | 142 | **Seattle Seahawks D/ST** | DST | — | — | 61.6 over weeks 1-3, top-3 all three weeks. Not the Broncos. |
-| **16.09** | 159 | **Cameron Dicker** | K | — | — | Nick is 70th of 150+ at kicker. Stop thinking. |
-
-**Final roster:** QB Herbert · RB Bijan + Montgomery · WR Burden + Egbuka + McConkey + Washington ·
-TE Bowers · DST Seattle · K Dicker, plus Tyson/Reed/Golden/Croskey-Merritt/Gainwell on the bench.
+**Keeper: Luther Burden III (WR).** Not yet official — CBS's keepers page still reads *"Keepers for
+all teams will be displayed here once they have been processed."* Tell your commissioner.
 
 ---
 
-## Why this and not something else
+## Take-zone backs — the order to take them at 2.09 and 3.02
 
-### The 2.09 gamble — the one place I overruled the model
+All five are within 5 points of each other. This order blends the RPB numbers with Nick's read.
 
-Only **two picks** separate your 2.09 and 3.02. The optimiser noticed that and suggested taking
-Saquon Barkley at 2.09 and Bowers at 3.02 — getting **both**, because Bowers' ADP of 17 means he
-"should" survive two more picks.
+| # | back | ADP | VBD | why this order |
+|---|---|---|---|---|
+| **1** | **Saquon Barkley** | 14 | +36.0 | Nick's #1 round-2 back. Easiest Wk1-14 schedule, ~300 touches. His one caution — brutal Wk15-17 playoff slate — **does not apply, RPB has no playoffs.** |
+| **2** | **Ken Walker III** | 20 | +34.1 | **Format split in your favour:** *"In half PPR scoring I have Ken Walker over Chase Brown. Once you flip on full PPR, the certainty of the receptions is too great."* Yours is half-PPR. |
+| **3** | **Chase Brown** | 16 | +31.1 | MUST-draft. Best offensive line of the Burrow era, featured role, top-five upside. Nick's full-PPR pick of the two. |
+| **4** | **Omarion Hampton** | 17 | +31.6 | Anchor-RB tier, volume plus goal-line work. Bonus: his handcuff **Keaton Mitchell is also a must-draft** — the only double-dip on the board. |
+| **5** | **Derrick Henry** | 20 | +32.3 | **Take him LAST despite ranking 3rd on points.** Nick: watch, not a buy. Declining targets, volatile half-PPR floor, last year's RB8 finish inflated by one Week 17 four-TD game. |
 
-**Don't do it.** Both picks in that gap belong to **Rod (NCF)**, and Rod needs **1 TE**. He is the
-single most likely man in the league to take Bowers, and he picks twice before you're back. Bowers
-is +93.7 — nearly three times the best back available. Risking a 93-point edge to gain a 36-point
-one, against the one opponent who needs exactly that position, is a bad trade.
+**Reality check:** every one has an ADP of 14-20 and your second pick is overall **19**. In
+back-to-back real mocks *all five drained by 2.08*. Realistically only Walker or Henry survives to
+3.02.
 
-Take Bowers at 2.09. If he somehow lasts to 3.02 anyway, you got lucky and you take a back at 2.09.
+---
 
-### Why no take-zone back until 3.02, and why that's fine
+## LINE A — Bowers falls to 2.09 (happened in 5 of 5 mocks)
 
-Every take-zone back has an ADP of 14–20 and your second pick is overall **19**. In back-to-back
-real mocks, **all five drained by 2.08**. Realistically only Ken Walker or Derrick Henry survives
-to 3.02.
+| pick | TAKE | pos | ADP | VBD |
+|---|---|---|---|---|
+| 1.02 | **Bijan Robinson** (Gibbs goes 1.01) | RB | 2 | +163.7 |
+| **2.09** | **Brock Bowers** | TE | 17 | **+93.7** |
+| 3.02 | **A.J. Brown** — or a surviving take-zone back | WR | 18 | +39.6 |
+| 4.09 | **Breece Hall** | RB | 34 | +16.5 |
+| 5.02 | **Mike Evans** | WR | 50 | +10.5 |
+| **6.09** | **Parker Washington** | WR | 73 | +23.4 |
+| 7.02 | **Joe Burrow** | QB | 56 | +13.9 |
+| 8.09 | **Tony Pollard** | RB | 75 | −24.9 |
+| 9.02 | Jordyn Tyson | WR | 79 | −14.8 |
+| ~~10.09~~ | BURDEN — keeper | WR | — | +18.7 |
+| 11.02 | Jayden Reed | WR | 98 | −26.2 |
+| 12.09 | Jacory Croskey-Merritt | RB | 114 | −69.8 |
+| 13.02 | Matthew Golden | WR | 123 | −45.1 |
+| 14.09 | Kenneth Gainwell | RB | 343 | −58.0 |
+| 15.02 | **Seattle Seahawks D/ST** | DST | — | — |
+| 16.09 | Cameron Dicker | K | — | — |
 
-That's survivable because RPB starts **two** RBs and no FLEX. Your plan's own finding: forcing a
-back at 4.09+5.02 to fix a thin backfield costs **−32.4**, worse than living with it. So you take
-Bijan, one mid back at 3.02, Montgomery at 6.09, and stop.
+**Breece Hall at 4.09 is deliberate.** Nick moved him *down* on 08-03 ("won't pay a round-three
+price") then back *up* on 08-04: **"insane value at the three-four turn."** Your 4.09 is exactly
+that turn. Do NOT substitute Kyren Williams — Nick fades him outright as a dead-zone example.
 
-### Why Washington at 7.02 and not later
+---
 
-His ADP is 73; 7.02 is overall 62. That's an 11-pick reach — deliberate. Waiting to 8.09 (overall
-79) puts you **6 picks past his ADP**, and he is the single largest un-priced edge in your setup
-(+34 points of return scoring nobody else models). Don't be clever with the one pick where you
-know something the room doesn't.
+## LINE B — BOWERS IS GONE before 2.09
 
-### Why QB at 8.09 and not earlier
+Do not panic and do not take the next tight end. Tyler Warren at 7.02 recovers most of it.
 
-Six of ten teams keep a quarterback, so only four are drafted. QB1-to-replacement is **1.8 points
-a week**. Herbert at ADP 74 lands at 8.09 with room to spare, and he projects the same 20.2
-hppr/wk as Burrow. Every pick you spend on a QB before round 7 is a pick spent on your league's
-cheapest position.
+| pick | TAKE | pos | ADP | VBD | change from Line A |
+|---|---|---|---|---|---|
+| 1.02 | **Bijan Robinson** | RB | 2 | +163.7 | same |
+| **2.09** | **Take-zone back** — Barkley, else Walker | RB | 14 | +36.0 | **was Bowers** |
+| 3.02 | **A.J. Brown** | WR | 18 | +39.6 | same |
+| 4.09 | **Emeka Egbuka** | WR | 35 | +15.4 | was Breece Hall |
+| 5.02 | **Mike Evans** | WR | 50 | +10.5 | same |
+| **6.09** | **Parker Washington** | WR | 73 | +23.4 | same |
+| **7.02** | **Tyler Warren** | TE | 59 | **+44.7** | **your TE now** |
+| 8.09 | **Justin Herbert** | QB | 74 | +9.8 | QB slides one round |
+| 9.02 | Jordyn Tyson | WR | 79 | −14.8 | same |
+| 11.02–14.09 | Reed / Croskey-Merritt / Rodriguez / Gainwell | | | | |
+| 15.02 | **Seattle Seahawks D/ST** | DST | — | — | same |
+| 16.09 | Cameron Dicker | K | — | — | same |
 
-### The two risks in this roster
+**Why Warren and not a round-2 tight end.** Reaching for the next TE at 2.09 because Bowers went
+costs **−9.1**. Warren is +44.7 at ADP 59, which lands right at your 6.09/7.02 window. The TE room
+behind him is deep too: Kraft +28.9 (ADP 71), LaPorta +25.3 (85), Fannin +23.0 (87), **Kittle +17.6
+at ADP 107 — your 11.02.** Losing Bowers costs you about 49 points, not 94.
 
-1. **RB is thin.** Bijan + Montgomery is your starting pair, and the bench backs are dart throws.
-   That is a deliberate consequence of taking Bowers over a second back — and it is the correct
-   trade at +93.7, but it means a Bijan injury hurts badly.
-2. **Washington's return job.** If Jacksonville pulls him off punt returns once he's a full-time
-   receiver, he drops from +23.4 to about +10.7. Still positive, no longer a steal.
+**Watch the collision:** Warren (ADP 59) and Washington (ADP 73) both want the 6.09/7.02 turn.
+Washington survives to 7.02; Warren is the tighter one. If both are on the board at 6.09, **take
+Warren first** and Washington at 7.02.
+
+---
+
+## The Bowers question, decided
+
+Only **two picks** separate your 2.09 and 3.02, and both belong to **Rod (NCF)** — who needs a TE.
+The optimiser wanted Barkley at 2.09 and Bowers at 3.02 to land both. **Don't.** Rod is the single
+most likely man in the league to take Bowers and he picks twice before you're back. Risking a
++93.7 edge to gain a +36 one, against the one opponent who needs that exact position, is a bad
+trade. Take Bowers at 2.09.
+
+## Two risks in this roster
+
+1. **RB is thin** — Bijan plus Breece Hall or Pollard, with darts behind. That is the deliberate
+   cost of Bowers over a second back. Correct at +93.7, but a Bijan injury hurts.
+2. **Washington's return job.** If Jacksonville pulls him off punt returns as a full-time receiver,
+   he goes +23.4 → +10.7. Still positive, no longer a steal.

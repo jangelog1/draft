@@ -60,6 +60,15 @@ def load():
             tag[v["name"].lower()] = "AVOID"
         elif stance == "fade":
             tag[v["name"].lower()] = "FADE"
+    # A fade is CUT unless the half-PPR format split explicitly rescues him. notes.json ->
+    # rpbFormat.up is the authoritative "better in RPB than his rank implies" list, and it exists
+    # precisely because Nick writes for 12-team full-PPR. Jonathan Taylor is the case that matters:
+    # faded "at pick 4 in FULL PPR for lacking a receiving floor", a knock the format note says is
+    # much weaker in half-PPR. Cutting him at +92 VBD over a full-PPR argument would be wrong.
+    rescued = {k.lower() for k in json.loads((D / "notes.json").read_text())["rpbFormat"]["up"]}
+    for nm in list(tag):
+        if tag[nm] == "FADE" and nm in rescued:
+            tag[nm] = "HALF-PPR OK"
     def norm(s):
         # Suffixes are the whole problem: notes.json says "Travis Etienne", the projections say
         # "Travis Etienne Jr.", and a naive first/last-word match leaves a shy-away on the board.
@@ -129,11 +138,15 @@ def selftest():
     def _n(s):
         s = s.lower().replace(".", "").replace("'", "")
         return " ".join(w for w in s.split() if w not in ("jr", "sr", "ii", "iii", "iv", "v"))
-    drop = {v["name"] for v in json.loads((D / "notes.json").read_text())["shared"].values()
-            if v.get("call") == "shy" or v.get("stance") == "avoid"}
+    nj = json.loads((D / "notes.json").read_text())
+    rescued = {k.lower() for k in nj["rpbFormat"]["up"]}
+    drop = {v["name"] for v in nj["shared"].values()
+            if (v.get("call") == "shy" or v.get("stance") in ("avoid", "fade"))
+            and v["name"].lower() not in rescued}
     on = {_n(p["name"]) for p in tb} & {_n(s) for s in drop}
     assert not on, f"shy-away or avoid survived onto the target board: {on}"
-    assert any(p.get("ffa") == "FADE" for p in tb), "fades should be TAGGED, not dropped"
+    assert not any(p.get("ffa") == "FADE" for p in tb), "fades must be cut from the target board"
+    assert any(p.get("ffa") == "HALF-PPR OK" for p in tb), "format-rescued fades should survive"
     assert len(tb) == SLOTS
     print("selftest OK")
 
@@ -175,7 +188,7 @@ POS_FLOOR = {}
 
 def targets():
     live, kd = load()
-    DROP = {"SHY", "AVOID"}
+    DROP = {"SHY", "AVOID", "FADE"}   # FADE cut too; rpbFormat.up rescues are retagged HALF-PPR OK
     skill = [r for r in live if r["pos"] in ("QB", "RB", "WR", "TE") and r.get("ffa") not in DROP]
     skill.sort(key=lambda r: -r["vbd"])
     for i, r in enumerate(skill, 1):
