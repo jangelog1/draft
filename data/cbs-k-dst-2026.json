@@ -1,0 +1,32 @@
+{
+  "source": "CBS Sports, rpbowl.football.cbssports.com -> Players -> PROJECTIONS -> CATEGORIES: SCORING, ALL PLAYERS. Projections powered by SportsLine, scored under RPB's own rules by CBS itself.",
+  "pulled": "2026-08-07",
+  "note": "FFA projects neither kickers nor defenses, so these come straight from CBS already scored under the league's settings — no modelling by us at all. Season totals.",
+  "dstNote": "CBS's defensive order disagrees sharply with data/dst-projections-2026.json (4for4). CBS shows a real cliff after the top five: Seahawks 294.2 then Vikings 253.4, a 41-point step. It also has Jacksonville 23rd at 206.7 where the 4for4 file had them 6th. Neither settles the weekly call — the week-by-week D/ST decision runs off Vegas implied totals in sims/dst_rank.py, which is better sourced than any preseason unit ranking.",
+  "kickers": [
+    {"name": "Jason Myers", "team": "SEA", "fg": 39, "xp": 50, "rpb": 165},
+    {"name": "Ka'imi Fairbairn", "team": "HOU", "fg": 39, "xp": 40, "rpb": 155},
+    {"name": "Nick Folk", "team": "ATL", "fg": 35, "xp": 47, "rpb": 152},
+    {"name": "Blake Grupe", "team": "IND", "fg": 34, "xp": 51, "rpb": 151},
+    {"name": "Brandon Aubrey", "team": "DAL", "fg": 35, "xp": 48, "rpb": 151},
+    {"name": "Jake Bates", "team": "DET", "fg": 31, "xp": 53, "rpb": 142},
+    {"name": "Cairo Santos", "team": "CHI", "fg": 32, "xp": 46, "rpb": 140},
+    {"name": "Harrison Mevis", "team": "LAR", "fg": 29, "xp": 55, "rpb": 140},
+    {"name": "Cameron Dicker", "team": "LAC", "fg": 35, "xp": 39, "rpb": 140},
+    {"name": "Will Reichard", "team": "MIN", "fg": 33, "xp": 42, "rpb": 139},
+    {"name": "Chase McLaughlin", "team": "TB", "fg": 33, "xp": 42, "rpb": 137}
+  ],
+  "defenses": [
+    {"name": "Texans D/ST", "team": "HOU", "rpb": 321.62},
+    {"name": "Broncos D/ST", "team": "DEN", "rpb": 311.65},
+    {"name": "Eagles D/ST", "team": "PHI", "rpb": 299.48},
+    {"name": "Rams D/ST", "team": "LAR", "rpb": 299.18},
+    {"name": "Seahawks D/ST", "team": "SEA", "rpb": 294.19},
+    {"name": "Vikings D/ST", "team": "MIN", "rpb": 253.42},
+    {"name": "Steelers D/ST", "team": "PIT", "rpb": 247.24},
+    {"name": "Lions D/ST", "team": "DET", "rpb": 231.29},
+    {"name": "Chargers D/ST", "team": "LAC", "rpb": 230.38},
+    {"name": "Falcons D/ST", "team": "ATL", "rpb": 229.43},
+    {"name": "Bears D/ST", "team": "CHI", "rpb": 228.10}
+  ]
+}
