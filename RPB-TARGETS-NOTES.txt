@@ -1,0 +1,474 @@
+RPB TARGET BOARD - 160 picks, with notes
+FFA projections scored under RPB's rules. Shy-aways removed. Must-drafts bumped one round.
+Rebuild: python3 ~/draft/sims/board160.py --targets --csv
+
+KEY   *MUST = Nick's must-draft   [YOU] = your pick   val# = rank on pure points
+====================================================================================================
+
+====================================================================================================
+ROUND 1 - TAKE THE BACK. Gibbs and Bijan are +164 VBD, the two biggest edges on the board.
+        You pick 1.02, so you get whichever one 1.01 leaves. Do not overthink it.
+        Amon-Ra is the ONLY receiver Nick breaks RB-RB for, and only outside the top 4.
+====================================================================================================
+1.01   RB   Jahmyr Gibbs            DET    363.0 VBD  +164.2  val#1   
+       NICK: 1-2 overall lock; Lions dome + schedule = elite.
+1.02   RB   Bijan Robinson          ATL    362.5 VBD  +163.7  val#2    [YOU]
+       NICK: 1-2 overall lock in every format.
+1.03   WR   Ja'Marr Chase           CIN    308.9 VBD  +136.2  val#3   
+       NICK: Elite alpha target hog; premier WR baseline.
+1.04   WR   Puka Nacua              LAR    304.6 VBD  +131.9  val#4   
+       NICK: Elite anchor WR.
+1.05   WR   Jaxon Smith-Njigba      SEA    267.1 VBD   +94.4  val#5   
+       NICK: Elite efficiency + huge target share; defends him vs ADP doubters.
+1.06   WR   Amon-Ra St. Brown       DET    260.3 VBD   +87.6  val#8    *MUST
+       BUMPED from 8 to 6 on Nick's must-draft list.
+       NICK: MUST-DRAFT WR video: the ONE receiver he'd break his RB-RB open for in round 1 — but
+       only outside the top-4 picks. Case is durability: 2 games missed in 5 seasons, 4 straight
+       140-target years.
+1.07   RB   Jonathan Taylor         IND    291.0 VBD   +92.2  val#7   
+       NICK: Fade at pick 4 in full-PPR — lacks the receiving floor.
+1.08   RB   Christian McCaffrey     SF     283.4 VBD   +84.6  val#9   
+       NICK: Loves him if he falls (full-PPR receiving floor).
+1.09   RB   Ashton Jeanty           LVR    259.1 VBD   +60.4  val#13   *MUST
+       BUMPED from 13 to 9 on Nick's must-draft list.
+       NICK: People are underrating how good he actually was, because the offense around him was
+       terrible — no other playmakers with Bowers hurt, bad line, weak scheme. All three improve
+       this year. He calls a late-first Cook + Jeanty pairing profiles that should cost a top-seven
+       pick.
+1.10   WR   Justin Jefferson        MIN    245.0 VBD   +72.3  val#10  
+       NICK: #1 positive-regression target (career-worst luck). Watch MIN QB.
+
+====================================================================================================
+ROUND 2 - THE ONLY REAL DECISION OF YOUR DRAFT, at 2.09.
+        Bowers is listed 2.01 because that is where he SHOULD go. He has fallen to 2.09
+        in five of five real mocks. If he is there, take him - worth +57.9 over the best back.
+        If he is gone: take a take-zone back, and Tyler Warren becomes your TE at 6.09.
+====================================================================================================
+2.01   TE   Brock Bowers            LVR    210.3 VBD   +93.7  val#6    *MUST
+       >>> THE PICK OF THE DRAFT IF HE FALLS. +57.9 over the best back. NEVER at 1.02 - that costs
+       -81.8.
+       NICK: Most receptions by any rookie in NFL history, then hurt from week one onward. Goes in
+       the mid-second with a play-calling upgrade and no real target competition.
+2.02   WR   CeeDee Lamb             DAL    240.6 VBD   +67.8  val#11  
+2.03   RB   James Cook              BUF    264.4 VBD   +65.6  val#12  
+       NICK: Honorable mention he loves in the late first. Camp reports indicate an increased
+       receiving role — the one thing that was capping him. League's leading rusher last year with
+       15-plus TD upside; if the targets come, the ceiling is top-three overall.
+2.04   TE   Tyler Warren            IND    161.3 VBD   +44.7  val#14  
+       >>> YOUR BOWERS FALLBACK. +44.7 VBD at ADP 59 - that is your 6.09 exactly.
+       VALUE GAP: ranked 14 but ADP 59 - he lasts, do not reach.
+       NICK: Conditional: if Indianapolis keeps Josh Downs inside rather than outside, Warren
+       becomes the default #1 target and Nick wants him aggressively. Otherwise a repeat of last
+       year.
+2.05   RB   Chase Brown             CIN    229.9 VBD   +31.1  val#24   *MUST
+       >>> Beats Derrick Henry on Nick's list even though RPB's bonuses rank Henry 1.1 pts higher.
+       That gap is noise; the must-draft list breaks the tie.
+       BUMPED from 24 to 15 on Nick's must-draft list.
+       TAKE ZONE - one of five backs to take through round 3 over a higher-ranked WR.
+       NICK: The reverse side of the Walker split — Nick takes Chase Brown in FULL PPR for
+       reception certainty, and Walker in half. Separately a must-draft any time he reaches round
+       two: best offensive line of the Burrow era, featured role, top-five upside if Burrow stays
+       healthy.
+2.06   WR   A.J. Brown              NE     212.3 VBD   +39.6  val#15  
+2.07   WR   Drake London            ATL    211.2 VBD   +38.5  val#16  
+2.08   WR   Nico Collins            HOU    209.1 VBD   +36.3  val#17  
+       NICK: Premier smash-play (over Nabers).
+2.09   RB   Saquon Barkley          PHI    234.8 VBD   +36.0  val#18   [YOU]
+       TAKE ZONE - one of five backs to take through round 3 over a higher-ranked WR.
+       NICK: Nick's #1 round-2 RB (RB7) — easiest Wk1–14 SOS, ~300-touch workload, Patullo→Mannion
+       play-call upgrade. One caution: brutal playoff SOS (SEA/HOU/SF Wk15-17).
+2.10   RB   Ken Walker              KC     232.9 VBD   +34.1  val#19  
+       TAKE ZONE - one of five backs to take through round 3 over a higher-ranked WR.
+       NICK: FORMAT SPLIT and it favours RPB: 'In half PPR scoring I have Ken Walker over Chase
+       Brown. But once you flip on full PPR, the certainty there for the receptions is too great.'
+       Yours is the half-PPR league — Walker is the preferred back of the two here.
+
+====================================================================================================
+ROUND 3 - WRAP PICK. 16 players come off between 2.09 and 3.02, so set the FantasyPros
+        Pick Predictor to TWO ROUNDS here or the number lies to you.
+        The take zone is a dead heat: Barkley / Walker / Chase Brown / Hampton all 13.1 hppr/wk.
+====================================================================================================
+3.01   WR   Parker Washington       JAX    196.1 VBD   +23.4  val#29   *MUST
+       >>> RETURNS: he was 5th in the NFL in punt return yards and LED the league in punt return
+       TDs. RPB pays 0.1/return yard and 6 per return TD. FFA projects none of it - that is +34 pts
+       and the reason he is here. RISK: full-time offensive role may take him off returns.
+       BUMPED from 29 to 21 on Nick's must-draft list.
+       VALUE GAP: ranked 29 but ADP 73 - he lasts, do not reach.
+       NICK: Round 6 — a full round ahead of his round-7 ADP. Rotates Z and F, rarely off the
+       field. Jacksonville averaged 33+ pts over their final nine weeks with Lawrence as overall
+       QB1 and Washington as WR12.
+3.02   WR   Malik Nabers            NYG    205.6 VBD   +32.9  val#20   [YOU]
+       NICK: 2026-08-05, his latest mention: 'I'm still not going to take him over that range of
+       running back that's Saquon, Ken Walker, Chase Brown, Hampton. And I'd probably still put
+       Bowers at the end of that. But after that, I feel like I'm probably just going Malik
+       Nabers.' Also: 'right now I'd probably take him over Pickens', and 'really tough between him
+       and Nico — right now I'd probably still take Nico first.'
+3.03   RB   Derrick Henry           BAL    231.0 VBD   +32.3  val#21  
+       >>> Take him LAST of the five take-zone backs. Nick calls him a watch, not a buy - declining
+       targets, last year's RB8 finish inflated by one Week 17 four-TD game.
+       TAKE ZONE - one of five backs to take through round 3 over a higher-ranked WR.
+       NICK: R2 RB5 (≈RB11) — still dominant on the ground (8 straight 10-TD seasons) but declining
+       targets = volatile half-PPR floor at 32; last year's RB8 finish was inflated by one Wk17
+       4-TD game. Safe floor, capped ceiling, new OC unknown.
+3.04   WR   George Pickens          DAL    204.5 VBD   +31.8  val#22  
+       NICK: Pivot-point WR target.
+3.05   RB   Omarion Hampton         LAC    230.3 VBD   +31.6  val#23  
+       TAKE ZONE - one of five backs to take through round 3 over a higher-ranked WR.
+       NICK: Anchor-RB tier; volume + goal-line role.
+3.06   TE   Tucker Kraft            GB     145.5 VBD   +28.9  val#26  
+       VALUE GAP: ranked 26 but ADP 71 - he lasts, do not reach.
+       NICK: Was the top-scoring TE before tearing his ACL and is trending well, but goes in the
+       early 7th with no discount — Nick is explicitly lukewarm at that price and would rather bad
+       news drop the ADP first.
+3.07   TE   Sam LaPorta             DET    141.8 VBD   +25.3  val#27  
+       VALUE GAP: ranked 27 but ADP 85 - he lasts, do not reach.
+3.08   WR   DeVonta Smith           PHI    197.4 VBD   +24.7  val#28  
+       NICK: Favorite Eagles target — 30%+ target share, 10 tgt/gm early.
+3.09   WR   Emeka Egbuka            TB     188.1 VBD   +15.4  val#39   *MUST
+       BUMPED from 39 to 29 on Nick's must-draft list.
+       NICK: Was on a 76/1,279/12 pace through nine games before a hamstring injury and Baker's
+       shoulder derailed it. The new coordinator has talked about using him in the Cooper Kupp
+       role.
+3.10   TE   Harold Fannin Jr.       CLE    139.6 VBD   +23.0  val#30  
+       VALUE GAP: ranked 30 but ADP 87 - he lasts, do not reach.
+       NICK: Mid-TE trap — prior output inflated by garbage-time targets.
+
+====================================================================================================
+ROUND 4 - QB BECOMES LEGAL HERE, and that is the only reason QBs appear.
+        You should still wait to 7.02. Allen is +30 VBD, BELOW Barkley at +36.
+        The RB dead zone begins now: after Montgomery there is nothing until round 8.
+====================================================================================================
+4.01   QB   Josh Allen              BUF    420.3 VBD   +30.0  val#25   *MUST
+       >>> Highest raw total on the board (420.3) and it does not matter. Only +30 over the QB you
+       get anyway.
+       NICK: QB video sharpens the price: worth a MID-TO-LATE third, never round 2 and never the
+       early third. Six straight top-2 finishes, one game missed in seven years.
+4.02   WR   Chris Olave             NO     195.1 VBD   +22.4  val#31  
+       NICK: R3 elite — high-tempo NO offense, heavy target share.
+4.03   QB   Joe Burrow              CIN    404.2 VBD   +13.9  val#40   *MUST
+       BUMPED from 40 to 33 on Nick's must-draft list.
+       NICK: One of the eight quarterbacks Nick wants, at a value.
+4.04   WR   Zay Flowers             BAL    192.3 VBD   +19.6  val#32  
+       NICK: Full-PPR volume play (MWV) — TD caps hurt him in half-PPR (RPB), but full PPR cashes
+       in his easy 6-8 reception games.
+4.05   RB   Kyren Williams          LAR    216.9 VBD   +18.1  val#33  
+       NICK: Named as dead-zone: lead touchdown back on a potentially top-scoring offense, but
+       Corum could take a 50/50 split and the receptions are known not to be there. Volume is
+       perceived, not locked.
+4.06   WR   Tee Higgins             CIN    190.7 VBD   +18.0  val#34  
+4.07   RB   Jeremiyah Love          ARI    216.7 VBD   +17.9  val#35  
+4.08   WR   Mike Evans              SF     183.3 VBD   +10.5  val#45   *MUST
+       BUMPED from 45 to 38 on Nick's must-draft list.
+       NICK: Round 5, explicitly. Pearsall out for the season and Deebo is not a red-zone threat,
+       so Evans is the primary target inside the 20 on a team top-5 in red-zone plays three years
+       running.
+4.09   TE   George Kittle           SF     134.2 VBD   +17.6  val#36   [YOU]
+       >>> The late TE door. +17.6 at ADP 107, which is your 11.02.
+       VALUE GAP: ranked 36 but ADP 107 - he lasts, do not reach.
+       NICK: R10 late double-dip value.
+4.10   QB   Justin Herbert          LAC    400.1 VBD    +9.8  val#46   *MUST
+       BUMPED from 46 to 40 on Nick's must-draft list.
+       VALUE GAP: ranked 46 but ADP 74 - he lasts, do not reach.
+       NICK: All in on the Chargers offense, with a healthy top-seven line this year. Herbert goes
+       at the end of the top-8 range, making him the best value of the group.
+
+====================================================================================================
+ROUND 5 - WRAP PICK. Two rounds on the predictor again.
+        Mike Evans is the half-PPR format split in your favour - Nick fades him in full PPR.
+====================================================================================================
+5.01   RB   Breece Hall             NYJ    215.3 VBD   +16.5  val#37  
+       NICK: MOVED DOWN, and explicitly moved down in half PPR too, not just full. He is optimistic
+       about the Jets in theory but not enough to pay a round-three price. Sits at the edge of the
+       dead zone.
+5.02   WR   Ladd McConkey           LAC    188.9 VBD   +16.2  val#38   [YOU]
+       NICK: R4 favorite value — elite TPRR in 12-personnel.
+5.03   RB   David Montgomery        HOU    204.8 VBD    +6.1  val#48   *MUST
+       >>> Replaces exactly what Etienne used to do, and better (+5.8 vs -0.2). ADP 55 - will NOT
+       reach 7.02.
+       BUMPED from 48 to 43 on Nick's must-draft list.
+       NICK: Touches are locked in and he gets the ball every time Houston is inside the five. Not
+       a top-five ceiling, but very hard to finish outside the top 20.
+5.04   QB   Lamar Jackson           BAL    395.9 VBD    +5.6  val#49   *MUST
+       BUMPED from 49 to 44 on Nick's must-draft list.
+       NICK: Tier 1 on ceiling, not certainty — the only QB he sees realistically hitting 25-28
+       ppg. Offset by 15 games missed in 5 years. Last year's dip was compromised mobility dragging
+       the passing game with it.
+5.05   WR   Tetairoa McMillan       CAR    185.7 VBD   +13.0  val#42  
+       NICK: Safe boundary target vacuum.
+5.06   WR   Garrett Wilson          NYJ    185.7 VBD   +13.0  val#41  
+5.07   TE   Dallas Goedert          PHI    117.4 VBD    +0.8  val#52   *MUST
+       BUMPED from 52 to 47 on Nick's must-draft list.
+       VALUE GAP: ranked 52 but ADP 125 - he lasts, do not reach.
+       NICK: Top-11 in adjusted PPG five straight years and top-8 in four of five. A.J. Brown's
+       departure frees 120+ targets and he is the 12th tight end off boards.
+5.08   RB   Javonte Williams        DAL    211.2 VBD   +12.4  val#43  
+       NICK: Named as dead-zone: touchdowns and yardage will be there but he has zero role in the
+       receiving game, and Jaylen Warren is being hyped for real work. An early-down grinder priced
+       like more.
+5.09   RB   Josh Jacobs             GB     201.2 VBD    +2.4  val#51  
+       NICK: R3 fade — conduct probe / 8-12 wk suspension risk; pounce only at R5.
+5.10   RB   D'Andre Swift           CHI    199.0 VBD    +0.2  val#53   *MUST
+       BUMPED from 53 to 50 on Nick's must-draft list.
+       NICK: Still 27, with 34+ receptions in all six pro seasons and back-to-back 1,340-yard
+       years. Thin competition behind him on a Bears offense poised to step up.
+
+====================================================================================================
+ROUND 6 - PARKER WASHINGTON WINDOW. He is the single biggest edge in your setup
+        and the room does not know it. If Bowers went in R2, Tyler Warren or Kittle instead.
+====================================================================================================
+6.01   WR   Jaylen Waddle           DEN    183.7 VBD   +10.9  val#44  
+6.02   WR   Terry McLaurin          WAS    179.6 VBD    +6.9  val#47  
+       NICK: Safe locked-in target monster (over aging Davante).
+6.03   QB   Jayden Daniels          WAS    390.3 VBD    +0.0  val#57   *MUST
+       BUMPED from 57 to 53 on Nick's must-draft list.
+       NICK: CONFLICT — the 2026-07-31 QB video calls him the highest-ceiling tier-2 arm and a
+       round-6 value (3rd in adjusted PPG as a rookie, discounted purely on last year's injuries).
+       The 'DOWNGRADED / watch' note above cites Washington cutting no-huddle, which is camp news
+       and therefore almost certainly NEWER than the video. The downgrade wins on recency; treat
+       the video's round-6 enthusiasm as superseded unless a later video says otherwise.
+6.04   QB   Jalen Hurts             PHI    389.6 VBD    -0.7  val#58   *MUST
+       BUMPED from 58 to 54 on Nick's must-draft list.
+       NICK: One of the eight quarterbacks Nick wants, at a value.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+6.05   RB   Travis Etienne Jr.      NO     198.8 VBD    +0.0  val#56  
+       >>> YOUR OLD KEEPER, now back in the pool. Exactly replacement level (-0.2). New Orleans in
+       2026.
+6.06   WR   Davante Adams           LAR    177.1 VBD    +4.4  val#50  
+       NICK: Aging — prefers Terry McLaurin's safer volume.
+6.07   WR   Jameson Williams        DET    172.7 VBD    +0.0  val#54  
+       NICK: Best-ball only — volatile target floor wrecks redraft lineups.
+6.08   TE   Dalton Kincaid          BUF    116.6 VBD    +0.0  val#55  
+       VALUE GAP: ranked 55 but ADP 118 - he lasts, do not reach.
+       NICK: Late TE double-dip — athletic profile tied to an elite QB (Buffalo); live ADP outpaces
+       market.
+6.09   RB   Quinshon Judkins        CLE    190.2 VBD    -8.5  val#65   [YOU]
+       NICK: R5 value — 300-touch ceiling, Monken features his best players.
+6.10   TE   Isaiah Likely           NYG    114.4 VBD    -2.2  val#59  
+       VALUE GAP: ranked 59 but ADP 129 - he lasts, do not reach.
+
+====================================================================================================
+ROUND 7 - QB. Six teams keep one, only four get drafted, so the tier cannot run dry.
+        Burrow and Herbert both project 20.2 hppr/wk and your scoring likes pocket arms.
+====================================================================================================
+7.01   QB   Dak Prescott            DAL    387.3 VBD    -3.0  val#60  
+7.02   WR   DJ Moore                BUF    168.4 VBD    -4.3  val#61   [YOU]
+       NICK: Elite value — ADP artificially depressed by 'foot callus' panic; if he's running
+       fluidly in camp the value skyrockets.
+7.03   RB   Bucky Irving            TB     177.3 VBD   -21.4  val#76  
+       SCARCE: ADP 56 but only worth #76 - the room takes him early. Let him go.
+       NICK: #1 'regret' RB — committee + injury; 13-carry/1-target risk.
+7.04   TE   Travis Kelce            KC     111.6 VBD    -5.0  val#62  
+       VALUE GAP: ranked 62 but ADP 110 - he lasts, do not reach.
+7.05   WR   Christian Watson        GB     164.9 VBD    -7.8  val#64  
+       NICK: R6 fade — 1 double-digit-target game in 51 career games.
+7.06   RB   TreVeyon Henderson      NE     183.2 VBD   -15.6  val#71  
+7.07   RB   Bhayshul Tuten          JAX    183.2 VBD   -15.6  val#72  
+       NICK: R6 value — 250-280 touch ceiling in fast JAX offense.
+7.08   WR   Rome Odunze             CHI    160.8 VBD   -11.9  val#67  
+7.09   WR   Carnell Tate            TEN    158.6 VBD   -14.2  val#69  
+7.10   RB   Jadarian Price          SEA    171.1 VBD   -27.7  val#90  
+       SCARCE: ADP 64 but only worth #90 - the room takes him early. Let him go.
+       NICK: Overrated — no receiving profile; Charbonnet reclaims SEA RB1.
+
+====================================================================================================
+ROUND 8 - THE LAST REAL RUNNING BACKS. Pollard, Stevenson, Jaylen Warren all ~9.9 hppr/wk.
+        After this round it is 8.7 and a cliff. Do not expect more later.
+====================================================================================================
+8.01   WR   Jordyn Tyson            NO     157.9 VBD   -14.8  val#70  
+8.02   RB   Tony Pollard            TEN    173.9 VBD   -24.9  val#80   *MUST
+       BUMPED from 80 to 72 on Nick's must-draft list.
+       NICK: Four straight 1,000-yard seasons and a shot at 300 touches while going as RB29. Was
+       28th in PPG last year despite a bottom-three quarterback and offense.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+8.03   WR   Brian Thomas Jr.        JAX    153.2 VBD   -19.6  val#75  
+8.04   WR   Marvin Harrison Jr.     ARI    150.1 VBD   -22.6  val#77  
+8.05   QB   Jared Goff              DET    364.4 VBD   -25.9  val#85   *MUST
+       BUMPED from 85 to 75 on Nick's must-draft list.
+       VALUE GAP: ranked 85 but ADP 111 - he lasts, do not reach.
+       NICK: The fallback if you pass on the top 8. Easiest schedule in the NFL, mostly domes late,
+       a poor defense forcing shootouts, and more passing near the goal line with Montgomery gone.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+8.06   RB   Jaylen Warren           PIT    172.3 VBD   -26.4  val#87  
+       NICK: Muddy committee; explicitly avoided.
+8.07   WR   Makai Lemon             PHI    149.3 VBD   -23.4  val#79  
+8.08   RB   Rhamondre Stevenson     NE     173.0 VBD   -25.7  val#83  
+       NICK: Tactical chain-mover — staff trusts him to hit reads and grind the 4-5 yards to move
+       the chains; under-the-radar volume.
+8.09   QB   Bo Nix                  DEN    365.2 VBD   -25.1  val#81   [YOU]
+8.10   WR   DK Metcalf              PIT    146.9 VBD   -25.9  val#84  
+       NICK: R6/7 fade — name value only; aging Rodgers can't push it deep, <100 tgts.
+
+====================================================================================================
+ROUND 9 - WRAP PICK. Bench and upside from here.
+====================================================================================================
+9.01   WR   Jayden Reed             GB     146.5 VBD   -26.2  val#86  
+       NICK: Consolidated GB target share after Doubs/Wicks left.
+9.02   WR   Jordan Addison          MIN    145.0 VBD   -27.7  val#89   [YOU]
+       NICK: Unfavorable ecosystem — buried behind alpha Justin Jefferson, catching from a
+       volatile/unproven MIN QB room.
+9.03   WR   Josh Downs              IND    144.8 VBD   -27.9  val#91  
+       NICK: Polished target earner — clear path to 5-7 catches/wk with the WR room thinned
+       (Pierce's foot surgery); high-floor flex.
+9.04   WR   Chris Godwin            TB     131.2 VBD   -41.5  val#101 
+       NICK: Lacks a league-winning ceiling; aging role.
+9.05   RB   Rico Dowdle             PIT    151.4 VBD   -47.4  val#118 
+       SCARCE: ADP 87 but only worth #118 - the room takes him early. Let him go.
+9.06   RB   RJ Harvey               DEN    150.8 VBD   -48.0  val#119 
+       SCARCE: ADP 91 but only worth #119 - the room takes him early. Let him go.
+       NICK: R7 fade — Dobbins signed, role collapses.
+9.07   WR   Michael Pittman Jr.     PIT    125.5 VBD   -47.2  val#113 
+       SCARCE: ADP 93 but only worth #113 - the room takes him early. Let him go.
+       NICK: Low aDOT / low-volume scheme; passed on.
+9.08   RB   Jonathon Brooks         CAR    151.6 VBD   -47.2  val#114  *MUST
+       >>> Backs up Chuba Hubbard, who is on Nick's SHY list. FantasyPros grades Brooks standalone-
+       value.
+       BUMPED from 114 to 88 on Nick's must-draft list.
+       NICK: Hubbard is replacement level and Carolina did nothing to replace Dowdle. A steep
+       discount for the injury history in round 8 or 9, for a back who could start week one.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+9.09   RB   Blake Corum             LAR    148.5 VBD   -50.2  val#123 
+       SCARCE: ADP 93 but only worth #123 - the room takes him early. Let him go.
+9.10   RB   J.K. Dobbins            DEN    139.8 VBD   -59.0  val#140 
+       SCARCE: ADP 91 but only worth #140 - the room takes him early. Let him go.
+
+====================================================================================================
+ROUND 10 - YOUR KEEPER CONSUMES 10.09. Luther Burden III, WR19, +18.7 VBD.
+        (Keeper ROUND still unconfirmed - assumed 10, like-for-like with Etienne.)
+====================================================================================================
+10.01  QB   Patrick Mahomes         KC     351.6 VBD   -38.7  val#99  
+10.02  WR   Xavier Worthy           KC     130.4 VBD   -42.3  val#102 
+10.03  RB   Kyle Monangai           CHI    151.6 VBD   -47.2  val#115 
+       NICK: ~R8 handcuff value — 11 touches/gm on an elite offense, TD luck.
+10.04  WR   Matthew Golden          GB     127.6 VBD   -45.1  val#109 
+10.05  WR   Jakobi Meyers           JAX    125.3 VBD   -47.4  val#117 
+       NICK: Low-ceiling depth play.
+10.06  WR   Jayden Higgins          HOU    123.2 VBD   -49.5  val#121  *MUST
+       BUMPED from 121 to 96 on Nick's must-draft list.
+       NICK: Going round 11-12 (round 14 on ESPN). Starting Z opposite Nico Collins. Whole
+       organisation talking him up, plus contingent upside — Collins has missed time every year of
+       his career.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+10.07  WR   Wan'Dale Robinson       TEN    123.0 VBD   -49.7  val#122 
+10.08  RB   Jordan Mason            MIN    128.0 VBD   -70.8  val#169  *MUST
+       BUMPED from 169 to 98 on Nick's must-draft list.
+       SCARCE: ADP 114 but only worth #169 - the room takes him early. Let him go.
+       NICK: Reports have him as the lead back, Aaron Jones is 32 and fading, and Kevin O'Connell
+       offenses travel. A discount David Montgomery, closing out games.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+10.09  WR   Stefon Diggs            WAS    125.3 VBD   -47.4  val#116  [YOU]
+       VALUE GAP: ranked 116 but ADP 180 - he lasts, do not reach.
+10.10  RB   Jacory Croskey-Merritt  WAS    128.9 VBD   -69.8  val#166 
+       SCARCE: ADP 114 but only worth #166 - the room takes him early. Let him go.
+
+====================================================================================================
+ROUND 11 - Handcuffs and upside. Start counting defenses from here every round.
+====================================================================================================
+11.01  WR   KC Concepcion           CLE    121.5 VBD   -51.2  val#125 
+11.02  WR   Romeo Doubs             NE     121.5 VBD   -51.2  val#126  [YOU]
+11.03  WR   Khalil Shakir           BUF    111.4 VBD   -61.3  val#146 
+11.04  WR   Jalen Coker             CAR    115.9 VBD   -56.9  val#135 
+11.05  RB   Chris Rodriguez Jr.     JAX    118.4 VBD   -80.3  val#181 
+       SCARCE: ADP 129 but only worth #181 - the room takes him early. Let him go.
+11.06  RB   Kenneth Gainwell        TB     140.8 VBD   -58.0  val#136 
+       VALUE GAP: ranked 136 but ADP 343 - he lasts, do not reach.
+       NICK: Premium ADP value handcuff.
+11.07  RB   Keaton Mitchell         LAC    127.2 VBD   -71.5  val#171  *MUST
+       BUMPED from 171 to 107 on Nick's must-draft list.
+       SCARCE: ADP 143 but only worth #171 - the room takes him early. Let him go.
+       NICK: Essentially free in drafts. Hit 20+ MPH a league-leading seven times on just 59
+       carries, and McDaniel reportedly asked for him by name.
+       CAUTION: below replacement on points. Late upside only - do not reach.
+11.08  WR   De'Zhaun Stribling      SF     113.7 VBD   -59.0  val#139 
+11.09  WR   Rashid Shaheed          SEA    113.3 VBD   -59.4  val#141 
+11.10  WR   Travis Hunter           JAX    113.2 VBD   -59.5  val#142 
+       NICK: Last-round STEAL — supreme talent, highest TPRR upside.
+
+====================================================================================================
+ROUND 12 - Pure lottery tickets now. Everything is below replacement.
+====================================================================================================
+12.01  WR   Deebo Samuel            SF     112.9 VBD   -59.8  val#143 
+12.02  WR   Denzel Boston           CLE    112.1 VBD   -60.7  val#144 
+12.03  WR   Ryan Flournoy           DAL    111.7 VBD   -61.0  val#145 
+12.04  WR   Jalen Nailor            LVR    108.0 VBD   -64.7  val#151 
+12.05  WR   Jauan Jennings          MIN    106.9 VBD   -65.8  val#152 
+12.06  RB   Aaron Jones             MIN    108.8 VBD   -90.0  val#201 
+       SCARCE: ADP 116 but only worth #201 - the room takes him early. Let him go.
+12.07  WR   Tre Harris              LAC    106.7 VBD   -66.0  val#156 
+12.08  WR   Tre Tucker              LVR    106.3 VBD   -66.4  val#157 
+12.09  WR   Omar Cooper Jr.         NYJ    106.1 VBD   -66.6  val#158  [YOU]
+12.10  RB   Tyrone Tracy Jr.        NYG    107.2 VBD   -91.5  val#210 
+       SCARCE: ADP 129 but only worth #210 - the room takes him early. Let him go.
+
+====================================================================================================
+ROUND 13 - Watch the D/ST board. Mock 3 had the top two at 64% gone by 13.02.
+====================================================================================================
+13.01  WR   Jalen McMillan          TB     105.6 VBD   -67.1  val#160 
+13.02  WR   Isaac TeSlaa            DET    104.1 VBD   -68.6  val#162  [YOU]
+13.03  WR   Zachariah Branch        ATL    104.1 VBD   -68.6  val#163 
+       VALUE GAP: ranked 163 but ADP 216 - he lasts, do not reach.
+13.04  WR   Tank Dell               HOU    103.7 VBD   -69.1  val#165 
+       VALUE GAP: ranked 165 but ADP 203 - he lasts, do not reach.
+       NICK: Zero-risk last-pick flier; elite share if Collins misses time.
+13.05  RB   Alvin Kamara            NO     104.3 VBD   -94.5  val#214 
+       SCARCE: ADP 148 but only worth #214 - the room takes him early. Let him go.
+13.06  WR   Adonai Mitchell         NYJ    102.5 VBD   -70.2  val#168 
+13.07  WR   Kayshon Boutte          NE     101.8 VBD   -70.9  val#170 
+13.08  WR   Pat Bryant              DEN     99.6 VBD   -73.1  val#173 
+       VALUE GAP: ranked 173 but ADP 204 - he lasts, do not reach.
+13.09  WR   Jerry Jeudy             CLE     94.8 VBD   -77.9  val#179 
+13.10  WR   Cyrus Allen             KC      98.9 VBD   -73.8  val#175 
+       VALUE GAP: ranked 175 but ADP 283 - he lasts, do not reach.
+
+====================================================================================================
+ROUND 14 - LAST SKILL PICK. If defenses are draining hard, take one here instead.
+====================================================================================================
+14.01  WR   Germie Bernard          PIT     98.2 VBD   -74.5  val#176 
+       VALUE GAP: ranked 176 but ADP 229 - he lasts, do not reach.
+14.02  WR   Tyler Lockett           TEN     87.5 VBD   -85.2  val#188 
+       VALUE GAP: ranked 188 but ADP 230 - he lasts, do not reach.
+14.03  RB   Woody Marks             HOU     90.3 VBD  -108.5  val#265 
+       SCARCE: ADP 138 but only worth #265 - the room takes him early. Let him go.
+14.04  RB   Brian Robinson Jr.      ATL     88.5 VBD  -110.3  val#276 
+       SCARCE: ADP 160 but only worth #276 - the room takes him early. Let him go.
+14.05  WR   Calvin Ridley           TEN     86.7 VBD   -86.1  val#190 
+14.06  WR   Dontayvion Wicks        PHI     81.2 VBD   -91.5  val#209 
+       SCARCE: ADP 185 but only worth #209 - the room takes him early. Let him go.
+14.07  WR   Malik Washington        MIA     81.8 VBD   -91.0  val#206 
+       SCARCE: ADP 186 but only worth #206 - the room takes him early. Let him go.
+14.08  RB   Tank Bigsby             PHI     86.3 VBD  -112.4  val#277 
+       SCARCE: ADP 152 but only worth #277 - the room takes him early. Let him go.
+14.09  RB   Isiah Pacheco           DET     85.7 VBD  -113.1  val#289  [YOU]
+       SCARCE: ADP 149 but only worth #289 - the room takes him early. Let him go.
+14.10  WR   Ted Hurst               TB      84.4 VBD   -88.3  val#195 
+       VALUE GAP: ranked 195 but ADP 382 - he lasts, do not reach.
+
+====================================================================================================
+ROUND 15 - D/ST. Ordered by CBS season projection, but the WEEKLY MATCHUP matters more.
+        sims/dst_rank.py says SEATTLE for the opening stretch (61.6 over weeks 1-3).
+        CBS and 4for4 disagree hard on defenses - CBS has Jacksonville 23rd, 4for4 had them 6th.
+====================================================================================================
+15.01  DST  Texans D/ST             HOU   321.62 VBD     -            
+15.02  DST  Broncos D/ST            DEN   311.65 VBD     -             [YOU]
+15.03  DST  Eagles D/ST             PHI   299.48 VBD     -            
+15.04  DST  Rams D/ST               LAR   299.18 VBD     -            
+15.05  DST  Seahawks D/ST           SEA   294.19 VBD     -            
+15.06  DST  Vikings D/ST            MIN   253.42 VBD     -            
+15.07  DST  Steelers D/ST           PIT   247.24 VBD     -            
+15.08  DST  Lions D/ST              DET   231.29 VBD     -            
+15.09  DST  Chargers D/ST           LAC   230.38 VBD     -            
+15.10  DST  Falcons D/ST            ATL   229.43 VBD     -            
+
+====================================================================================================
+ROUND 16 - KICKER. Nick ranks 70th of 150+ at this position. Nobody is good at it.
+        Take a good offense's kicker and stop thinking.
+====================================================================================================
+16.01  K    Jason Myers             SEA      165 VBD     -            
+16.02  K    Ka'imi Fairbairn        HOU      155 VBD     -            
+16.03  K    Nick Folk               ATL      152 VBD     -            
+16.04  K    Blake Grupe             IND      151 VBD     -            
+16.05  K    Brandon Aubrey          DAL      151 VBD     -            
+16.06  K    Jake Bates              DET      142 VBD     -            
+16.07  K    Cairo Santos            CHI      140 VBD     -            
+16.08  K    Harrison Mevis          LAR      140 VBD     -            
+16.09  K    Cameron Dicker          LAC      140 VBD     -             [YOU]
+16.10  K    Will Reichard           MIN      139 VBD     -            
