@@ -19,8 +19,9 @@ Exact: everything scaling off a season total. Modelled: the +3 yardage-game bonu
 approximation) and TD-distance bonuses (flat expected value). `--no-bonus` shows the exact-only
 board; the order barely moves.
 
-**Not modelled at all: individual punt/kick return yards and return TDs.** See the warning below —
-it matters for one specific pick.
+**Individual punt/kick return yards and return TDs ARE now priced**, from
+`data/return-roles-2026.json` — RPB scores them and no projection source does. That file covers one
+researched player so far; see §5. Widening it is the largest remaining edge.
 
 ## Replacement levels under RPB
 
@@ -37,36 +38,36 @@ it matters for one specific pick.
 
 | # | pos | player | RPB | VBD |
 |---|---|---|---|---|
-| 1 | RB1 | Jahmyr Gibbs | 363.0 | **+164.0** |
-| 2 | RB2 | Bijan Robinson | 362.5 | **+163.5** |
-| 3 | WR1 | Ja'Marr Chase | 308.9 | +140.5 |
-| 4 | WR2 | Puka Nacua | 304.6 | +136.2 |
-| 5 | WR3 | Jaxon Smith-Njigba | 267.1 | +98.7 |
+| 1 | **RB1** | **Jahmyr Gibbs** | 363.0 | **+164.0** |
+| 2 | **RB2** | **Bijan Robinson** | 362.5 | **+163.5** |
+| 3 | WR1 | Ja'Marr Chase | 308.9 | +136.2 |
+| 4 | WR2 | Puka Nacua | 304.6 | +131.9 |
+| 5 | WR3 | Jaxon Smith-Njigba | 267.1 | +94.4 |
 | 6 | **TE1** | **Brock Bowers** | 210.3 | **+93.7** |
 | 7 | RB3 | Jonathan Taylor | 291.0 | +92.0 |
-| 8 | WR4 | Amon-Ra St. Brown | 260.3 | +91.9 |
+| 8 | WR4 | Amon-Ra St. Brown | 260.3 | +87.6 |
 | 9 | RB4 | Christian McCaffrey | 283.4 | +84.4 |
-| 10 | WR5 | Justin Jefferson | 245.0 | +76.6 |
-| 11 | WR6 | CeeDee Lamb | 240.6 | +72.1 |
-| 12 | TE2 | Trey McBride | 185.1 | +68.5 |
+| 10 | WR5 | Justin Jefferson | 245.0 | +72.3 |
+| 11 | TE2 | Trey McBride | 185.1 | +68.5 |
+| 12 | WR6 | CeeDee Lamb | 240.6 | +67.8 |
 | 13 | RB5 | James Cook | 264.4 | +65.4 |
 | 14 | TE3 | Colston Loveland | 179.6 | +63.0 · KEPT |
 | 15 | RB6 | Ashton Jeanty | 259.1 | +60.2 |
 | 16 | TE4 | Tyler Warren | 161.3 | +44.7 |
-| 17 | WR7 | A.J. Brown | 212.3 | +43.9 |
-| 18 | WR8 | Drake London | 211.2 | +42.8 |
-| 19 | WR9 | Nico Collins | 209.1 | +40.6 |
-| 20 | WR10 | Malik Nabers | 205.6 | +37.2 |
-| 21 | WR11 | George Pickens | 204.5 | +36.1 |
-| 22 | RB7 | Saquon Barkley | 234.8 | +35.8 |
-| 23 | RB8 | Ken Walker | 232.9 | +33.9 |
-| 24 | RB9 | Derrick Henry | 231.0 | +32.0 |
+| 17 | WR7 | A.J. Brown | 212.3 | +39.6 |
+| 18 | WR8 | Drake London | 211.2 | +38.5 |
+| 19 | WR9 | Nico Collins | 209.1 | +36.3 |
+| 20 | RB7 | Saquon Barkley | 234.8 | +35.8 |
+| 21 | RB8 | Ken Walker | 232.9 | +33.9 |
+| 22 | WR10 | Malik Nabers | 205.6 | +32.9 |
+| 23 | RB9 | Derrick Henry | 231.0 | +32.0 |
+| 24 | WR11 | George Pickens | 204.5 | +31.8 |
 | 25 | RB10 | Omarion Hampton | 230.3 | +31.3 |
 | 26 | RB11 | Chase Brown | 229.9 | +30.9 |
 | 27 | **QB1** | **Josh Allen** | 420.3 | **+30.0** |
-| 28 | WR12 | DeVonta Smith | 197.4 | +29.0 |
-| 29 | TE5 | Tucker Kraft | 145.5 | +28.9 |
-| 30 | RB12 | Devon Achane | 227.6 | +28.6 |
+| 28 | TE5 | Tucker Kraft | 145.5 | +28.9 |
+| 29 | RB12 | Devon Achane | 227.6 | +28.6 |
+| 30 | TE6 | Sam LaPorta | 141.8 | +25.3 |
 
 ---
 
