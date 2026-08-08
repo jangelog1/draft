@@ -31,7 +31,7 @@ researched player so far; see §5. Widening it is the largest remaining edge.
 |---|---|---|---|
 | QB | 4 (six teams keep one) | Jayden Daniels | 390.3 |
 | RB | 18 | D'Andre Swift | 199.0 |
-| WR | 26 | DJ Moore | 168.4 |
+| WR | 26 | Jameson Williams | 172.7 |
 | TE | 9 | Dalton Kincaid | 116.6 |
 
 ## Overall top 30 by VBD
