@@ -133,7 +133,12 @@ ROUND2_ONLY = {"Brock Bowers"}
 # That is exactly backwards here: six teams keep a quarterback, only four are drafted, and the whole
 # QB1-to-replacement gap is 30 points (1.8/week). The tier cannot run dry, so a QB is never worth
 # reaching for. The plan's standing rule -- never a QB before round 4 -- is enforced as a floor.
-POS_FLOOR = {"QB": 4}
+# REMOVED 2026-08-07 at Angelo's direction. This used to floor QBs to round 4 on the plan's
+# "never a QB before round 4" rule, which dragged Josh Allen from his bumped slot (~15) down to 31.
+# He wants the aggressive board, so must-draft QBs now get the same one-round bump as everyone
+# else. The VBD tolerance and the Bowers round-2 gate still apply -- those stop absurdities, not
+# aggression. DRAFT-DAY.md still says wait to 7.02; this board no longer enforces it.
+POS_FLOOR = {}
 
 
 def targets():
