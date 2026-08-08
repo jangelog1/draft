@@ -594,8 +594,8 @@ const LEAGUES={
    gone in your draft the card says so — it reads the live board. */
 const PLAN={
   league:"RPB",
-  keeper:"Travis Etienne Jr.",
-  updated:"2026-08-06",
+  keeper:"Luther Burden III",
+  updated:"2026-08-08",
   /* The whole plan in one line each, in the order the branches actually come up. */
   branches:[
     {tag:"A", when:"1.02 — always", do:"Take the back. Bijan Robinson 89%, Gibbs otherwise.",
@@ -604,10 +604,10 @@ const PLAN={
      why:"The best WR out-values the best RB by ~14 VBD here, so the back will feel wrong. Take him anyway."},
     {tag:"C", when:"if you have one back after three picks", do:"Stop forcing it. Take value.",
      why:"One early back costs −11.8. Forcing RB at 4.09 + 5.02 to fix it costs −32.4 — the recovery is worse than the miss."},
-    {tag:"D", when:"4.09 / 5.02 / 6.09 — the WR block", do:"Luther Burden III, Mike Evans, Parker Washington. All three FFA must-draft.",
-     why:"Not sim-backed pick-by-pick, but the policy is: mc12 found must-draft-WR-only beat every alternative at 5.02 (+5.5, best in 92% of 24 seeds) while forcing best-available RB cost −19.7 to −27.6. Two RB starters and no FLEX put RB replacement at RB20 (191.1) and WR replacement at WR30 (154.9) — a mid RB is cheap to replace, a mid WR is not. Evans is a half-PPR format split in your favour."},
-    {tag:"D2", when:"4.09−6.09 — Bowers went and you still have no TE", do:"Kittle takes 6.09. Give up Parker Washington, not Burden or Evans.",
-     why:"The Kittle trap-line and the WR block both claim 6.09 and cannot both have it. 9 of 10 teams need a TE and you start exactly one, so TE wins the collision. Line becomes 4.09 Burden, 5.02 Evans, 6.09 Kittle, 7.02 QB, 8.09 WR3 — QB never has to move."}
+    {tag:"D", when:"4.09 / 5.02 — RB2 then Washington", do:"4.09 RB2 (Love / Hall / Javonte), NON-NEGOTIABLE. 5.02 Parker Washington, one to two rounds early.",
+     why:"REWRITTEN 2026-08-08. Love (adp 31), Hall (34) and Javonte (38) all land on overall 39, and below Swift the RB board falls off a cliff — rounds 8-13 have nothing above −47. Washington is +23.4 VBD at FFA ADP 73, the largest value-vs-cost gap on the board, and he read 23-28% gone at 5.02 but 76% at 6.09 in the SAME draft, so 6.09 is no longer safe. Order never flips: the back is the scarce thing, Washington is the cheap thing. Mike Evans is now a 49er at +10.5 (not the +14.8 Tampa number) and slides to 6.09 as best-WR-available."},
+    {tag:"D2", when:"Bowers went and you still have no TE", do:"Do NOT give up Washington. Take the TE at 6.09 or later — the middle-round tier is deep.",
+     why:"REWRITTEN 2026-08-08 off FFA ADP. The old line sacrificed Washington for Kittle at 6.09; that trade is unnecessary. Tyler Warren (+44.7, adp 59), Tucker Kraft (+28.9, adp 71), Sam LaPorta (+25.3, adp 85), Harold Fannin (+23.0, adp 87) and Kittle (+17.6, adp 107) are all available from round 4 through round 11. TE is the one position where waiting costs nothing, so it never has to collide with the 5.02 Washington pick."}
   ],
   /* RB cutoff at 2.09. Forced sweep: these five are all within 5 pts of pivoting to a WR.
      The next back down (Jeremiyah Love) drops to −14.5, and it falls off a cliff from there.
@@ -624,7 +624,8 @@ const PLAN={
   bowers:"Brock Bowers",
   bowersGain:"+36.8 over the back",
   traps:[
-    "Reaching for D/ST or K. Rams D/ST at 15.02, Aubrey at 16.09. Reaching costs 19–179.",
+    "Reaching for D/ST or K. D/ST at 13.02 (moved up from 15.02 — a live mock had the entire top five gone by 15.02), kicker at 16.09.",
+    "Taking a QB before round 7. Measured 2026-08-08: Burrow was still on the board at 9.02 and Herbert survived to 15.02 at 77%. Six teams keep a QB and only three opponents ever need one.",
     "Forcing a back at 4.09/5.02 after missing RB2 — costs −32.4, worse than living with one back.",
     "Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs −9.1; Kittle at 6.09 is free."
   ],
