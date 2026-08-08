@@ -1,2243 +1,2249 @@
 {
-  "updated": "2026-08-07T00:00:00Z",
-  "sources": [
-    "FFA video intel (love/fade stances)",
-    "FFA must-draft / shy-away calls",
-    "per-league video intel verdicts",
-    "FFA must-draft + shy-away change logs (screenshots, 2026-08-06)",
-    "RPB format-split layer, derived from Nick's own half-PPR/full-PPR language (2026-08-07)",
-    "FFA video summaries via the huddle-fantasy-summaries pipeline (~/huddle-summaries.json), folded in 2026-08-07",
-    "All 15 FFA video summaries mined from ~/huddle-summaries.json into per-player videoTakes, 2026-08-07"
-  ],
-  "qbNote": "Nick does not name one quarterback — his stated goal is to land any of the top 8 at a value: Allen, Lamar, Maye, Daniels, Burrow, Hurts, Caleb Williams, Herbert. Goff is the fallback if you pass on that range.",
-  "philosophy": [
-    {
-      "title": "Running backs early — the cliff is real",
-      "text": "His #1 2026 thesis: attack high-volume starting RBs early. 'Robust RB' / double-hero-RB (3 RBs in the first 4 rounds) is winning at a high rate. Starting NFL backs keep weekly value; backups ≈ zero. The late-round RB pool is a dead zone."
-    },
-    {
-      "title": "Tight end: early or late, NEVER the middle",
-      "text": "'Mid-round TE is a losing bet, year after year.' Pay up for an elite anchor (Bowers R2 / Loveland R4) OR wait and double-dip late (Kittle/Andrews/Kincaid). Avoid the round 6–10 TE range."
-    },
-    {
-      "title": "Quarterback: elite value early OR wait to R5–7, then ride one",
-      "text": "Never QB in round 1 or 2. Elite QBs slipping on recency bias (Josh Allen) are fine value, but he prefers the R5–7 margins (Maye). THE MID-ROUND QB TRAP: if you miss the elite tier, do NOT pay up for the next sub-tier early (Dak/Herbert/Lawrence in R6) — wait to the absolute tail-end of that tier for the max discount (he took Trevor Lawrence at R8 in his 12-tm PPR mock). Pick one QB and ride him. Caveat: a full QB embargo R3–7 assumes no league-wide run — if your league panics you can get stuck streaming, so stay flexible."
-    },
-    {
-      "title": "Don't stack teammates in redraft",
-      "text": "Negative correlation kills you in season-long (e.g. won't pair Ja'Marr Chase + Chase Brown, or 3 Chargers). Stacking is a best-ball play, not a redraft play."
-    },
-    {
-      "title": "Rookies are mostly irrelevant in redraft",
-      "text": "Pass on deep rookies — only elite feature backs (Jeanty, Jeremiah Love) matter, and even those he'll fade if hype inflates the cost or the team is tanking."
-    },
-    {
-      "title": "Playoff schedule & domes matter; fade tankers",
-      "text": "Target Lions/Saints/Eagles anchors for late-season dome games; fade open-air northern teams and brutal playoff slates (Eagles Wk15–17 vs SEA/HOU/SF). Fade tanking teams (Cardinals, Panthers) that bench young stars in the fantasy playoffs."
-    },
-    {
-      "title": "Chase positive TD regression",
-      "text": "Target elite players with high red-zone/green-zone volume but unlucky TD totals (Justin Jefferson, Mike Evans, Tyler Warren) — TD luck is volatile and self-corrects."
-    },
-    {
-      "title": "Value vs ADP discipline",
-      "text": "Don't reach — temper projections with market ADP; you can usually get your guy a round later."
-    },
-    {
-      "title": "Single-flex roster balance — don't multiply too early",
-      "text": "In single-flex builds (MWV) keep RB/WR balanced early: don't take back-to-back WRs in Rounds 1–2. If a Round 3 RB run hits while you're WR-heavy, you're forced into sub-optimal builds. (RPB has NO flex at all, so early balance matters even more.)"
-    },
-    {
-      "title": "Tight end: wait, then double-dip athletic TEs on elite QBs",
-      "text": "In the 12-tm PPR mock he boycotted TE until the single-digit-ADP rounds, then double-dipped highly athletic profiles attached to elite/high-volume QBs (Kincaid–Buffalo, Gadsden–Chargers). Reinforces the 'early or late, never the middle' rule from the late side."
-    },
-    {
-      "title": "Round 2 RBs — the league-wide decision point (half-PPR / RPB)",
-      "text": "From picks 3–12, UNLESS an elite faller is there (Brock Bowers, Drake London, or CeeDee Lamb / Justin Jefferson if they slip), take the RB — they all project similarly with heavy upside, so your RANKING is the edge. Nick's R2 RB board (half-PPR): 1) Saquon Barkley — easiest Wk1–14 SOS, ~300 touches, Patullo→Mannion play-call upgrade; 2) Kenneth Walker — big new contract, zero early-down competition, locked goal-line; 3) Chase Brown — elite pass-catcher (he'd be ABOVE Walker in full PPR), lower rush ceiling in 0.5; 4) Omarion Hampton — huge goal-line/TD upside, volume capped by Keaton Mitchell (watch camp); 5) Derrick Henry — dominant runner but fading targets = volatile 0.5 floor at 32; 6) De'Von Achane — AVOID: McDaniel gone, mobile Willis kills his target floor, hardest Wk13+ SOS. R1 RBs stay locked in pairs: Gibbs/Bijan → Taylor/CMC → Hall/Cook."
-    },
-    {
-      "title": "The round 4-5-6 receiver block",
-      "text": "From the 2026-08-07 must-draft WR video, his most concrete stated build: running back with the first two picks, then Luther Burden, Mike Evans and Parker Washington in rounds four, five and six. He says if he avoided receiver until round four and came away with those three he'd be 'jumping for joy'. Amon-Ra St. Brown is the single receiver he'd break the RB-RB open for, and only outside the top-4 picks. Colston Loveland can swap in for Burden."
-    },
-    {
-      "title": "The 'everyone is saying it' tell",
-      "text": "His recurring signal for late-round bets: a beat writer alone means little, but when the GM, head coach, coordinator, quarterback and reporters all independently praise a player, nobody in that group has an incentive to lie together. He applied it to both Luther Burden and Jayden Higgins. Not a guarantee — injury or a crowded room still intervene — but on a player going in double-digit rounds he treats it as an obvious bet."
-    },
-    {
-      "title": "The RB dead zone — perceived volume vs real volume",
-      "text": "From the 2026-08-03 mock-draft video, his own definition: the dead zone is 'a range of running back that is being propped up on perceived volume.' The distinction is the whole idea — for the top dozen backs the volume is KNOWN (great talents, good teams, locked roles), while the next range is priced on volume people ASSUME will arrive. He says that top tier 'basically ends with Derrick Henry in all formats.' Independent confirmation of the take-zone cutoff already in plan-rpb.json, which lands at RB11-12 (Henry/Achane) from the VBD side. Two different methods, same line."
-    },
-    {
-      "title": "Never leave rounds 1-2 without a back",
-      "text": "Stated flatly in the 2026-08-03 video: he does not like teams that finish the first two rounds with no running back, EVEN WHEN the receiver value is obviously better. He walked through passing on a JSN + Amon-Ra start he called 'very enticing' and still took the back. You do not have to double-dip, but you must leave with at least one. He also calls double-dipping RB at a late first-round pick a good strategy this season."
-    },
-    {
-      "title": "The QB waiting rule, stated precisely",
-      "text": "2026-08-03: 'If you don't end up getting Josh Allen, just wait. You don't need to draft Lamar right away.' Round five is the beginning of the window but rounds SIX, SEVEN and EIGHT are where he actually wants to take his quarterback. Combined with the 2026-07-31 rankings video, the full rule is: Allen at a mid-to-late third is the one early exception; otherwise skip the position entirely until round six."
-    },
-    {
-      "title": "Round one has no bad picks",
-      "text": "From the 2026-08-05 must-draft RB video: 'realistically you can call every one of the top 13 or 14 players this season a must-draft player.' He deliberately leaves round-one players off his must-draft lists because the interesting decisions start after them. The corollary he repeats in the WR video: round one is about not making the one or two mistakes that exist, not about finding an edge."
-    }
-  ],
-  "shared": {
-    "ashton jeanty": {
-      "name": "Ashton Jeanty",
-      "pos": "RB",
-      "stance": "love",
-      "note": "Elite 1.01-tier feature back; ascending LV offense.",
-      "call": "must",
-      "why": "The public is underrating him because the Raiders offense was awful, not because of him. Improved line, Kubiak scheme and a healthy Bowers mean far fewer stacked boxes, and he can be had at the end of round one.",
-      "added": "2026-08-04",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "The one back Nick takes over Chase Brown in round two; also part of his ideal Cook-plus-Jeanty start from the 11 spot."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Underrated because of last year's environment, per Nick. Better line, healthy Bowers and a better scheme all point up on a top-seven profile."
-        },
-        {
-          "d": "2026-08-06",
-          "v": "Why I’m Drafting Chase Brown Everywhere #shorts",
-          "s": "up",
-          "take": "The only back Nick would take ahead of Brown at that turn; if he lasts to the tail of round one or the one-two turn, he goes first."
-        }
-      ],
-      "videoNote": "People are underrating how good he actually was, because the offense around him was terrible — no other playmakers with Bowers hurt, bad line, weak scheme. All three improve this year. He calls a late-first Cook + Jeanty pairing profiles that should cost a top-seven pick.",
-      "videoDate": "2026-08-05"
-    },
-    "bijan robinson": {
-      "name": "Bijan Robinson",
-      "pos": "RB",
-      "stance": "love",
-      "note": "1-2 overall lock in every format.",
-      "videoTakes": [
-        {
-          "d": "2026-07-22",
-          "v": "Don't Overthink It: Draft Jahmyr Gibbs 1.01 #shorts",
-          "s": "flat",
-          "take": "Rated essentially even on talent; loses the tiebreaker purely on which offense he plays in."
-        }
-      ]
-    },
-    "jahmyr gibbs": {
-      "name": "Jahmyr Gibbs",
-      "pos": "RB",
-      "stance": "love",
-      "note": "1-2 overall lock; Lions dome + schedule = elite.",
-      "videoTakes": [
-        {
-          "d": "2026-07-22",
-          "v": "Don't Overthink It: Draft Jahmyr Gibbs 1.01 #shorts",
-          "s": "up",
-          "take": "Called an easy 1.01 in all formats — receiving, rushing and touchdown upside with Montgomery gone."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Worth planning an auction around — Nick compares the setup to a vintage bell-cow season and says get him even if it costs a big share of budget."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "Referenced as the superstar Montgomery shared a backfield with; the fact Montgomery still got 14.2 touches a game alongside him is the whole argument."
-        }
-      ]
-    },
-    "breece hall": {
-      "name": "Breece Hall",
-      "pos": "RB",
-      "stance": "like",
-      "note": "R3 VALUE — elite pedigree (5,000 yds before 25). Robust-RB anchor.",
-      "videoTakes": [
-        {
-          "d": "2026-07-23",
-          "v": "Javonte Williams: A Conservative 3rd Round Pick #shorts",
-          "s": "up",
-          "take": "Named as the higher-ceiling alternative at a similar cost."
-        },
-        {
-          "d": "2026-07-28",
-          "v": "Don't Leave Your Draft Without Breece Hall #shorts",
-          "s": "up",
-          "take": "300-touch upside in a materially improved offense; called a league-winner at his round-three cost."
-        },
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "down",
-          "take": "Moved down on his board even in half PPR. He is optimistic about the Jets in theory but not enough to pay a round-three price."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Called insane value at the three-four turn — he's had drafts where he took Hall a full round earlier."
-        }
-      ],
-      "videoNote": "MOVED DOWN, and explicitly moved down in half PPR too, not just full. He is optimistic about the Jets in theory but not enough to pay a round-three price. Sits at the edge of the dead zone.",
-      "videoDate": "2026-08-03"
-    },
-    "quinshon judkins": {
-      "name": "Quinshon Judkins",
-      "pos": "RB",
-      "stance": "like",
-      "note": "R5 value — 300-touch ceiling, Monken features his best players.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "down",
-          "take": "Huge concerns in a full PPR league — named as one of the backs he is actively avoiding in that range."
-        }
-      ]
-    },
-    "bhayshul tuten": {
-      "name": "Bhayshul Tuten",
-      "pos": "RB",
-      "stance": "like",
-      "note": "R6 value — 250-280 touch ceiling in fast JAX offense.",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "watch",
-          "take": "Great talent, but at a round-five cost Nick hesitates because Chris Rodriguez looks set to take early-down carries and maybe goal-line work."
-        }
-      ]
-    },
-    "omarion hampton": {
-      "name": "Omarion Hampton",
-      "pos": "RB",
-      "stance": "like",
-      "note": "Anchor-RB tier; volume + goal-line role.",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "flat",
-          "take": "Ordered behind Walker in a bonus league because Nick worries the backfield split leaves him fewer games that clear the yardage threshold."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Mild fade inside the Keaton Mitchell case — Nick does not believe the staff hands every touch to Hampton in week one."
-        }
-      ]
-    },
-    "chase brown": {
-      "name": "Chase Brown",
-      "pos": "RB",
-      "stance": "like",
-      "note": "R2 value — unchanged CIN offense (same QB/WRs), elite target retention, converts high-value TDs; exceptionally productive with a healthy Burrow.",
-      "call": "must",
-      "why": "Featured back on a good offense with a very high touch floor. Was RB5 in PPG in games Burrow started and finished, and Cincinnati has its best line of the Burrow era.",
-      "added": "2026-08-01",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "His quarterback publicly called him a three-down featured back who should never leave the field. Nick calls him an elite round-two pick behind the best line he has had."
-        },
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "His pick at the one-two turn in full PPR. Best offensive line of the Burrow era, and he sees a top-three ceiling if Burrow stays healthy."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Named his favorite round-two running back on the day, secure enough that he takes him in a regular league over Walker even without bonuses."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Must-draft any time he reaches round two. Featured-back role confirmed by Burrow, thin depth behind him, and a rebuilt line on a potential league-leading scoring offense."
-        },
-        {
-          "d": "2026-08-06",
-          "v": "Why I’m Drafting Chase Brown Everywhere #shorts",
-          "s": "up",
-          "take": "Must-draft in round two: RB10 ADP on a round-one profile, roughly 20 touches with red-zone and receiving work, and Burrow calling him the featured back."
-        }
-      ],
-      "videoNote": "The reverse side of the Walker split — Nick takes Chase Brown in FULL PPR for reception certainty, and Walker in half. Separately a must-draft any time he reaches round two: best offensive line of the Burrow era, featured role, top-five upside if Burrow stays healthy.",
-      "videoDate": "2026-08-03"
-    },
-    "kenneth walker": {
-      "name": "Kenneth Walker",
-      "pos": "RB",
-      "stance": "like",
-      "note": "R3 — heavy team investment locks early downs + goal-line work on an offense projected to win games; high-leverage volume.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "He would take Walker over Chase Brown in half PPR, but not in full — the receptions are likely there but capped well short of 60."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Preferred in bonus-scoring leagues: the ground role is locked and the backups are receiving types, but Nick doesn't expect big reception weeks."
-        }
-      ]
-    },
-    "derrick henry": {
-      "name": "Derrick Henry",
-      "pos": "RB",
-      "stance": "watch",
-      "note": "R2 RB5 (≈RB11) — still dominant on the ground (8 straight 10-TD seasons) but declining targets = volatile half-PPR floor at 32; last year's RB8 finish was inflated by one Wk17 4-TD game. Safe floor, capped ceiling, new OC unknown."
-    },
-    "christian mccaffrey": {
-      "name": "Christian McCaffrey",
-      "pos": "RB",
-      "stance": "like",
-      "note": "Loves him if he falls (full-PPR receiving floor)."
-    },
-    "kenneth gainwell": {
-      "name": "Kenneth Gainwell",
-      "pos": "RB",
-      "stance": "like",
-      "note": "Premium ADP value handcuff.",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Everything expected of him is showing up in camp — heavy receiving usage and early-down mixing — and Nick likes that the hype hasn't caught up yet."
-        }
-      ]
-    },
-    "deandre swift": {
-      "name": "De'Andre Swift",
-      "pos": "RB",
-      "stance": "like",
-      "note": "R5 value — full-PPR reception floor fits like a glove; top-10 upside at a steep discount, prime age, Monangai no threat.",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "His keeper pick over Tuten or Odunze: a passing-down role on a good offense, with a projection around 1,300 yards and double-digit touchdowns."
-        }
-      ]
-    },
-    "rhamondre stevenson": {
-      "name": "Rhamondre Stevenson",
-      "pos": "RB",
-      "stance": "like",
-      "note": "Tactical chain-mover — staff trusts him to hit reads and grind the 4-5 yards to move the chains; under-the-radar volume."
-    },
-    "keaton mitchell": {
-      "name": "Keaton Mitchell",
-      "pos": "RB",
-      "stance": "like",
-      "note": "Ideal late bench stash — high-potency BAL offense yields premium efficiency on ~10 touches/gm.",
-      "call": "must",
-      "why": "Essentially free in drafts. Hit 20+ MPH a league-leading seven times on just 59 carries, and McDaniel reportedly asked for him by name.",
-      "added": "2026-07-24",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Happy to take him from about pick 120 onward and pleased to land him at 134; also cited as a reason to worry about Hampton's split."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Second-most confident take: a league winner if healthy. Compared to Achane's rookie profile, and Nick would draft him a round or two ahead of ADP every time."
-        }
-      ]
-    },
-    "kyle monangai": {
-      "name": "Kyle Monangai",
-      "pos": "RB",
-      "stance": "like",
-      "note": "~R8 handcuff value — 11 touches/gm on an elite offense, TD luck."
-    },
-    "jamarr chase": {
-      "name": "Ja'Marr Chase",
-      "pos": "WR",
-      "stance": "love",
-      "note": "Elite alpha target hog; premier WR baseline."
-    },
-    "puka nacua": {
-      "name": "Puka Nacua",
-      "pos": "WR",
-      "stance": "love",
-      "note": "Elite anchor WR.",
-      "videoTakes": [
-        {
-          "d": "2026-07-24",
-          "v": "Justin Jefferson: Bounce Back Year Coming! #shorts",
-          "s": "flat",
-          "take": "Cited only as the current holder of the career receiving-yards-per-game mark Jefferson used to hold."
-        }
-      ]
-    },
-    "justin jefferson": {
-      "name": "Justin Jefferson",
-      "pos": "WR",
-      "stance": "love",
-      "note": "#1 positive-regression target (career-worst luck). Watch MIN QB.",
-      "videoTakes": [
-        {
-          "d": "2026-07-24",
-          "v": "Justin Jefferson: Bounce Back Year Coming! #shorts",
-          "s": "up",
-          "take": "Extreme negative touchdown variance last year blamed on the quarterbacks; a big bounce-back at a round-one-turn price."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "Named alongside Bowers as a locked-in early pick that would justify skipping the second running back."
-        }
-      ]
-    },
-    "jaxon smithnjigba": {
-      "name": "Jaxon Smith-Njigba",
-      "pos": "WR",
-      "stance": "love",
-      "note": "Elite efficiency + huge target share; defends him vs ADP doubters."
-    },
-    "emeka egbuka": {
-      "name": "Emeka Egbuka",
-      "pos": "WR",
-      "stance": "love",
-      "note": "Elite young target hog — NYG WR1 vacuum, Cooper Kupp-style comp.",
-      "call": "must",
-      "why": "Was on a 76/1,279/12 pace through nine games before a hamstring injury and Baker's shoulder derailed it. The new coordinator has talked about using him in the Cooper Kupp role.",
-      "added": "2026-06-19"
-    },
-    "nico collins": {
-      "name": "Nico Collins",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Premier smash-play (over Nabers).",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Malik Nabers Looks Explosive After His Knee Injury #shorts",
-          "s": "flat",
-          "take": "Called a genuinely tough call against Nabers, but Nick says right now he would still take Collins first."
-        },
-        {
-          "d": "2026-08-07",
-          "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Still the Houston number one and a strong pick at the two-three turn, especially if the draft opened with Gibbs or Bijan."
-        }
-      ]
-    },
-    "george pickens": {
-      "name": "George Pickens",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Pivot-point WR target.",
-      "videoTakes": [
-        {
-          "d": "2026-07-27",
-          "v": "The George Pickens Price Shock Is a Mistake #shorts",
-          "s": "up",
-          "take": "Worth the jump to the 2-3 turn — elite efficiency, age 25, and huge contingent upside if Lamb misses time."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Malik Nabers Looks Explosive After His Knee Injury #shorts",
-          "s": "flat",
-          "take": "Used as the comparison point Nabers has already passed — Nick would take Nabers over Pickens today."
-        }
-      ]
-    },
-    "chris olave": {
-      "name": "Chris Olave",
-      "pos": "WR",
-      "stance": "like",
-      "note": "R3 elite — high-tempo NO offense, heavy target share."
-    },
-    "devonta smith": {
-      "name": "DeVonta Smith",
-      "pos": "WR",
-      "stance": "love",
-      "note": "Favorite Eagles target — 30%+ target share, 10 tgt/gm early.",
-      "videoTakes": [
-        {
-          "d": "2026-07-30",
-          "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
-          "s": "flat",
-          "take": "The other half of that red-zone target comparison."
-        },
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "His answer to the dead zone: a clear alpha with a large target share, taken instead of reaching for a second running back."
-        }
-      ]
-    },
-    "mike evans": {
-      "name": "Mike Evans",
-      "pos": "WR",
-      "stance": "watch",
-      "note": "FORMAT SPLIT: fade in full PPR (MWV) — too TD-dependent, lacks the 100-catch ceiling to maximize PPR. But a positive-TD-regression buy in 0.5/standard (RPB). (Note: he likes TD-regression elsewhere yet fades Evans for TD-reliance — a real tension.)",
-      "call": "must",
-      "why": "A top-three red-zone weapon on a team that will score — Nick's comparison is 2025 Davante Adams. Fifteen-touchdown upside now that Pearsall is out.",
-      "added": "2026-08-03",
-      "videoNote": "Round 5, explicitly. Pearsall out for the season and Deebo is not a red-zone threat, so Evans is the primary target inside the 20 on a team top-5 in red-zone plays three years running.",
-      "videoDate": "2026-08-07",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Called the man in rounds four and five and a favorite auction value; on the reported quad strain Nick sees no sign it's a major issue."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Named as the kind of high-touchdown player Nick wants as scoring environments tighten and touchdowns take a bigger share of fantasy points."
-        },
-        {
-          "d": "2026-08-07",
-          "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Round five. With Pearsall out he's the clear red-zone target on a team that lives inside the twenty; Nick expects him to shatter his ADP."
-        }
-      ]
-    },
-    "ladd mcconkey": {
-      "name": "Ladd McConkey",
-      "pos": "WR",
-      "stance": "love",
-      "note": "R4 favorite value — elite TPRR in 12-personnel."
-    },
-    "terry mclaurin": {
-      "name": "Terry McLaurin",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Safe locked-in target monster (over aging Davante)."
-    },
-    "tetairoa mcmillan": {
-      "name": "Tetairoa McMillan",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Safe boundary target vacuum."
-    },
-    "jayden reed": {
-      "name": "Jayden Reed",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Consolidated GB target share after Doubs/Wicks left."
-    },
-    "travis hunter": {
-      "name": "Travis Hunter",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Last-round STEAL — supreme talent, highest TPRR upside."
-    },
-    "rashee rice": {
-      "name": "Rashee Rice",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Least-risky of the risk trio — R3 contrarian buy (knee minor).",
-      "call": "shy",
-      "why": "Solid against zone in the short area and not much else — cannot win deep, against man, or against press. Nick expects the force-fed designed touches to taper off.",
-      "added": "2026-07-07"
-    },
-    "tank dell": {
-      "name": "Tank Dell",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Zero-risk last-pick flier; elite share if Collins misses time."
-    },
-    "luther burden": {
-      "name": "Luther Burden III",
-      "pos": "WR",
-      "stance": "like",
-      "note": "R6 safe high-floor in an elite scheme.",
-      "call": "must",
-      "why": "Highest yards per route run ever by a rookie receiver, and efficient from every alignment. Camp hype is loud enough that Nick now prefers him over Loveland in that pairing.",
-      "added": "2026-08-01",
-      "videoNote": "Round 4, explicitly. 2nd-best rookie yards-per-route-run since 2000 and top-4 in first-downs-per-route-run in a decade (he calls that the more predictive stat). Sees a WR1 finish.",
-      "videoDate": "2026-08-07",
-      "videoTakes": [
-        {
-          "d": "2026-08-07",
-          "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Round four. Elite rookie efficiency in routes that matter, led Chicago in explosive-play yards, and the entire organization is talking him up."
-        }
-      ]
-    },
-    "josh downs": {
-      "name": "Josh Downs",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Polished target earner — clear path to 5-7 catches/wk with the WR room thinned (Pierce's foot surgery); high-floor flex.",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Nick thinks he's better set up than Pierce for the target volume, even while liking Pierce's downfield role."
-        }
-      ]
-    },
-    "zay flowers": {
-      "name": "Zay Flowers",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Full-PPR volume play (MWV) — TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games."
-    },
-    "dj moore": {
-      "name": "DJ Moore",
-      "pos": "WR",
-      "stance": "like",
-      "note": "Elite value — ADP artificially depressed by 'foot callus' panic; if he's running fluidly in camp the value skyrockets.",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Nick is far more optimistic in Buffalo — a scrambling quarterback who looks deep, no real target competition, and strong early camp reports."
-        }
-      ]
-    },
-    "brock bowers": {
-      "name": "Brock Bowers",
-      "pos": "TE",
-      "stance": "love",
-      "note": "Elite R2 anchor TE — the early-TE play.",
-      "call": "must",
-      "why": "Most receptions by any rookie in NFL history, then hurt from week one onward. Goes in the mid-second with a play-calling upgrade and no real target competition.",
-      "added": "2026-06-18",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
-          "s": "up",
-          "take": "Clear TE1 and the headline of the video. Played hurt all last season, now has a coordinator upgrade and functions as the team's number one receiver."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "One of the few non-running backs Nick would take early instead of a second back, and a health-driven upgrade to Jeanty's environment."
-        }
-      ]
-    },
-    "colston loveland": {
-      "name": "Colston Loveland",
-      "pos": "TE",
-      "stance": "like",
-      "note": "R4 ONLY — loves the talent/role under Ben Johnson but strictly forbids drafting him in R3.",
-      "call": "must",
-      "why": "Nick's stated biggest flag plant of the season. Blocks elite rushers and wins as a slot receiver, so Ben Johnson can build constant mismatches around him.",
-      "added": "2026-07-06",
-      "videoNote": "The gap to McBride is 'very very thin' and the price gap is large — McBride goes at the 2-3 turn, Loveland in the 4th, so take Loveland every time. Closed last year with double-digit targets in all four final games incl playoffs.",
-      "videoDate": "2026-07-29",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
-          "s": "up",
-          "take": "The value of the tier. A round-four price for a player he rates nearly level with McBride, who closed last year with four straight double-digit-target games."
-        },
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "Raised only because Nick's mock-draft simulator keeps taking him in round four; he plans to adjust the sim's projections. Not a call on the player."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Called an amazing round-four pick and the player Nick would prefer over Skattebo if the draft already started running back, running back."
-        }
-      ]
-    },
-    "tyler warren": {
-      "name": "Tyler Warren",
-      "pos": "TE",
-      "stance": "like",
-      "note": "R5 value — positive regression, functional IND WR1 with Pierce hurt.",
-      "videoNote": "Conditional: if Indianapolis keeps Josh Downs inside rather than outside, Warren becomes the default #1 target and Nick wants him aggressively. Otherwise a repeat of last year.",
-      "videoDate": "2026-07-29",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
-          "s": "up",
-          "take": "Conditional upside — if Indianapolis keeps their slot man inside, Warren becomes the default number one target and Nick wants him aggressively."
-        }
-      ]
-    },
-    "george kittle": {
-      "name": "George Kittle",
-      "pos": "TE",
-      "stance": "like",
-      "note": "R10 late double-dip value.",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "The Perfect Tight End Draft Plan #shorts",
-          "s": "up",
-          "take": "Eight straight top-six seasons; the Achilles is the discount and they back him to return to form."
-        },
-        {
-          "d": "2026-07-30",
-          "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
-          "s": "flat",
-          "take": "Named as the tier above — Goedert is the pick once Kittle is gone."
-        }
-      ]
-    },
-    "mark andrews": {
-      "name": "Mark Andrews",
-      "pos": "TE",
-      "stance": "like",
-      "note": "Late TE double-dip."
-    },
-    "dalton kincaid": {
-      "name": "Dalton Kincaid",
-      "pos": "TE",
-      "stance": "like",
-      "note": "Late TE double-dip — athletic profile tied to an elite QB (Buffalo); live ADP outpaces market."
-    },
-    "oronde gadsden": {
-      "name": "Oronde Gadsden II",
-      "pos": "TE",
-      "stance": "like",
-      "note": "Late athletic-TE double-dip tied to a high-volume QB (Chargers/Herbert).",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Nick says the team's tight end spending has him worried about Gadsden's role."
-        }
-      ]
-    },
-    "tucker kraft": {
-      "name": "Tucker Kraft",
-      "pos": "TE",
-      "stance": "like",
-      "note": "Late TE value, fits early-or-late rule.",
-      "videoNote": "Was the top-scoring TE before tearing his ACL and is trending well, but goes in the early 7th with no discount — Nick is explicitly lukewarm at that price and would rather bad news drop the ADP first.",
-      "videoDate": "2026-07-29",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
-          "s": "watch",
-          "take": "Was the top-scoring tight end before tearing his ACL and is trending well, but an early-seventh price with no discount leaves Nick lukewarm."
-        }
-      ]
-    },
-    "josh allen": {
-      "name": "Josh Allen",
-      "pos": "QB",
-      "stance": "like",
-      "note": "Premium value on recency bias — but in his 12-tm PPR mock he PASSED Allen in R3 to keep elite skill talent (equal-tier QBs like Hurts sit several rounds later).",
-      "call": "must",
-      "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24",
-      "videoNote": "QB video sharpens the price: worth a MID-TO-LATE third, never round 2 and never the early third. Six straight top-2 finishes, one game missed in seven years.",
-      "videoDate": "2026-07-31",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Tier one on certainty — six straight top-two finishes and one game missed in seven years. Worth a mid-to-late third-round pick, never earlier."
-        },
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Nick's overall QB1, and he says the ADP has slipped to the point where stacking him with his top receiver is trivially easy in best ball."
-        }
-      ]
-    },
-    "drake maye": {
-      "name": "Drake Maye",
-      "pos": "QB",
-      "stance": "like",
-      "note": "Mid-round QB target (R5-6) — admitted homer pick, but backed by an improved line, year-2 leap, and upgraded weapons opening the deep field.",
-      "call": "must",
-      "why": "A must-draft last season too, when he finished 2nd in adjusted PPG. Improved line, A.J. Brown and Doubs added, with a rushing floor baked in.",
-      "added": "2026-07-24",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Second in points per game last season with an upgraded line and receiving room, though his rushing efficiency fell from 7.8 to 4.4 yards a carry."
-        }
-      ]
-    },
-    "jayden daniels": {
-      "name": "Jayden Daniels",
-      "pos": "QB",
-      "stance": "watch",
-      "note": "DOWNGRADED — WAS is cutting no-huddle concepts, slashing play volume and rushing-floor opportunity. Was a mid-round target; now a caution at cost.",
-      "call": "must",
-      "why": "A three-plus round discount purely because he got hurt. Was 3rd at 22.6 adjusted PPG as a rookie and is capable of 1,000 rushing yards.",
-      "added": "2026-07-24",
-      "videoNote": "CONFLICT — the 2026-07-31 QB video calls him the highest-ceiling tier-2 arm and a round-6 value (3rd in adjusted PPG as a rookie, discounted purely on last year's injuries). The 'DOWNGRADED / watch' note above cites Washington cutting no-huddle, which is camp news and therefore almost certainly NEWER than the video. The downgrade wins on recency; treat the video's round-6 enthusiasm as superseded unless a later video says otherwise.",
-      "videoDate": "2026-07-31",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Highest ceiling in tier two and routinely available in round six because of last year's injuries. Third in adjusted points per game as a rookie."
-        }
-      ]
-    },
-    "lamar jackson": {
-      "name": "Lamar Jackson",
-      "pos": "QB",
-      "stance": "like",
-      "note": "Premium QB target.",
-      "call": "must",
-      "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24",
-      "videoNote": "Tier 1 on ceiling, not certainty — the only QB he sees realistically hitting 25-28 ppg. Offset by 15 games missed in 5 years. Last year's dip was compromised mobility dragging the passing game with it.",
-      "videoDate": "2026-07-31",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Tier one on ceiling. The only quarterback he sees realistically hitting 25-28 points a game, offset by fifteen games missed in five seasons."
-        }
-      ]
-    },
-    "jalen hurts": {
-      "name": "Jalen Hurts",
-      "pos": "QB",
-      "stance": "like",
-      "note": "Premium QB target.",
-      "call": "must",
-      "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Tier two, in the same want-to-own band as Burrow, Caleb Williams and Herbert."
-        }
-      ]
-    },
-    "caleb williams": {
-      "name": "Caleb Williams",
-      "pos": "QB",
-      "stance": "like",
-      "note": "Premium QB target (mid-round value).",
-      "call": "must",
-      "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Tier two, grouped with the upside-plus-floor quarterbacks he prefers over spending an early pick."
-        }
-      ]
-    },
-    "justin herbert": {
-      "name": "Justin Herbert",
-      "pos": "QB",
-      "stance": "like",
-      "note": "R7 organic-stack QB with Hampton/Tuten.",
-      "call": "must",
-      "why": "All in on the Chargers offense, with a healthy top-seven line this year. Herbert goes at the end of the top-8 range, making him the best value of the group.",
-      "added": "2026-07-24",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Tier two. Part of the six-man group he calls the right place to be drafting in a one-quarterback league."
-        },
-        {
-          "d": "2026-07-31",
-          "v": "Justin Herbert Has HUGE Upside in 2026 #shorts",
-          "s": "up",
-          "take": "Top-eight call on a line upgraded from bottom three to top five plus a new play-caller; take him if nobody falls."
-        },
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "An exceptional pick at the seven-eight turn. He wants to be all in on the Chargers offense and sees a top-three quarterback ceiling."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Wants him on as many teams as possible and drafts a specific late tight-end back-stack every time he takes him."
-        }
-      ]
-    },
-    "trevor lawrence": {
-      "name": "Trevor Lawrence",
-      "pos": "QB",
-      "stance": "like",
-      "note": "Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries.",
-      "call": "must",
-      "added": "2026-08-05",
-      "why": "FFA must-draft list, added 2026-08-05. Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "He is warming to him as a ninth quarterback, and took him in round twelve calling that far too late for the room to let him go."
-        }
-      ]
-    },
-    "bucky irving": {
-      "name": "Bucky Irving",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "#1 'regret' RB — committee + injury; 13-carry/1-target risk."
-    },
-    "travis etienne": {
-      "name": "Travis Etienne",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)",
-      "call": "shy",
-      "added": "2026-08-03",
-      "why": "FFA shy-away list, added 2026-08-03. Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "watch",
-          "take": "Nick calls him a value, but has moved him from an ADP of 41 down to 50 on his own board. The worry is Kamara's comments about a real split, and it bites hardest in full PPR."
-        }
-      ]
-    },
-    "jonathan taylor": {
-      "name": "Jonathan Taylor",
-      "pos": "RB",
-      "stance": "fade",
-      "note": "Fade at pick 4 in full-PPR — lacks the receiving floor."
-    },
-    "jaylen warren": {
-      "name": "Jaylen Warren",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "Muddy committee; explicitly avoided.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "Named as the one back he would have considered at the seven-eight turn instead of a quarterback, and good in full PPR."
-        }
-      ]
-    },
-    "rj harvey": {
-      "name": "RJ Harvey",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "R7 fade — Dobbins signed, role collapses.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "Taken at the nine-ten turn. He was hesitant at a 70th-overall price but finds it viable around 90 given Dobbins's health record."
-        }
-      ]
-    },
-    "jadarian price": {
-      "name": "Jadarian Price",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "Overrated — no receiving profile; Charbonnet reclaims SEA RB1."
-    },
-    "chuba hubbard": {
-      "name": "Chuba Hubbard",
-      "pos": "RB",
-      "stance": "fade",
-      "note": "Fade — hardest rush SOS, Bryce Young, value craters as Brooks ramps.",
-      "call": "shy",
-      "why": "Among 49 backs with 100+ carries he was last in explosive run rate, last in missed tackles forced per attempt and 2nd-last in touchdown rate. Brooks will eat into the work.",
-      "added": "2026-07-02",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Called the least explosive back in the league last season and repeatedly replaceable, which is the opening for Brooks."
-        }
-      ]
-    },
-    "kyren williams": {
-      "name": "Kyren Williams",
-      "pos": "RB",
-      "stance": "fade",
-      "note": "R3 fade — Corum cuts snaps; Rams bottom-5 in RB targets (zero floor).",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "down",
-          "take": "A dead-zone example: touchdowns and yardage should be there, but Corum could take an even split and the receptions will not be high."
-        }
-      ],
-      "videoNote": "Named as dead-zone: lead touchdown back on a potentially top-scoring offense, but Corum could take a 50/50 split and the receptions are known not to be there. Volume is perceived, not locked.",
-      "videoDate": "2026-08-03"
-    },
-    "josh jacobs": {
-      "name": "Josh Jacobs",
-      "pos": "RB",
-      "stance": "fade",
-      "note": "R3 fade — conduct probe / 8-12 wk suspension risk; pounce only at R5."
-    },
-    "saquon barkley": {
-      "name": "Saquon Barkley",
-      "pos": "RB",
-      "stance": "watch",
-      "note": "Nick's #1 round-2 RB (RB7) — easiest Wk1–14 SOS, ~300-touch workload, Patullo→Mannion play-call upgrade. One caution: brutal playoff SOS (SEA/HOU/SF Wk15-17)."
-    },
-    "devon achane": {
-      "name": "Devon Achane",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "R2 FADE in half-PPR (RPB) — the premier back to avoid: McDaniel gone guts the MIA offense, mobile Willis scrambles instead of checking down (kills the reception floor), bottom-tier WR room, and the hardest schedule from Wk13 on (4th-qtr benchings in blowouts).",
-      "call": "shy",
-      "why": "McDaniel has left for the Chargers, Malik Willis will scramble rather than check down, and Miami projects bottom-five in points per game. A scary floor and a capped ceiling in round two.",
-      "added": "2026-06-21",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "down",
-          "take": "Several reasons to fade — the check-down volume disappears with the new quarterback, blocking concerns, and a possible late shutdown if the team tanks."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "Used as the template for Keaton Mitchell — near-identical build, forty time and rookie-year explosiveness, with a similar college workload history."
-        }
-      ]
-    },
-    "james cook": {
-      "name": "James Cook",
-      "pos": "RB",
-      "stance": "watch",
-      "note": "Fade early — brutal opening SOS; acquire via trade after a slow month.",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "The coordinator keeps saying he wants running backs targeted, and Nick now believes it. He flips Cook above Jeanty and puts him in the elite mid-first tier."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Taken at 11 repeatedly as best available; Nick expects the receiving work to grow and thinks he's the one who cashes in on the easy games."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Honorable mention Nick loves in the late first. Camp reports point to an expanded receiving role, which he calls the only thing that was capping Cook's ceiling."
-        }
-      ],
-      "videoNote": "Honorable mention he loves in the late first. Camp reports indicate an increased receiving role — the one thing that was capping him. League's leading rusher last year with 15-plus TD upside; if the targets come, the ceiling is top-three overall.",
-      "videoDate": "2026-08-05"
-    },
-    "jeremiah love": {
-      "name": "Jeremiah Love",
-      "pos": "RB",
-      "stance": "watch",
-      "note": "Scale back — ARI tanking limits touches; needs 80-90% share at R3 cost.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "watch",
-          "take": "Strong value where he fell at the three-four turn, but Nick calls the situation super risky with Allgeier confirmed for a split."
-        }
-      ],
-      "videoNote": "Strong value at the 3-4 turn where he fell in this mock, but flagged as risky — the team is confirming an Allgeier split. Do not pay for a full workload.",
-      "videoDate": "2026-08-03"
-    },
-    "najee harris": {
-      "name": "Najee Harris",
-      "pos": "RB",
-      "stance": "watch",
-      "note": "Only as a last-pick zero-risk injury insurance."
-    },
-    "malik nabers": {
-      "name": "Malik Nabers",
-      "pos": "WR",
-      "stance": "like",
-      "note": "FLIPPED 2026-08-07 off the 2026-08-05 video — he avoided the PUP (team expects him inside the first four weeks), multiple reports he could play week one, and he is cutting in camp with no hesitation. Nick's stated order at your turn: the take-zone backs (Saquon/Ken Walker/Chase Brown/Hampton), then Bowers, then Nabers. He takes Nabers OVER Pickens and still takes Nico Collins first. PRIOR NOTE, now superseded: 'fade to R5+ — non-clean knee, PUP risk' — that note was undated and the PUP risk it named has resolved.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "His projections pull Nabers well above composite ADP; he would love him a tier behind Lamb and Jefferson if the recovery stays clean."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Malik Nabers Looks Explosive After His Knee Injury #shorts",
-          "s": "up",
-          "take": "The whole segment. Cutting freely in camp, off PUP, and Nick has him at the 2/3 turn with room to climb if the ramp-up keeps going well."
-        }
-      ],
-      "videoNote": "2026-08-05, his latest mention: 'I'm still not going to take him over that range of running back that's Saquon, Ken Walker, Chase Brown, Hampton. And I'd probably still put Bowers at the end of that. But after that, I feel like I'm probably just going Malik Nabers.' Also: 'right now I'd probably take him over Pickens', and 'really tough between him and Nico — right now I'd probably still take Nico first.'",
-      "videoDate": "2026-08-05"
-    },
-    "jameson williams": {
-      "name": "Jameson Williams",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Best-ball only — volatile target floor wrecks redraft lineups."
-    },
-    "christian watson": {
-      "name": "Christian Watson",
-      "pos": "WR",
-      "stance": "avoid",
-      "note": "R6 fade — 1 double-digit-target game in 51 career games."
-    },
-    "alec pierce": {
-      "name": "Alec Pierce",
-      "pos": "WR",
-      "stance": "avoid",
-      "note": "R6 fade — efficiency regresses; Downs & Warren out-target him.",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "watch",
-          "take": "Falling on missed practice with no clarity; Nick says if he returns and looks fine he'd go far earlier, so the uncertainty is a real discount."
-        }
-      ]
-    },
-    "dk metcalf": {
-      "name": "DK Metcalf",
-      "pos": "WR",
-      "stance": "avoid",
-      "note": "R6/7 fade — name value only; aging Rodgers can't push it deep, <100 tgts."
-    },
-    "michael pittman": {
-      "name": "Michael Pittman Jr.",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Low aDOT / low-volume scheme; passed on."
-    },
-    "davante adams": {
-      "name": "Davante Adams",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Aging — prefers Terry McLaurin's safer volume."
-    },
-    "jordan addison": {
-      "name": "Jordan Addison",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Unfavorable ecosystem — buried behind alpha Justin Jefferson, catching from a volatile/unproven MIN QB room."
-    },
-    "quentin johnston": {
-      "name": "Quentin Johnston",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Flat projection, no top-15 ceiling.",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "Drafting him a lot. Not the most talented receiver, but the underneath and screen looks are layup routes that raise a weekly floor."
-        }
-      ]
-    },
-    "jakobi meyers": {
-      "name": "Jakobi Meyers",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Low-ceiling depth play."
-    },
-    "chris godwin": {
-      "name": "Chris Godwin",
-      "pos": "WR",
-      "stance": "fade",
-      "note": "Lacks a league-winning ceiling; aging role."
-    },
-    "trey mcbride": {
-      "name": "Trey McBride",
-      "pos": "TE",
-      "stance": "avoid",
-      "note": "COMPLETE FADE at his ADP — refuses to spend premium capital on him in any primary league; too many ARI mouths + tanking bench risk.",
-      "call": "shy",
-      "why": "Arizona likely tanks late and moves from Brissett to Beck, meaning slower pace and more run. Nick would rather have Bowers a few picks earlier or Loveland two rounds later.",
-      "added": "2026-06-26",
-      "videoNote": "TE video adds the mechanism: Arizona paid their backup RB heavily and spent a top-3 pick on another, which is not what a team does before throwing more. Last year's route volume is not repeatable.",
-      "videoDate": "2026-07-29",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
-          "s": "down",
-          "take": "Still TE2 but riskier than the market thinks — Arizona spent heavily at running back and projects near the bottom of the league in scoring."
-        }
-      ]
-    },
-    "kyle pitts": {
-      "name": "Kyle Pitts",
-      "pos": "TE",
-      "stance": "fade",
-      "note": "Fade — unstable ATL QB carousel (Tua/Penix).",
-      "call": "shy",
-      "why": "Was 21st in PPG through week 13 and cleared 12 HPPR points just three times in 17 games. The production came almost entirely in the five games Drake London missed.",
-      "added": "2026-07-16"
-    },
-    "harold fannin": {
-      "name": "Harold Fannin Jr.",
-      "pos": "TE",
-      "stance": "fade",
-      "note": "Mid-TE trap — prior output inflated by garbage-time targets."
-    },
-    "cj stroud": {
-      "name": "CJ Stroud",
-      "pos": "QB",
-      "stance": "fade",
-      "note": "Risk — run-first offense regression."
-    },
-    "sam darnold": {
-      "name": "Sam Darnold",
-      "pos": "QB",
-      "stance": "fade",
-      "note": "Risk — lost the Kubiak system."
-    },
-    "aaron rodgers": {
-      "name": "Aaron Rodgers",
-      "pos": "QB",
-      "stance": "fade",
-      "note": "Risk — age/durability; can't drive the ball downfield."
-    },
-    "david montgomery": {
-      "name": "David Montgomery",
-      "pos": "RB",
-      "call": "must",
-      "why": "Touches are locked in and he gets the ball every time Houston is inside the five. Not a top-five ceiling, but very hard to finish outside the top 20.",
-      "added": "2026-07-06",
-      "videoTakes": [
-        {
-          "d": "2026-07-22",
-          "v": "Don't Overthink It: Draft Jahmyr Gibbs 1.01 #shorts",
-          "s": "flat",
-          "take": "Named as context for the Gibbs case — his departure vacates the work. Not a verdict on Montgomery himself."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Jared Goff Is Set Up for a Monster Season #shorts",
-          "s": "down",
-          "take": "Gone from the offense; Nick frames his exit as removing the short-yardage back who used to take touchdowns away from Goff."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Nick's most confident take of the year. Seven-year durability, touchdown rate and a coach-trusted touch share make him a weekly top-20 projection at a round-five cost."
-        }
-      ]
-    },
-    "cam skattebo": {
-      "name": "Cam Skattebo",
-      "pos": "RB",
-      "call": "must",
-      "why": "Finished 7th in adjusted PPG as a rookie. Elite receiving back who scores in close, and the foot injury looks resolved — he was in 11-on-11s during OTAs.",
-      "added": "2026-07-06",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Nick reads the reports as the team featuring him fully and treating the backup as insurance rather than a committee partner."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "The best round-four pick, but only if you did not start with two backs. Goal-line lock plus real receiving usage gives him a high touchdown floor."
-        }
-      ]
-    },
-    "dandre swift": {
-      "name": "D'Andre Swift",
-      "pos": "RB",
-      "call": "must",
-      "why": "Still 27, with 34+ receptions in all six pro seasons and back-to-back 1,340-yard years. Thin competition behind him on a Bears offense poised to step up.",
-      "added": "2026-07-06",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "A really strong pick — a pass-catching role on a good offense, and consistent and healthy three years running."
-        }
-      ]
-    },
-    "tony pollard": {
-      "name": "Tony Pollard",
-      "pos": "RB",
-      "call": "must",
-      "why": "Four straight 1,000-yard seasons and a shot at 300 touches while going as RB29. Was 28th in PPG last year despite a bottom-three quarterback and offense.",
-      "added": "2026-07-17"
-    },
-    "jonathon brooks": {
-      "name": "Jonathon Brooks",
-      "pos": "RB",
-      "call": "must",
-      "why": "Hubbard is replacement level and Carolina did nothing to replace Dowdle. A steep discount for the injury history in round 8 or 9, for a back who could start week one.",
-      "added": "2026-08-04"
-    },
-    "jordan mason": {
-      "name": "Jordan Mason",
-      "pos": "RB",
-      "call": "must",
-      "why": "Reports have him as the lead back, Aaron Jones is 32 and fading, and Kevin O'Connell offenses travel. A discount David Montgomery, closing out games.",
-      "added": "2026-07-06",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "A late bench pick taken on carries alone; he notes there is no reception upside, which by his own rule is the warning sign."
-        }
-      ]
-    },
-    "parker washington": {
-      "name": "Parker Washington",
-      "pos": "WR",
-      "call": "must",
-      "why": "Closed last season 6/145/1, 8/115/0, 5/87/1, 7/107/1 and has been a camp favourite of Lawrence. Jacksonville appears to view him as their lead receiver.",
-      "added": "2026-08-01",
-      "videoNote": "Round 6 — a full round ahead of his round-7 ADP. Rotates Z and F, rarely off the field. Jacksonville averaged 33+ pts over their final nine weeks with Lawrence as overall QB1 and Washington as WR12.",
-      "videoDate": "2026-08-07",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Stacking great camp days and looking like Jacksonville's top target. Nick says he now has to be treated as a must-draft at his current price."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "The stream's strongest call — a must-draft now ranked above Odunze, who Nick expects to be the most targeted player on the Jaguars."
-        },
-        {
-          "d": "2026-08-07",
-          "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Take him in round six, a round ahead of ADP. Rotating Z and F on an offense that averaged 33-plus points over its final nine weeks."
-        }
-      ]
-    },
-    "dallas goedert": {
-      "name": "Dallas Goedert",
-      "pos": "TE",
-      "call": "must",
-      "why": "Top-11 in adjusted PPG five straight years and top-8 in four of five. A.J. Brown's departure frees 120+ targets and he is the 12th tight end off boards.",
-      "added": "2026-07-17",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "The Perfect Tight End Draft Plan #shorts",
-          "s": "up",
-          "take": "Named as the safe second half of the pairing — a floor if the Kittle bet misses."
-        },
-        {
-          "d": "2026-07-30",
-          "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
-          "s": "up",
-          "take": "Eleven touchdowns backed by a genuine red-zone role, not luck; the fallback if you miss the elite tight ends."
-        }
-      ]
-    },
-    "joe burrow": {
-      "name": "Joe Burrow",
-      "pos": "QB",
-      "call": "must",
-      "why": "One of the eight quarterbacks Nick wants, at a value.",
-      "added": "2026-07-24",
-      "videoTakes": [
-        {
-          "d": "2026-07-31",
-          "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
-          "s": "up",
-          "take": "Tier two — part of the group Nick says he actively wants to draft rather than paying up in round three."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "Central to the Chase Brown case: Brown was a top-five back in Burrow's healthy starts, and Burrow publicly called him a featured back."
-        },
-        {
-          "d": "2026-08-06",
-          "v": "Why I’m Drafting Chase Brown Everywhere #shorts",
-          "s": "up",
-          "take": "Central to the case — Brown's top-five finish came in Burrow starts, and Nick expects the offense to be near the league lead in touchdowns."
-        }
-      ]
-    },
-    "jared goff": {
-      "name": "Jared Goff",
-      "pos": "QB",
-      "call": "must",
-      "why": "The fallback if you pass on the top 8. Easiest schedule in the NFL, mostly domes late, a poor defense forcing shootouts, and more passing near the goal line with Montgomery gone.",
-      "added": "2026-08-01",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "His favourite quarterback to wait for in the later range, with a note that stacking him with St. Brown is perfectly fine."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Jared Goff Is Set Up for a Monster Season #shorts",
-          "s": "up",
-          "take": "Nick's best-season-to-bet-on quarterback: easy schedule, dome games, bad defense, consolidated offense, and no Montgomery vulturing goal-line work."
-        }
-      ]
-    },
-    "amon ra st brown": {
-      "name": "Amon-Ra St. Brown",
-      "pos": "WR",
-      "stance": "love",
-      "note": "",
-      "call": "must",
-      "why": "FFA must-draft list, added 2026-08-05.",
-      "added": "2026-08-05",
-      "videoNote": "MUST-DRAFT WR video: the ONE receiver he'd break his RB-RB open for in round 1 — but only outside the top-4 picks. Case is durability: 2 games missed in 5 seasons, 4 straight 140-target years.",
-      "videoDate": "2026-08-07",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "Called a locked-in pick and amazing in full PPR — the receiver he is happy to start a draft with alongside a running back."
-        },
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "Grouped with Jefferson and Bowers as talent worth breaking the running-back-early plan for."
-        },
-        {
-          "d": "2026-08-07",
-          "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "The safest round-one receiver — two games missed in five years, four straight 140-target seasons, and the only receiver he'd abandon an RB-RB open for."
-        }
-      ]
-    },
-    "jayden higgins": {
-      "name": "Jayden Higgins",
-      "pos": "WR",
-      "stance": "love",
-      "note": "",
-      "call": "must",
-      "why": "FFA must-draft list, added 2026-08-05.",
-      "added": "2026-08-05",
-      "videoNote": "Going round 11-12 (round 14 on ESPN). Starting Z opposite Nico Collins. Whole organisation talking him up, plus contingent upside — Collins has missed time every year of his career.",
-      "videoDate": "2026-08-07",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "A steady drum beat of good camp reports as the clear number two; Nick actively wanted him at that spot and was happy to get him."
-        },
-        {
-          "d": "2026-08-07",
-          "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "New to the must-draft list. Starting Z opposite Nico Collins, going round eleven or twelve, with real contingent upside if Collins misses time again."
-        }
-      ]
-    },
-    "rachaad white": {
-      "name": "Rachaad White",
-      "pos": "RB",
-      "stance": "avoid",
-      "note": "",
-      "call": "shy",
-      "why": "FFA shy-away list, added 2026-08-03.",
-      "added": "2026-08-03"
-    },
-    "jake ferguson": {
-      "name": "Jake Ferguson",
-      "pos": "TE",
-      "stance": "avoid",
-      "note": "",
-      "call": "shy",
-      "why": "FFA shy-away list, added 2026-08-03.",
-      "added": "2026-08-03"
-    },
-    "courtland sutton": {
-      "name": "Courtland Sutton",
-      "pos": "WR",
-      "stance": "avoid",
-      "note": "",
-      "call": "shy",
-      "why": "FFA shy-away list, added 2026-08-05.",
-      "added": "2026-08-05"
-    },
-    "javontewilliams": {
-      "name": "Javonte Williams",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-23",
-          "v": "Javonte Williams: A Conservative 3rd Round Pick #shorts",
-          "s": "flat",
-          "take": "Safe early-down and touchdown volume, but they say the role can only shrink — a capped round-three pick."
-        },
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "down",
-          "take": "An early-down grinder with no receiving role, which he argues is exactly the profile that becomes a dead-zone regret in full PPR."
-        }
-      ],
-      "videoNote": "Named as dead-zone: touchdowns and yardage will be there but he has zero role in the receiving game, and Jaylen Warren is being hyped for real work. An early-down grinder priced like more.",
-      "videoDate": "2026-08-03"
-    },
-    "jadenblue": {
-      "name": "Jaden Blue",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-23",
-          "v": "Javonte Williams: A Conservative 3rd Round Pick #shorts",
-          "s": "watch",
-          "take": "The team wants him as the change-of-pace passing-down back; whether he seizes it is the open variable."
-        }
-      ]
-    },
-    "ceedeelamb": {
-      "name": "CeeDee Lamb",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-27",
-          "v": "The George Pickens Price Shock Is a Mistake #shorts",
-          "s": "flat",
-          "take": "The contingency: his absence would make Pickens a top-five weekly receiver."
-        }
-      ]
-    },
-    "genosmith": {
-      "name": "Geno Smith",
-      "pos": "QB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-28",
-          "v": "Don't Leave Your Draft Without Breece Hall #shorts",
-          "s": "up",
-          "take": "Framed as a straightforward upgrade on last season's quarterback room and the reason drives sustain."
-        }
-      ]
-    },
-    "garrettwilson": {
-      "name": "Garrett Wilson",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-28",
-          "v": "Don't Leave Your Draft Without Breece Hall #shorts",
-          "s": "up",
-          "take": "Expected to play far more than last year's seven games, which they treat as the bigger swing factor."
-        }
-      ]
-    },
-    "amaricooper": {
-      "name": "Amari Cooper",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-28",
-          "v": "Don't Leave Your Draft Without Breece Hall #shorts",
-          "s": "flat",
-          "take": "Added to the room as another body defenses must account for."
-        }
-      ]
-    },
-    "samlaporta": {
-      "name": "Sam LaPorta",
-      "pos": "TE",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
-          "s": "watch",
-          "take": "Grouped with Kraft in the third tier of the rankings."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Great value at 104 and a name he now prefers over Kyle Pitts, especially as part of a build with a late second tight end."
-        }
-      ]
-    },
-    "hunterhenry": {
-      "name": "Hunter Henry",
-      "pos": "TE",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "The Perfect Tight End Draft Plan #shorts",
-          "s": "flat",
-          "take": "The other safe pairing option offered."
-        }
-      ]
-    },
-    "noahfant": {
-      "name": "Noah Fant",
-      "pos": "TE",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-29",
-          "v": "The Perfect Tight End Draft Plan #shorts",
-          "s": "down",
-          "take": "Explicitly avoided — they do not think the ceiling justifies the elevated price."
-        }
-      ]
-    },
-    "ajbrown": {
-      "name": "A.J. Brown",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-07-30",
-          "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
-          "s": "flat",
-          "take": "Used as the yardstick — Goedert matched him and Smith combined on targets inside the ten."
-        }
-      ]
-    },
-    "malikneighbors": {
-      "name": "Malik Neighbors",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Cutting on route videos with no hesitation, avoided PUP, week one in play. Nick takes him at the two-three turn and would consider him over Pickens."
-        }
-      ]
-    },
-    "kenwalker": {
-      "name": "Ken Walker",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Great camp reports plus goal-line work and new screen and receiving usage; Nick says he probably deserves a first-round pick, not a second."
-        }
-      ],
-      "videoNote": "FORMAT SPLIT and it favours RPB: 'In half PPR scoring I have Ken Walker over Chase Brown. But once you flip on full PPR, the certainty there for the receptions is too great.' Yours is the half-PPR league — Walker is the preferred back of the two here.",
-      "videoDate": "2026-08-03"
-    },
-    "rickypearl": {
-      "name": "Ricky Pearl",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Dropped out of Nick's rankings entirely — the PCL is not healing, surgery would end the season, and the emergency veteran signing says plenty."
-        }
-      ]
-    },
-    "trayvonhenderson": {
-      "name": "Trayvon Henderson",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "The head coach praised the veteran's pass protection first and said Henderson is still working on it. Nick thinks he is being drafted on an improvement nobody has confirmed."
-        }
-      ]
-    },
-    "katonmitchell": {
-      "name": "Katon Mitchell",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "The team publicised a long reception. Nick prizes downfield receiving usage from backs and calls him the best pick available, but wants the price to stay in the 130s."
-        }
-      ]
-    },
-    "michaelwilson": {
-      "name": "Michael Wilson",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "Coaches are comparing him to Puka Nacua and Robert Woods. Nick is moving him up but not past Harrison in the rankings just yet."
-        }
-      ]
-    },
-    "tankbsby": {
-      "name": "Tank Bsby",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-01",
-          "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "The handcuff Nick wants: locked in behind Saquon, looked good last year and this camp, and going a round and a half later than the alternative."
-        }
-      ]
-    },
-    "lutherburden": {
-      "name": "Luther Burden",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "A must-draft for him now: strong rookie season, good coordinator, and the reporting trends toward him being the guy."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "watch",
-          "take": "Nick loves the talent and moved him up in the latest update, but says reports of a poor camp concern him enough to address on the weekend show."
-        }
-      ]
-    },
-    "haroldfannin": {
-      "name": "Harold Fannin",
-      "pos": "TE",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "Warming to him a lot in full PPR. His stated biggest regret in the mock was letting Fannin go by in the eighth round."
-        },
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Warming up a lot: the coach calling him the focal point of the passing game outweighs Nick's worry about a bad offense and shaky quarterbacks."
-        }
-      ]
-    },
-    "mekhilemon": {
-      "name": "Mekhi Lemon",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "up",
-          "take": "He wants to be very aggressive if reports put him in twelve-personnel sets; loves the talent, was lukewarm on the landing spot."
-        }
-      ]
-    },
-    "carnelltate": {
-      "name": "Carnell Tate",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-03",
-          "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
-          "s": "flat",
-          "take": "Took him in the eighth on the strength of the data and rankings, then named the pick as the one he would take back."
-        }
-      ]
-    },
-    "raydavis": {
-      "name": "Ray Davis",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Taken as the Cook handcuff on a good offense, with a specific late-season angle if the starter sits in a meaningless final week."
-        }
-      ]
-    },
-    "teehiggins": {
-      "name": "Tee Higgins",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "Taken at 38 over a quarterback stack: a huge-upside offense with contingent value if the top receiver misses time, plus easy stacking partners."
-        }
-      ]
-    },
-    "stefondiggs": {
-      "name": "Stefon Diggs",
-      "pos": "WR",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-04",
-          "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
-          "s": "up",
-          "take": "A bet that he signs — Nick expects Washington and says the ADP jumps the moment it happens, so he's taking him before that."
-        }
-      ]
-    },
-    "matthewstafford": {
-      "name": "Matthew Stafford",
-      "pos": "QB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Jared Goff Is Set Up for a Monster Season #shorts",
-          "s": "flat",
-          "take": "Used only as the comparison — the 5,000-yard, 45-touchdown season Nick thinks Goff is capable of matching this year."
-        }
-      ]
-    },
-    "jonathanbrooks": {
-      "name": "Jonathan Brooks",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "up",
-          "take": "A round-eight swing. Strong camp reports, looks positioned to open as the lead back, and Nick argues the range has no safe options anyway."
-        }
-      ]
-    },
-    "woodymarks": {
-      "name": "Woody Marks",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Nick's counter to the split-workload worry — he sees a scat back who cannot handle volume and will not get goal-line work."
-        }
-      ]
-    },
-    "samajeperine": {
-      "name": "Samaje Perine",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Listed as part of the thin depth behind Chase Brown that makes the role secure."
-        }
-      ]
-    },
-    "tahjbrooks": {
-      "name": "Tahj Brooks",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Dismissed as a 17-career-touch backup who poses no threat to Chase Brown's workload."
-        }
-      ]
-    },
-    "tyronetracyjr": {
-      "name": "Tyrone Tracy Jr.",
-      "pos": "RB",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "down",
-          "take": "Nick argues nobody is taking Skattebo off the field near the goal line in his favour."
-        }
-      ]
-    },
-    "davidnjoku": {
-      "name": "David Njoku",
-      "pos": "TE",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "Cited as evidence of the heavy-personnel plan: an incentive-based deal alongside the other tight end spending."
-        }
-      ]
-    },
-    "charliekolar": {
-      "name": "Charlie Kolar",
-      "pos": "TE",
-      "stance": null,
-      "note": "",
-      "videoTakes": [
-        {
-          "d": "2026-08-05",
-          "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
-          "s": "flat",
-          "take": "The large guaranteed deal for a blocking tight end who can also catch is part of Nick's run-game-first read on the offense."
-        }
-      ]
-    }
+ "updated": "2026-08-07T00:00:00Z",
+ "sources": [
+  "FFA video intel (love/fade stances)",
+  "FFA must-draft / shy-away calls",
+  "per-league video intel verdicts",
+  "FFA must-draft + shy-away change logs (screenshots, 2026-08-06)",
+  "RPB format-split layer, derived from Nick's own half-PPR/full-PPR language (2026-08-07)",
+  "FFA video summaries via the huddle-fantasy-summaries pipeline (~/huddle-summaries.json), folded in 2026-08-07",
+  "All 15 FFA video summaries mined from ~/huddle-summaries.json into per-player videoTakes, 2026-08-07"
+ ],
+ "qbNote": "Nick does not name one quarterback — his stated goal is to land any of the top 8 at a value: Allen, Lamar, Maye, Daniels, Burrow, Hurts, Caleb Williams, Herbert. Goff is the fallback if you pass on that range.",
+ "philosophy": [
+  {
+   "title": "Running backs early — the cliff is real",
+   "text": "His #1 2026 thesis: attack high-volume starting RBs early. 'Robust RB' / double-hero-RB (3 RBs in the first 4 rounds) is winning at a high rate. Starting NFL backs keep weekly value; backups ≈ zero. The late-round RB pool is a dead zone."
   },
-  "RPB": {
-    "breece hall": {
-      "name": "Breece Hall",
-      "adp": "mid-R3",
-      "board": "RB14 / #39 (209.6)",
-      "verdict": "BUY. Anchor RB w/ top-3 ceiling; $29M gtd workhorse. Enables Hero-RB or WR-WR-then-anchor."
-    },
-    "quinshon judkins": {
-      "name": "Quinshon Judkins",
-      "adp": "mid-R5",
-      "board": "RB21 / #71 (186.4)",
-      "verdict": "BUY at R5. Monken RZ-run = direct RPB TD-edge fit; spike weeks = league-winner."
-    },
-    "deandre swift": {
-      "name": "De'Andre Swift",
-      "adp": "mid-R5",
-      "board": "RB23 / #74 (184.6)",
-      "verdict": "OK at R5. Rec-heavy upside halved by 0.5 PPR, but ~10 TDs travel. Judkins ≥ Swift in RPB."
-    },
-    "bhayshul tuten": {
-      "name": "Bhayshul Tuten",
-      "adp": "RB24 / VBD −12 / ADP 61",
-      "board": "Below RB20 replacement in RPB — confirms FADE the R6 reach; R12–13 dart only.",
-      "verdict": ""
-    },
-    "keaton mitchell": {
-      "name": "Keaton Mitchell",
-      "adp": "R7–R8",
-      "board": "not ranked (deep)",
-      "verdict": "Late dart only. Hampton handcuff-lottery; RB1 upside if Hampton hurt. Reassess on Aug camp. REFINED 2026-08-06: his upside case is Hampton's handcuff, and Hampton goes ~2.03 to a rival every mock — so Mitchell is a lottery ticket on someone else's back, not insurance for yours. Still a must-draft, but rank him behind backs who help your own lineup."
-    },
-    "topic player": {
-      "name": "Topic / Player",
-      "adp": "RPB board",
-      "board": "Verdict for RMM",
-      "verdict": ""
-    },
-    "rb cliff rb": {
-      "name": "RB cliff (RB16–18)",
-      "adp": "Montgomery / Javonte",
-      "board": "Confirmed. RPB starts only 2 RB + NO flex, so RB depth needs are lower than the video — but still lock 2 anchors before the cliff.",
-      "verdict": ""
-    },
-    "saquon barkley": {
-      "name": "Saquon Barkley",
-      "adp": "RB9 / VBD +30 / ADP 14",
-      "board": "Playoff trap does NOT apply (no playoffs). AJ-Brown-gone efficiency dip is a mild regular-season note, but volume + easy early SOS = cumulative upside — stay willing.",
-      "verdict": ""
-    },
-    "omarion hampton": {
-      "name": "Omarion Hampton",
-      "adp": "RB8 / VBD +31 / ADP 16",
-      "board": "Anchor-RB tier; explosive + goal-line role.",
-      "verdict": ""
-    },
-    "chase brown": {
-      "name": "Chase Brown",
-      "adp": "RB12 / VBD +27 / ADP 15",
-      "board": "Anchor tier; explosive, unchanged CIN offense.",
-      "verdict": ""
-    },
-    "trey mcbride": {
-      "name": "Trey McBride",
-      "adp": "TE2 / VBD +65 / ADP 20",
-      "board": "⚠ CONFLICT with your R3 rule: Nick FADES McBride (too many mouths, worst team, Brissett→Beck). Board still has him TE2. At the R3 TE trigger, LEAN BOWERS over McBride.",
-      "verdict": ""
-    },
-    "george kittle": {
-      "name": "George Kittle",
-      "adp": "TE9 / VBD +9 / ADP 106",
-      "board": "Falls-to-value; OK if Bowers/McBride missed, but below your top-7 TE target.",
-      "verdict": ""
-    },
-    "caleb williams": {
-      "name": "Caleb Williams",
-      "adp": "QB4 / VBD +19 / ADP 72",
-      "board": "Playoff-weather concern is diluted here (no bracket), but those late outdoor games still count toward your 18-week total. Minor.",
-      "verdict": ""
-    },
-    "stacking": {
-      "name": "Stacking",
-      "adp": "—",
-      "board": "Don't pair two early same-team skill players; a later QB+RB stack is fine.",
-      "verdict": ""
-    },
-    "bucky irving": {
-      "name": "Bucky Irving",
-      "adp": "RB25 / VBD −24 / ADP 46",
-      "board": "FADE — TB 3-way committee (Gainwell 3rd-down, Tucker goal-line) + injury worse than reported, low TD ceiling.",
-      "verdict": ""
-    },
-    "jarian price": {
-      "name": "Jarian Price",
-      "adp": "not ranked",
-      "board": "FADE — wish-casting; 15 rec in 41 college games; Charbonnet reclaims RB1 by mid-season.",
-      "verdict": ""
-    },
-    "chuba hubbard": {
-      "name": "Chuba Hubbard",
-      "adp": "RB29 / VBD −34 / ADP 66",
-      "board": "FADE — hardest rush SOS; value craters mid-season as Jonathon Brooks ramps in.",
-      "verdict": ""
-    },
-    "rj harvey": {
-      "name": "RJ Harvey",
-      "adp": "RB32 / VBD −42 / ADP 81",
-      "board": "FADE — Dobbins signed starter money (Payton: \"top priority\"), Coleman for pass-pro. ⚠ UPDATE handcuff plan (§⑤): DROP RJ Harvey from the R7 lottery-handcuff list.",
-      "verdict": ""
-    },
-    "kyren williams": {
-      "name": "Kyren Williams",
-      "adp": "RB17 / VBD +12 / ADP 31",
-      "board": "Corum cut snaps 75%→64% + Rams bottom-5 RB targets → prefer Etienne. REINFORCES your keeper: Etienne ADP 33 (R3 talent) kept at R10 = elite value; he is insulated.",
-      "verdict": ""
-    },
-    "mike evans": {
-      "name": "Mike Evans",
-      "adp": "WR22 / VBD +20 / ADP 59",
-      "board": "⭐ PERFECT RPB FIT — red-zone TD monster (13–17 TD upside) directly fixes your 2025 receiving-TD deficit (your title gap). Target at the R5/6 turn.",
-      "verdict": ""
-    },
-    "devonta smith": {
-      "name": "DeVonta Smith",
-      "adp": "WR12 / VBD +32 / ADP 32",
-      "board": "Playoff trap does NOT apply (no playoffs) → PURE upside here. Alpha post-AJB + easiest early passing SOS = cumulative-points gold.",
-      "verdict": ""
-    },
-    "ladd mcconkey": {
-      "name": "Ladd McConkey",
-      "adp": "WR16 / VBD +27 / ADP 41",
-      "board": "Chargers alpha, elite separation (88th pct vs man/press/zone), top-5–7 ceiling. Strong R3–R4 WR.",
-      "verdict": ""
-    },
-    "travis hunter": {
-      "name": "Travis Hunter",
-      "adp": "WR54 / VBD −41 / ADP 193",
-      "board": "Nearly free; WR1 upside in a Liam Coen offense. Great late WR-depth dart (your trade currency).",
-      "verdict": ""
-    },
-    "tank dell": {
-      "name": "Tank Dell",
-      "adp": "WR70 / ADP 203",
-      "board": "Deepest flier; contingent on Nico Collins missing time. Last-pick dart only.",
-      "verdict": ""
-    },
-    "josh jacobs": {
-      "name": "Josh Jacobs",
-      "adp": "RB18 / VBD +4 / ADP 34",
-      "board": "HARD FADE — barely above replacement (+4) AND a 6–12-wk conduct suspension would erase weeks of cumulative points. Worse bet here than in H2H.",
-      "verdict": ""
-    },
-    "malik nabers": {
-      "name": "Malik Nabers",
-      "adp": "WR19 / VBD +26 / ADP 30",
-      "board": "FADE early — multi-ligament knee, misses ~the first month = lost cumulative points. Only at a steep R5+ discount.",
-      "verdict": ""
-    },
-    "rashee rice": {
-      "name": "Rashee Rice",
-      "adp": "WR15 / VBD +29 / ADP 27",
-      "board": "Contrarian buy IF the parole/knee truly resolve before Week 1 (Nick's read) — but in cumulative, any missed week costs you, so size the risk.",
-      "verdict": ""
-    },
-    "stefon diggs": {
-      "name": "Stefon Diggs",
-      "adp": "ADP 138 (deep)",
-      "board": "Zero-risk late WR-depth stash (your trade currency); waiver-dump if he doesn't sign somewhere good.",
-      "verdict": ""
-    },
-    "brian robinson jr": {
-      "name": "Brian Robinson Jr.",
-      "adp": "RB47 / ADP 124",
-      "board": "Bijan's handcuff — same Atlanta backfield",
-      "verdict": "Ideal LAST pick when you open with Bijan at 1.02. FantasyPros' own note calls him 'a very useful insurance pick behind Bijan Robinson'; Coach AI reads Overall Low / Upside Very Low / Bust High as a standalone, which is exactly right — his value here is contingent, not weekly."
-    }
+  {
+   "title": "Tight end: early or late, NEVER the middle",
+   "text": "'Mid-round TE is a losing bet, year after year.' Pay up for an elite anchor (Bowers R2 / Loveland R4) OR wait and double-dip late (Kittle/Andrews/Kincaid). Avoid the round 6–10 TE range."
   },
-  "MWV": {
-    "breece hall": {
-      "name": "Breece Hall",
-      "adp": "mid-R3 (29)",
-      "board": "RB11 / #20 (234.8 · VBD +67.8)",
-      "verdict": "BUY. Full-PPR bell-cow + 36 rec; the pick-13 Robust-RB lever."
-    },
-    "deandre swift": {
-      "name": "De'Andre Swift",
-      "adp": "mid-R5 (51)",
-      "board": "RB22 / #41 (201.9 · VBD +34.9)",
-      "verdict": "BEST FIT. 50–60 rec + 10 TD is Full-PPR/FLEX gold — opposite of RPB, where 0.5 PPR halves him."
-    },
-    "quinshon judkins": {
-      "name": "Quinshon Judkins",
-      "adp": "mid-R5 (53)",
-      "board": "RB21 / #40 (203.3 · VBD +36.3)",
-      "verdict": "BUY at R5 if there; RZ/TD role + ~30 rec."
-    },
-    "bhayshul tuten": {
-      "name": "Bhayshul Tuten",
-      "adp": "R6 (61)",
-      "board": "RB24 / #57 (190.4 · VBD +23.4)",
-      "verdict": "TAKE at 61 — ADP = your pick (opposite of RPB, where he's a fade to R12–13)."
-    },
-    "keaton mitchell": {
-      "name": "Keaton Mitchell",
-      "adp": "R7–8 (192)",
-      "board": "RB42 / #153 (117.3 · VBD −49.7)",
-      "verdict": "Free late dart; RB1 upside if Hampton hurt."
-    }
+  {
+   "title": "Quarterback: elite value early OR wait to R5–7, then ride one",
+   "text": "Never QB in round 1 or 2. Elite QBs slipping on recency bias (Josh Allen) are fine value, but he prefers the R5–7 margins (Maye). THE MID-ROUND QB TRAP: if you miss the elite tier, do NOT pay up for the next sub-tier early (Dak/Herbert/Lawrence in R6) — wait to the absolute tail-end of that tier for the max discount (he took Trevor Lawrence at R8 in his 12-tm PPR mock). Pick one QB and ride him. Caveat: a full QB embargo R3–7 assumes no league-wide run — if your league panics you can get stuck streaming, so stay flexible."
   },
-  "rpbFormat": {
-    "_note": "Half-PPR (0.5) + 2RB/3WR/1TE, NO FLEX, D/ST doubled, no playoffs. Nick's advice is written for 12-team full-PPR with a FLEX, so anywhere he leans on a reception floor his verdict moves in RPB. UP = better here than his rank implies. DOWN = worse. Generated from his own format language 2026-08-07.",
-    "up": {
-      "Mike Evans": "FORMAT SPLIT in your favour. He fades Evans in full PPR (too TD-dependent) but calls him a positive-TD-regression buy in 0.5/standard. Your RPB verdict: 'PERFECT RPB FIT — 13-17 TD upside, fixes your 2025 receiving-TD deficit'. Target the R5/6 turn.",
-      "Quinshon Judkins": "BUY at R5. Monken red-zone run scheme is a direct RPB TD-edge fit. 'Judkins >= Swift in RPB.'",
-      "Saquon Barkley": "His #1 round-2 back. The one caution he gives — brutal Wk15-17 playoff schedule — DOES NOT APPLY: RPB has no playoffs. Free money here.",
-      "Jonathan Taylor": "He fades JT at pick 4 in FULL PPR for lacking a receiving floor. That knock is much weaker in half-PPR — he is playable at his RPB cost."
-    },
-    "down": {
-      "Zay Flowers": "MWV ONLY. 'TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games.' Do not draft him in RPB at his rank.",
-      "Derrick Henry": "'watch', not a buy. Declining targets = volatile half-PPR floor at 32; last year's RB8 finish inflated by one Wk17 four-TD game. Safe floor, capped ceiling. Still a take-zone back — just the LAST of the six you'd take, not the first.",
-      "De'Andre Swift": "His R5 case is explicitly a full-PPR reception floor. RPB verdict: 'rec-heavy upside halved by 0.5 PPR'. Judkins over Swift here.",
-      "Christian McCaffrey": "'Loves him if he falls' is a full-PPR receiving-floor argument. Discount it in half-PPR.",
-      "Devon Achane": "Already shy-away, and the reason is format-specific: 'R2 FADE in half-PPR (RPB)' — mobile Willis kills the reception floor.",
-      "Bhayshul Tuten": "Below the RB20 replacement line in RPB. Fade the R6 reach; R12-13 dart only.",
-      "Jayden Daniels": "DOWNGRADED to 'watch' — WAS cutting no-huddle concepts slashes play volume and his rushing floor. Was a mid-round target, now a caution at cost."
-    },
-    "structural": [
-      "RPB starts 2 RB and has NO FLEX, so RB depth matters less than Nick's 'three backs in the first four rounds' implies. Lock two anchors before the RB16-18 cliff, then stop.",
-      "One TE, no FLEX: his 'early OR late' tight-end rule is an either/or. Bowers in round 2 spends the early option — never also take the late Kittle/Andrews double-dip.",
-      "D/ST scores double in RPB, so the gap between the #1 and #9 defense is real points, unlike in his default league.",
-      "No playoffs in RPB, so every playoff-schedule caution he gives (Barkley, DeVonta Smith) is irrelevant here."
-    ]
+  {
+   "title": "Don't stack teammates in redraft",
+   "text": "Negative correlation kills you in season-long (e.g. won't pair Ja'Marr Chase + Chase Brown, or 3 Chargers). Stacking is a best-ball play, not a redraft play."
   },
-  "videoConflicts": {
-    "_note": "Where an FFA video take disagrees with the stance/call already on the entry. Recorded 2026-08-07, NOT auto-resolved — read the dates and decide.",
-    "Malik Nabers": "RESOLVED 2026-08-07. Flipped from fade to 'like'. The fade note was undated and cited PUP risk; the 2026-08-05 video says he avoided the PUP entirely. Newer source, and it addresses the exact objection. He now sits behind the take-zone backs, Bowers and Nico Collins, and ahead of George Pickens.",
-    "Quentin Johnston": "2026-08-03 video says he is drafting him a lot for the underneath/screen floor; entry says 'flat projection, no top-15 ceiling'. Low impact for RPB — Max's College Fund keeps him, so he never reaches your draft.",
-    "David Montgomery": "FALSE POSITIVE, no action. The 'down' take is from the Jared Goff video and is about Montgomery LEAVING Detroit freeing goal-line touchdowns for Goff. It is not a downgrade of Montgomery.",
-    "_asr_warning": "Captions are ASR and mis-hear names constantly. In the 2026-08-03 dead-zone video the transcript reads 'Jahmyr Gibbs is on a bottom-three offense' — impossible (Detroit, and Nick has a separate video titled 'Draft Jahmyr Gibbs 1.01'). That is a mis-heard name and Gibbs is NOT a dead-zone back. Never attribute a take to a player on caption text alone when the claim contradicts what you know about his team or the rest of his content."
+  {
+   "title": "Rookies are mostly irrelevant in redraft",
+   "text": "Pass on deep rookies — only elite feature backs (Jeanty, Jeremiah Love) matter, and even those he'll fade if hype inflates the cost or the team is tanking."
+  },
+  {
+   "title": "Playoff schedule & domes matter; fade tankers",
+   "text": "Target Lions/Saints/Eagles anchors for late-season dome games; fade open-air northern teams and brutal playoff slates (Eagles Wk15–17 vs SEA/HOU/SF). Fade tanking teams (Cardinals, Panthers) that bench young stars in the fantasy playoffs."
+  },
+  {
+   "title": "Chase positive TD regression",
+   "text": "Target elite players with high red-zone/green-zone volume but unlucky TD totals (Justin Jefferson, Mike Evans, Tyler Warren) — TD luck is volatile and self-corrects."
+  },
+  {
+   "title": "Value vs ADP discipline",
+   "text": "Don't reach — temper projections with market ADP; you can usually get your guy a round later."
+  },
+  {
+   "title": "Single-flex roster balance — don't multiply too early",
+   "text": "In single-flex builds (MWV) keep RB/WR balanced early: don't take back-to-back WRs in Rounds 1–2. If a Round 3 RB run hits while you're WR-heavy, you're forced into sub-optimal builds. (RPB has NO flex at all, so early balance matters even more.)"
+  },
+  {
+   "title": "Tight end: wait, then double-dip athletic TEs on elite QBs",
+   "text": "In the 12-tm PPR mock he boycotted TE until the single-digit-ADP rounds, then double-dipped highly athletic profiles attached to elite/high-volume QBs (Kincaid–Buffalo, Gadsden–Chargers). Reinforces the 'early or late, never the middle' rule from the late side."
+  },
+  {
+   "title": "Round 2 RBs — the league-wide decision point (half-PPR / RPB)",
+   "text": "From picks 3–12, UNLESS an elite faller is there (Brock Bowers, Drake London, or CeeDee Lamb / Justin Jefferson if they slip), take the RB — they all project similarly with heavy upside, so your RANKING is the edge. Nick's R2 RB board (half-PPR): 1) Saquon Barkley — easiest Wk1–14 SOS, ~300 touches, Patullo→Mannion play-call upgrade; 2) Kenneth Walker — big new contract, zero early-down competition, locked goal-line; 3) Chase Brown — elite pass-catcher (he'd be ABOVE Walker in full PPR), lower rush ceiling in 0.5; 4) Omarion Hampton — huge goal-line/TD upside, volume capped by Keaton Mitchell (watch camp); 5) Derrick Henry — dominant runner but fading targets = volatile 0.5 floor at 32; 6) De'Von Achane — AVOID: McDaniel gone, mobile Willis kills his target floor, hardest Wk13+ SOS. R1 RBs stay locked in pairs: Gibbs/Bijan → Taylor/CMC → Hall/Cook."
+  },
+  {
+   "title": "The round 4-5-6 receiver block",
+   "text": "From the 2026-08-07 must-draft WR video, his most concrete stated build: running back with the first two picks, then Luther Burden, Mike Evans and Parker Washington in rounds four, five and six. He says if he avoided receiver until round four and came away with those three he'd be 'jumping for joy'. Amon-Ra St. Brown is the single receiver he'd break the RB-RB open for, and only outside the top-4 picks. Colston Loveland can swap in for Burden."
+  },
+  {
+   "title": "The 'everyone is saying it' tell",
+   "text": "His recurring signal for late-round bets: a beat writer alone means little, but when the GM, head coach, coordinator, quarterback and reporters all independently praise a player, nobody in that group has an incentive to lie together. He applied it to both Luther Burden and Jayden Higgins. Not a guarantee — injury or a crowded room still intervene — but on a player going in double-digit rounds he treats it as an obvious bet."
+  },
+  {
+   "title": "The RB dead zone — perceived volume vs real volume",
+   "text": "From the 2026-08-03 mock-draft video, his own definition: the dead zone is 'a range of running back that is being propped up on perceived volume.' The distinction is the whole idea — for the top dozen backs the volume is KNOWN (great talents, good teams, locked roles), while the next range is priced on volume people ASSUME will arrive. He says that top tier 'basically ends with Derrick Henry in all formats.' Independent confirmation of the take-zone cutoff already in plan-rpb.json, which lands at RB11-12 (Henry/Achane) from the VBD side. Two different methods, same line."
+  },
+  {
+   "title": "Never leave rounds 1-2 without a back",
+   "text": "Stated flatly in the 2026-08-03 video: he does not like teams that finish the first two rounds with no running back, EVEN WHEN the receiver value is obviously better. He walked through passing on a JSN + Amon-Ra start he called 'very enticing' and still took the back. You do not have to double-dip, but you must leave with at least one. He also calls double-dipping RB at a late first-round pick a good strategy this season."
+  },
+  {
+   "title": "The QB waiting rule, stated precisely",
+   "text": "2026-08-03: 'If you don't end up getting Josh Allen, just wait. You don't need to draft Lamar right away.' Round five is the beginning of the window but rounds SIX, SEVEN and EIGHT are where he actually wants to take his quarterback. Combined with the 2026-07-31 rankings video, the full rule is: Allen at a mid-to-late third is the one early exception; otherwise skip the position entirely until round six."
+  },
+  {
+   "title": "Round one has no bad picks",
+   "text": "From the 2026-08-05 must-draft RB video: 'realistically you can call every one of the top 13 or 14 players this season a must-draft player.' He deliberately leaves round-one players off his must-draft lists because the interesting decisions start after them. The corollary he repeats in the WR video: round one is about not making the one or two mistakes that exist, not about finding an edge."
   }
+ ],
+ "shared": {
+  "ashton jeanty": {
+   "name": "Ashton Jeanty",
+   "pos": "RB",
+   "stance": "love",
+   "note": "Elite 1.01-tier feature back; ascending LV offense.",
+   "call": "must",
+   "why": "The public is underrating him because the Raiders offense was awful, not because of him. Improved line, Kubiak scheme and a healthy Bowers mean far fewer stacked boxes, and he can be had at the end of round one.",
+   "added": "2026-08-04",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "The one back Nick takes over Chase Brown in round two; also part of his ideal Cook-plus-Jeanty start from the 11 spot."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Underrated because of last year's environment, per Nick. Better line, healthy Bowers and a better scheme all point up on a top-seven profile."
+    },
+    {
+     "d": "2026-08-06",
+     "v": "Why I’m Drafting Chase Brown Everywhere #shorts",
+     "s": "up",
+     "take": "The only back Nick would take ahead of Brown at that turn; if he lasts to the tail of round one or the one-two turn, he goes first."
+    }
+   ],
+   "videoNote": "People are underrating how good he actually was, because the offense around him was terrible — no other playmakers with Bowers hurt, bad line, weak scheme. All three improve this year. He calls a late-first Cook + Jeanty pairing profiles that should cost a top-seven pick.",
+   "videoDate": "2026-08-05"
+  },
+  "bijan robinson": {
+   "name": "Bijan Robinson",
+   "pos": "RB",
+   "stance": "love",
+   "note": "1-2 overall lock in every format.",
+   "videoTakes": [
+    {
+     "d": "2026-07-22",
+     "v": "Don't Overthink It: Draft Jahmyr Gibbs 1.01 #shorts",
+     "s": "flat",
+     "take": "Rated essentially even on talent; loses the tiebreaker purely on which offense he plays in."
+    }
+   ]
+  },
+  "jahmyr gibbs": {
+   "name": "Jahmyr Gibbs",
+   "pos": "RB",
+   "stance": "love",
+   "note": "1-2 overall lock; Lions dome + schedule = elite.",
+   "videoTakes": [
+    {
+     "d": "2026-07-22",
+     "v": "Don't Overthink It: Draft Jahmyr Gibbs 1.01 #shorts",
+     "s": "up",
+     "take": "Called an easy 1.01 in all formats — receiving, rushing and touchdown upside with Montgomery gone."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Worth planning an auction around — Nick compares the setup to a vintage bell-cow season and says get him even if it costs a big share of budget."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "Referenced as the superstar Montgomery shared a backfield with; the fact Montgomery still got 14.2 touches a game alongside him is the whole argument."
+    }
+   ]
+  },
+  "breece hall": {
+   "name": "Breece Hall",
+   "pos": "RB",
+   "stance": "like",
+   "note": "R3 VALUE — elite pedigree (5,000 yds before 25). Robust-RB anchor.",
+   "videoTakes": [
+    {
+     "d": "2026-07-23",
+     "v": "Javonte Williams: A Conservative 3rd Round Pick #shorts",
+     "s": "up",
+     "take": "Named as the higher-ceiling alternative at a similar cost."
+    },
+    {
+     "d": "2026-07-28",
+     "v": "Don't Leave Your Draft Without Breece Hall #shorts",
+     "s": "up",
+     "take": "300-touch upside in a materially improved offense; called a league-winner at his round-three cost."
+    },
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "down",
+     "take": "Moved down on his board even in half PPR. He is optimistic about the Jets in theory but not enough to pay a round-three price."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Called insane value at the three-four turn — he's had drafts where he took Hall a full round earlier."
+    }
+   ],
+   "videoNote": "MOVED DOWN, and explicitly moved down in half PPR too, not just full. He is optimistic about the Jets in theory but not enough to pay a round-three price. Sits at the edge of the dead zone.",
+   "videoDate": "2026-08-03"
+  },
+  "quinshon judkins": {
+   "name": "Quinshon Judkins",
+   "pos": "RB",
+   "stance": "like",
+   "note": "R5 value — 300-touch ceiling, Monken features his best players.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "down",
+     "take": "Huge concerns in a full PPR league — named as one of the backs he is actively avoiding in that range."
+    }
+   ]
+  },
+  "bhayshul tuten": {
+   "name": "Bhayshul Tuten",
+   "pos": "RB",
+   "stance": "like",
+   "note": "R6 value — 250-280 touch ceiling in fast JAX offense.",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "watch",
+     "take": "Great talent, but at a round-five cost Nick hesitates because Chris Rodriguez looks set to take early-down carries and maybe goal-line work."
+    }
+   ]
+  },
+  "omarion hampton": {
+   "name": "Omarion Hampton",
+   "pos": "RB",
+   "stance": "like",
+   "note": "Anchor-RB tier; volume + goal-line role.",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "flat",
+     "take": "Ordered behind Walker in a bonus league because Nick worries the backfield split leaves him fewer games that clear the yardage threshold."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Mild fade inside the Keaton Mitchell case — Nick does not believe the staff hands every touch to Hampton in week one."
+    }
+   ]
+  },
+  "chase brown": {
+   "name": "Chase Brown",
+   "pos": "RB",
+   "stance": "like",
+   "note": "R2 value — unchanged CIN offense (same QB/WRs), elite target retention, converts high-value TDs; exceptionally productive with a healthy Burrow.",
+   "call": "must",
+   "why": "Featured back on a good offense with a very high touch floor. Was RB5 in PPG in games Burrow started and finished, and Cincinnati has its best line of the Burrow era.",
+   "added": "2026-08-01",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "His quarterback publicly called him a three-down featured back who should never leave the field. Nick calls him an elite round-two pick behind the best line he has had."
+    },
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "His pick at the one-two turn in full PPR. Best offensive line of the Burrow era, and he sees a top-three ceiling if Burrow stays healthy."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Named his favorite round-two running back on the day, secure enough that he takes him in a regular league over Walker even without bonuses."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Must-draft any time he reaches round two. Featured-back role confirmed by Burrow, thin depth behind him, and a rebuilt line on a potential league-leading scoring offense."
+    },
+    {
+     "d": "2026-08-06",
+     "v": "Why I’m Drafting Chase Brown Everywhere #shorts",
+     "s": "up",
+     "take": "Must-draft in round two: RB10 ADP on a round-one profile, roughly 20 touches with red-zone and receiving work, and Burrow calling him the featured back."
+    }
+   ],
+   "videoNote": "The reverse side of the Walker split — Nick takes Chase Brown in FULL PPR for reception certainty, and Walker in half. Separately a must-draft any time he reaches round two: best offensive line of the Burrow era, featured role, top-five upside if Burrow stays healthy.",
+   "videoDate": "2026-08-03"
+  },
+  "kenneth walker": {
+   "name": "Kenneth Walker",
+   "pos": "RB",
+   "stance": "like",
+   "note": "R3 — heavy team investment locks early downs + goal-line work on an offense projected to win games; high-leverage volume.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "He would take Walker over Chase Brown in half PPR, but not in full — the receptions are likely there but capped well short of 60."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Preferred in bonus-scoring leagues: the ground role is locked and the backups are receiving types, but Nick doesn't expect big reception weeks."
+    }
+   ]
+  },
+  "derrick henry": {
+   "name": "Derrick Henry",
+   "pos": "RB",
+   "stance": "watch",
+   "note": "R2 RB5 (≈RB11) — still dominant on the ground (8 straight 10-TD seasons) but declining targets = volatile half-PPR floor at 32; last year's RB8 finish was inflated by one Wk17 4-TD game. Safe floor, capped ceiling, new OC unknown."
+  },
+  "christian mccaffrey": {
+   "name": "Christian McCaffrey",
+   "pos": "RB",
+   "stance": "like",
+   "note": "Loves him if he falls (full-PPR receiving floor)."
+  },
+  "kenneth gainwell": {
+   "name": "Kenneth Gainwell",
+   "pos": "RB",
+   "stance": "like",
+   "note": "Premium ADP value handcuff.",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Everything expected of him is showing up in camp — heavy receiving usage and early-down mixing — and Nick likes that the hype hasn't caught up yet."
+    }
+   ]
+  },
+  "deandre swift": {
+   "name": "De'Andre Swift",
+   "pos": "RB",
+   "stance": "like",
+   "note": "R5 value — full-PPR reception floor fits like a glove; top-10 upside at a steep discount, prime age, Monangai no threat.",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "His keeper pick over Tuten or Odunze: a passing-down role on a good offense, with a projection around 1,300 yards and double-digit touchdowns."
+    }
+   ]
+  },
+  "rhamondre stevenson": {
+   "name": "Rhamondre Stevenson",
+   "pos": "RB",
+   "stance": "like",
+   "note": "Tactical chain-mover — staff trusts him to hit reads and grind the 4-5 yards to move the chains; under-the-radar volume."
+  },
+  "keaton mitchell": {
+   "name": "Keaton Mitchell",
+   "pos": "RB",
+   "stance": "like",
+   "note": "Ideal late bench stash — high-potency BAL offense yields premium efficiency on ~10 touches/gm.",
+   "call": "must",
+   "why": "Essentially free in drafts. Hit 20+ MPH a league-leading seven times on just 59 carries, and McDaniel reportedly asked for him by name.",
+   "added": "2026-07-24",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Happy to take him from about pick 120 onward and pleased to land him at 134; also cited as a reason to worry about Hampton's split."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Second-most confident take: a league winner if healthy. Compared to Achane's rookie profile, and Nick would draft him a round or two ahead of ADP every time."
+    }
+   ]
+  },
+  "kyle monangai": {
+   "name": "Kyle Monangai",
+   "pos": "RB",
+   "stance": "like",
+   "note": "~R8 handcuff value — 11 touches/gm on an elite offense, TD luck."
+  },
+  "jamarr chase": {
+   "name": "Ja'Marr Chase",
+   "pos": "WR",
+   "stance": "love",
+   "note": "Elite alpha target hog; premier WR baseline."
+  },
+  "puka nacua": {
+   "name": "Puka Nacua",
+   "pos": "WR",
+   "stance": "love",
+   "note": "Elite anchor WR.",
+   "videoTakes": [
+    {
+     "d": "2026-07-24",
+     "v": "Justin Jefferson: Bounce Back Year Coming! #shorts",
+     "s": "flat",
+     "take": "Cited only as the current holder of the career receiving-yards-per-game mark Jefferson used to hold."
+    }
+   ]
+  },
+  "justin jefferson": {
+   "name": "Justin Jefferson",
+   "pos": "WR",
+   "stance": "love",
+   "note": "#1 positive-regression target (career-worst luck). Watch MIN QB.",
+   "videoTakes": [
+    {
+     "d": "2026-07-24",
+     "v": "Justin Jefferson: Bounce Back Year Coming! #shorts",
+     "s": "up",
+     "take": "Extreme negative touchdown variance last year blamed on the quarterbacks; a big bounce-back at a round-one-turn price."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "Named alongside Bowers as a locked-in early pick that would justify skipping the second running back."
+    }
+   ]
+  },
+  "jaxon smithnjigba": {
+   "name": "Jaxon Smith-Njigba",
+   "pos": "WR",
+   "stance": "love",
+   "note": "Elite efficiency + huge target share; defends him vs ADP doubters."
+  },
+  "emeka egbuka": {
+   "name": "Emeka Egbuka",
+   "pos": "WR",
+   "stance": "love",
+   "note": "Elite young target hog — NYG WR1 vacuum, Cooper Kupp-style comp.",
+   "call": "must",
+   "why": "Was on a 76/1,279/12 pace through nine games before a hamstring injury and Baker's shoulder derailed it. The new coordinator has talked about using him in the Cooper Kupp role.",
+   "added": "2026-06-19"
+  },
+  "nico collins": {
+   "name": "Nico Collins",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Premier smash-play (over Nabers).",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Malik Nabers Looks Explosive After His Knee Injury #shorts",
+     "s": "flat",
+     "take": "Called a genuinely tough call against Nabers, but Nick says right now he would still take Collins first."
+    },
+    {
+     "d": "2026-08-07",
+     "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Still the Houston number one and a strong pick at the two-three turn, especially if the draft opened with Gibbs or Bijan."
+    }
+   ]
+  },
+  "george pickens": {
+   "name": "George Pickens",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Pivot-point WR target.",
+   "videoTakes": [
+    {
+     "d": "2026-07-27",
+     "v": "The George Pickens Price Shock Is a Mistake #shorts",
+     "s": "up",
+     "take": "Worth the jump to the 2-3 turn — elite efficiency, age 25, and huge contingent upside if Lamb misses time."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Malik Nabers Looks Explosive After His Knee Injury #shorts",
+     "s": "flat",
+     "take": "Used as the comparison point Nabers has already passed — Nick would take Nabers over Pickens today."
+    }
+   ]
+  },
+  "chris olave": {
+   "name": "Chris Olave",
+   "pos": "WR",
+   "stance": "like",
+   "note": "R3 elite — high-tempo NO offense, heavy target share."
+  },
+  "devonta smith": {
+   "name": "DeVonta Smith",
+   "pos": "WR",
+   "stance": "love",
+   "note": "Favorite Eagles target — 30%+ target share, 10 tgt/gm early.",
+   "videoTakes": [
+    {
+     "d": "2026-07-30",
+     "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
+     "s": "flat",
+     "take": "The other half of that red-zone target comparison."
+    },
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "His answer to the dead zone: a clear alpha with a large target share, taken instead of reaching for a second running back."
+    }
+   ]
+  },
+  "mike evans": {
+   "name": "Mike Evans",
+   "pos": "WR",
+   "stance": "watch",
+   "note": "FORMAT SPLIT: fade in full PPR (MWV) — too TD-dependent, lacks the 100-catch ceiling to maximize PPR. But a positive-TD-regression buy in 0.5/standard (RPB). (Note: he likes TD-regression elsewhere yet fades Evans for TD-reliance — a real tension.)",
+   "call": "must",
+   "why": "A top-three red-zone weapon on a team that will score — Nick's comparison is 2025 Davante Adams. Fifteen-touchdown upside now that Pearsall is out.",
+   "added": "2026-08-03",
+   "videoNote": "Round 5, explicitly. Pearsall out for the season and Deebo is not a red-zone threat, so Evans is the primary target inside the 20 on a team top-5 in red-zone plays three years running.",
+   "videoDate": "2026-08-07",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Called the man in rounds four and five and a favorite auction value; on the reported quad strain Nick sees no sign it's a major issue."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Named as the kind of high-touchdown player Nick wants as scoring environments tighten and touchdowns take a bigger share of fantasy points."
+    },
+    {
+     "d": "2026-08-07",
+     "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Round five. With Pearsall out he's the clear red-zone target on a team that lives inside the twenty; Nick expects him to shatter his ADP."
+    }
+   ]
+  },
+  "ladd mcconkey": {
+   "name": "Ladd McConkey",
+   "pos": "WR",
+   "stance": "love",
+   "note": "R4 favorite value — elite TPRR in 12-personnel."
+  },
+  "terry mclaurin": {
+   "name": "Terry McLaurin",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Safe locked-in target monster (over aging Davante)."
+  },
+  "tetairoa mcmillan": {
+   "name": "Tetairoa McMillan",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Safe boundary target vacuum."
+  },
+  "jayden reed": {
+   "name": "Jayden Reed",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Consolidated GB target share after Doubs/Wicks left."
+  },
+  "travis hunter": {
+   "name": "Travis Hunter",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Last-round STEAL — supreme talent, highest TPRR upside."
+  },
+  "rashee rice": {
+   "name": "Rashee Rice",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Least-risky of the risk trio — R3 contrarian buy (knee minor).",
+   "call": "shy",
+   "why": "Solid against zone in the short area and not much else — cannot win deep, against man, or against press. Nick expects the force-fed designed touches to taper off.",
+   "added": "2026-07-07"
+  },
+  "tank dell": {
+   "name": "Tank Dell",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Zero-risk last-pick flier; elite share if Collins misses time."
+  },
+  "luther burden": {
+   "name": "Luther Burden III",
+   "pos": "WR",
+   "stance": "like",
+   "note": "R6 safe high-floor in an elite scheme.",
+   "call": "must",
+   "why": "Highest yards per route run ever by a rookie receiver, and efficient from every alignment. Camp hype is loud enough that Nick now prefers him over Loveland in that pairing.",
+   "added": "2026-08-01",
+   "videoNote": "Round 4, explicitly. 2nd-best rookie yards-per-route-run since 2000 and top-4 in first-downs-per-route-run in a decade (he calls that the more predictive stat). Sees a WR1 finish.",
+   "videoDate": "2026-08-07",
+   "videoTakes": [
+    {
+     "d": "2026-08-07",
+     "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Round four. Elite rookie efficiency in routes that matter, led Chicago in explosive-play yards, and the entire organization is talking him up."
+    }
+   ]
+  },
+  "josh downs": {
+   "name": "Josh Downs",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Polished target earner — clear path to 5-7 catches/wk with the WR room thinned (Pierce's foot surgery); high-floor flex.",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Nick thinks he's better set up than Pierce for the target volume, even while liking Pierce's downfield role."
+    }
+   ]
+  },
+  "zay flowers": {
+   "name": "Zay Flowers",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Full-PPR volume play (MWV) — TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games."
+  },
+  "dj moore": {
+   "name": "DJ Moore",
+   "pos": "WR",
+   "stance": "like",
+   "note": "Elite value — ADP artificially depressed by 'foot callus' panic; if he's running fluidly in camp the value skyrockets.",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Nick is far more optimistic in Buffalo — a scrambling quarterback who looks deep, no real target competition, and strong early camp reports."
+    }
+   ]
+  },
+  "brock bowers": {
+   "name": "Brock Bowers",
+   "pos": "TE",
+   "stance": "love",
+   "note": "Elite R2 anchor TE — the early-TE play.",
+   "call": "must",
+   "why": "Most receptions by any rookie in NFL history, then hurt from week one onward. Goes in the mid-second with a play-calling upgrade and no real target competition.",
+   "added": "2026-06-18",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
+     "s": "up",
+     "take": "Clear TE1 and the headline of the video. Played hurt all last season, now has a coordinator upgrade and functions as the team's number one receiver."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "One of the few non-running backs Nick would take early instead of a second back, and a health-driven upgrade to Jeanty's environment."
+    }
+   ]
+  },
+  "colston loveland": {
+   "name": "Colston Loveland",
+   "pos": "TE",
+   "stance": "like",
+   "note": "R4 ONLY — loves the talent/role under Ben Johnson but strictly forbids drafting him in R3.",
+   "call": "must",
+   "why": "Nick's stated biggest flag plant of the season. Blocks elite rushers and wins as a slot receiver, so Ben Johnson can build constant mismatches around him.",
+   "added": "2026-07-06",
+   "videoNote": "The gap to McBride is 'very very thin' and the price gap is large — McBride goes at the 2-3 turn, Loveland in the 4th, so take Loveland every time. Closed last year with double-digit targets in all four final games incl playoffs.",
+   "videoDate": "2026-07-29",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
+     "s": "up",
+     "take": "The value of the tier. A round-four price for a player he rates nearly level with McBride, who closed last year with four straight double-digit-target games."
+    },
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "Raised only because Nick's mock-draft simulator keeps taking him in round four; he plans to adjust the sim's projections. Not a call on the player."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Called an amazing round-four pick and the player Nick would prefer over Skattebo if the draft already started running back, running back."
+    }
+   ]
+  },
+  "tyler warren": {
+   "name": "Tyler Warren",
+   "pos": "TE",
+   "stance": "like",
+   "note": "R5 value — positive regression, functional IND WR1 with Pierce hurt.",
+   "videoNote": "Conditional: if Indianapolis keeps Josh Downs inside rather than outside, Warren becomes the default #1 target and Nick wants him aggressively. Otherwise a repeat of last year.",
+   "videoDate": "2026-07-29",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
+     "s": "up",
+     "take": "Conditional upside — if Indianapolis keeps their slot man inside, Warren becomes the default number one target and Nick wants him aggressively."
+    }
+   ]
+  },
+  "george kittle": {
+   "name": "George Kittle",
+   "pos": "TE",
+   "stance": "like",
+   "note": "R10 late double-dip value.",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "The Perfect Tight End Draft Plan #shorts",
+     "s": "up",
+     "take": "Eight straight top-six seasons; the Achilles is the discount and they back him to return to form."
+    },
+    {
+     "d": "2026-07-30",
+     "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
+     "s": "flat",
+     "take": "Named as the tier above — Goedert is the pick once Kittle is gone."
+    }
+   ]
+  },
+  "mark andrews": {
+   "name": "Mark Andrews",
+   "pos": "TE",
+   "stance": "like",
+   "note": "Late TE double-dip."
+  },
+  "dalton kincaid": {
+   "name": "Dalton Kincaid",
+   "pos": "TE",
+   "stance": "like",
+   "note": "Late TE double-dip — athletic profile tied to an elite QB (Buffalo); live ADP outpaces market."
+  },
+  "oronde gadsden": {
+   "name": "Oronde Gadsden II",
+   "pos": "TE",
+   "stance": "like",
+   "note": "Late athletic-TE double-dip tied to a high-volume QB (Chargers/Herbert).",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Nick says the team's tight end spending has him worried about Gadsden's role."
+    }
+   ]
+  },
+  "tucker kraft": {
+   "name": "Tucker Kraft",
+   "pos": "TE",
+   "stance": "like",
+   "note": "Late TE value, fits early-or-late rule.",
+   "videoNote": "Was the top-scoring TE before tearing his ACL and is trending well, but goes in the early 7th with no discount — Nick is explicitly lukewarm at that price and would rather bad news drop the ADP first.",
+   "videoDate": "2026-07-29",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
+     "s": "watch",
+     "take": "Was the top-scoring tight end before tearing his ACL and is trending well, but an early-seventh price with no discount leaves Nick lukewarm."
+    }
+   ]
+  },
+  "josh allen": {
+   "name": "Josh Allen",
+   "pos": "QB",
+   "stance": "like",
+   "note": "Premium value on recency bias — but in his 12-tm PPR mock he PASSED Allen in R3 to keep elite skill talent (equal-tier QBs like Hurts sit several rounds later).",
+   "call": "must",
+   "why": "One of the eight quarterbacks Nick wants, at a value.",
+   "added": "2026-07-24",
+   "videoNote": "QB video sharpens the price: worth a MID-TO-LATE third, never round 2 and never the early third. Six straight top-2 finishes, one game missed in seven years.",
+   "videoDate": "2026-07-31",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Tier one on certainty — six straight top-two finishes and one game missed in seven years. Worth a mid-to-late third-round pick, never earlier."
+    },
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Nick's overall QB1, and he says the ADP has slipped to the point where stacking him with his top receiver is trivially easy in best ball."
+    }
+   ]
+  },
+  "drake maye": {
+   "name": "Drake Maye",
+   "pos": "QB",
+   "stance": "like",
+   "note": "Mid-round QB target (R5-6) — admitted homer pick, but backed by an improved line, year-2 leap, and upgraded weapons opening the deep field.",
+   "call": "must",
+   "why": "A must-draft last season too, when he finished 2nd in adjusted PPG. Improved line, A.J. Brown and Doubs added, with a rushing floor baked in.",
+   "added": "2026-07-24",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Second in points per game last season with an upgraded line and receiving room, though his rushing efficiency fell from 7.8 to 4.4 yards a carry."
+    }
+   ]
+  },
+  "jayden daniels": {
+   "name": "Jayden Daniels",
+   "pos": "QB",
+   "stance": "watch",
+   "note": "DOWNGRADED — WAS is cutting no-huddle concepts, slashing play volume and rushing-floor opportunity. Was a mid-round target; now a caution at cost.",
+   "call": "must",
+   "why": "A three-plus round discount purely because he got hurt. Was 3rd at 22.6 adjusted PPG as a rookie and is capable of 1,000 rushing yards.",
+   "added": "2026-07-24",
+   "videoNote": "CONFLICT — the 2026-07-31 QB video calls him the highest-ceiling tier-2 arm and a round-6 value (3rd in adjusted PPG as a rookie, discounted purely on last year's injuries). The 'DOWNGRADED / watch' note above cites Washington cutting no-huddle, which is camp news and therefore almost certainly NEWER than the video. The downgrade wins on recency; treat the video's round-6 enthusiasm as superseded unless a later video says otherwise.",
+   "videoDate": "2026-07-31",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Highest ceiling in tier two and routinely available in round six because of last year's injuries. Third in adjusted points per game as a rookie."
+    }
+   ]
+  },
+  "lamar jackson": {
+   "name": "Lamar Jackson",
+   "pos": "QB",
+   "stance": "like",
+   "note": "Premium QB target.",
+   "call": "must",
+   "why": "One of the eight quarterbacks Nick wants, at a value.",
+   "added": "2026-07-24",
+   "videoNote": "Tier 1 on ceiling, not certainty — the only QB he sees realistically hitting 25-28 ppg. Offset by 15 games missed in 5 years. Last year's dip was compromised mobility dragging the passing game with it.",
+   "videoDate": "2026-07-31",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Tier one on ceiling. The only quarterback he sees realistically hitting 25-28 points a game, offset by fifteen games missed in five seasons."
+    }
+   ]
+  },
+  "jalen hurts": {
+   "name": "Jalen Hurts",
+   "pos": "QB",
+   "stance": "like",
+   "note": "Premium QB target.",
+   "call": "must",
+   "why": "One of the eight quarterbacks Nick wants, at a value.",
+   "added": "2026-07-24",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Tier two, in the same want-to-own band as Burrow, Caleb Williams and Herbert."
+    }
+   ]
+  },
+  "caleb williams": {
+   "name": "Caleb Williams",
+   "pos": "QB",
+   "stance": "like",
+   "note": "Premium QB target (mid-round value).",
+   "call": "must",
+   "why": "One of the eight quarterbacks Nick wants, at a value.",
+   "added": "2026-07-24",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Tier two, grouped with the upside-plus-floor quarterbacks he prefers over spending an early pick."
+    }
+   ]
+  },
+  "justin herbert": {
+   "name": "Justin Herbert",
+   "pos": "QB",
+   "stance": "like",
+   "note": "R7 organic-stack QB with Hampton/Tuten.",
+   "call": "must",
+   "why": "All in on the Chargers offense, with a healthy top-seven line this year. Herbert goes at the end of the top-8 range, making him the best value of the group.",
+   "added": "2026-07-24",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Tier two. Part of the six-man group he calls the right place to be drafting in a one-quarterback league."
+    },
+    {
+     "d": "2026-07-31",
+     "v": "Justin Herbert Has HUGE Upside in 2026 #shorts",
+     "s": "up",
+     "take": "Top-eight call on a line upgraded from bottom three to top five plus a new play-caller; take him if nobody falls."
+    },
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "An exceptional pick at the seven-eight turn. He wants to be all in on the Chargers offense and sees a top-three quarterback ceiling."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Wants him on as many teams as possible and drafts a specific late tight-end back-stack every time he takes him."
+    }
+   ]
+  },
+  "trevor lawrence": {
+   "name": "Trevor Lawrence",
+   "pos": "QB",
+   "stance": "like",
+   "note": "Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries.",
+   "call": "must",
+   "added": "2026-08-05",
+   "why": "FFA must-draft list, added 2026-08-05. Late-tier arbitrage QB (took him R8 in the 12-tm PPR mock) — underrated rushing, deep insulated weapon rotation makes him resilient to WR injuries.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "He is warming to him as a ninth quarterback, and took him in round twelve calling that far too late for the room to let him go."
+    }
+   ]
+  },
+  "bucky irving": {
+   "name": "Bucky Irving",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "#1 'regret' RB — committee + injury; 13-carry/1-target risk."
+  },
+  "travis etienne": {
+   "name": "Travis Etienne",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)",
+   "call": "shy",
+   "added": "2026-08-03",
+   "why": "FFA shy-away list, added 2026-08-03. Fade at cost — never cleanly secured the backfield last year, questionable vision (runs into blockers), weak pass-pro metrics. (Note: your RPB R10 keeper — the cost is locked, but temper expectations.)",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "watch",
+     "take": "Nick calls him a value, but has moved him from an ADP of 41 down to 50 on his own board. The worry is Kamara's comments about a real split, and it bites hardest in full PPR."
+    }
+   ]
+  },
+  "jonathan taylor": {
+   "name": "Jonathan Taylor",
+   "pos": "RB",
+   "stance": "fade",
+   "note": "Fade at pick 4 in full-PPR — lacks the receiving floor."
+  },
+  "jaylen warren": {
+   "name": "Jaylen Warren",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "Muddy committee; explicitly avoided.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "Named as the one back he would have considered at the seven-eight turn instead of a quarterback, and good in full PPR."
+    }
+   ]
+  },
+  "rj harvey": {
+   "name": "RJ Harvey",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "R7 fade — Dobbins signed, role collapses.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "Taken at the nine-ten turn. He was hesitant at a 70th-overall price but finds it viable around 90 given Dobbins's health record."
+    }
+   ]
+  },
+  "jadarian price": {
+   "name": "Jadarian Price",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "Overrated — no receiving profile; Charbonnet reclaims SEA RB1."
+  },
+  "chuba hubbard": {
+   "name": "Chuba Hubbard",
+   "pos": "RB",
+   "stance": "fade",
+   "note": "Fade — hardest rush SOS, Bryce Young, value craters as Brooks ramps.",
+   "call": "shy",
+   "why": "Among 49 backs with 100+ carries he was last in explosive run rate, last in missed tackles forced per attempt and 2nd-last in touchdown rate. Brooks will eat into the work.",
+   "added": "2026-07-02",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Called the least explosive back in the league last season and repeatedly replaceable, which is the opening for Brooks."
+    }
+   ]
+  },
+  "kyren williams": {
+   "name": "Kyren Williams",
+   "pos": "RB",
+   "stance": "fade",
+   "note": "R3 fade — Corum cuts snaps; Rams bottom-5 in RB targets (zero floor).",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "down",
+     "take": "A dead-zone example: touchdowns and yardage should be there, but Corum could take an even split and the receptions will not be high."
+    }
+   ],
+   "videoNote": "Named as dead-zone: lead touchdown back on a potentially top-scoring offense, but Corum could take a 50/50 split and the receptions are known not to be there. Volume is perceived, not locked.",
+   "videoDate": "2026-08-03"
+  },
+  "josh jacobs": {
+   "name": "Josh Jacobs",
+   "pos": "RB",
+   "stance": "fade",
+   "note": "R3 fade — conduct probe / 8-12 wk suspension risk; pounce only at R5."
+  },
+  "saquon barkley": {
+   "name": "Saquon Barkley",
+   "pos": "RB",
+   "stance": "watch",
+   "note": "Nick's #1 round-2 RB (RB7) — easiest Wk1–14 SOS, ~300-touch workload, Patullo→Mannion play-call upgrade. One caution: brutal playoff SOS (SEA/HOU/SF Wk15-17)."
+  },
+  "devon achane": {
+   "name": "Devon Achane",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "R2 FADE in half-PPR (RPB) — the premier back to avoid: McDaniel gone guts the MIA offense, mobile Willis scrambles instead of checking down (kills the reception floor), bottom-tier WR room, and the hardest schedule from Wk13 on (4th-qtr benchings in blowouts).",
+   "call": "shy",
+   "why": "McDaniel has left for the Chargers, Malik Willis will scramble rather than check down, and Miami projects bottom-five in points per game. A scary floor and a capped ceiling in round two.",
+   "added": "2026-06-21",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "down",
+     "take": "Several reasons to fade — the check-down volume disappears with the new quarterback, blocking concerns, and a possible late shutdown if the team tanks."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "Used as the template for Keaton Mitchell — near-identical build, forty time and rookie-year explosiveness, with a similar college workload history."
+    }
+   ]
+  },
+  "james cook": {
+   "name": "James Cook",
+   "pos": "RB",
+   "stance": "watch",
+   "note": "Fade early — brutal opening SOS; acquire via trade after a slow month.",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "The coordinator keeps saying he wants running backs targeted, and Nick now believes it. He flips Cook above Jeanty and puts him in the elite mid-first tier."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Taken at 11 repeatedly as best available; Nick expects the receiving work to grow and thinks he's the one who cashes in on the easy games."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Honorable mention Nick loves in the late first. Camp reports point to an expanded receiving role, which he calls the only thing that was capping Cook's ceiling."
+    }
+   ],
+   "videoNote": "Honorable mention he loves in the late first. Camp reports indicate an increased receiving role — the one thing that was capping him. League's leading rusher last year with 15-plus TD upside; if the targets come, the ceiling is top-three overall.",
+   "videoDate": "2026-08-05"
+  },
+  "jeremiah love": {
+   "name": "Jeremiah Love",
+   "pos": "RB",
+   "stance": "watch",
+   "note": "Scale back — ARI tanking limits touches; needs 80-90% share at R3 cost.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "watch",
+     "take": "Strong value where he fell at the three-four turn, but Nick calls the situation super risky with Allgeier confirmed for a split."
+    }
+   ],
+   "videoNote": "Strong value at the 3-4 turn where he fell in this mock, but flagged as risky — the team is confirming an Allgeier split. Do not pay for a full workload.",
+   "videoDate": "2026-08-03"
+  },
+  "najee harris": {
+   "name": "Najee Harris",
+   "pos": "RB",
+   "stance": "watch",
+   "note": "Only as a last-pick zero-risk injury insurance."
+  },
+  "malik nabers": {
+   "name": "Malik Nabers",
+   "pos": "WR",
+   "stance": "like",
+   "note": "FLIPPED 2026-08-07 off the 2026-08-05 video — he avoided the PUP (team expects him inside the first four weeks), multiple reports he could play week one, and he is cutting in camp with no hesitation. Nick's stated order at your turn: the take-zone backs (Saquon/Ken Walker/Chase Brown/Hampton), then Bowers, then Nabers. He takes Nabers OVER Pickens and still takes Nico Collins first. PRIOR NOTE, now superseded: 'fade to R5+ — non-clean knee, PUP risk' — that note was undated and the PUP risk it named has resolved.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "His projections pull Nabers well above composite ADP; he would love him a tier behind Lamb and Jefferson if the recovery stays clean."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Malik Nabers Looks Explosive After His Knee Injury #shorts",
+     "s": "up",
+     "take": "The whole segment. Cutting freely in camp, off PUP, and Nick has him at the 2/3 turn with room to climb if the ramp-up keeps going well."
+    }
+   ],
+   "videoNote": "2026-08-05, his latest mention: 'I'm still not going to take him over that range of running back that's Saquon, Ken Walker, Chase Brown, Hampton. And I'd probably still put Bowers at the end of that. But after that, I feel like I'm probably just going Malik Nabers.' Also: 'right now I'd probably take him over Pickens', and 'really tough between him and Nico — right now I'd probably still take Nico first.'",
+   "videoDate": "2026-08-05"
+  },
+  "jameson williams": {
+   "name": "Jameson Williams",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Best-ball only — volatile target floor wrecks redraft lineups."
+  },
+  "christian watson": {
+   "name": "Christian Watson",
+   "pos": "WR",
+   "stance": "avoid",
+   "note": "R6 fade — 1 double-digit-target game in 51 career games."
+  },
+  "alec pierce": {
+   "name": "Alec Pierce",
+   "pos": "WR",
+   "stance": "avoid",
+   "note": "R6 fade — efficiency regresses; Downs & Warren out-target him.",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "watch",
+     "take": "Falling on missed practice with no clarity; Nick says if he returns and looks fine he'd go far earlier, so the uncertainty is a real discount."
+    }
+   ]
+  },
+  "dk metcalf": {
+   "name": "DK Metcalf",
+   "pos": "WR",
+   "stance": "avoid",
+   "note": "R6/7 fade — name value only; aging Rodgers can't push it deep, <100 tgts."
+  },
+  "michael pittman": {
+   "name": "Michael Pittman Jr.",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Low aDOT / low-volume scheme; passed on."
+  },
+  "davante adams": {
+   "name": "Davante Adams",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Aging — prefers Terry McLaurin's safer volume."
+  },
+  "jordan addison": {
+   "name": "Jordan Addison",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Unfavorable ecosystem — buried behind alpha Justin Jefferson, catching from a volatile/unproven MIN QB room."
+  },
+  "quentin johnston": {
+   "name": "Quentin Johnston",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Flat projection, no top-15 ceiling.",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "Drafting him a lot. Not the most talented receiver, but the underneath and screen looks are layup routes that raise a weekly floor."
+    }
+   ]
+  },
+  "jakobi meyers": {
+   "name": "Jakobi Meyers",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Low-ceiling depth play."
+  },
+  "chris godwin": {
+   "name": "Chris Godwin",
+   "pos": "WR",
+   "stance": "fade",
+   "note": "Lacks a league-winning ceiling; aging role."
+  },
+  "trey mcbride": {
+   "name": "Trey McBride",
+   "pos": "TE",
+   "stance": "avoid",
+   "note": "COMPLETE FADE at his ADP — refuses to spend premium capital on him in any primary league; too many ARI mouths + tanking bench risk.",
+   "call": "shy",
+   "why": "Arizona likely tanks late and moves from Brissett to Beck, meaning slower pace and more run. Nick would rather have Bowers a few picks earlier or Loveland two rounds later.",
+   "added": "2026-06-26",
+   "videoNote": "TE video adds the mechanism: Arizona paid their backup RB heavily and spent a top-3 pick on another, which is not what a team does before throwing more. Last year's route volume is not repeatable.",
+   "videoDate": "2026-07-29",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
+     "s": "down",
+     "take": "Still TE2 but riskier than the market thinks — Arizona spent heavily at running back and projects near the bottom of the league in scoring."
+    }
+   ]
+  },
+  "kyle pitts": {
+   "name": "Kyle Pitts",
+   "pos": "TE",
+   "stance": "fade",
+   "note": "Fade — unstable ATL QB carousel (Tua/Penix).",
+   "call": "shy",
+   "why": "Was 21st in PPG through week 13 and cleared 12 HPPR points just three times in 17 games. The production came almost entirely in the five games Drake London missed.",
+   "added": "2026-07-16"
+  },
+  "harold fannin": {
+   "name": "Harold Fannin Jr.",
+   "pos": "TE",
+   "stance": "fade",
+   "note": "Mid-TE trap — prior output inflated by garbage-time targets."
+  },
+  "cj stroud": {
+   "name": "CJ Stroud",
+   "pos": "QB",
+   "stance": "fade",
+   "note": "Risk — run-first offense regression."
+  },
+  "sam darnold": {
+   "name": "Sam Darnold",
+   "pos": "QB",
+   "stance": "fade",
+   "note": "Risk — lost the Kubiak system."
+  },
+  "aaron rodgers": {
+   "name": "Aaron Rodgers",
+   "pos": "QB",
+   "stance": "fade",
+   "note": "Risk — age/durability; can't drive the ball downfield."
+  },
+  "david montgomery": {
+   "name": "David Montgomery",
+   "pos": "RB",
+   "call": "must",
+   "why": "Touches are locked in and he gets the ball every time Houston is inside the five. Not a top-five ceiling, but very hard to finish outside the top 20.",
+   "added": "2026-07-06",
+   "videoTakes": [
+    {
+     "d": "2026-07-22",
+     "v": "Don't Overthink It: Draft Jahmyr Gibbs 1.01 #shorts",
+     "s": "flat",
+     "take": "Named as context for the Gibbs case — his departure vacates the work. Not a verdict on Montgomery himself."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Jared Goff Is Set Up for a Monster Season #shorts",
+     "s": "down",
+     "take": "Gone from the offense; Nick frames his exit as removing the short-yardage back who used to take touchdowns away from Goff."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Nick's most confident take of the year. Seven-year durability, touchdown rate and a coach-trusted touch share make him a weekly top-20 projection at a round-five cost."
+    }
+   ]
+  },
+  "cam skattebo": {
+   "name": "Cam Skattebo",
+   "pos": "RB",
+   "call": "must",
+   "why": "Finished 7th in adjusted PPG as a rookie. Elite receiving back who scores in close, and the foot injury looks resolved — he was in 11-on-11s during OTAs.",
+   "added": "2026-07-06",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Nick reads the reports as the team featuring him fully and treating the backup as insurance rather than a committee partner."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "The best round-four pick, but only if you did not start with two backs. Goal-line lock plus real receiving usage gives him a high touchdown floor."
+    }
+   ]
+  },
+  "dandre swift": {
+   "name": "D'Andre Swift",
+   "pos": "RB",
+   "call": "must",
+   "why": "Still 27, with 34+ receptions in all six pro seasons and back-to-back 1,340-yard years. Thin competition behind him on a Bears offense poised to step up.",
+   "added": "2026-07-06",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "A really strong pick — a pass-catching role on a good offense, and consistent and healthy three years running."
+    }
+   ]
+  },
+  "tony pollard": {
+   "name": "Tony Pollard",
+   "pos": "RB",
+   "call": "must",
+   "why": "Four straight 1,000-yard seasons and a shot at 300 touches while going as RB29. Was 28th in PPG last year despite a bottom-three quarterback and offense.",
+   "added": "2026-07-17"
+  },
+  "jonathon brooks": {
+   "name": "Jonathon Brooks",
+   "pos": "RB",
+   "call": "must",
+   "why": "Hubbard is replacement level and Carolina did nothing to replace Dowdle. A steep discount for the injury history in round 8 or 9, for a back who could start week one.",
+   "added": "2026-08-04"
+  },
+  "jordan mason": {
+   "name": "Jordan Mason",
+   "pos": "RB",
+   "call": "must",
+   "why": "Reports have him as the lead back, Aaron Jones is 32 and fading, and Kevin O'Connell offenses travel. A discount David Montgomery, closing out games.",
+   "added": "2026-07-06",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "A late bench pick taken on carries alone; he notes there is no reception upside, which by his own rule is the warning sign."
+    }
+   ]
+  },
+  "parker washington": {
+   "name": "Parker Washington",
+   "pos": "WR",
+   "call": "must",
+   "why": "Closed last season 6/145/1, 8/115/0, 5/87/1, 7/107/1 and has been a camp favourite of Lawrence. Jacksonville appears to view him as their lead receiver.",
+   "added": "2026-08-01",
+   "videoNote": "Round 6 — a full round ahead of his round-7 ADP. Rotates Z and F, rarely off the field. Jacksonville averaged 33+ pts over their final nine weeks with Lawrence as overall QB1 and Washington as WR12.",
+   "videoDate": "2026-08-07",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Stacking great camp days and looking like Jacksonville's top target. Nick says he now has to be treated as a must-draft at his current price."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "The stream's strongest call — a must-draft now ranked above Odunze, who Nick expects to be the most targeted player on the Jaguars."
+    },
+    {
+     "d": "2026-08-07",
+     "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Take him in round six, a round ahead of ADP. Rotating Z and F on an offense that averaged 33-plus points over its final nine weeks."
+    }
+   ]
+  },
+  "dallas goedert": {
+   "name": "Dallas Goedert",
+   "pos": "TE",
+   "call": "must",
+   "why": "Top-11 in adjusted PPG five straight years and top-8 in four of five. A.J. Brown's departure frees 120+ targets and he is the 12th tight end off boards.",
+   "added": "2026-07-17",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "The Perfect Tight End Draft Plan #shorts",
+     "s": "up",
+     "take": "Named as the safe second half of the pairing — a floor if the Kittle bet misses."
+    },
+    {
+     "d": "2026-07-30",
+     "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
+     "s": "up",
+     "take": "Eleven touchdowns backed by a genuine red-zone role, not luck; the fallback if you miss the elite tight ends."
+    }
+   ]
+  },
+  "joe burrow": {
+   "name": "Joe Burrow",
+   "pos": "QB",
+   "call": "must",
+   "why": "One of the eight quarterbacks Nick wants, at a value.",
+   "added": "2026-07-24",
+   "videoTakes": [
+    {
+     "d": "2026-07-31",
+     "v": "The Best QB Draft Strategy in 2026! - 2026 Fantasy Football",
+     "s": "up",
+     "take": "Tier two — part of the group Nick says he actively wants to draft rather than paying up in round three."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "Central to the Chase Brown case: Brown was a top-five back in Burrow's healthy starts, and Burrow publicly called him a featured back."
+    },
+    {
+     "d": "2026-08-06",
+     "v": "Why I’m Drafting Chase Brown Everywhere #shorts",
+     "s": "up",
+     "take": "Central to the case — Brown's top-five finish came in Burrow starts, and Nick expects the offense to be near the league lead in touchdowns."
+    }
+   ]
+  },
+  "jared goff": {
+   "name": "Jared Goff",
+   "pos": "QB",
+   "call": "must",
+   "why": "The fallback if you pass on the top 8. Easiest schedule in the NFL, mostly domes late, a poor defense forcing shootouts, and more passing near the goal line with Montgomery gone.",
+   "added": "2026-08-01",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "His favourite quarterback to wait for in the later range, with a note that stacking him with St. Brown is perfectly fine."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Jared Goff Is Set Up for a Monster Season #shorts",
+     "s": "up",
+     "take": "Nick's best-season-to-bet-on quarterback: easy schedule, dome games, bad defense, consolidated offense, and no Montgomery vulturing goal-line work."
+    }
+   ]
+  },
+  "amon ra st brown": {
+   "name": "Amon-Ra St. Brown",
+   "pos": "WR",
+   "stance": "love",
+   "note": "",
+   "call": "must",
+   "why": "FFA must-draft list, added 2026-08-05.",
+   "added": "2026-08-05",
+   "videoNote": "MUST-DRAFT WR video: the ONE receiver he'd break his RB-RB open for in round 1 — but only outside the top-4 picks. Case is durability: 2 games missed in 5 seasons, 4 straight 140-target years.",
+   "videoDate": "2026-08-07",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "Called a locked-in pick and amazing in full PPR — the receiver he is happy to start a draft with alongside a running back."
+    },
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "Grouped with Jefferson and Bowers as talent worth breaking the running-back-early plan for."
+    },
+    {
+     "d": "2026-08-07",
+     "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "The safest round-one receiver — two games missed in five years, four straight 140-target seasons, and the only receiver he'd abandon an RB-RB open for."
+    }
+   ]
+  },
+  "jayden higgins": {
+   "name": "Jayden Higgins",
+   "pos": "WR",
+   "stance": "love",
+   "note": "",
+   "call": "must",
+   "why": "FFA must-draft list, added 2026-08-05.",
+   "added": "2026-08-05",
+   "videoNote": "Going round 11-12 (round 14 on ESPN). Starting Z opposite Nico Collins. Whole organisation talking him up, plus contingent upside — Collins has missed time every year of his career.",
+   "videoDate": "2026-08-07",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "A steady drum beat of good camp reports as the clear number two; Nick actively wanted him at that spot and was happy to get him."
+    },
+    {
+     "d": "2026-08-07",
+     "v": "Must Draft Wide Receivers - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "New to the must-draft list. Starting Z opposite Nico Collins, going round eleven or twelve, with real contingent upside if Collins misses time again."
+    }
+   ]
+  },
+  "rachaad white": {
+   "name": "Rachaad White",
+   "pos": "RB",
+   "stance": "avoid",
+   "note": "",
+   "call": "shy",
+   "why": "FFA shy-away list, added 2026-08-03.",
+   "added": "2026-08-03"
+  },
+  "jake ferguson": {
+   "name": "Jake Ferguson",
+   "pos": "TE",
+   "stance": "avoid",
+   "note": "",
+   "call": "shy",
+   "why": "FFA shy-away list, added 2026-08-03.",
+   "added": "2026-08-03"
+  },
+  "courtland sutton": {
+   "name": "Courtland Sutton",
+   "pos": "WR",
+   "stance": "avoid",
+   "note": "",
+   "call": "shy",
+   "why": "FFA shy-away list, added 2026-08-05.",
+   "added": "2026-08-05"
+  },
+  "javontewilliams": {
+   "name": "Javonte Williams",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-23",
+     "v": "Javonte Williams: A Conservative 3rd Round Pick #shorts",
+     "s": "flat",
+     "take": "Safe early-down and touchdown volume, but they say the role can only shrink — a capped round-three pick."
+    },
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "down",
+     "take": "An early-down grinder with no receiving role, which he argues is exactly the profile that becomes a dead-zone regret in full PPR."
+    }
+   ],
+   "videoNote": "Named as dead-zone: touchdowns and yardage will be there but he has zero role in the receiving game, and Jaylen Warren is being hyped for real work. An early-down grinder priced like more.",
+   "videoDate": "2026-08-03"
+  },
+  "jadenblue": {
+   "name": "Jaden Blue",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-23",
+     "v": "Javonte Williams: A Conservative 3rd Round Pick #shorts",
+     "s": "watch",
+     "take": "The team wants him as the change-of-pace passing-down back; whether he seizes it is the open variable."
+    }
+   ]
+  },
+  "ceedeelamb": {
+   "name": "CeeDee Lamb",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-27",
+     "v": "The George Pickens Price Shock Is a Mistake #shorts",
+     "s": "flat",
+     "take": "The contingency: his absence would make Pickens a top-five weekly receiver."
+    }
+   ]
+  },
+  "genosmith": {
+   "name": "Geno Smith",
+   "pos": "QB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-28",
+     "v": "Don't Leave Your Draft Without Breece Hall #shorts",
+     "s": "up",
+     "take": "Framed as a straightforward upgrade on last season's quarterback room and the reason drives sustain."
+    }
+   ]
+  },
+  "garrettwilson": {
+   "name": "Garrett Wilson",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-28",
+     "v": "Don't Leave Your Draft Without Breece Hall #shorts",
+     "s": "up",
+     "take": "Expected to play far more than last year's seven games, which they treat as the bigger swing factor."
+    }
+   ]
+  },
+  "amaricooper": {
+   "name": "Amari Cooper",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-28",
+     "v": "Don't Leave Your Draft Without Breece Hall #shorts",
+     "s": "flat",
+     "take": "Added to the room as another body defenses must account for."
+    }
+   ]
+  },
+  "samlaporta": {
+   "name": "Sam LaPorta",
+   "pos": "TE",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "Top 20 Tight Ends for 2026 Fantasy Football – Tier Breaks You Need to Know!",
+     "s": "watch",
+     "take": "Grouped with Kraft in the third tier of the rankings."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Great value at 104 and a name he now prefers over Kyle Pitts, especially as part of a build with a late second tight end."
+    }
+   ]
+  },
+  "hunterhenry": {
+   "name": "Hunter Henry",
+   "pos": "TE",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "The Perfect Tight End Draft Plan #shorts",
+     "s": "flat",
+     "take": "The other safe pairing option offered."
+    }
+   ]
+  },
+  "noahfant": {
+   "name": "Noah Fant",
+   "pos": "TE",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-29",
+     "v": "The Perfect Tight End Draft Plan #shorts",
+     "s": "down",
+     "take": "Explicitly avoided — they do not think the ceiling justifies the elevated price."
+    }
+   ]
+  },
+  "ajbrown": {
+   "name": "A.J. Brown",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-07-30",
+     "v": "Missed the Elite TEs? Draft Dallas Goedert #shorts",
+     "s": "flat",
+     "take": "Used as the yardstick — Goedert matched him and Smith combined on targets inside the ten."
+    }
+   ]
+  },
+  "malikneighbors": {
+   "name": "Malik Neighbors",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Cutting on route videos with no hesitation, avoided PUP, week one in play. Nick takes him at the two-three turn and would consider him over Pickens."
+    }
+   ]
+  },
+  "kenwalker": {
+   "name": "Ken Walker",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Great camp reports plus goal-line work and new screen and receiving usage; Nick says he probably deserves a first-round pick, not a second."
+    }
+   ],
+   "videoNote": "FORMAT SPLIT and it favours RPB: 'In half PPR scoring I have Ken Walker over Chase Brown. But once you flip on full PPR, the certainty there for the receptions is too great.' Yours is the half-PPR league — Walker is the preferred back of the two here.",
+   "videoDate": "2026-08-03"
+  },
+  "rickypearl": {
+   "name": "Ricky Pearl",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Dropped out of Nick's rankings entirely — the PCL is not healing, surgery would end the season, and the emergency veteran signing says plenty."
+    }
+   ]
+  },
+  "trayvonhenderson": {
+   "name": "Trayvon Henderson",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "The head coach praised the veteran's pass protection first and said Henderson is still working on it. Nick thinks he is being drafted on an improvement nobody has confirmed."
+    }
+   ]
+  },
+  "katonmitchell": {
+   "name": "Katon Mitchell",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "The team publicised a long reception. Nick prizes downfield receiving usage from backs and calls him the best pick available, but wants the price to stay in the 130s."
+    }
+   ]
+  },
+  "michaelwilson": {
+   "name": "Michael Wilson",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "Coaches are comparing him to Puka Nacua and Robert Woods. Nick is moving him up but not past Harrison in the rankings just yet."
+    }
+   ]
+  },
+  "tankbsby": {
+   "name": "Tank Bsby",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-01",
+     "v": "Training Camp News You Need to Know! - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "The handcuff Nick wants: locked in behind Saquon, looked good last year and this camp, and going a round and a half later than the alternative."
+    }
+   ]
+  },
+  "lutherburden": {
+   "name": "Luther Burden",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "A must-draft for him now: strong rookie season, good coordinator, and the reporting trends toward him being the guy."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "watch",
+     "take": "Nick loves the talent and moved him up in the latest update, but says reports of a poor camp concern him enough to address on the weekend show."
+    }
+   ]
+  },
+  "haroldfannin": {
+   "name": "Harold Fannin",
+   "pos": "TE",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "Warming to him a lot in full PPR. His stated biggest regret in the mock was letting Fannin go by in the eighth round."
+    },
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Warming up a lot: the coach calling him the focal point of the passing game outweighs Nick's worry about a bad offense and shaky quarterbacks."
+    }
+   ]
+  },
+  "mekhilemon": {
+   "name": "Mekhi Lemon",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "up",
+     "take": "He wants to be very aggressive if reports put him in twelve-personnel sets; loves the talent, was lukewarm on the landing spot."
+    }
+   ]
+  },
+  "carnelltate": {
+   "name": "Carnell Tate",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-03",
+     "v": "Is There a RB Dead Zone? - 2026 Fantasy Football Mock Draft",
+     "s": "flat",
+     "take": "Took him in the eighth on the strength of the data and rankings, then named the pick as the one he would take back."
+    }
+   ]
+  },
+  "raydavis": {
+   "name": "Ray Davis",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Taken as the Cook handcuff on a good offense, with a specific late-season angle if the starter sits in a meaningless final week."
+    }
+   ]
+  },
+  "teehiggins": {
+   "name": "Tee Higgins",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "Taken at 38 over a quarterback stack: a huge-upside offense with contingent value if the top receiver misses time, plus easy stacking partners."
+    }
+   ]
+  },
+  "stefondiggs": {
+   "name": "Stefon Diggs",
+   "pos": "WR",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-04",
+     "v": "Live Fantasy Football Drafts! - Latest Training Camp News!",
+     "s": "up",
+     "take": "A bet that he signs — Nick expects Washington and says the ADP jumps the moment it happens, so he's taking him before that."
+    }
+   ]
+  },
+  "matthewstafford": {
+   "name": "Matthew Stafford",
+   "pos": "QB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Jared Goff Is Set Up for a Monster Season #shorts",
+     "s": "flat",
+     "take": "Used only as the comparison — the 5,000-yard, 45-touchdown season Nick thinks Goff is capable of matching this year."
+    }
+   ]
+  },
+  "jonathanbrooks": {
+   "name": "Jonathan Brooks",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "up",
+     "take": "A round-eight swing. Strong camp reports, looks positioned to open as the lead back, and Nick argues the range has no safe options anyway."
+    }
+   ]
+  },
+  "woodymarks": {
+   "name": "Woody Marks",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Nick's counter to the split-workload worry — he sees a scat back who cannot handle volume and will not get goal-line work."
+    }
+   ]
+  },
+  "samajeperine": {
+   "name": "Samaje Perine",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Listed as part of the thin depth behind Chase Brown that makes the role secure."
+    }
+   ]
+  },
+  "tahjbrooks": {
+   "name": "Tahj Brooks",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Dismissed as a 17-career-touch backup who poses no threat to Chase Brown's workload."
+    }
+   ]
+  },
+  "tyronetracyjr": {
+   "name": "Tyrone Tracy Jr.",
+   "pos": "RB",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "down",
+     "take": "Nick argues nobody is taking Skattebo off the field near the goal line in his favour."
+    }
+   ]
+  },
+  "davidnjoku": {
+   "name": "David Njoku",
+   "pos": "TE",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "Cited as evidence of the heavy-personnel plan: an incentive-based deal alongside the other tight end spending."
+    }
+   ]
+  },
+  "charliekolar": {
+   "name": "Charlie Kolar",
+   "pos": "TE",
+   "stance": null,
+   "note": "",
+   "videoTakes": [
+    {
+     "d": "2026-08-05",
+     "v": "Must Draft Running Backs - 2026 Fantasy Football Advice",
+     "s": "flat",
+     "take": "The large guaranteed deal for a blocking tight end who can also catch is part of Nick's run-game-first read on the offense."
+    }
+   ]
+  }
+ },
+ "RPB": {
+  "breece hall": {
+   "name": "Breece Hall",
+   "adp": "mid-R3",
+   "board": "RB14 / #39 (209.6)",
+   "verdict": "BUY. Anchor RB w/ top-3 ceiling; $29M gtd workhorse. Enables Hero-RB or WR-WR-then-anchor."
+  },
+  "quinshon judkins": {
+   "name": "Quinshon Judkins",
+   "adp": "mid-R5",
+   "board": "RB21 / #71 (186.4)",
+   "verdict": "BUY at R5. Monken RZ-run = direct RPB TD-edge fit; spike weeks = league-winner."
+  },
+  "deandre swift": {
+   "name": "De'Andre Swift",
+   "adp": "mid-R5",
+   "board": "RB23 / #74 (184.6)",
+   "verdict": "OK at R5. Rec-heavy upside halved by 0.5 PPR, but ~10 TDs travel. Judkins ≥ Swift in RPB."
+  },
+  "bhayshul tuten": {
+   "name": "Bhayshul Tuten",
+   "adp": "RB24 / VBD −12 / ADP 61",
+   "board": "Below RB20 replacement in RPB — confirms FADE the R6 reach; R12–13 dart only.",
+   "verdict": ""
+  },
+  "keaton mitchell": {
+   "name": "Keaton Mitchell",
+   "adp": "R7–R8",
+   "board": "not ranked (deep)",
+   "verdict": "Late dart only. Hampton handcuff-lottery; RB1 upside if Hampton hurt. Reassess on Aug camp. REFINED 2026-08-06: his upside case is Hampton's handcuff, and Hampton goes ~2.03 to a rival every mock — so Mitchell is a lottery ticket on someone else's back, not insurance for yours. Still a must-draft, but rank him behind backs who help your own lineup."
+  },
+  "topic player": {
+   "name": "Topic / Player",
+   "adp": "RPB board",
+   "board": "Verdict for RMM",
+   "verdict": ""
+  },
+  "rb cliff rb": {
+   "name": "RB cliff (RB16–18)",
+   "adp": "Montgomery / Javonte",
+   "board": "Confirmed. RPB starts only 2 RB + NO flex, so RB depth needs are lower than the video — but still lock 2 anchors before the cliff.",
+   "verdict": ""
+  },
+  "saquon barkley": {
+   "name": "Saquon Barkley",
+   "adp": "RB9 / VBD +30 / ADP 14",
+   "board": "Playoff trap does NOT apply (no playoffs). AJ-Brown-gone efficiency dip is a mild regular-season note, but volume + easy early SOS = cumulative upside — stay willing.",
+   "verdict": ""
+  },
+  "omarion hampton": {
+   "name": "Omarion Hampton",
+   "adp": "RB8 / VBD +31 / ADP 16",
+   "board": "Anchor-RB tier; explosive + goal-line role.",
+   "verdict": ""
+  },
+  "chase brown": {
+   "name": "Chase Brown",
+   "adp": "RB12 / VBD +27 / ADP 15",
+   "board": "Anchor tier; explosive, unchanged CIN offense.",
+   "verdict": ""
+  },
+  "trey mcbride": {
+   "name": "Trey McBride",
+   "adp": "TE2 / VBD +65 / ADP 20",
+   "board": "⚠ CONFLICT with your R3 rule: Nick FADES McBride (too many mouths, worst team, Brissett→Beck). Board still has him TE2. At the R3 TE trigger, LEAN BOWERS over McBride.",
+   "verdict": ""
+  },
+  "george kittle": {
+   "name": "George Kittle",
+   "adp": "TE9 / VBD +9 / ADP 106",
+   "board": "Falls-to-value; OK if Bowers/McBride missed, but below your top-7 TE target.",
+   "verdict": ""
+  },
+  "caleb williams": {
+   "name": "Caleb Williams",
+   "adp": "QB4 / VBD +19 / ADP 72",
+   "board": "Playoff-weather concern is diluted here (no bracket), but those late outdoor games still count toward your 18-week total. Minor.",
+   "verdict": ""
+  },
+  "stacking": {
+   "name": "Stacking",
+   "adp": "—",
+   "board": "Don't pair two early same-team skill players; a later QB+RB stack is fine.",
+   "verdict": ""
+  },
+  "bucky irving": {
+   "name": "Bucky Irving",
+   "adp": "RB25 / VBD −24 / ADP 46",
+   "board": "FADE — TB 3-way committee (Gainwell 3rd-down, Tucker goal-line) + injury worse than reported, low TD ceiling.",
+   "verdict": ""
+  },
+  "jarian price": {
+   "name": "Jarian Price",
+   "adp": "not ranked",
+   "board": "FADE — wish-casting; 15 rec in 41 college games; Charbonnet reclaims RB1 by mid-season.",
+   "verdict": ""
+  },
+  "chuba hubbard": {
+   "name": "Chuba Hubbard",
+   "adp": "RB29 / VBD −34 / ADP 66",
+   "board": "FADE — hardest rush SOS; value craters mid-season as Jonathon Brooks ramps in.",
+   "verdict": ""
+  },
+  "rj harvey": {
+   "name": "RJ Harvey",
+   "adp": "RB32 / VBD −42 / ADP 81",
+   "board": "FADE — Dobbins signed starter money (Payton: \"top priority\"), Coleman for pass-pro. ⚠ UPDATE handcuff plan (§⑤): DROP RJ Harvey from the R7 lottery-handcuff list.",
+   "verdict": ""
+  },
+  "kyren williams": {
+   "name": "Kyren Williams",
+   "adp": "RB17 / VBD +12 / ADP 31",
+   "board": "Corum cut snaps 75%→64% + Rams bottom-5 RB targets → prefer Etienne. REINFORCES your keeper: Etienne ADP 33 (R3 talent) kept at R10 = elite value; he is insulated.",
+   "verdict": ""
+  },
+  "mike evans": {
+   "name": "Mike Evans",
+   "adp": "WR22 / VBD +20 / ADP 59",
+   "board": "⭐ PERFECT RPB FIT — red-zone TD monster (13–17 TD upside) directly fixes your 2025 receiving-TD deficit (your title gap). Target at the R5/6 turn.",
+   "verdict": ""
+  },
+  "devonta smith": {
+   "name": "DeVonta Smith",
+   "adp": "WR12 / VBD +32 / ADP 32",
+   "board": "Playoff trap does NOT apply (no playoffs) → PURE upside here. Alpha post-AJB + easiest early passing SOS = cumulative-points gold.",
+   "verdict": ""
+  },
+  "ladd mcconkey": {
+   "name": "Ladd McConkey",
+   "adp": "WR16 / VBD +27 / ADP 41",
+   "board": "Chargers alpha, elite separation (88th pct vs man/press/zone), top-5–7 ceiling. Strong R3–R4 WR.",
+   "verdict": ""
+  },
+  "travis hunter": {
+   "name": "Travis Hunter",
+   "adp": "WR54 / VBD −41 / ADP 193",
+   "board": "Nearly free; WR1 upside in a Liam Coen offense. Great late WR-depth dart (your trade currency).",
+   "verdict": ""
+  },
+  "tank dell": {
+   "name": "Tank Dell",
+   "adp": "WR70 / ADP 203",
+   "board": "Deepest flier; contingent on Nico Collins missing time. Last-pick dart only.",
+   "verdict": ""
+  },
+  "josh jacobs": {
+   "name": "Josh Jacobs",
+   "adp": "RB18 / VBD +4 / ADP 34",
+   "board": "HARD FADE — barely above replacement (+4) AND a 6–12-wk conduct suspension would erase weeks of cumulative points. Worse bet here than in H2H.",
+   "verdict": ""
+  },
+  "malik nabers": {
+   "name": "Malik Nabers",
+   "adp": "WR19 / VBD +26 / ADP 30",
+   "board": "FADE early — multi-ligament knee, misses ~the first month = lost cumulative points. Only at a steep R5+ discount.",
+   "verdict": ""
+  },
+  "rashee rice": {
+   "name": "Rashee Rice",
+   "adp": "WR15 / VBD +29 / ADP 27",
+   "board": "Contrarian buy IF the parole/knee truly resolve before Week 1 (Nick's read) — but in cumulative, any missed week costs you, so size the risk.",
+   "verdict": ""
+  },
+  "stefon diggs": {
+   "name": "Stefon Diggs",
+   "adp": "ADP 138 (deep)",
+   "board": "Zero-risk late WR-depth stash (your trade currency); waiver-dump if he doesn't sign somewhere good.",
+   "verdict": ""
+  },
+  "brian robinson jr": {
+   "name": "Brian Robinson Jr.",
+   "adp": "RB47 / ADP 124",
+   "board": "Bijan's handcuff — same Atlanta backfield",
+   "verdict": "Ideal LAST pick when you open with Bijan at 1.02. FantasyPros' own note calls him 'a very useful insurance pick behind Bijan Robinson'; Coach AI reads Overall Low / Upside Very Low / Bust High as a standalone, which is exactly right — his value here is contingent, not weekly."
+  },
+  "parker washington": {
+   "name": "Parker Washington",
+   "adp": "FFA hpprADP 73 (~R8) — market cost",
+   "board": "WR13 / +23.4 VBD once return work is priced",
+   "verdict": "ORDER OF OPERATIONS: RB2 FIRST AT 4.09, WASHINGTON NEXT AT 5.02. Never flip it — the back is the scarce thing, Washington is the cheap thing. Take him one to two rounds ahead of his 6.09 plan slot; do NOT wait for ADP. Measured 2026-08-08: he read 23-28% gone at 5.02 but 76% at 6.09 in the same draft, so the window slams shut between those picks and the old 'reads <1% at every pick' note is stale. He is +23.4 VBD at FFA hpprADP 73 — the largest value-vs-cost gap on the board — and the edge exists only because no ranking source prices individual punt-return yards, which RPB pays. Reaching costs ~7 pts (WRs at 4.09-5.02 are +13 to +16); missing him costs 23."
+  }
+ },
+ "MWV": {
+  "breece hall": {
+   "name": "Breece Hall",
+   "adp": "mid-R3 (29)",
+   "board": "RB11 / #20 (234.8 · VBD +67.8)",
+   "verdict": "BUY. Full-PPR bell-cow + 36 rec; the pick-13 Robust-RB lever."
+  },
+  "deandre swift": {
+   "name": "De'Andre Swift",
+   "adp": "mid-R5 (51)",
+   "board": "RB22 / #41 (201.9 · VBD +34.9)",
+   "verdict": "BEST FIT. 50–60 rec + 10 TD is Full-PPR/FLEX gold — opposite of RPB, where 0.5 PPR halves him."
+  },
+  "quinshon judkins": {
+   "name": "Quinshon Judkins",
+   "adp": "mid-R5 (53)",
+   "board": "RB21 / #40 (203.3 · VBD +36.3)",
+   "verdict": "BUY at R5 if there; RZ/TD role + ~30 rec."
+  },
+  "bhayshul tuten": {
+   "name": "Bhayshul Tuten",
+   "adp": "R6 (61)",
+   "board": "RB24 / #57 (190.4 · VBD +23.4)",
+   "verdict": "TAKE at 61 — ADP = your pick (opposite of RPB, where he's a fade to R12–13)."
+  },
+  "keaton mitchell": {
+   "name": "Keaton Mitchell",
+   "adp": "R7–8 (192)",
+   "board": "RB42 / #153 (117.3 · VBD −49.7)",
+   "verdict": "Free late dart; RB1 upside if Hampton hurt."
+  }
+ },
+ "rpbFormat": {
+  "_note": "Half-PPR (0.5) + 2RB/3WR/1TE, NO FLEX, D/ST doubled, no playoffs. Nick's advice is written for 12-team full-PPR with a FLEX, so anywhere he leans on a reception floor his verdict moves in RPB. UP = better here than his rank implies. DOWN = worse. Generated from his own format language 2026-08-07.",
+  "up": {
+   "Mike Evans": "FORMAT SPLIT in your favour. He fades Evans in full PPR (too TD-dependent) but calls him a positive-TD-regression buy in 0.5/standard. Your RPB verdict: 'PERFECT RPB FIT — 13-17 TD upside, fixes your 2025 receiving-TD deficit'. Target the R5/6 turn.",
+   "Quinshon Judkins": "BUY at R5. Monken red-zone run scheme is a direct RPB TD-edge fit. 'Judkins >= Swift in RPB.'",
+   "Saquon Barkley": "His #1 round-2 back. The one caution he gives — brutal Wk15-17 playoff schedule — DOES NOT APPLY: RPB has no playoffs. Free money here.",
+   "Jonathan Taylor": "He fades JT at pick 4 in FULL PPR for lacking a receiving floor. That knock is much weaker in half-PPR — he is playable at his RPB cost."
+  },
+  "down": {
+   "Zay Flowers": "MWV ONLY. 'TD caps hurt him in half-PPR (RPB), but full PPR cashes in his easy 6-8 reception games.' Do not draft him in RPB at his rank.",
+   "Derrick Henry": "'watch', not a buy. Declining targets = volatile half-PPR floor at 32; last year's RB8 finish inflated by one Wk17 four-TD game. Safe floor, capped ceiling. Still a take-zone back — just the LAST of the six you'd take, not the first.",
+   "De'Andre Swift": "His R5 case is explicitly a full-PPR reception floor. RPB verdict: 'rec-heavy upside halved by 0.5 PPR'. Judkins over Swift here.",
+   "Christian McCaffrey": "'Loves him if he falls' is a full-PPR receiving-floor argument. Discount it in half-PPR.",
+   "Devon Achane": "Already shy-away, and the reason is format-specific: 'R2 FADE in half-PPR (RPB)' — mobile Willis kills the reception floor.",
+   "Bhayshul Tuten": "Below the RB20 replacement line in RPB. Fade the R6 reach; R12-13 dart only.",
+   "Jayden Daniels": "DOWNGRADED to 'watch' — WAS cutting no-huddle concepts slashes play volume and his rushing floor. Was a mid-round target, now a caution at cost."
+  },
+  "structural": [
+   "RPB starts 2 RB and has NO FLEX, so RB depth matters less than Nick's 'three backs in the first four rounds' implies. Lock two anchors before the RB16-18 cliff, then stop.",
+   "One TE, no FLEX: his 'early OR late' tight-end rule is an either/or. Bowers in round 2 spends the early option — never also take the late Kittle/Andrews double-dip.",
+   "D/ST scores double in RPB, so the gap between the #1 and #9 defense is real points, unlike in his default league.",
+   "No playoffs in RPB, so every playoff-schedule caution he gives (Barkley, DeVonta Smith) is irrelevant here."
+  ]
+ },
+ "videoConflicts": {
+  "_note": "Where an FFA video take disagrees with the stance/call already on the entry. Recorded 2026-08-07, NOT auto-resolved — read the dates and decide.",
+  "Malik Nabers": "RESOLVED 2026-08-07. Flipped from fade to 'like'. The fade note was undated and cited PUP risk; the 2026-08-05 video says he avoided the PUP entirely. Newer source, and it addresses the exact objection. He now sits behind the take-zone backs, Bowers and Nico Collins, and ahead of George Pickens.",
+  "Quentin Johnston": "2026-08-03 video says he is drafting him a lot for the underneath/screen floor; entry says 'flat projection, no top-15 ceiling'. Low impact for RPB — Max's College Fund keeps him, so he never reaches your draft.",
+  "David Montgomery": "FALSE POSITIVE, no action. The 'down' take is from the Jared Goff video and is about Montgomery LEAVING Detroit freeing goal-line touchdowns for Goff. It is not a downgrade of Montgomery.",
+  "_asr_warning": "Captions are ASR and mis-hear names constantly. In the 2026-08-03 dead-zone video the transcript reads 'Jahmyr Gibbs is on a bottom-three offense' — impossible (Detroit, and Nick has a separate video titled 'Draft Jahmyr Gibbs 1.01'). That is a mis-heard name and Gibbs is NOT a dead-zone back. Never attribute a take to a player on caption text alone when the claim contradicts what you know about his team or the rest of his content."
+ }
 }
