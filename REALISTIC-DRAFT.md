@@ -45,7 +45,7 @@ back-to-back real mocks *all five drained by 2.08*. Realistically only Walker or
 | 12.09 | Jacory Croskey-Merritt | RB | 114 | −69.8 |
 | 13.02 | Matthew Golden | WR | 123 | −45.1 |
 | 14.09 | Kenneth Gainwell | RB | 343 | −58.0 |
-| 15.02 | **Seattle Seahawks D/ST** | DST | — | — |
+| **13.02** | **Seattle Seahawks D/ST** | DST | — | — |
 | 16.09 | Cameron Dicker | K | — | — |
 
 **Breece Hall at 4.09 is deliberate.** Nick moved him *down* on 08-03 ("won't pay a round-three
@@ -69,8 +69,8 @@ Do not panic and do not take the next tight end. Tyler Warren at 7.02 recovers m
 | **7.02** | **Tyler Warren** | TE | 59 | **+44.7** | **your TE now** |
 | 8.09 | **Justin Herbert** | QB | 74 | +9.8 | QB slides one round |
 | 9.02 | Jordyn Tyson | WR | 79 | −14.8 | same |
-| 11.02–14.09 | Reed / Croskey-Merritt / Rodriguez / Gainwell | | | | |
-| 15.02 | **Seattle Seahawks D/ST** | DST | — | — | same |
+| 11.02 · 12.09 · 14.09 · 15.02 | Reed / Croskey-Merritt / Rodriguez / Gainwell | | | | |
+| **13.02** | **Seattle Seahawks D/ST** | DST | — | — | same |
 | 16.09 | Cameron Dicker | K | — | — | same |
 
 **Why Warren and not a round-2 tight end.** Reaching for the next TE at 2.09 because Bowers went
@@ -98,3 +98,15 @@ trade. Take Bowers at 2.09.
    cost of Bowers over a second back. Correct at +93.7, but a Bijan injury hurts.
 2. **Washington's return job.** If Jacksonville pulls him off punt returns as a full-time receiver,
    he goes +23.4 → +10.7. Still positive, no longer a steal.
+
+---
+
+## CORRECTION 2026-08-07 — D/ST moved to 13.02
+
+A full mock at slot 2 found the **entire top five defenses gone by 15.02** — Seattle, Houston,
+Denver, Philadelphia, the Rams and Pittsburgh. The best available was the Vikings at 253.4 against
+Seattle's 294.2: a **41-point cliff**, which is the 21-27 points-allowed band `DST-STREAMING.md`
+warns costs 4 points a game.
+
+**Take the defense at 13.02.** Late enough that you are not paying for a unit you cannot identify
+in August, early enough that the top five are still there. 15.02 becomes a skill-depth pick.

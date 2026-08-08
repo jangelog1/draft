@@ -1,8 +1,8 @@
 {
   "league": "RPB",
-  "updated": "2026-08-06",
+  "updated": "2026-08-07",
   "source": "~150,000 simulated RPB drafts, sims/mc5.py through mc11.py, run against a sharp room in which every team must own a running back by the end of round two.",
-  "keeper": "Travis Etienne Jr. — round 10",
+  "keeper": "Luther Burden III — round 10 ASSUMED (see keepers-rpb.json; the round is unconfirmed and CBS has not processed keepers yet)",
   "mirrorNote": "index.html holds the same conclusions in its PLAN constant so the app can render them offline. draft_day.py asserts the key strings appear in both; if you edit one, edit the other or the generator fails.",
   "branches": [
     {
@@ -57,13 +57,13 @@
   ],
   "cutoffAfter": "Derrick Henry",
   "pivotFrom": "Jeremiyah Love",
-  "takeZoneNote": "RB cutoff at 2.09. These five are all within 5 pts of pivoting to a WR. The zone is a PLAYER set, not a round: RB8-RB12 sit on a flat shelf (216-220 pts), RB13 steps down to 207, and the next back after that (Jeremiyah Love) drops to -14.5 and falls off a cliff. If one of the five is still there in round 3, he is still the pick. DEVON ACHANE WAS REMOVED 2026-08-07. The VBD sweep put him inside the shelf at RB12, so older copies of this list ran to six names — but he is on the FFA shy-away list AND the fade is format-specific to RPB ('R2 FADE in half-PPR'): McDaniel is gone to the Chargers, Malik Willis scrambles instead of checking down, and Miami projects bottom-five in points per game. A shy-away name inside the take zone is the one place these two layers contradict each other, and the FFA layer wins. Derrick Henry is now the last name in the zone, and he is a 'watch' too — take him last of the five.",
+  "takeZoneNote": "RB cutoff at 2.09. These five are all within 5 pts of pivoting to a WR. The zone is a PLAYER set, not a round: RB8-RB12 sit on a flat shelf (216-220 pts), RB13 steps down to 207, and the next back after that (Jeremiyah Love) drops to -14.5 and falls off a cliff. If one of the five is still there in round 3, he is still the pick. DEVON ACHANE WAS REMOVED 2026-08-07. The VBD sweep put him inside the shelf at RB12, so older copies of this list ran to six names — but he is on the FFA shy-away list AND the fade is format-specific to RPB ('R2 FADE in half-PPR'): McDaniel is gone to the Chargers, Malik Willis scrambles instead of checking down, and Miami projects bottom-five in points per game. A shy-away name inside the take zone is the one place these two layers contradict each other, and the FFA layer wins. Derrick Henry is now the last name in the zone, and he is a 'watch' too — take him last of the five. SLOT-2 REALITY CHECK, 2026-08-07: in FOUR straight mocks every one of these five was gone before pick 19. Hampton 2.04, Henry 2.07, Ken Walker 2.08 in the latest. AT YOUR SEAT THE TAKE ZONE IS A ROUND-2 CONCEPT ONLY. Plan 3.02 as a WR pick and treat a surviving back as a bonus, not an expectation.",
   "bowers": "Brock Bowers",
   "bowersGain": "+57.9 over the best take-zone back",
   "bowersRule": "Round 2 or later only. Taking him at 1.02 over an elite back costs -81.8; the +36.8 exists only once the top of the RB board is gone.",
   "edge": "Josh Allen (374 pts) lasts to picks 15-18 — six teams already keep a QB. Best value on the board in round 2 and nobody has a slot for him.",
   "traps": [
-    "Reaching for D/ST or K. D/ST at 15.02, kicker at 16.09. CORRECTED 2026-08-07 — the old version of this line said the best-to-tenth gap was 1.1 points a week and the matchup swing was six times larger. Both numbers were wrong. Recomputed from the files: the REAL unit gap in your own 2025 results is 3.9 pts/week (Texans 18.00 down to Browns 14.12, data/dst-actuals-2025.json), and the week-1 matchup swing is 5.9 pts/week across the full slate or 4.2 with the Jacksonville outlier removed (data/dst-weeks-2026.json). So matchup is worth roughly 1.1x to 1.5x the unit — the same order of magnitude, not six times. The reason to wait is NOT that defenses are interchangeable; they are not. It is that you cannot identify the good ones in August: preseason projections show a 1.1-pt spread where reality delivered 3.9, so the projections are compressing away the very thing you would be paying up for. You cannot buy an edge you cannot see. Take one at 15.02 and let the weekly matchup, which IS visible, do the work.",
+    "Reaching for D/ST or K. D/ST at 13.02, kicker at 16.09. CORRECTED AGAIN 2026-08-07 after a live mock: at 15.02 the ENTIRE TOP FIVE was gone (Seattle, Houston, Denver, Philadelphia, Rams, Pittsburgh) and the best left was the Vikings at 253.4 against Seattle's 294.2 — a 41-point cliff, exactly the 21-27 points-allowed band DST-STREAMING.md warns about. 15.02 was too late. Take one at 13.02. CORRECTED 2026-08-07 — the old version of this line said the best-to-tenth gap was 1.1 points a week and the matchup swing was six times larger. Both numbers were wrong. Recomputed from the files: the REAL unit gap in your own 2025 results is 3.9 pts/week (Texans 18.00 down to Browns 14.12, data/dst-actuals-2025.json), and the week-1 matchup swing is 5.9 pts/week across the full slate or 4.2 with the Jacksonville outlier removed (data/dst-weeks-2026.json). So matchup is worth roughly 1.1x to 1.5x the unit — the same order of magnitude, not six times. The reason to wait is NOT that defenses are interchangeable; they are not. It is that you cannot identify the good ones in August: preseason projections show a 1.1-pt spread where reality delivered 3.9, so the projections are compressing away the very thing you would be paying up for. You cannot buy an edge you cannot see. Take one at 13.02 — late enough that you are not paying for a unit you cannot identify, early enough that the top five are still on the board — and let the weekly matchup, which IS visible, do the work.",
     "Forcing a back at 4.09/5.02 after missing RB2 — costs -32.4, worse than living with one back.",
     "Taking the next TE at 2.09 because Bowers went. Tyler Warren there costs -9.1; Kittle at 6.09 is free.",
     "Treating 'anchor RB' as a rule at 5.02. The right test is not RB-vs-WR, it is whether the RB upgrade beats the WR you would otherwise land: with Etienne at 188.7 (below the 191.1 RB replacement) the break-even for taking Breece Hall over Luther Burden was a 162.8-point WR at your next pick, and the round-6/7 board offers 151-158. Burden was correct by roughly 8 points, not by the 27 the general rule implies."
@@ -108,7 +108,10 @@
     "UNVERIFIED AND IT MATTERS: this assumes Burden costs the R10 pick, like-for-like with Etienne. The keeper rules say R9-13 keeps cost that round but R14-15/waiver keeps allow TWO. Burden was a 2025 rookie, so if he was drafted R14-15 or added off waivers, the consumed pick changes and Angelo may not have to choose at all. Check before draft day.",
     "THE RB DEAD ZONE IS CONFIRMED BY YOUR OWN SCORING AND IT IS VICIOUS. RB18 David Montgomery +5.8, then RB23 TreVeyon Henderson -15.8, RB25 Bucky Irving -21.7, RB30 Jonathon Brooks -47.4. There is nothing between Montgomery and the graveyard. DO NOT SPEND 7.02-9.02 ON A RUNNING BACK. With Burden as the keeper you now enter the draft with ZERO backs, so coming out of 3.02 with two of them matters more than it did.",
     "PARKER WASHINGTON IS BACK IN THE PLAN AND THE EARLIER '-6.3, below replacement' VERDICT IS WITHDRAWN. Verified 2026-08-07: he was Jacksonville's primary punt returner in 2025 with 341 return yards (5th in the NFL), 13.6 per return (6th), and he LED THE LEAGUE in punt return touchdowns — the first Jaguar to house multiple returns in a season. RPB scores that and no projection source does. Priced conservatively in data/return-roles-2026.json he is WR13, +23.4 VBD, at ADP 73, next to DeVonta Smith and Chris Olave who both go near ADP 28. Even the bear case where he loses the return job midseason is +10.7. THE RISK: he is expecting a full-time offensive workload for the first time and teams routinely pull full-time starters off returns; his own words are 'I'm just open for the opportunity, whatever it is'. Also note Jacksonville's WR room now includes Jakobi Meyers alongside Brian Thomas Jr. and Travis Hunter.",
-    "WIDEN data/return-roles-2026.json — IT IS THE BIGGEST REMAINING EDGE. RPB pays individual punt and kick return yards and return TDs; FFA, FantasyPros and CBS projections all omit them, so EVERY designated returner in this league is mispriced on every board including this one. Only Parker Washington has been researched. An empty entry in that file means 'not looked at yet', never 'no return value'. Nobody else in the league is pricing this."
+    "WIDEN data/return-roles-2026.json — IT IS THE BIGGEST REMAINING EDGE. RPB pays individual punt and kick return yards and return TDs; FFA, FantasyPros and CBS projections all omit them, so EVERY designated returner in this league is mispriced on every board including this one. Only Parker Washington has been researched. An empty entry in that file means 'not looked at yet', never 'no return value'. Nobody else in the league is pricing this.",
+    "PREDICTOR HORIZON, RE-LEARNED THE HARD WAY 2026-08-07. At 5.02 the live Pick Predictor read <1% on David Montgomery, D'Andre Swift AND Quinshon Judkins. By 8.09 all three were gone and the best back left was RB34. <1% means 'safe until your NEXT pick' and your 5.02-to-6.09 gap is 17 picks. AT EVERY WRAP PICK (3.02, 5.02, 7.02, 9.02, 11.02, 13.02, 15.02) SWITCH THE DROPDOWN TO TWO ROUNDS. The one-round number is a lie at a wrap.",
+    "THE PREDICTOR IS BLIND TO KEEPER-DRIVEN QB COLLAPSE, IN YOUR FAVOUR. It read Josh Allen 99% GONE at 7.02; he was still on the board at 8.09 and did not go until round 10-11. Six teams keep a quarterback and only four are drafted, which the model does not know. Never let a high QB percentage panic you into reaching. Corollary learned the same day: IF you are spending a pick on a QB, spend it on the BEST one — taking Burrow (+13.9) over Allen (+30.0) at 7.02 cost about 16 points.",
+    "BYE WEEKS ARE NOT TRACKED ANYWHERE and a live mock flagged FOUR starters on bye in one week. Observed collisions in that roster: Gibbs and Burrow both bye 6; Nico Collins and Mike Evans both bye 8. Neither the board, the plan nor notes.json carries bye data — check the bye column in the FantasyPros draft view before confirming a pick that stacks an existing bye."
   ],
   "contingencies": [
     {
@@ -195,8 +198,8 @@
     },
     {
       "pick": "13.02",
-      "take": "Jordan Mason",
-      "note": "7.4 hppr/wk. Croskey-Merritt 7.4."
+      "take": "SEATTLE D/ST — moved up from 15.02",
+      "note": "MOVED 2026-08-07. A live mock had the entire top five gone by 15.02 and left only the Vikings (253.4) against Seattle's 294.2 — a 41-point cliff. Seattle is 61.6 over weeks 1-3 and top-3 in all three. Jacksonville instead only if you are genuinely churning weekly."
     },
     {
       "pick": "14.09",
@@ -205,8 +208,8 @@
     },
     {
       "pick": "15.02",
-      "take": "Seattle D/ST",
-      "note": "20.5 RPB pts/wk across weeks 1-3, top-3 in all three. Jacksonville instead only if you are genuinely churning weekly — best single week (23.7) then 7th in week 2."
+      "take": "Best available skill player",
+      "note": "D/ST moved to 13.02. Use this on RB or WR depth — or a second defense if the board somehow held."
     },
     {
       "pick": "16.09",

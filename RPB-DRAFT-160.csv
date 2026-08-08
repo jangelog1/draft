@@ -5,7 +5,7 @@ rank,slot,pos,name,team,rpb,vbd,adp,ffa,mine
 4,1.04,WR,Puka Nacua,LAR,304.6,131.9,4,,False
 5,1.05,WR,Jaxon Smith-Njigba,SEA,267.1,94.4,5,,False
 6,1.06,TE,Brock Bowers,LVR,210.3,93.7,17,MUST,False
-7,1.07,RB,Jonathan Taylor,IND,291.0,92.2,8,,False
+7,1.07,RB,Jonathan Taylor,IND,291.0,92.2,8,HALF-PPR OK,False
 8,1.08,WR,Amon-Ra St. Brown,DET,260.3,87.6,6,MUST,False
 9,1.09,RB,Christian McCaffrey,SF,283.4,84.6,7,,False
 10,1.10,WR,Justin Jefferson,MIN,245.0,72.3,10,,False
@@ -30,10 +30,10 @@ rank,slot,pos,name,team,rpb,vbd,adp,ffa,mine
 29,3.09,TE,Sam LaPorta,DET,141.8,25.3,85,,False
 30,3.10,WR,DeVonta Smith,PHI,197.4,24.7,28,,False
 31,4.01,WR,Parker Washington,JAX,196.1,23.4,73,MUST,False
-32,4.02,TE,Harold Fannin Jr.,CLE,139.6,23.0,87,,False
+32,4.02,TE,Harold Fannin Jr.,CLE,139.6,23.0,87,FADE,False
 33,4.03,WR,Chris Olave,NO,195.1,22.4,28,,False
 34,4.04,WR,Zay Flowers,BAL,192.3,19.6,29,,False
-35,4.05,RB,Kyren Williams,LAR,216.9,18.1,31,,False
+35,4.05,RB,Kyren Williams,LAR,216.9,18.1,31,FADE,False
 36,4.06,WR,Tee Higgins,CIN,190.7,18.0,32,,False
 37,4.07,RB,Jeremiyah Love,ARI,216.7,17.9,31,,False
 38,4.08,TE,George Kittle,SF,134.2,17.6,107,,False
@@ -52,18 +52,18 @@ rank,slot,pos,name,team,rpb,vbd,adp,ffa,mine
 51,6.01,WR,Terry McLaurin,WAS,179.6,6.9,45,,False
 52,6.02,RB,David Montgomery,HOU,204.8,6.1,55,MUST,False
 53,6.03,QB,Lamar Jackson,BAL,395.9,5.6,43,MUST,False
-54,6.04,WR,Davante Adams,LAR,177.1,4.4,49,,False
-55,6.05,RB,Josh Jacobs,GB,201.2,2.4,38,,False
+54,6.04,WR,Davante Adams,LAR,177.1,4.4,49,FADE,False
+55,6.05,RB,Josh Jacobs,GB,201.2,2.4,38,FADE,False
 56,6.06,TE,Dallas Goedert,PHI,117.4,0.8,125,MUST,False
 57,6.07,RB,D'Andre Swift,CHI,199.0,0.2,53,MUST,False
-58,6.08,WR,Jameson Williams,DET,172.7,0.0,53,,False
+58,6.08,WR,Jameson Williams,DET,172.7,0.0,53,FADE,False
 59,6.09,TE,Dalton Kincaid,BUF,116.6,0.0,118,,True
-60,6.10,RB,Travis Etienne Jr.,NO,198.8,0.0,44,,False
+60,6.10,RB,Travis Etienne Jr.,NO,198.8,0.0,44,SHY,False
 61,7.01,QB,Jayden Daniels,WAS,390.3,0.0,59,MUST,False
 62,7.02,QB,Jalen Hurts,PHI,389.6,-0.7,67,MUST,True
 63,7.03,QB,Dak Prescott,DAL,387.3,-3.0,80,,False
 64,7.04,WR,DJ Moore,BUF,168.4,-4.3,59,,False
-65,7.05,WR,Christian Watson,GB,164.9,-7.8,58,,False
+65,7.05,WR,Christian Watson,GB,164.9,-7.8,58,AVOID,False
 66,7.06,RB,Quinshon Judkins,CLE,190.2,-8.5,53,,False
 67,7.07,WR,Rome Odunze,CHI,160.8,-11.9,61,,False
 68,7.08,WR,Carnell Tate,TEN,158.6,-14.2,65,,False
@@ -71,31 +71,31 @@ rank,slot,pos,name,team,rpb,vbd,adp,ffa,mine
 70,7.10,RB,TreVeyon Henderson,NE,183.2,-15.6,58,,False
 71,8.01,RB,Bhayshul Tuten,JAX,183.2,-15.6,58,,False
 72,8.02,WR,Brian Thomas Jr.,JAX,153.2,-19.6,68,,False
-73,8.03,RB,Bucky Irving,TB,177.3,-21.4,56,,False
+73,8.03,RB,Bucky Irving,TB,177.3,-21.4,56,AVOID,False
 74,8.04,WR,Marvin Harrison Jr.,ARI,150.1,-22.6,70,,False
 75,8.05,WR,Makai Lemon,PHI,149.3,-23.4,90,,False
 76,8.06,RB,Tony Pollard,TEN,173.9,-24.9,75,MUST,False
 77,8.07,QB,Bo Nix,DEN,365.2,-25.1,102,,False
 78,8.08,RB,Rhamondre Stevenson,NE,173.0,-25.7,75,,False
-79,8.09,WR,DK Metcalf,PIT,146.9,-25.9,76,,True
+79,8.09,WR,DK Metcalf,PIT,146.9,-25.9,76,AVOID,True
 80,8.10,QB,Jared Goff,DET,364.4,-25.9,111,MUST,False
 81,9.01,WR,Jayden Reed,GB,146.5,-26.2,98,,False
-82,9.02,RB,Jaylen Warren,PIT,172.3,-26.4,70,,True
-83,9.03,WR,Jordan Addison,MIN,145.0,-27.7,99,,False
-84,9.04,RB,Jadarian Price,SEA,171.1,-27.7,64,,False
+82,9.02,RB,Jaylen Warren,PIT,172.3,-26.4,70,AVOID,True
+83,9.03,WR,Jordan Addison,MIN,145.0,-27.7,99,FADE,False
+84,9.04,RB,Jadarian Price,SEA,171.1,-27.7,64,AVOID,False
 85,9.05,WR,Josh Downs,IND,144.8,-27.9,94,,False
 86,9.06,QB,Patrick Mahomes,KC,351.6,-38.7,97,,False
 87,9.07,WR,Courtland Sutton,DEN,133.5,-39.2,84,SHY,False
-88,9.08,WR,Chris Godwin,TB,131.2,-41.5,87,,False
+88,9.08,WR,Chris Godwin,TB,131.2,-41.5,87,FADE,False
 89,9.09,WR,Xavier Worthy,KC,130.4,-42.3,112,,False
 90,9.10,WR,Matthew Golden,GB,127.6,-45.1,123,,False
-91,10.01,WR,Michael Pittman Jr.,PIT,125.5,-47.2,93,,False
+91,10.01,WR,Michael Pittman Jr.,PIT,125.5,-47.2,93,FADE,False
 92,10.02,RB,Jonathon Brooks,CAR,151.6,-47.2,103,MUST,False
 93,10.03,RB,Kyle Monangai,CHI,151.6,-47.2,97,,False
 94,10.04,WR,Stefon Diggs,WAS,125.3,-47.4,180,,False
-95,10.05,WR,Jakobi Meyers,JAX,125.3,-47.4,106,,False
+95,10.05,WR,Jakobi Meyers,JAX,125.3,-47.4,106,FADE,False
 96,10.06,RB,Rico Dowdle,PIT,151.4,-47.4,87,,False
-97,10.07,RB,RJ Harvey,DEN,150.8,-48.0,91,,False
+97,10.07,RB,RJ Harvey,DEN,150.8,-48.0,91,AVOID,False
 98,10.08,WR,Jayden Higgins,HOU,123.2,-49.5,123,MUST,False
 99,10.09,WR,Wan'Dale Robinson,TEN,123.0,-49.7,106,,True
 100,10.10,RB,Blake Corum,LAR,148.5,-50.2,93,,False
@@ -119,36 +119,36 @@ rank,slot,pos,name,team,rpb,vbd,adp,ffa,mine
 118,12.08,WR,Omar Cooper Jr.,NYJ,106.1,-66.6,159,,False
 119,12.09,WR,Jalen McMillan,TB,105.6,-67.1,154,,True
 120,12.10,WR,Isaac TeSlaa,DET,104.1,-68.6,184,,False
-121,13.01,WR,Zachariah Branch,ATL,104.1,-68.6,216,,False
-122,13.02,WR,Tank Dell,HOU,103.7,-69.1,203,,True
-123,13.03,RB,Jacory Croskey-Merritt,WAS,128.9,-69.8,114,,False
-124,13.04,WR,Adonai Mitchell,NYJ,102.5,-70.2,162,,False
-125,13.05,RB,Jordan Mason,MIN,128.0,-70.8,114,MUST,False
-126,13.06,WR,Kayshon Boutte,NE,101.8,-70.9,182,,False
-127,13.07,RB,Keaton Mitchell,LAC,127.2,-71.5,143,MUST,False
-128,13.08,WR,Pat Bryant,DEN,99.6,-73.1,204,,False
-129,13.09,WR,Cyrus Allen,KC,98.9,-73.8,283,,False
-130,13.10,WR,Germie Bernard,PIT,98.2,-74.5,229,,False
-131,14.01,RB,Rachaad White,WAS,124.2,-74.6,109,SHY,False
-132,14.02,WR,Jerry Jeudy,CLE,94.8,-77.9,168,,False
-133,14.03,RB,Chris Rodriguez Jr.,JAX,118.4,-80.3,129,,False
-134,14.04,WR,Tyler Lockett,TEN,87.5,-85.2,230,,False
-135,14.05,WR,Calvin Ridley,TEN,86.7,-86.1,185,,False
-136,14.06,WR,Ted Hurst,TB,84.4,-88.3,382,,False
-137,14.07,WR,Ray-Ray McCloud III,ATL,84.2,-88.6,275,,False
-138,14.08,RB,Aaron Jones,MIN,108.8,-90.0,116,,False
-139,14.09,WR,Keenan Allen,FA,82.5,-90.2,259,,True
-140,14.10,WR,Ja'Kobi Lane,BAL,82.1,-90.6,268,,False
-141,15.01,DST,Texans D/ST,HOU,321.62,,,,False
-142,15.02,DST,Broncos D/ST,DEN,311.65,,,,True
-143,15.03,DST,Eagles D/ST,PHI,299.48,,,,False
-144,15.04,DST,Rams D/ST,LAR,299.18,,,,False
-145,15.05,DST,Seahawks D/ST,SEA,294.19,,,,False
-146,15.06,DST,Vikings D/ST,MIN,253.42,,,,False
-147,15.07,DST,Steelers D/ST,PIT,247.24,,,,False
-148,15.08,DST,Lions D/ST,DET,231.29,,,,False
-149,15.09,DST,Chargers D/ST,LAC,230.38,,,,False
-150,15.10,DST,Falcons D/ST,ATL,229.43,,,,False
+121,13.01,DST,Texans D/ST,HOU,321.62,,,,False
+122,13.02,DST,Broncos D/ST,DEN,311.65,,,,True
+123,13.03,DST,Eagles D/ST,PHI,299.48,,,,False
+124,13.04,DST,Rams D/ST,LAR,299.18,,,,False
+125,13.05,DST,Seahawks D/ST,SEA,294.19,,,,False
+126,13.06,DST,Vikings D/ST,MIN,253.42,,,,False
+127,13.07,DST,Steelers D/ST,PIT,247.24,,,,False
+128,13.08,DST,Lions D/ST,DET,231.29,,,,False
+129,13.09,DST,Chargers D/ST,LAC,230.38,,,,False
+130,13.10,DST,Falcons D/ST,ATL,229.43,,,,False
+131,14.01,WR,Zachariah Branch,ATL,104.1,-68.6,216,,False
+132,14.02,WR,Tank Dell,HOU,103.7,-69.1,203,,False
+133,14.03,RB,Jacory Croskey-Merritt,WAS,128.9,-69.8,114,,False
+134,14.04,WR,Adonai Mitchell,NYJ,102.5,-70.2,162,,False
+135,14.05,RB,Jordan Mason,MIN,128.0,-70.8,114,MUST,False
+136,14.06,WR,Kayshon Boutte,NE,101.8,-70.9,182,,False
+137,14.07,RB,Keaton Mitchell,LAC,127.2,-71.5,143,MUST,False
+138,14.08,WR,Pat Bryant,DEN,99.6,-73.1,204,,False
+139,14.09,WR,Cyrus Allen,KC,98.9,-73.8,283,,True
+140,14.10,WR,Germie Bernard,PIT,98.2,-74.5,229,,False
+141,15.01,RB,Rachaad White,WAS,124.2,-74.6,109,SHY,False
+142,15.02,WR,Jerry Jeudy,CLE,94.8,-77.9,168,,True
+143,15.03,RB,Chris Rodriguez Jr.,JAX,118.4,-80.3,129,,False
+144,15.04,WR,Tyler Lockett,TEN,87.5,-85.2,230,,False
+145,15.05,WR,Calvin Ridley,TEN,86.7,-86.1,185,,False
+146,15.06,WR,Ted Hurst,TB,84.4,-88.3,382,,False
+147,15.07,WR,Ray-Ray McCloud III,ATL,84.2,-88.6,275,,False
+148,15.08,RB,Aaron Jones,MIN,108.8,-90.0,116,,False
+149,15.09,WR,Keenan Allen,FA,82.5,-90.2,259,,False
+150,15.10,WR,Ja'Kobi Lane,BAL,82.1,-90.6,268,,False
 151,16.01,K,Jason Myers,SEA,165,,,,False
 152,16.02,K,Ka'imi Fairbairn,HOU,155,,,,False
 153,16.03,K,Nick Folk,ATL,152,,,,False

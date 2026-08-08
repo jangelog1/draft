@@ -14,7 +14,9 @@ ORDERING
   drafted), which is the only honest way to compare across positions. That comes from rpb_score.py:
   FFA's own projections scored under RPB's rules, with return work priced in.
 
-  K and D/ST are DELIBERATELY NOT ordered by VBD, and this is the one override in the file. Their
+  D/ST sits in ROUND 13 and K in round 16. The defense round moved up from 15 on 2026-08-07 after a
+  live mock found the entire top five gone by 15.02, leaving a 41-point cliff to the sixth. K and
+  D/ST are DELIBERATELY NOT ordered by VBD, and this is the one override in the file. Their
   VBD is enormous and meaningless: with 32 defenses for 10 starting slots, CBS's projections put the
   Texans +93 over the 11th defense, which would rank them 6th overall. That number is real and
   useless, because preseason projections cannot tell you which defense will actually finish first —
@@ -90,7 +92,7 @@ def build():
     skill.sort(key=lambda r: -r["vbd"])
 
     picked, seen = [], {"QB": 0, "TE": 0}
-    n_skill = SLOTS - CAP["K"] - CAP["DST"]
+    n_skill = SLOTS - CAP["K"] - CAP["DST"]  # 140 skill players; DST/K are slotted in below
     for r in skill:
         if len(picked) >= n_skill:
             break
@@ -101,10 +103,12 @@ def build():
         picked.append(dict(name=r["name"], pos=r["pos"], team=r["team"], rpb=r["rpb"],
                            vbd=r["vbd"], adp=r["hpprAdp"], ffa=r.get("ffa", "")))
 
-    for d in kd["defenses"][:CAP["DST"]]:
-        picked.append(dict(name=d["name"], pos="DST", team=d["team"], rpb=d["rpb"], vbd="", adp="", ffa=""))
-    for k in kd["kickers"][:CAP["K"]]:
-        picked.append(dict(name=k["name"], pos="K", team=k["team"], rpb=k["rpb"], vbd="", adp="", ffa=""))
+    dst = [dict(name=d["name"], pos="DST", team=d["team"], rpb=d["rpb"], vbd="", adp="", ffa="")
+           for d in kd["defenses"][:CAP["DST"]]]
+    kick = [dict(name=k["name"], pos="K", team=k["team"], rpb=k["rpb"], vbd="", adp="", ffa="")
+            for k in kd["kickers"][:CAP["K"]]]
+    # Defenses go in round 13, kickers in round 16; the skill players fill around them.
+    picked = picked[:120] + dst + picked[120:140] + kick
 
     for i, p in enumerate(picked, 1):
         rd, j = divmod(i - 1, TEAMS)
@@ -123,7 +127,8 @@ def selftest():
         assert c[pos] == cap, f"{pos}: {c[pos]} != {cap}"
     assert c["RB"] + c["WR"] == SLOTS - sum(CAP.values()) == 120
     # K and D/ST must live in the last two rounds, never earlier.
-    assert all(p["rank"] > 140 for p in b if p["pos"] in ("K", "DST"))
+    assert all(121 <= p["rank"] <= 130 for p in b if p["pos"] == "DST"), "D/ST belongs in round 13"
+    assert all(p["rank"] > 150 for p in b if p["pos"] == "K"), "kickers belong in round 16"
     # Skill players must be in non-increasing VBD order.
     v = [p["vbd"] for p in b if p["pos"] in ("QB", "RB", "WR", "TE")]
     assert all(a >= z for a, z in zip(v, v[1:])), "skill board is not sorted by VBD"
@@ -216,12 +221,11 @@ def targets():
             seen[r["pos"]] += 1
         picked.append(dict(name=r["name"], pos=r["pos"], team=r["team"], rpb=r["rpb"],
                            vbd=r["vbd"], adp=r["hpprAdp"], ffa=r.get("ffa", ""), valueRank=r["_v"]))
-    for d in kd["defenses"][:CAP["DST"]]:
-        picked.append(dict(name=d["name"], pos="DST", team=d["team"], rpb=d["rpb"],
-                           vbd="", adp="", ffa="", valueRank=""))
-    for k in kd["kickers"][:CAP["K"]]:
-        picked.append(dict(name=k["name"], pos="K", team=k["team"], rpb=k["rpb"],
-                           vbd="", adp="", ffa="", valueRank=""))
+    dst = [dict(name=d["name"], pos="DST", team=d["team"], rpb=d["rpb"],
+                vbd="", adp="", ffa="", valueRank="") for d in kd["defenses"][:CAP["DST"]]]
+    kick = [dict(name=k["name"], pos="K", team=k["team"], rpb=k["rpb"],
+                 vbd="", adp="", ffa="", valueRank="") for k in kd["kickers"][:CAP["K"]]]
+    picked = picked[:120] + dst + picked[120:140] + kick
     for i, p in enumerate(picked, 1):
         rd, j = divmod(i - 1, TEAMS)
         p["rank"] = i
