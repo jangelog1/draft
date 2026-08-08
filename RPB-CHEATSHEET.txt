@@ -1,0 +1,225 @@
+
+--- ROUND 1  TAKE THE BACK ---
+  1. Jahmyr Gibbs            RB  DET    363.0
+     -> 1.02 TAKE THE BACK. +164 VBD, biggest edge in the draft. Bijan if Gibbs gone.
+  2. Bijan Robinson          RB  ATL    362.5 <<<YOU
+     -> 1.02 TAKE THE BACK. +164 VBD. Handcuff is Brian Robinson Jr (R14).
+  3. Ja'Marr Chase           WR  CIN    308.9
+  4. Puka Nacua              WR  LAR    304.6
+  5. Jaxon Smith-Njigba      WR  SEA    267.1
+  6. Amon-Ra St. Brown       WR  DET    260.3 *MUST
+     -> Only WR Nick breaks RB-RB for -- and ONLY outside top 4. You pick 1.02, so NOT you.
+  7. Jonathan Taylor         RB  IND    291.0
+  8. Christian McCaffrey     RB  SF     283.4
+  9. Ashton Jeanty           RB  LVR    259.1 *MUST
+ 10. Justin Jefferson        WR  MIN    245.0
+
+--- ROUND 2  BOWERS WINDOW - the only real decision, at 2.09 ---
+ 11. Brock Bowers            TE  LVR    210.3 *MUST
+     -> THE PICK IF HE FALLS TO 2.09. +57.9 over the best back. NEVER at 1.02 (-81.8).
+ 12. CeeDee Lamb             WR  DAL    240.6
+ 13. James Cook              RB  BUF    264.4
+ 14. Tyler Warren            TE  IND    161.3
+     -> BOWERS FALLBACK. +44.7 at ADP 59 = your 6.09. Take him if Bowers went.
+ 15. Chase Brown             RB  CIN    229.9 *MUST [TAKE ZONE]
+     -> TAKE ZONE + must-draft. Full-PPR pick per Nick; Walker edges him in your half-PPR.
+ 16. A.J. Brown              WR  NE     212.3
+ 17. Drake London            WR  ATL    211.2
+ 18. Nico Collins            WR  HOU    209.1
+ 19. Saquon Barkley          RB  PHI    234.8 [TAKE ZONE] <<<YOU
+     -> TAKE ZONE. Nick's #1 R2 back. Playoff-SOS knock does NOT apply -- RPB has no playoffs.
+ 20. Ken Walker              RB  KC     232.9 [TAKE ZONE]
+
+--- ROUND 3  WRAP PICK - set predictor to TWO ROUNDS ---
+ 21. Parker Washington       WR  JAX    196.1 *MUST
+     -> BIGGEST EDGE. Punt returner: 5th in NFL ret yds, LED league in ret TDs. RPB pays that, FFA doesn't. +34 pts nobody prices. Take 6.09.
+ 22. Malik Nabers            WR  NYG    205.6 <<<YOU
+ 23. Derrick Henry           RB  BAL    231.0 [TAKE ZONE]
+     -> TAKE ZONE but take him LAST of the five. Watch, not a buy -- declining targets.
+ 24. George Pickens          WR  DAL    204.5
+ 25. Omarion Hampton         RB  LAC    230.3 [TAKE ZONE]
+     -> TAKE ZONE. If you get him, Keaton Mitchell (R14) is the handcuff double-dip.
+ 26. Tucker Kraft            TE  GB     145.5
+ 27. Sam LaPorta             TE  DET    141.8
+ 28. DeVonta Smith           WR  PHI    197.4
+ 29. Emeka Egbuka            WR  TB     188.1 *MUST
+ 30. Harold Fannin Jr.       TE  CLE    139.6
+
+--- ROUND 4  QB legal but still wait. RB DEAD ZONE STARTS ---
+ 31. Josh Allen              QB  BUF    420.3 *MUST
+     -> Highest raw total (420) and it does not matter -- only +30 over the QB you get anyway. NEVER before R4.
+ 32. Chris Olave             WR  NO     195.1
+ 33. Joe Burrow              QB  CIN    404.2 *MUST
+     -> 7.02 QB. Your 0.05/yd passing favours pocket arms. 20.2 hppr/wk.
+ 34. Zay Flowers             WR  BAL    192.3
+     -> MWV ONLY. TD caps hurt him in half-PPR. Do NOT draft at rank in RPB.
+ 35. Kyren Williams          RB  LAR    216.9
+     -> DEAD ZONE. Corum could take 50/50. Volume is perceived, not locked.
+ 36. Tee Higgins             WR  CIN    190.7
+ 37. Jeremiyah Love          RB  ARI    216.7
+ 38. Mike Evans              WR  SF     183.3 *MUST
+     -> 5.02. Half-PPR format split IN YOUR FAVOUR -- Nick fades him in full PPR, buys at 0.5.
+ 39. George Kittle           TE  SF     134.2 <<<YOU
+     -> Late TE door. +17.6 at ADP 107 = your 11.02. Only if Bowers AND Warren gone.
+ 40. Justin Herbert          QB  LAC    400.1 *MUST
+     -> 7.02 QB fallback. Same 20.2 hppr/wk as Burrow. ADP 74 -- he lasts.
+
+--- ROUND 5  WRAP PICK - two rounds on the predictor ---
+ 41. Breece Hall             RB  NYJ    215.3
+     -> Nick MOVED HIM DOWN in half PPR too. Edge of the dead zone. Don't pay R3 price.
+ 42. Ladd McConkey           WR  LAC    188.9 <<<YOU
+ 43. David Montgomery        RB  HOU    204.8 *MUST
+     -> Replaces Etienne's old role and better. ADP 55 -- will NOT reach 7.02. Take 6.09 if only 1 RB.
+ 44. Lamar Jackson           QB  BAL    395.9 *MUST
+     -> Ceiling QB but RPB de-values rushing QBs. Fell QB2 -> QB6 under your scoring.
+ 45. Tetairoa McMillan       WR  CAR    185.7
+ 46. Garrett Wilson          WR  NYJ    185.7
+ 47. Dallas Goedert          TE  PHI    117.4 *MUST
+     -> Must-draft TE at ADP 125. AJ Brown's exit frees 120+ targets. Pure insurance.
+ 48. Javonte Williams        RB  DAL    211.2
+     -> DEAD ZONE. Zero receiving role. Priced like more than he is.
+ 49. Josh Jacobs             RB  GB     201.2
+ 50. D'Andre Swift           RB  CHI    199.0 *MUST
+
+--- ROUND 6  PARKER WASHINGTON WINDOW ---
+ 51. Jaylen Waddle           WR  DEN    183.7
+ 52. Terry McLaurin          WR  WAS    179.6
+ 53. Jayden Daniels          QB  WAS    390.3 *MUST
+     -> CONFLICT in Nick's notes -- newer camp news downgrades him (WAS cutting no-huddle). Recency wins.
+ 54. Jalen Hurts             QB  PHI    389.6 *MUST
+ 55. Travis Etienne Jr.      RB  NO     198.8
+     -> Your OLD keeper, now in the pool. Exactly replacement level (-0.2). New Orleans in 2026.
+ 56. Davante Adams           WR  LAR    177.1
+ 57. Jameson Williams        WR  DET    172.7
+ 58. Dalton Kincaid          TE  BUF    116.6
+ 59. Quinshon Judkins        RB  CLE    190.2 <<<YOU
+ 60. Isaiah Likely           TE  NYG    114.4
+
+--- ROUND 7  QB - tier holds, six teams keep one ---
+ 61. Dak Prescott            QB  DAL    387.3
+ 62. DJ Moore                WR  BUF    168.4 <<<YOU
+ 63. Bucky Irving            RB  TB     177.3
+     -> Nick's #1 REGRET back. Committee + injury. ADP 56, worth #76. Let him go.
+ 64. Travis Kelce            TE  KC     111.6
+ 65. Christian Watson        WR  GB     164.9
+ 66. TreVeyon Henderson      RB  NE     183.2
+ 67. Bhayshul Tuten          RB  JAX    183.2
+ 68. Rome Odunze             WR  CHI    160.8
+ 69. Carnell Tate            WR  TEN    158.6
+ 70. Jadarian Price          RB  SEA    171.1
+
+--- ROUND 8  LAST REAL RUNNING BACKS - cliff after this ---
+ 71. Jordyn Tyson            WR  NO     157.9
+ 72. Tony Pollard            RB  TEN    173.9 *MUST
+     -> Must-draft but BELOW replacement (-24.9). R8 upside only, never a reach.
+ 73. Brian Thomas Jr.        WR  JAX    153.2
+ 74. Marvin Harrison Jr.     WR  ARI    150.1
+ 75. Jared Goff              QB  DET    364.4 *MUST
+ 76. Jaylen Warren           RB  PIT    172.3
+ 77. Makai Lemon             WR  PHI    149.3
+ 78. Rhamondre Stevenson     RB  NE     173.0
+ 79. Bo Nix                  QB  DEN    365.2 <<<YOU
+ 80. DK Metcalf              WR  PIT    146.9
+
+--- ROUND 9  WRAP PICK - bench and upside ---
+ 81. Jayden Reed             WR  GB     146.5
+ 82. Jordan Addison          WR  MIN    145.0 <<<YOU
+ 83. Josh Downs              WR  IND    144.8
+ 84. Chris Godwin            WR  TB     131.2
+ 85. Rico Dowdle             RB  PIT    151.4
+ 86. RJ Harvey               RB  DEN    150.8
+ 87. Michael Pittman Jr.     WR  PIT    125.5
+ 88. Jonathon Brooks         RB  CAR    151.6 *MUST
+     -> Backs up Chuba Hubbard (Nick SHY). Graded standalone value. R9-10 discount.
+ 89. Blake Corum             RB  LAR    148.5
+ 90. J.K. Dobbins            RB  DEN    139.8
+
+--- ROUND 10  YOUR KEEPER: Luther Burden III consumes 10.09 ---
+ 91. Patrick Mahomes         QB  KC     351.6
+ 92. Xavier Worthy           WR  KC     130.4
+ 93. Kyle Monangai           RB  CHI    151.6
+ 94. Matthew Golden          WR  GB     127.6
+ 95. Jakobi Meyers           WR  JAX    125.3
+ 96. Jayden Higgins          WR  HOU    123.2 *MUST
+     -> Starting Z opposite Nico Collins, who has missed time every year. R12-13 contingent upside.
+ 97. Wan'Dale Robinson       WR  TEN    123.0
+ 98. Jordan Mason            RB  MIN    128.0 *MUST
+     -> Must-draft but -70.8. Lead back reports, Aaron Jones fading. Late dart only.
+ 99. Stefon Diggs            WR  WAS    125.3 <<<YOU
+100. Jacory Croskey-Merritt  RB  WAS    128.9
+
+--- ROUND 11  START COUNTING DEFENSES EVERY ROUND ---
+101. KC Concepcion           WR  CLE    121.5
+102. Romeo Doubs             WR  NE     121.5 <<<YOU
+103. Khalil Shakir           WR  BUF    111.4
+104. Jalen Coker             WR  CAR    115.9
+105. Chris Rodriguez Jr.     RB  JAX    118.4
+106. Kenneth Gainwell        RB  TB     140.8
+     -> ADP 343, worth #136. Free handcuff -- the biggest ADP gap on the board.
+107. Keaton Mitchell         RB  LAC    127.2 *MUST
+     -> Hampton's handcuff AND must-draft -- the only double-dip. Take ONLY if you got Hampton.
+108. De'Zhaun Stribling      WR  SF     113.7
+109. Rashid Shaheed          WR  SEA    113.3
+110. Travis Hunter           WR  JAX    113.2
+     -> Nick calls him a last-round STEAL. Highest TPRR upside on the board.
+
+--- ROUND 12  lottery tickets, all below replacement ---
+111. Deebo Samuel            WR  SF     112.9
+112. Denzel Boston           WR  CLE    112.1
+113. Ryan Flournoy           WR  DAL    111.7
+114. Jalen Nailor            WR  LVR    108.0
+115. Jauan Jennings          WR  MIN    106.9
+116. Aaron Jones             RB  MIN    108.8
+117. Tre Harris              WR  LAC    106.7
+118. Tre Tucker              WR  LVR    106.3
+119. Omar Cooper Jr.         WR  NYJ    106.1 <<<YOU
+120. Tyrone Tracy Jr.        RB  NYG    107.2
+
+--- ROUND 13  watch the D/ST board ---
+121. Jalen McMillan          WR  TB     105.6
+122. Isaac TeSlaa            WR  DET    104.1 <<<YOU
+123. Zachariah Branch        WR  ATL    104.1
+124. Tank Dell               WR  HOU    103.7
+125. Alvin Kamara            RB  NO     104.3
+126. Adonai Mitchell         WR  NYJ    102.5
+127. Kayshon Boutte          WR  NE     101.8
+128. Pat Bryant              WR  DEN     99.6
+129. Jerry Jeudy             WR  CLE     94.8
+130. Cyrus Allen             WR  KC      98.9
+
+--- ROUND 14  LAST SKILL PICK ---
+131. Germie Bernard          WR  PIT     98.2
+132. Tyler Lockett           WR  TEN     87.5
+133. Woody Marks             RB  HOU     90.3
+134. Brian Robinson Jr.      RB  ATL     88.5
+135. Calvin Ridley           WR  TEN     86.7
+136. Dontayvion Wicks        WR  PHI     81.2
+137. Malik Washington        WR  MIA     81.8
+138. Tank Bigsby             RB  PHI     86.3
+139. Isiah Pacheco           RB  DET     85.7 <<<YOU
+140. Ted Hurst               WR  TB      84.4
+
+--- ROUND 15  D/ST ---
+141. Texans D/ST             DST HOU   321.62
+142. Broncos D/ST            DST DEN   311.65 <<<YOU
+143. Eagles D/ST             DST PHI   299.48
+144. Rams D/ST               DST LAR   299.18
+145. Seahawks D/ST           DST SEA   294.19
+146. Vikings D/ST            DST MIN   253.42
+147. Steelers D/ST           DST PIT   247.24
+148. Lions D/ST              DST DET   231.29
+149. Chargers D/ST           DST LAC   230.38
+150. Falcons D/ST            DST ATL   229.43
+
+--- ROUND 16  KICKER ---
+151. Jason Myers             K   SEA      165
+152. Ka'imi Fairbairn        K   HOU      155
+153. Nick Folk               K   ATL      152
+154. Blake Grupe             K   IND      151
+155. Brandon Aubrey          K   DAL      151
+156. Jake Bates              K   DET      142
+157. Cairo Santos            K   CHI      140
+158. Harrison Mevis          K   LAR      140
+159. Cameron Dicker          K   LAC      140 <<<YOU
+     -> 16.09. Nick is 70th of 150+ at kicker. Take a good offense's leg and stop thinking.
+160. Will Reichard           K   MIN      139
